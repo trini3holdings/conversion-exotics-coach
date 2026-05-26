@@ -302,22 +302,26 @@ kbd {
 
 /* ============ SIDE COLUMN ============ */
 .side-toggle {
-  display: flex; gap: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
   background: var(--cream);
   border-radius: var(--radius-sm);
   padding: 3px;
   margin-bottom: 14px;
 }
 .side-toggle-btn {
-  flex: 1; background: transparent; border: none;
-  padding: 7px 10px; border-radius: 4px;
+  background: transparent; border: none;
+  padding: 8px 10px; border-radius: 4px;
   font-family: var(--font-body); font-size: 13px;
   cursor: pointer; color: var(--text-dim);
   font-weight: 500;
+  text-align: center;
 }
 .side-toggle-btn.active {
   background: var(--ink); color: #fff;
 }
+.side-toggle-btn:hover:not(.active) { color: var(--ink); }
 
 .side-pane { display: block; }
 .side-pane.hidden { display: none; }
@@ -337,6 +341,7 @@ kbd {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 6px; margin-bottom: 10px;
 }
+.stat-box { min-width: 0; }
 .stat-box {
   background: var(--cream);
   border-radius: var(--radius-sm);
