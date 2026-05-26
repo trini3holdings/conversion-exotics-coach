@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Conversion Exotics · Call Coach</title>
+<meta name="description" content="Live call coaching for Zack. Script, timer, objection handlers, session tracker." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">CE</div>
+    <div class="brand-text">
+      <div class="brand-title">Conversion Exotics · Call Coach</div>
+      <div class="brand-sub">Zack · conversionexotics.com</div>
+    </div>
+  </div>
+
+  <div class="topbar-actions">
+    <div class="variant-toggle" role="tablist" aria-label="Script variant">
+      <button class="variant-btn active" data-variant="A" role="tab" aria-selected="true">
+        <span class="variant-label">Variant A</span>
+        <span class="variant-sub">Pattern Interrupt</span>
+      </button>
+      <button class="variant-btn" data-variant="B" role="tab" aria-selected="false">
+        <span class="variant-label">Variant B</span>
+        <span class="variant-sub">Curiosity Hook</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- LEFT COLUMN: Script + Objections -->
+  <section class="col col-script">
+
+    <!-- Timer card -->
+    <div class="card timer-card">
+      <div class="timer-display" id="timerDisplay">0:00</div>
+      <div class="timer-target">Target: 3–4 min</div>
+      <div class="timer-controls">
+        <button class="btn btn-primary" id="timerStart">Start Call</button>
+        <button class="btn btn-secondary" id="timerPause" disabled>Pause</button>
+        <button class="btn btn-ghost" id="timerReset" disabled>Reset</button>
+      </div>
+      <div class="beat-progress" id="beatProgress">
+        <div class="beat" data-beat="open"><span>Open</span><em>0:00–0:20</em></div>
+        <div class="beat" data-beat="problem"><span>Problem</span><em>0:20–0:50</em></div>
+        <div class="beat" data-beat="agitation"><span>Agitation</span><em>0:50–1:25</em></div>
+        <div class="beat" data-beat="solution"><span>Solution</span><em>1:25–2:00</em></div>
+        <div class="beat" data-beat="audit"><span>Audit Offer</span><em>2:00–2:45</em></div>
+        <div class="beat" data-beat="close"><span>Close</span><em>2:45–3:30</em></div>
+      </div>
+    </div>
+
+    <!-- Script beats -->
+    <div class="card script-card">
+      <div class="card-header">
+        <h2 class="card-title">Script <span class="variant-pill" id="scriptVariantPill">A</span></h2>
+        <div class="card-sub">Tap a beat to expand. Click "Done" to mark progress.</div>
+      </div>
+      <div class="beats" id="beatsContainer"></div>
+    </div>
+
+    <!-- Objections -->
+    <div class="card objections-card">
+      <div class="card-header">
+        <h2 class="card-title">Objection Handlers</h2>
+        <div class="card-sub">Click any objection to reveal the response. NEPQ tone — never argue.</div>
+      </div>
+      <div class="objections" id="objectionsContainer"></div>
+    </div>
+
+  </section>
+
+  <!-- RIGHT COLUMN: Session Tracker -->
+  <aside class="col col-tracker">
+
+    <!-- Current call card -->
+    <div class="card current-call-card">
+      <div class="card-header">
+        <h2 class="card-title">Current Call</h2>
+        <div class="card-sub">Quick log while you dial.</div>
+      </div>
+      <div class="form">
+        <label class="field">
+          <span>Company</span>
+          <input type="text" id="callCompany" placeholder="ex. Vegas Lux Rentals" />
+        </label>
+        <label class="field">
+          <span>Contact · City</span>
+          <input type="text" id="callContact" placeholder="ex. Marco · Las Vegas" />
+        </label>
+        <div class="field-row">
+          <label class="field">
+            <span>Variant</span>
+            <select id="callVariant">
+              <option value="A">A</option>
+              <option value="B">B</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Outcome</span>
+            <select id="callOutcome">
+              <option value="">— Select —</option>
+              <option value="NA">NA · No Answer</option>
+              <option value="VM">VM · Voicemail</option>
+              <option value="HU">HU · Hung Up</option>
+              <option value="NI">NI · Not Interested</option>
+              <option value="PP">PP · Past Problem</option>
+              <option value="OBJ">OBJ · Hit Objection</option>
+              <option value="BK">BK · Booked Audit</option>
+              <option value="SH">SH · Showed to 30-min</option>
+              <option value="CL">CL · Closed Client</option>
+            </select>
+          </label>
+        </div>
+        <div class="check-row">
+          <label class="check"><input type="checkbox" id="passedOpener" /><span>Past opener</span></label>
+          <label class="check"><input type="checkbox" id="passedProblem" /><span>Past Problem</span></label>
+          <label class="check"><input type="checkbox" id="hitObjection" /><span>Hit objection</span></label>
+        </div>
+        <label class="field">
+          <span>Notes</span>
+          <textarea id="callNotes" rows="2" placeholder="Anything worth remembering"></textarea>
+        </label>
+        <div class="form-actions">
+          <button class="btn btn-primary" id="logCallBtn">Log Call</button>
+          <button class="btn btn-ghost" id="clearFormBtn">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live stats -->
+    <div class="card stats-card">
+      <div class="card-header">
+        <h2 class="card-title">Today's Stats</h2>
+        <div class="card-sub">Auto-calc from logged calls. Stored locally.</div>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-label">Total Calls</div>
+          <div class="kpi-value" id="kpiTotal">0</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Audits Booked</div>
+          <div class="kpi-value" id="kpiBooked">0</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Book Rate</div>
+          <div class="kpi-value" id="kpiBookRate">0%</div>
+        </div>
+      </div>
+      <div class="ab-split">
+        <div class="ab-col ab-a">
+          <div class="ab-head">Variant A</div>
+          <div class="ab-row"><span>Calls</span><strong id="aCalls">0</strong></div>
+          <div class="ab-row"><span>Booked</span><strong id="aBooked">0</strong></div>
+          <div class="ab-row"><span>Book %</span><strong id="aRate">0%</strong></div>
+        </div>
+        <div class="ab-col ab-b">
+          <div class="ab-head">Variant B</div>
+          <div class="ab-row"><span>Calls</span><strong id="bCalls">0</strong></div>
+          <div class="ab-row"><span>Booked</span><strong id="bBooked">0</strong></div>
+          <div class="ab-row"><span>Book %</span><strong id="bRate">0%</strong></div>
+        </div>
+      </div>
+      <div class="winner" id="winnerBanner">Log some calls to see a winner</div>
+    </div>
+
+    <!-- Call log -->
+    <div class="card log-card">
+      <div class="card-header">
+        <h2 class="card-title">Session Log</h2>
+        <div class="card-sub">Saved in your browser. Export anytime.</div>
+      </div>
+      <div class="log-actions">
+        <button class="btn btn-ghost btn-sm" id="exportCsvBtn">Export CSV</button>
+        <button class="btn btn-ghost btn-sm btn-danger" id="clearLogBtn">Clear All</button>
+      </div>
+      <div class="log-list" id="logList"></div>
+    </div>
+
+  </aside>
+
+</main>
+
+<footer class="footer">
+  Built for Zack · Conversion Exotics · Data stays on this device (localStorage)
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
