@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Call Coach v3 · Conversion Exotics</title>
+<title>Call Coach v3.1 · Conversion Exotics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
@@ -11,13 +11,19 @@
 </head>
 <body>
 
+<!-- ============ PROGRESS BAR (TOP) ============ -->
+<div id="progressBar" class="progress-bar" title="Click to open prospect picker">
+  <div class="progress-fill" id="progressFill" style="width:0%"></div>
+  <div class="progress-label" id="progressLabel">0 of 0 prospects called today · 0% done</div>
+</div>
+
 <!-- ============ TOPBAR ============ -->
 <header class="topbar">
   <div class="topbar-left">
     <div class="logo-mark" id="logoMark">CE</div>
     <div class="brand-meta">
       <div class="brand-name" id="brandName">Conversion Exotics · Call Coach</div>
-      <div class="brand-sub">Cold call → free CRO audit · v3</div>
+      <div class="brand-sub">Cold call → free CRO audit · v3.1</div>
     </div>
   </div>
   <div class="topbar-right">
@@ -39,7 +45,7 @@
 
 <!-- ============ KEYBOARD LEGEND ============ -->
 <div id="legendBar" class="legend-bar hidden">
-  <div class="kbd-row"><kbd>Space</kbd><span>Start / pause timer</span></div>
+  <div class="kbd-row"><kbd>Ctrl</kbd>+<kbd>S</kbd><span>Start / pause timer</span></div>
   <div class="kbd-row"><kbd>Shift</kbd>+<kbd>R</kbd><span>Reset timer</span></div>
   <div class="kbd-row"><kbd>1</kbd>/<kbd>2</kbd>/<kbd>3</kbd><span>Switch script variant A / B / C</span></div>
   <div class="kbd-row"><kbd>Ctrl</kbd>+<kbd>L</kbd><span>Log current call</span></div>
@@ -52,14 +58,26 @@
 <!-- ============ SAMPLING BANNER ============ -->
 <div id="samplingBanner" class="sampling-banner">
   <span class="sampling-tag">SAMPLING</span>
-  <span id="samplingMsg">Need 10+ calls per variant to compare. Current: A=0, B=0, C=0.</span>
+  <span id="samplingMsg">Need 10+ calls per variant. Auto-rotates A→B→C every 10 calls.</span>
 </div>
 
 <!-- ============ MAIN 3-COLUMN GRID ============ -->
 <main class="grid">
 
-  <!-- COL 1 · SCRIPT -->
+  <!-- COL 1 · SCRIPT (reordered: Recon → Tabs → Timer → Beats) -->
   <section class="col col-script">
+
+    <!-- AUDITED URL / RECON CARD (TOP) -->
+    <div id="reconCard" class="recon-card empty">
+      <div class="recon-head">
+        <span class="recon-tag">RECON · pre-call</span>
+        <span id="reconRisk" class="risk-badge"></span>
+      </div>
+      <div id="reconBody">
+        <div class="recon-empty">Pick a prospect from the side panel to see their audit.</div>
+      </div>
+    </div>
+
     <h2 class="col-title">Active Script</h2>
     <div class="variant-tabs" id="variantTabs">
       <button data-v="A" class="variant-tab active">A · Pattern Interrupt</button>
@@ -69,7 +87,7 @@
 
     <div class="timer-card">
       <div class="timer-display" id="timerDisplay">00:00</div>
-      <div class="timer-hint" id="timerHint">Press Space to start</div>
+      <div class="timer-hint" id="timerHint">Press Ctrl+S to start</div>
       <div class="timer-controls">
         <button id="timerStart" class="btn btn-dark">Start</button>
         <button id="timerReset" class="btn btn-ghost">Reset</button>
@@ -79,16 +97,18 @@
     <div id="beatsContainer" class="beats-container"></div>
   </section>
 
-  <!-- COL 2 · OBJECTIONS -->
+  <!-- COL 2 · OBJECTIONS (sticky scroll) -->
   <section class="col col-objections">
-    <h2 class="col-title">Objections <span class="col-sub">Click a question to reveal the answer</span></h2>
-    <div id="objectionsContainer" class="objections-container"></div>
+    <div class="objections-sticky">
+      <h2 class="col-title">Objections <span class="col-sub">Tap a card to reveal the comeback</span></h2>
+      <div id="objectionsContainer" class="objections-container"></div>
+    </div>
   </section>
 
-  <!-- COL 3 · STATS / CURRENT CALL / LOG / CAL -->
-  <section class="col col-side">
+  <!-- COL 3 · SIDE (Stats / Current Call / Cal / Log — separate cards) -->
+  <section class="col-side-wrap">
 
-    <!-- Toggle between Stats and Cal -->
+    <!-- Stats <-> Cal toggle -->
     <div class="side-toggle">
       <button id="toggleStats" class="side-toggle-btn active">Stats</button>
       <button id="toggleCal" class="side-toggle-btn">📅 Calendar</button>
@@ -96,89 +116,99 @@
 
     <!-- STATS PANE -->
     <div id="statsPane" class="side-pane">
-      <h3 class="side-title">Today's Stats</h3>
-      <div class="stats-row">
-        <div class="stat-box"><div class="stat-num" id="stat-calls">0</div><div class="stat-label">Calls</div></div>
-        <div class="stat-box"><div class="stat-num" id="stat-booked">0</div><div class="stat-label">Booked</div></div>
-        <div class="stat-box"><div class="stat-num" id="stat-closed">0</div><div class="stat-label">Closed</div></div>
-        <div class="stat-box"><div class="stat-num" id="stat-bookrate">0%</div><div class="stat-label">Booking %</div></div>
+
+      <!-- Stats card -->
+      <div class="side-card">
+        <h3 class="side-title">Today's Stats</h3>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-num" id="stat-calls">0</div><div class="stat-label">Calls</div></div>
+          <div class="stat-box"><div class="stat-num" id="stat-booked">0</div><div class="stat-label">Booked</div></div>
+          <div class="stat-box"><div class="stat-num" id="stat-closed">0</div><div class="stat-label">Closed</div></div>
+          <div class="stat-box"><div class="stat-num" id="stat-bookrate">0%</div><div class="stat-label">Book %</div></div>
+        </div>
+        <div class="stats-row" style="margin-top:6px;">
+          <div class="stat-box"><div class="stat-num" id="stat-avgscore">0</div><div class="stat-label">Avg Score</div></div>
+          <div class="stat-box"><div class="stat-num" id="stat-remaining">0</div><div class="stat-label">Remaining</div></div>
+          <div class="stat-box" style="grid-column:span 2;"><div class="stat-num" style="font-size:14px;" id="stat-rotation">A · 0/10</div><div class="stat-label">Rotation</div></div>
+        </div>
+        <div class="variant-stats" id="variantStats"></div>
+        <div class="caller-stats" id="callerStats"></div>
       </div>
 
-      <div class="variant-stats" id="variantStats"></div>
-      <div class="caller-stats" id="callerStats"></div>
-
-      <!-- CURRENT CALL FORM -->
-      <h3 class="side-title">Current Call</h3>
-      <form id="callForm" class="call-form">
-        <label class="form-row">
-          <span>Prospect (from list)</span>
-          <select id="prospectSelect"><option value="">— Select prospect or type below —</option></select>
-        </label>
-        <label class="form-row">
-          <span>Company</span>
-          <input type="text" id="company" placeholder="Auto-fills from prospect" />
-        </label>
-        <label class="form-row">
-          <span>Market</span>
-          <input type="text" id="market" placeholder="e.g. Miami FL" />
-        </label>
-        <label class="form-row">
-          <span>Phone</span>
-          <input type="text" id="phone" placeholder="Auto-fills" />
-        </label>
-
-        <div id="leaksPanel" class="leaks-panel hidden">
-          <div class="leaks-header">3 Audited Leaks <span id="leaksRisk" class="risk-badge"></span></div>
-          <ol id="leaksList"></ol>
-        </div>
-
-        <label class="form-row">
-          <span>Outcome</span>
-          <select id="outcome">
-            <option value="">— Select —</option>
-            <option value="NA">NA · No Answer</option>
-            <option value="VM">VM · Voicemail</option>
-            <option value="HU">HU · Hung Up</option>
-            <option value="NI">NI · Not Interested</option>
-            <option value="PP">PP · Pitched, Passed</option>
-            <option value="OBJ">OBJ · Objection (no book)</option>
-            <option value="BK">BK · Audit Booked</option>
-            <option value="SH">SH · Audit Showed</option>
-            <option value="CL">CL · Closed</option>
-          </select>
-        </label>
-        <label class="form-row">
-          <span>Notes</span>
-          <textarea id="notes" rows="2" placeholder="What did they say?"></textarea>
-        </label>
-        <div class="form-actions">
-          <button type="button" id="logCall" class="btn btn-gold">Log Call</button>
-          <button type="button" id="clearForm" class="btn btn-ghost">Clear</button>
-          <label class="csv-upload">
-            <input type="file" id="csvUpload" accept=".csv" hidden />
-            <span class="btn btn-ghost">+ CSV</span>
+      <!-- Current Call card -->
+      <div class="side-card">
+        <h3 class="side-title">Current Call</h3>
+        <form id="callForm" class="call-form">
+          <label class="form-row">
+            <span>Prospect (from list)</span>
+            <select id="prospectSelect"><option value="">— Select prospect or type below —</option></select>
           </label>
-        </div>
-      </form>
+          <label class="form-row">
+            <span>Company</span>
+            <input type="text" id="company" placeholder="Auto-fills from prospect" />
+          </label>
+          <label class="form-row">
+            <span>Market</span>
+            <input type="text" id="market" placeholder="e.g. Miami FL" />
+          </label>
+          <label class="form-row">
+            <span>Phone</span>
+            <input type="text" id="phone" placeholder="Auto-fills" />
+          </label>
+          <label class="form-row">
+            <span>Outcome</span>
+            <select id="outcome">
+              <option value="">— Select —</option>
+              <option value="NA">NA · No Answer</option>
+              <option value="VM">VM · Voicemail</option>
+              <option value="HU">HU · Hung Up</option>
+              <option value="NI">NI · Not Interested</option>
+              <option value="PP">PP · Pitched, Passed</option>
+              <option value="OBJ">OBJ · Objection (no book)</option>
+              <option value="BK">BK · Audit Booked</option>
+              <option value="SH">SH · Audit Showed</option>
+              <option value="CL">CL · Closed</option>
+            </select>
+          </label>
+          <label class="form-row">
+            <span>Notes</span>
+            <textarea id="notes" rows="2" placeholder="What did they say? (auto-scoring reads this)"></textarea>
+          </label>
+          <div id="liveScore" class="live-score hidden">Live score: <strong id="liveScoreNum">0</strong></div>
+          <div class="form-actions">
+            <button type="button" id="logCall" class="btn btn-gold">Log Call</button>
+            <button type="button" id="clearForm" class="btn btn-ghost">Clear</button>
+            <label class="csv-upload">
+              <input type="file" id="csvUpload" accept=".csv" hidden />
+              <span class="btn btn-ghost">+ CSV</span>
+            </label>
+          </div>
+        </form>
+      </div>
 
-      <!-- RECENT LOG -->
-      <h3 class="side-title">Recent Calls</h3>
-      <div id="callLog" class="call-log"></div>
+      <!-- Recent log card -->
+      <div class="side-card">
+        <h3 class="side-title">Recent Calls</h3>
+        <div id="callLog" class="call-log"></div>
+      </div>
     </div>
 
     <!-- CAL EMBED PANE -->
     <div id="calPane" class="side-pane hidden">
-      <h3 class="side-title">Book the Audit · Tony's Calendar</h3>
-      <div class="cal-hint">Use this live during the call. Share your screen if they want to see it.</div>
-      <div id="my-cal-inline-30min" class="cal-embed"></div>
+      <div class="side-card">
+        <h3 class="side-title">Book the Audit · Tony's Calendar</h3>
+        <div class="cal-hint">Use this live during the call. Share your screen if they want to see it.</div>
+        <div id="my-cal-inline-30min" class="cal-embed"></div>
+      </div>
     </div>
 
   </section>
 
 </main>
 
-<!-- Winner banner -->
+<!-- Winner banner & toasts -->
 <div id="winnerBanner" class="winner-banner hidden"></div>
+<div id="toast" class="toast hidden"></div>
 
 <!-- Cal.com inline embed -->
 <script type="text/javascript">

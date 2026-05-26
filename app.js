@@ -1,12 +1,18 @@
-/* Conversion Exotics — Call Coach v3
-   Multi-brand, multi-caller, Cal embed, collapsible objections.
-   Scripts and objections loaded per-brand from JSON.
+/* Conversion Exotics — Call Coach v3.1
+   Multi-brand, multi-caller, Cal embed, collapsible objections,
+   auto-rotation (10 calls per variant, winner-lock), auto-scoring,
+   expanded CSV schema, recon card, progress bar.
 */
 
 // ============== CONSTANTS ==============
-const STORAGE_KEY = 'ce_call_coach_v3';
-const WINNER_THRESHOLD = 10;
+const STORAGE_KEY = 'ce_call_coach_v3'; // keep key — auto-migrates
+const VARIANT_ROTATION_THRESHOLD = 10;  // switch every N calls
+const WINNER_THRESHOLD = 10;            // calls per variant before winner check
+const WINNER_LOCK_GAP = 0.15;           // 15pp ahead → lock
 const DEFAULT_CPC = { cpc_low: 1.20, cpc_high: 5.00, vol: 200, primary_kw: 'exotic car rental' };
+
+const POSITIVE_PHRASES = ['interested', 'send', 'tell me more', 'email me', 'tomorrow', 'calendar', 'audit', 'show me', 'sounds good', "let's do it", 'book', 'great idea'];
+const NEGATIVE_PHRASES = ['hung up', 'not interested', 'remove', 'stop calling', 'lawsuit', 'do not call', 'never call', 'fuck off'];
 
 // Brand registry — add more brands here
 const BRANDS = {
@@ -14,7 +20,7 @@ const BRANDS = {
     slug: 'conversion-exotics',
     name: 'Conversion Exotics',
     short: 'CE',
-    sub: 'Cold call → free CRO audit · v3',
+    sub: 'Cold call → free CRO audit · v3.1',
     strategist: 'Tony',
     active: true,
     theme: { ink: '#1A1A1A', gold: '#B8893A', cream: '#F4F0E8', highlight: '#FFF8E8' }
@@ -25,7 +31,7 @@ const BRANDS = {
 };
 
 // Loaded per-brand at runtime
-let SCRIPTS = {};       // { A: {...}, B: {...}, C: {...} }
+let SCRIPTS = {};
 let OBJECTIONS = [];
 let PROSPECTS = [];
 let MARKET_CPC = {};
@@ -35,11 +41,13 @@ let state = {
   brand: 'conversion-exotics',
   caller: 'Zack',
   variant: 'A',
-  sidePane: 'stats',   // 'stats' | 'cal'
+  sidePane: 'stats',
   timer: { running: false, startedAt: 0, accumulated: 0, intervalId: null },
-  calls: [],            // {ts, brand, caller, company, market, phone, variant, outcome, notes, prospectN}
+  calls: [],
   selectedProspectN: null,
-  customProspects: []
+  customProspects: [],
+  lockedVariant: null,  // when winner declared, locks to that variant
+  manualVariant: false  // true if user manually picked variant (override auto-rotate)
 };
 
 // ============== STORAGE ==============
@@ -52,6 +60,8 @@ function loadState() {
     if (s.caller) state.caller = s.caller;
     if (s.sidePane) state.sidePane = s.sidePane;
     if (s.customProspects && Array.isArray(s.customProspects)) state.customProspects = s.customProspects;
+    if (s.lockedVariant) state.lockedVariant = s.lockedVariant;
+    if (s.manualVariant) state.manualVariant = s.manualVariant;
   } catch (e) { /* fresh */ }
 }
 function saveState() {
@@ -62,7 +72,9 @@ function saveState() {
       brand: state.brand,
       caller: state.caller,
       sidePane: state.sidePane,
-      customProspects: state.customProspects
+      customProspects: state.customProspects,
+      lockedVariant: state.lockedVariant,
+      manualVariant: state.manualVariant
     }));
   } catch (e) { /* quota */ }
 }
@@ -71,11 +83,7 @@ function saveState() {
 async function loadBrandData(brandSlug) {
   const brand = BRANDS[brandSlug];
   if (!brand || !brand.active) {
-    // Show empty state for inactive brands
-    SCRIPTS = {};
-    OBJECTIONS = [];
-    PROSPECTS = [];
-    MARKET_CPC = {};
+    SCRIPTS = {}; OBJECTIONS = []; PROSPECTS = []; MARKET_CPC = {};
     return false;
   }
   const base = `brands/${brandSlug}`;
@@ -92,7 +100,6 @@ async function loadBrandData(brandSlug) {
     MARKET_CPC = await cpcRes.json();
     SCRIPTS = scriptsData.variants;
     OBJECTIONS = objData.objections;
-    // Merge in custom CSV-uploaded prospects
     PROSPECTS = PROSPECTS.concat(state.customProspects);
     return true;
   } catch (e) {
@@ -133,6 +140,70 @@ function fillTokens(template, ctx) {
   return template.replace(/\{(\w+)\}/g, (_, key) => ctx[key] !== undefined ? ctx[key] : `{${key}}`);
 }
 
+// ============== RECON CARD (audited URL — pre-call) ==============
+function renderReconCard() {
+  const card = document.getElementById('reconCard');
+  const body = document.getElementById('reconBody');
+  const riskEl = document.getElementById('reconRisk');
+  const p = state.selectedProspectN ? PROSPECTS.find(x => x.n === state.selectedProspectN) : null;
+  if (!p) {
+    card.classList.add('empty');
+    riskEl.textContent = '';
+    riskEl.className = 'risk-badge';
+    body.innerHTML = '<div class="recon-empty">Pick a prospect from the side panel to see their audit.</div>';
+    return;
+  }
+  card.classList.remove('empty');
+  const risk = (p.risk || 'MED').toUpperCase();
+  riskEl.textContent = risk + ' RISK';
+  riskEl.className = 'risk-badge ' + risk.toLowerCase();
+
+  const domain = p.domain || '';
+  const url = domain ? (domain.startsWith('http') ? domain : `https://${domain}`) : '';
+  const company = p.company || domain || `Prospect #${p.n}`;
+
+  // Stats grid — pull any of the expanded fields if present
+  const statHTML = [];
+  if (p.speed !== undefined && p.speed !== '') statHTML.push(statBox('Speed', p.speed + (typeof p.speed === 'number' || /^\d+$/.test(p.speed) ? '/100' : '')));
+  if (p.trust !== undefined && p.trust !== '') statHTML.push(statBox('Trust', p.trust + (typeof p.trust === 'number' || /^\d+$/.test(p.trust) ? '/100' : '')));
+  if (p.cta !== undefined && p.cta !== '') statHTML.push(statBox('CTA', p.cta + (typeof p.cta === 'number' || /^\d+$/.test(p.cta) ? '/100' : '')));
+  if (p.monthly_traffic) statHTML.push(statBox('Traffic / mo', p.monthly_traffic));
+  if (p.ad_spend_est) statHTML.push(statBox('Est. Ad Spend', p.ad_spend_est));
+  if (p.last_audit_date) statHTML.push(statBox('Audited', p.last_audit_date));
+
+  // Leaks
+  const leaks = (p.issues || []).slice(0, 5);
+  const leaksHTML = leaks.length
+    ? `<div class="recon-leaks-title">Audited Leaks</div><ol class="recon-leaks">${leaks.map(l => `<li>${escapeHTML(l)}</li>`).join('')}</ol>`
+    : '';
+
+  // Contact line
+  const contactBits = [];
+  if (p.phone) contactBits.push(`📞 ${escapeHTML(p.phone)}`);
+  if (p.email) contactBits.push(`✉ ${escapeHTML(p.email)}`);
+  if (p.instagram) contactBits.push(`📷 ${escapeHTML(p.instagram)}`);
+
+  // Notes from CSV
+  const notesHTML = p.notes ? `<div class="recon-notes">Note: ${escapeHTML(p.notes)}</div>` : '';
+
+  body.innerHTML = `
+    <div class="recon-title">${escapeHTML(company)} · ${escapeHTML(p.market || 'Unknown market')}</div>
+    <div class="recon-meta">
+      ${url ? `<a href="${url}" target="_blank" rel="noopener">${escapeHTML(domain)} ↗</a>` : ''}
+      ${contactBits.length ? ' · ' + contactBits.join(' · ') : ''}
+    </div>
+    ${statHTML.length ? `<div class="recon-grid">${statHTML.join('')}</div>` : ''}
+    ${leaksHTML}
+    ${notesHTML}
+  `;
+}
+function statBox(label, val) {
+  return `<div class="recon-stat"><div class="recon-stat-label">${escapeHTML(label)}</div><div class="recon-stat-val">${escapeHTML(String(val))}</div></div>`;
+}
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
 // ============== RENDER · BEATS ==============
 function renderBeats() {
   const container = document.getElementById('beatsContainer');
@@ -145,7 +216,7 @@ function renderBeats() {
   const ctx = getProspectContext();
   const elapsed = currentElapsedSec();
   let cumulative = 0;
-  const html = variant.beats.map((b, i) => {
+  container.innerHTML = variant.beats.map(b => {
     const start = cumulative;
     cumulative += b.t;
     const isActive = elapsed >= start && elapsed < cumulative;
@@ -164,10 +235,9 @@ function renderBeats() {
       </div>
     `;
   }).join('');
-  container.innerHTML = html;
 }
 
-// ============== RENDER · OBJECTIONS (collapsible) ==============
+// ============== RENDER · OBJECTIONS (new card layout) ==============
 function renderObjections() {
   const container = document.getElementById('objectionsContainer');
   if (!container) return;
@@ -177,8 +247,8 @@ function renderObjections() {
   }
   container.innerHTML = OBJECTIONS.map((o, i) => `
     <div class="objection-card" data-idx="${i}">
+      <div class="objection-cat-bar">${o.cat}</div>
       <div class="objection-q">
-        <span class="objection-cat">${o.cat}</span>
         <span class="objection-q-text">${o.q}</span>
         <span class="objection-chevron">▸</span>
       </div>
@@ -232,8 +302,111 @@ function resetTimer() {
   state.timer.startedAt = 0;
   document.getElementById('timerDisplay').textContent = '00:00';
   document.getElementById('timerStart').textContent = 'Start';
-  document.getElementById('timerHint').textContent = 'Press Space to start';
+  document.getElementById('timerHint').textContent = 'Press Ctrl+S to start';
   renderBeats();
+}
+
+// ============== AUTO-SCORING ==============
+function scoreCall(call, durationSec) {
+  let score = 0;
+  if (['BK', 'SH', 'CL'].includes(call.outcome)) score += 30;
+  if (call.outcome === 'PP') score += 10;
+  if (call.outcome === 'OBJ') score += 5;
+  if (durationSec >= 90) score += 15;
+  else if (durationSec >= 45) score += 8;
+  const notes = (call.notes || '').toLowerCase();
+  POSITIVE_PHRASES.forEach(p => { if (notes.includes(p)) score += 10; });
+  NEGATIVE_PHRASES.forEach(p => { if (notes.includes(p)) score -= 10; });
+  // Objection category mention bonus (caller surfaced/handled the objection)
+  OBJECTIONS.forEach(o => {
+    if (o.cat && notes.includes(o.cat.toLowerCase())) score += 10;
+  });
+  return Math.max(0, Math.min(100, score));
+}
+
+function updateLiveScore() {
+  const el = document.getElementById('liveScore');
+  const num = document.getElementById('liveScoreNum');
+  const outcome = document.getElementById('outcome').value;
+  if (!outcome) { el.classList.add('hidden'); return; }
+  const fake = {
+    outcome,
+    notes: document.getElementById('notes').value
+  };
+  const s = scoreCall(fake, currentElapsedSec());
+  num.textContent = s;
+  el.classList.remove('hidden');
+}
+
+// ============== AUTO-ROTATION ==============
+function getVariantCallCounts() {
+  return {
+    A: state.calls.filter(c => c.variant === 'A').length,
+    B: state.calls.filter(c => c.variant === 'B').length,
+    C: state.calls.filter(c => c.variant === 'C').length
+  };
+}
+
+/**
+ * Decide what variant SHOULD be active right now.
+ * Rules:
+ *  - If a winner is locked → return locked variant.
+ *  - If user manually picked → respect it (manualVariant=true).
+ *  - Otherwise rotate A→B→C every 10 calls until each has 10.
+ *  - After all 3 hit 10, check winner condition. If gap ≥15pp, lock.
+ *  - If no winner yet, stay on whichever has fewest calls (round-robin).
+ */
+function computeAutoVariant() {
+  if (state.lockedVariant) return state.lockedVariant;
+  const c = getVariantCallCounts();
+  const total = c.A + c.B + c.C;
+
+  // Phase 1: still under threshold per variant → cycle every 10 calls based on total
+  if (c.A < VARIANT_ROTATION_THRESHOLD || c.B < VARIANT_ROTATION_THRESHOLD || c.C < VARIANT_ROTATION_THRESHOLD) {
+    // Pick the one with fewest calls (ties → alphabetical)
+    const sorted = [['A', c.A], ['B', c.B], ['C', c.C]].sort((x, y) => x[1] - y[1] || x[0].localeCompare(y[0]));
+    return sorted[0][0];
+  }
+
+  // Phase 2: all hit threshold → check winner
+  const rates = ['A', 'B', 'C'].map(v => {
+    const total = c[v];
+    const booked = state.calls.filter(call => call.variant === v && ['BK', 'SH', 'CL'].includes(call.outcome)).length;
+    return { v, rate: total ? booked / total : 0 };
+  }).sort((a, b) => b.rate - a.rate);
+
+  if (rates[0].rate - rates[1].rate >= WINNER_LOCK_GAP) {
+    state.lockedVariant = rates[0].v;
+    saveState();
+    showToast(`🏆 Winner locked: Variant ${rates[0].v} (${Math.round(rates[0].rate * 100)}% book rate)`);
+    return rates[0].v;
+  }
+
+  // No winner yet — keep cycling (fewest calls wins)
+  const sorted = [['A', c.A], ['B', c.B], ['C', c.C]].sort((x, y) => x[1] - y[1] || x[0].localeCompare(y[0]));
+  return sorted[0][0];
+}
+
+function maybeRotateVariant() {
+  if (state.manualVariant) return; // user override active until manualVariant cleared
+  if (state.lockedVariant) {
+    if (state.variant !== state.lockedVariant) {
+      state.variant = state.lockedVariant;
+      saveState();
+      updateVariantTabs();
+      renderBeats();
+    }
+    return;
+  }
+  const want = computeAutoVariant();
+  if (want !== state.variant) {
+    const prev = state.variant;
+    state.variant = want;
+    saveState();
+    updateVariantTabs();
+    renderBeats();
+    showToast(`Auto-rotated ${prev} → ${want}`);
+  }
 }
 
 // ============== STATS ==============
@@ -244,10 +417,25 @@ function renderStats() {
   const booked = today.filter(c => ['BK', 'SH', 'CL'].includes(c.outcome)).length;
   const closed = today.filter(c => c.outcome === 'CL').length;
   const rate = calls ? Math.round((booked / calls) * 100) : 0;
+  const avgScore = calls ? Math.round(today.reduce((s, c) => s + (c.score || 0), 0) / calls) : 0;
+  const remaining = Math.max(0, PROSPECTS.length - new Set(today.map(c => c.prospectN).filter(Boolean)).size);
+
   document.getElementById('stat-calls').textContent = calls;
   document.getElementById('stat-booked').textContent = booked;
   document.getElementById('stat-closed').textContent = closed;
   document.getElementById('stat-bookrate').textContent = `${rate}%`;
+  document.getElementById('stat-avgscore').textContent = avgScore;
+  document.getElementById('stat-remaining').textContent = remaining;
+
+  // Rotation status
+  const c = getVariantCallCounts();
+  let rotationTxt;
+  if (state.lockedVariant) {
+    rotationTxt = `🔒 ${state.lockedVariant} locked`;
+  } else {
+    rotationTxt = `${state.variant} · ${c[state.variant]}/${VARIANT_ROTATION_THRESHOLD}`;
+  }
+  document.getElementById('stat-rotation').textContent = rotationTxt;
 
   // Per variant
   const vStats = document.getElementById('variantStats');
@@ -255,7 +443,8 @@ function renderStats() {
     vStats.innerHTML = ['A', 'B', 'C'].map(v => {
       const vCalls = state.calls.filter(c => c.variant === v).length;
       const vBooked = state.calls.filter(c => c.variant === v && ['BK', 'SH', 'CL'].includes(c.outcome)).length;
-      return `<div class="variant-stats-row"><span class="label">${v}</span><span>${vCalls} calls · ${vBooked} booked</span></div>`;
+      const isLocked = state.lockedVariant === v;
+      return `<div class="variant-stats-row ${isLocked ? 'locked' : ''}"><span class="label">${v}${isLocked ? ' 🔒' : ''}</span><span>${vCalls} calls · ${vBooked} booked</span></div>`;
     }).join('');
   }
   // Per caller
@@ -267,29 +456,32 @@ function renderStats() {
       return `<div class="caller-stats-row"><span class="label">${name}</span><span>${calls} calls · ${booked} booked</span></div>`;
     }).join('');
   }
-  // Sampling banner
-  const aN = state.calls.filter(c => c.variant === 'A').length;
-  const bN = state.calls.filter(c => c.variant === 'B').length;
-  const cN = state.calls.filter(c => c.variant === 'C').length;
-  document.getElementById('samplingMsg').textContent =
-    `Need ${WINNER_THRESHOLD}+ calls per variant to compare. Current: A=${aN}, B=${bN}, C=${cN}.`;
 
-  checkWinner(aN, bN, cN);
+  // Sampling banner
+  const aN = c.A, bN = c.B, cN = c.C;
+  let bannerMsg;
+  if (state.lockedVariant) {
+    bannerMsg = `🔒 Winner locked: Variant ${state.lockedVariant}. Manual override still works.`;
+  } else if (aN >= VARIANT_ROTATION_THRESHOLD && bN >= VARIANT_ROTATION_THRESHOLD && cN >= VARIANT_ROTATION_THRESHOLD) {
+    bannerMsg = `All 3 variants at ${VARIANT_ROTATION_THRESHOLD}+ calls. Watching for winner-lock (≥15pp gap).`;
+  } else {
+    bannerMsg = `Auto-rotating A→B→C until each hits ${VARIANT_ROTATION_THRESHOLD}. Current: A=${aN}, B=${bN}, C=${cN}.`;
+  }
+  document.getElementById('samplingMsg').textContent = bannerMsg;
+
+  // Progress bar
+  renderProgressBar(today.length, PROSPECTS.length);
 }
 
-function checkWinner(aN, bN, cN) {
-  if (aN < WINNER_THRESHOLD || bN < WINNER_THRESHOLD || cN < WINNER_THRESHOLD) return;
-  const rates = ['A', 'B', 'C'].map(v => {
-    const total = state.calls.filter(c => c.variant === v).length;
-    const booked = state.calls.filter(c => c.variant === v && ['BK', 'SH', 'CL'].includes(c.outcome)).length;
-    return { v, rate: total ? booked / total : 0 };
-  }).sort((a, b) => b.rate - a.rate);
-  if (rates[0].rate - rates[1].rate >= 0.15) {
-    const banner = document.getElementById('winnerBanner');
-    banner.innerHTML = `🏆 Winner: Variant ${rates[0].v} (${Math.round(rates[0].rate * 100)}% booking rate, ${Math.round((rates[0].rate - rates[1].rate) * 100)}pp ahead) <span class="close">×</span>`;
-    banner.classList.remove('hidden');
-    banner.querySelector('.close').onclick = () => banner.classList.add('hidden');
-  }
+function renderProgressBar(calledToday, totalProspects) {
+  const fill = document.getElementById('progressFill');
+  const label = document.getElementById('progressLabel');
+  const total = totalProspects || 0;
+  const pct = total ? Math.min(100, Math.round((calledToday / total) * 100)) : 0;
+  fill.style.width = pct + '%';
+  label.textContent = total
+    ? `${calledToday} of ${total} prospects called today · ${pct}% done`
+    : 'Load prospects to track progress';
 }
 
 // ============== CALL LOG ==============
@@ -298,13 +490,14 @@ function renderCallLog() {
   if (!log) return;
   const recent = state.calls.slice(-12).reverse();
   if (!recent.length) {
-    log.innerHTML = '<div style="color:#888;font-size:12px;padding:6px;">No calls logged yet today.</div>';
+    log.innerHTML = '<div style="color:#888;font-size:12px;padding:6px;">No calls logged yet.</div>';
     return;
   }
   log.innerHTML = recent.map(c => `
     <div class="log-row">
       <span class="log-outcome ${c.outcome.toLowerCase()}">${c.outcome}</span>
-      <span style="flex:1;font-weight:500;">${c.company || '—'}</span>
+      <span style="flex:1;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHTML(c.company || '—')}</span>
+      <span class="log-score" title="Auto-score">${c.score || 0}</span>
       <span style="color:#888;">${c.variant}·${(c.caller || 'Z').slice(0, 1)}</span>
       <span class="log-time">${new Date(c.ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
     </div>
@@ -314,6 +507,7 @@ function renderCallLog() {
 function logCall() {
   const outcome = document.getElementById('outcome').value;
   if (!outcome) { alert('Pick an outcome first.'); return; }
+  const duration = currentElapsedSec();
   const call = {
     ts: Date.now(),
     brand: state.brand,
@@ -324,14 +518,22 @@ function logCall() {
     phone: document.getElementById('phone').value.trim(),
     outcome,
     notes: document.getElementById('notes').value.trim(),
-    prospectN: state.selectedProspectN
+    prospectN: state.selectedProspectN,
+    duration
   };
+  call.score = scoreCall(call, duration);
   state.calls.push(call);
+  // Clear manual override so auto-rotation resumes
+  state.manualVariant = false;
   saveState();
   renderStats();
   renderCallLog();
-  // Auto-reset after 1s
-  setTimeout(() => { clearForm(); resetTimer(); }, 1000);
+  // Auto-reset, then rotate variant
+  setTimeout(() => {
+    clearForm();
+    resetTimer();
+    maybeRotateVariant();
+  }, 1000);
 }
 
 function clearForm() {
@@ -341,8 +543,9 @@ function clearForm() {
   document.getElementById('phone').value = '';
   document.getElementById('outcome').value = '';
   document.getElementById('notes').value = '';
-  document.getElementById('leaksPanel').classList.add('hidden');
+  document.getElementById('liveScore').classList.add('hidden');
   state.selectedProspectN = null;
+  renderReconCard();
   renderBeats();
 }
 
@@ -350,7 +553,6 @@ function clearForm() {
 function renderProspectPicker() {
   const sel = document.getElementById('prospectSelect');
   if (!sel) return;
-  // Group by market
   const byMarket = {};
   PROSPECTS.forEach(p => {
     const m = p.market || 'Unknown';
@@ -359,9 +561,9 @@ function renderProspectPicker() {
   });
   let html = '<option value="">— Select prospect or type below —</option>';
   Object.keys(byMarket).sort().forEach(m => {
-    html += `<optgroup label="${m}">`;
+    html += `<optgroup label="${escapeHTML(m)}">`;
     byMarket[m].forEach(p => {
-      html += `<option value="${p.n}">#${p.n} · ${p.domain || p.company || 'unnamed'}</option>`;
+      html += `<option value="${p.n}">#${p.n} · ${escapeHTML(p.domain || p.company || 'unnamed')}</option>`;
     });
     html += '</optgroup>';
   });
@@ -370,38 +572,56 @@ function renderProspectPicker() {
 
 function selectProspect(n) {
   const p = PROSPECTS.find(x => String(x.n) === String(n));
-  if (!p) { state.selectedProspectN = null; document.getElementById('leaksPanel').classList.add('hidden'); return; }
+  if (!p) {
+    state.selectedProspectN = null;
+    renderReconCard();
+    return;
+  }
   state.selectedProspectN = p.n;
   document.getElementById('company').value = p.company || p.domain || '';
   document.getElementById('market').value = p.market || '';
   document.getElementById('phone').value = p.phone || '';
-
-  const panel = document.getElementById('leaksPanel');
-  const list = document.getElementById('leaksList');
-  const risk = document.getElementById('leaksRisk');
-  if (p.issues && p.issues.length) {
-    list.innerHTML = p.issues.slice(0, 3).map(i => `<li>${i}</li>`).join('');
-    risk.textContent = (p.risk || 'MED').toUpperCase();
-    risk.className = 'risk-badge ' + (p.risk || 'med').toLowerCase();
-    panel.classList.remove('hidden');
-  } else {
-    panel.classList.add('hidden');
-  }
+  renderReconCard();
   renderBeats();
 }
 
-// ============== CSV UPLOAD ==============
+// ============== CSV UPLOAD — expanded schema ==============
 function parseCSV(text) {
   const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
-  const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+  const headers = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/\s+/g, '_'));
   return lines.slice(1).map((line, i) => {
-    const cells = line.split(',').map(c => c.trim());
+    // Handle quoted commas
+    const cells = splitCSVLine(line);
     const row = { n: 1000 + i };
-    headers.forEach((h, j) => { row[h] = cells[j] || ''; });
-    if (row.issues && typeof row.issues === 'string') row.issues = row.issues.split('|').map(s => s.trim());
+    headers.forEach((h, j) => { row[h] = (cells[j] || '').trim(); });
+    // Normalize known columns
+    if (row.issues && typeof row.issues === 'string') {
+      row.issues = row.issues.split('|').map(s => s.trim()).filter(Boolean);
+    }
+    // Coerce numeric scores if present
+    ['speed', 'trust', 'cta', 'speed_score', 'trust_score', 'cta_score'].forEach(k => {
+      if (row[k] && !isNaN(Number(row[k]))) row[k] = Number(row[k]);
+    });
+    // Map alt header names
+    if (row.speed_score !== undefined) row.speed = row.speed_score;
+    if (row.trust_score !== undefined) row.trust = row.trust_score;
+    if (row.cta_score !== undefined) row.cta = row.cta_score;
     return row;
   });
+}
+function splitCSVLine(line) {
+  const out = [];
+  let cur = '', inQ = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"' && line[i + 1] === '"') { cur += '"'; i++; }
+    else if (ch === '"') { inQ = !inQ; }
+    else if (ch === ',' && !inQ) { out.push(cur); cur = ''; }
+    else cur += ch;
+  }
+  out.push(cur);
+  return out;
 }
 
 // ============== BRAND + CALLER SWITCH ==============
@@ -420,8 +640,9 @@ async function switchBrand(slug) {
     root.style.setProperty('--cream', brand.theme.cream);
     root.style.setProperty('--highlight', brand.theme.highlight);
   }
-  const ok = await loadBrandData(slug);
+  await loadBrandData(slug);
   renderProspectPicker();
+  renderReconCard();
   renderBeats();
   renderObjections();
   renderStats();
@@ -445,22 +666,37 @@ function toggleSide(which) {
   document.getElementById('toggleCal').classList.toggle('active', which === 'cal');
 }
 
+// ============== TOAST ==============
+let toastTimer = null;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.remove('hidden');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.add('hidden'), 4000);
+}
+
 // ============== KEYBOARD ==============
 function bindKeyboard() {
   document.addEventListener('keydown', (e) => {
     const tag = (e.target.tagName || '').toLowerCase();
     const inField = ['input', 'textarea', 'select'].includes(tag);
     if (e.key === 'Escape') { document.getElementById('legendBar').classList.add('hidden'); return; }
+    // Ctrl+S — start/pause timer (works even inside fields)
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+      e.preventDefault();
+      toggleTimer();
+      return;
+    }
     if (inField) return;
-    if (e.code === 'Space') { e.preventDefault(); toggleTimer(); }
-    else if (e.shiftKey && (e.key === 'R' || e.key === 'r')) { e.preventDefault(); resetTimer(); }
+    if (e.shiftKey && (e.key === 'R' || e.key === 'r')) { e.preventDefault(); resetTimer(); }
     else if (e.ctrlKey && (e.key === 'l' || e.key === 'L')) { e.preventDefault(); logCall(); }
     else if (e.ctrlKey && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); toggleSide(state.sidePane === 'stats' ? 'cal' : 'stats'); }
     else if (e.ctrlKey && (e.key === 'n' || e.key === 'N')) { e.preventDefault(); nextProspect(); }
     else if (e.ctrlKey && (e.key === 'p' || e.key === 'P')) { e.preventDefault(); prevProspect(); }
-    else if (e.key === '1') { switchVariant('A'); }
-    else if (e.key === '2') { switchVariant('B'); }
-    else if (e.key === '3') { switchVariant('C'); }
+    else if (e.key === '1') { manualSwitchVariant('A'); }
+    else if (e.key === '2') { manualSwitchVariant('B'); }
+    else if (e.key === '3') { manualSwitchVariant('C'); }
   });
 }
 
@@ -483,13 +719,27 @@ function prevProspect() {
   selectProspect(prev.n);
 }
 
-function switchVariant(v) {
+function updateVariantTabs() {
+  document.querySelectorAll('.variant-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.v === state.variant);
+  });
+}
+
+// Manual switch — sets manualVariant flag so auto-rotation pauses until next log
+function manualSwitchVariant(v) {
   if (!SCRIPTS[v]) return;
   state.variant = v;
+  state.manualVariant = true;
   saveState();
-  document.querySelectorAll('.variant-tab').forEach(t => {
-    t.classList.toggle('active', t.dataset.v === v);
-  });
+  updateVariantTabs();
+  renderBeats();
+}
+
+// Used during init to restore without flagging manual override
+function switchVariantSilent(v) {
+  if (!SCRIPTS[v]) return;
+  state.variant = v;
+  updateVariantTabs();
   renderBeats();
 }
 
@@ -497,32 +747,33 @@ function switchVariant(v) {
 async function init() {
   loadState();
 
-  // Populate brand dropdown
   const brandSel = document.getElementById('brandSelect');
   brandSel.innerHTML = Object.values(BRANDS).map(b =>
     `<option value="${b.slug}" ${!b.active ? 'disabled' : ''}>${b.name}${!b.active ? ' (soon)' : ''}</option>`
   ).join('');
   brandSel.value = state.brand;
 
-  // Caller dropdown
   document.getElementById('callerSelect').value = state.caller;
 
-  // Date
   document.getElementById('topbarDate').textContent =
     new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
-  // Load brand data
   await switchBrand(state.brand);
-  // Restore variant
-  switchVariant(state.variant);
-  // Restore side pane
+
+  // On init, run rotation logic to settle on correct variant
+  if (!state.manualVariant && !state.lockedVariant) {
+    const want = computeAutoVariant();
+    state.variant = want;
+    saveState();
+  }
+  switchVariantSilent(state.variant);
   toggleSide(state.sidePane);
 
   // Event bindings
   brandSel.addEventListener('change', e => switchBrand(e.target.value));
   document.getElementById('callerSelect').addEventListener('change', e => switchCaller(e.target.value));
   document.querySelectorAll('.variant-tab').forEach(t => {
-    t.addEventListener('click', () => switchVariant(t.dataset.v));
+    t.addEventListener('click', () => manualSwitchVariant(t.dataset.v));
   });
   document.getElementById('timerStart').addEventListener('click', toggleTimer);
   document.getElementById('timerReset').addEventListener('click', resetTimer);
@@ -531,10 +782,16 @@ async function init() {
   document.getElementById('prospectSelect').addEventListener('change', e => selectProspect(e.target.value));
   document.getElementById('company').addEventListener('input', renderBeats);
   document.getElementById('market').addEventListener('input', renderBeats);
+  document.getElementById('outcome').addEventListener('change', updateLiveScore);
+  document.getElementById('notes').addEventListener('input', updateLiveScore);
   document.getElementById('toggleStats').addEventListener('click', () => toggleSide('stats'));
   document.getElementById('toggleCal').addEventListener('click', () => toggleSide('cal'));
   document.getElementById('legendToggle').addEventListener('click', () => {
     document.getElementById('legendBar').classList.toggle('hidden');
+  });
+  document.getElementById('progressBar').addEventListener('click', () => {
+    document.getElementById('prospectSelect').focus();
+    document.getElementById('prospectSelect').click();
   });
   document.getElementById('csvUpload').addEventListener('change', async (e) => {
     const file = e.target.files[0]; if (!file) return;
@@ -545,7 +802,8 @@ async function init() {
     PROSPECTS = PROSPECTS.concat(rows);
     saveState();
     renderProspectPicker();
-    alert(`Added ${rows.length} prospects.`);
+    renderStats();
+    showToast(`Added ${rows.length} prospects from CSV`);
   });
 
   bindKeyboard();
