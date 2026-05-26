@@ -116,12 +116,13 @@ kbd {
 /* ============ MAIN GRID ============ */
 .grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 18px;
+  grid-template-columns: 1.3fr 0.95fr 1.1fr;
+  gap: 16px;
   padding: 18px 24px;
-  max-width: 1600px;
+  max-width: 1680px;
   margin: 0 auto;
 }
+.col { min-width: 0; overflow: hidden; }
 .col {
   background: var(--paper);
   border-radius: var(--radius);
@@ -151,11 +152,12 @@ kbd {
 }
 .variant-tab {
   background: transparent; border: none;
-  padding: 8px 12px;
-  font-family: var(--font-body); font-size: 13px;
+  padding: 8px 10px;
+  font-family: var(--font-body); font-size: 12.5px;
   cursor: pointer; color: var(--text-dim);
   border-bottom: 2px solid transparent;
   transition: all 0.15s;
+  white-space: nowrap;
 }
 .variant-tab.active {
   color: var(--ink);
@@ -309,6 +311,7 @@ kbd {
   border-radius: var(--radius-sm);
   padding: 3px;
   margin-bottom: 14px;
+  width: 100%;
 }
 .side-toggle-btn {
   background: transparent; border: none;
