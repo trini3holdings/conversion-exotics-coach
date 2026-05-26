@@ -1,0 +1,44 @@
+{
+  "objections": [
+    {
+      "cat": "NOT_INTERESTED",
+      "q": "\"I'm not interested\" / \"We're good\"",
+      "a": "Totally fair — most owners say that before they even know why I called, so no worries at all. Out of curiosity though… when you say <em>\"we're good,\"</em> do you mean your site is already converting the majority of the people clicking <em>\"book now,\"</em> or more that nothing's obviously broken? The reason I ask — the owners we usually help thought they were good too, until we showed them where the bookings were quietly leaking. Would you be opposed to me taking 60 seconds to tell you what we're seeing across exotic rental sites right now?"
+    },
+    {
+      "cat": "REBUILT",
+      "q": "\"We already have a website / we just rebuilt it\"",
+      "a": "Congrats on the rebuild, that's not a small lift. Out of curiosity though… when you rebuilt it, was it designed to <em>look better</em>, or was it specifically built around <em>how an exotic renter actually decides to book</em>? Reason I ask — we see a lot of beautiful new sites that quietly convert worse than the old one because nobody pressure-tested the booking flow. Would you be opposed to us just showing you, on your live site, the 2 or 3 spots where renters are most likely dropping off?"
+    },
+    {
+      "cat": "EMAIL_INSTEAD",
+      "q": "\"Send me an email instead of a call\"",
+      "a": "No worries at all — I can absolutely send something over. Out of curiosity though, just so I don't send you another email that ends up buried… are you actually planning to read it, or is this more of a polite way of saying <em>\"this probably isn't a fit right now\"</em>? Either answer's totally fine. If it is worth a look, would you be opposed to me sending a <em>2-minute Loom of your actual site</em> instead of a pitch deck, so you can decide in two minutes if it's worth a real conversation?"
+    },
+    {
+      "cat": "PRICE",
+      "q": "\"How much does this cost? / What's the catch?\"",
+      "a": "Fair question — I'd be asking the same thing. The audit itself is something we normally charge <em>$3,000</em> for, and that's actually on the low end — CRO audits in this space run anywhere from <em>$2,800 up to $85,000</em>. The reason it's free for you is simple: we're trying to land <em>3 more exotic rental operators this quarter as case studies</em>, so Tony is personally walking a handful of owners through it in a 30-minute session — no card, no contract, no obligation. The \"catch,\" if you want to call it one — at the end he'll tell you what it'd look like to have us fix what we find. You can say <em>\"thanks, I'll take it from here\"</em> and keep the entire audit. Would you be opposed to seeing what he pulls up on your site before deciding if it's worth 30 minutes?"
+    },
+    {
+      "cat": "PARTNER",
+      "q": "\"I need to think about it / talk to my partner\"",
+      "a": "Totally fair — that's a normal reaction, honestly I'd be a little worried if you didn't want to think it through. Out of curiosity though… when you say <em>\"think about it,\"</em> is it more that the audit itself doesn't feel valuable, or that you're not sure how your partner would react to you booking a call without them? If it's the partner piece, easiest thing is to <em>loop them in on the 30-minute walkthrough</em> — that way you're both hearing the same findings instead of you trying to repeat it back. Would you be opposed to grabbing a time this week where both of you can be on, and if after 10 minutes it's not useful, you just drop?"
+    },
+    {
+      "cat": "BROKERS",
+      "q": "\"We get most of our business through brokers / Turo / referrals\"",
+      "a": "That's actually the most interesting situation we run into — operators full through brokers are paying somewhere between <em>10 and 50% of every deal</em> to a middleman to send customers to someone else's booking page. Out of curiosity though — what we usually find on the audit is there are buyers <em>already going to YOUR site</em>, they just can't book there, so they go through a broker who charges them more and sends the booking back to you minus a cut. You might already be getting those customers. You're just <em>paying for them twice</em>. Would you be opposed to seeing how many of those there are?"
+    },
+    {
+      "cat": "ADS_WORK",
+      "q": "\"Our ads are working / our CTR is fine\"",
+      "a": "Good — that means you have traffic, which is the hard part. The question we look at on the audit is what happens <em>after</em> the click. If you're getting clicks at <em>$5–$10 each</em> and they're landing on a page where the only way to book is to DM you or call, the click-through rate looks great but the booking rate is probably <em>2–4%</em>. That's not an ad problem, that's a conversion problem — and it's invisible until somebody walks through it with you. Would you be opposed to seeing what the actual click-to-booking number is on your funnel?"
+    },
+    {
+      "cat": "AGENCY",
+      "q": "\"We already have a marketing agency / my nephew handles the site\"",
+      "a": "Perfect — so I'm not here to replace them. What we do specifically is the <em>conversion side after the click</em> — the booking flow, the deposit framing, the trust signals on the landing page. Most agencies are good at getting traffic. What we look at is what happens to that traffic <em>after</em> it hits the site. If your agency is sending $7 clicks to a page with a contact form and no availability widget, they're doing their job — the conversion gap is somewhere else. That's what the audit shows. Would it be unreasonable for Tony to walk you (and them if you want) through it?"
+    }
+  ]
+}
