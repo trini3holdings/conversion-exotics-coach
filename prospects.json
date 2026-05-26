@@ -1,0 +1,869 @@
+[
+  {
+    "n": 1,
+    "domain": "turo.com",
+    "market": "National (11 cities)",
+    "url": "https://turo.com/us/en/exotic-luxury-rental/united-states",
+    "phone": "(415) 965-4525",
+    "email": "support via app only",
+    "issues": [
+      "Peer-to-peer marketplace \u2014 no direct brand CTA; quality varies by host",
+      "No centralized phone sales \u2014 support only via app/chat creates buyer uncertainty",
+      "Premium/exotic filters exist but UX buries them behind broader car search"
+    ],
+    "speed": "Massive JS payload \u2014 multiple host listings, map layers, filters = slow TTI on mobile",
+    "trust": "No brand-level safety or quality guarantee above fold for exotic section; host reviews vary",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 2,
+    "domain": "dreamexoticrentalcars.com",
+    "market": "Las Vegas NV",
+    "url": "https://dreamexoticrentalcars.com/exotic-car-rentals-las-vegas/",
+    "phone": "(888) 362-7791 | (800) 975-8382",
+    "email": "info@dreamexoticrentalcars.com",
+    "issues": [
+      "Two toll-free numbers on site without clear differentiation \u2014 which to call?",
+      "Heavy image gallery on scored page slows load without lazy-loading",
+      "24/7 claim in copy but no visible chat widget to substantiate it"
+    ],
+    "speed": "Image-heavy fleet gallery on scored page; no lazy loading signals \u2014 slow TTI",
+    "trust": "Strong reviews mentioned but no visible star rating widget or count above fold",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 3,
+    "domain": "southbeachexoticrentals.com",
+    "market": "LA / Austin / Dallas",
+    "url": "https://southbeachexoticrentals.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found publicly \u2014 critical conversion blocker",
+      "Brand name ('South Beach') misaligns with LA/Austin/Dallas markets \u2014 confuses buyers",
+      "Homepage scored but no geo-specific landing pages found for DFW or Austin"
+    ],
+    "speed": "Unknown platform; no CDN signals found; low frequency (5) = likely slow/unoptimized",
+    "trust": "No trust badges, certifications, or review counts found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 4,
+    "domain": "velocityexoticcars.com",
+    "market": "Los Angeles CA",
+    "url": "https://velocityexoticcars.com/our-fleet/",
+    "phone": "(213) 340-1567",
+    "email": "info@velocityexoticcars.com",
+    "issues": [
+      "Fleet page scored \u2014 browsing intent, not conversion intent; primary CTA should be booking page",
+      "Site serves both LA and Tampa but single address on contact page \u2014 confuses multi-market buyers",
+      "No pricing visible on fleet page \u2014 visitors must click through per vehicle to see rates"
+    ],
+    "speed": "Fleet page with 20+ vehicle images = heavy load; no lazy loading noted on Weebly/WordPress hybrid",
+    "trust": "No ARGUS/NADA cert or review count above fold on fleet page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 5,
+    "domain": "centurionlifestyle.com",
+    "market": "Los Angeles CA",
+    "url": "https://centurionlifestyle.com/",
+    "phone": "(888) 399-4356",
+    "email": "info@centurionlifestyle.com",
+    "issues": [
+      "Corporate transportation is a secondary service prominently featured \u2014 dilutes exotic identity",
+      "Homepage headline not immediately clear as exotic car rental vs. general luxury service",
+      "Phone not in hero section \u2014 found in footer/contact only on homepage"
+    ],
+    "speed": "Sunset Blvd LA location; standard WordPress; no CDN signals; multiple service pages add weight",
+    "trust": "Since 2012 mentioned in copy but no visible review count or certification badges above fold",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 6,
+    "domain": "supercarexp.vip",
+    "market": "Phoenix AZ / Las Vegas NV",
+    "url": "https://supercarexp.vip/",
+    "phone": "(888) 678-6077 | Text: (725) 425-3583",
+    "email": "customerservice@supercarexp.vip",
+    "issues": [
+      "Multi-location site (LV, LA, Scottsdale, Boise, Miami, SLC) \u2014 homepage lacks geo-targeted CTA",
+      "Experiences/tours mixed with pure rentals on homepage \u2014 different buyer intents on same page",
+      "No pricing visible on homepage \u2014 requires clicking into vehicle pages"
+    ],
+    "speed": "Multi-city site with large fleet imagery; multiple location scripts (maps etc.) = heavy load",
+    "trust": "No ARGUS cert; no visible star rating count above fold on homepage",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 7,
+    "domain": "apexexoticrentals.com",
+    "market": "Phoenix/Scottsdale AZ",
+    "url": "https://apexexoticrentals.com/",
+    "phone": "602-402-5286",
+    "email": "Aaron@apexexoticrentals.com",
+    "issues": [
+      "Owner first-name email (Aaron@) is both a trust signal and a scale concern for premium buyers",
+      "SMS opt-in consent buried in form fine print \u2014 not above fold",
+      "No pricing on homepage \u2014 click-through required per vehicle"
+    ],
+    "speed": "Scottsdale small operator; standard WordPress; no CDN signals noted",
+    "trust": "No review count visible above fold; no safety certifications",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 8,
+    "domain": "dynastyluxuryrentals.com",
+    "market": "Miami FL / Multi-city",
+    "url": "https://dynastyluxuryrentals.com/",
+    "phone": "(786) 486-2285",
+    "email": "Not publicly listed \u2014 form only",
+    "issues": [
+      "No email address publicly listed \u2014 form-only contact limits trust for premium buyers",
+      "Multi-city claims (Miami, LA, Orlando) but no geo-targeted landing pages for each market",
+      "No pricing visible on homepage \u2014 full fleet browse required"
+    ],
+    "speed": "Miami NW location; standard WordPress; Yelp confirms; multiple city assets = large DOM",
+    "trust": "No review widget above fold; no ARGUS/certification badges visible",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 9,
+    "domain": "emmonsluxurycarrental.com",
+    "market": "Atlanta GA",
+    "url": "https://www.emmonsluxurycarrental.com/atlanta/vehicles/mclaren-570gt-rental-atlanta",
+    "phone": "+1 (877) 757-4115",
+    "email": "drive@emmonsluxury.com",
+    "issues": [
+      "Scored page is a specific vehicle VDP (McLaren 570GT) \u2014 not a conversion landing page for new visitors",
+      "VDP doesn't anchor to broader brand trust \u2014 visitors with no prior brand awareness need a homepage first",
+      "Founded 2024 \u2014 very new brand, limited trust history; email domain (emmonsluxury.com \u2260 emmonsluxurycarrental.com) creates minor brand confusion"
+    ],
+    "speed": "VDP page with vehicle-specific images and booking widget; standard WordPress",
+    "trust": "No review count or safety certs above fold on VDP; new brand (2024) limits social proof",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 10,
+    "domain": "iceexotics.com",
+    "market": "Atlanta GA",
+    "url": "https://iceexotics.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found publicly \u2014 critical conversion blocker",
+      "Homepage scored but no hero phone number or chat widget",
+      "Very low frequency (6) \u2014 brand awareness is limited"
+    ],
+    "speed": "Unknown platform; low frequency = likely unoptimized site",
+    "trust": "No trust signals found via searches",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 11,
+    "domain": "blacklabelexotics.com",
+    "market": "Dallas TX",
+    "url": "https://blacklabelexotics.com/exotic-car-rental-dallas/",
+    "phone": "(469) 200-0286",
+    "email": "Not publicly listed \u2014 form/phone only",
+    "issues": [
+      "No email publicly listed \u2014 adds friction for business inquiries and invoice requests",
+      "'313+ 5-star reviews' claimed in header copy but no live widget/count visible on scored page",
+      "Free DFW delivery is a strong USP but buried below fold \u2014 needs to be hero messaging"
+    ],
+    "speed": "Dallas city page with multiple vehicle cards and gallery; standard WordPress; no CDN signals",
+    "trust": "Review count claimed (313+) but not linked to Google/Yelp platform for verification",
+    "cta": "STRONG",
+    "risk": "LOW"
+  },
+  {
+    "n": 12,
+    "domain": "mphclub.com",
+    "market": "Miami FL / Fort Lauderdale FL",
+    "url": "https://mphclub.com/",
+    "phone": "(888) 674-4044 | Local: (305) 330-6322",
+    "email": "info@mphclub.com",
+    "issues": [
+      "Multiple Miami-area locations (Miami, Miami Gardens, casino/resort) without clear primary CTA on homepage",
+      "Casino & Resort partnership page creates brand confusion \u2014 luxury rental vs. casino entertainment",
+      "Two phone numbers (toll-free + local) split the conversion focus"
+    ],
+    "speed": "Large site with multiple location assets, casino partner page, app integrations",
+    "trust": "Strong Instagram presence but no star rating count or ARGUS cert above fold",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 13,
+    "domain": "milanoluxuryrental.com",
+    "market": "Fort Lauderdale / Miami FL",
+    "url": "https://milanoluxuryrental.com/rentals/",
+    "phone": "Not found publicly",
+    "email": "Not found publicly",
+    "issues": [
+      "No phone or email found on site \u2014 form-only and chat-only contact is a major CRO gap",
+      "Naples/Fort Myers focused but appearing in FLL/Miami searches \u2014 geographic mismatch",
+      "Rentals page scored but no conversion hook (phone/chat) above fold"
+    ],
+    "speed": "Standard site; FAQ-heavy; unknown CDN; no performance signals found",
+    "trust": "No trust certifications or review count visible",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 14,
+    "domain": "premierautomiami.com",
+    "market": "Miami Beach FL",
+    "url": "https://www.premierautomiami.com/landing/miami/",
+    "phone": "(305) 680-1266 | (786) 886-3460",
+    "email": "Not publicly listed \u2014 form only",
+    "issues": [
+      "Landing page (/landing/miami/) = PPC lander \u2014 no clear organic authority signals on page",
+      "Two phone numbers on site without role differentiation",
+      "No email publicly listed \u2014 form-only adds friction for business inquiries"
+    ],
+    "speed": "PPC landing page = tracking scripts + form widget; standard lander overhead",
+    "trust": "79 Yelp reviews is good; no visible cert badges on scored lander page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 15,
+    "domain": "luxride.miami",
+    "market": "Miami FL / Fort Lauderdale FL",
+    "url": "https://luxride.miami/",
+    "phone": "(754) 280-8898",
+    "email": "luxride@luxride.miami",
+    "issues": [
+      "Phone is click-to-call in hero \u2014 strong CRO practice; but no chat alternative for non-callers",
+      "Non-standard .miami TLD may reduce trust with first-time visitors",
+      "No pricing visible on homepage; no instant booking widget"
+    ],
+    "speed": "Lean homepage; MKV Services LLC; standard platform; no CDN signals",
+    "trust": "No review count or cert badges visible above fold",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 16,
+    "domain": "drmlxry.com",
+    "market": "Miami FL / Detroit MI",
+    "url": "https://drmlxry.com/luxury-car-rental-miami/",
+    "phone": "(313) 447-1684 (Detroit) | (786) 999-8288 (Miami)",
+    "email": "info@drmlxry.com",
+    "issues": [
+      "Two-city brand (Detroit + Miami) with different phone numbers \u2014 creates confusion for Miami visitors",
+      "Stylized brand name 'DRMLXRY' may be hard to recall or search for new customers",
+      "No pricing on scored Miami page \u2014 click per vehicle required"
+    ],
+    "speed": "24/7 service claim; standard WordPress; Waze listing + contact page confirm operations",
+    "trust": "No ARGUS/cert badges; no visible review count on scored page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 17,
+    "domain": "premierautoatlanta.com",
+    "market": "Atlanta GA",
+    "url": "https://premierautoatlanta.com/landing/atlanta/",
+    "phone": "(404) 537-5194",
+    "email": "Not publicly listed \u2014 app-based",
+    "issues": [
+      "PPC landing page (/landing/atlanta/) scored \u2014 no organic brand authority on the page",
+      "App-first booking model creates friction for web-only visitors",
+      "No email publicly listed \u2014 form-only and app-based contact"
+    ],
+    "speed": "PPC lander with tracking scripts; app download CTAs add competing conversion paths",
+    "trust": "No cert badges on scored page; reviews managed in-app vs. public platforms",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 18,
+    "domain": "imperiumluxurymiami.com",
+    "market": "Miami FL / Fort Lauderdale FL",
+    "url": "https://imperiumluxurymiami.com/",
+    "phone": "+1 (305) 850-6661 | +1 (305) 399-6675",
+    "email": "Not publicly listed \u2014 form only",
+    "issues": [
+      "No email on homepage or contact page \u2014 form-only is a premium brand credibility gap",
+      "Yacht charter and private jet offerings mixed with car rental \u2014 may dilute purchase intent",
+      "No pricing on homepage \u2014 vehicle browsing required"
+    ],
+    "speed": "Multi-service (cars + yachts + jets) = larger asset set; standard WordPress; unknown CDN",
+    "trust": "No ARGUS cert or review count visible above fold",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 19,
+    "domain": "lvcexotics.com",
+    "market": "Las Vegas NV",
+    "url": "https://lvcexotics.com/las-vegas-exotic-car-rentals/",
+    "phone": "(702) 586-0008",
+    "email": "lvcexotics@gmail.com",
+    "issues": [
+      "Gmail email address on a professional exotic rental site \u2014 major trust/CRO red flag",
+      "Las Vegas Strip location (3049 S Las Vegas Blvd) not featured in hero headline",
+      "Merchandise store on website (lvcexotics.com/store) dilutes brand focus"
+    ],
+    "speed": "Vegas-based site; standard WordPress/WooCommerce (merch store adds overhead); no CDN signals",
+    "trust": "Instagram active (discounts posted); no star rating count above fold on scored page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 20,
+    "domain": "95autoclub.com",
+    "market": "Miami FL / Fort Lauderdale FL",
+    "url": "https://95autoclub.com/",
+    "phone": "(954) 994-9494 | +1 (336) 575-9791",
+    "email": "info@95autoclub.com",
+    "issues": [
+      "125-mile/day limit is prominently disclosed \u2014 creates pricing anxiety before conversion",
+      "Two different area code phones (954 FL + 336 NC) \u2014 336 is North Carolina, not Miami market phone",
+      "No pricing on homepage \u2014 per vehicle inquiry required"
+    ],
+    "speed": "Homepage with vehicle cards; 24/7 concierge and WhatsApp offered; standard platform",
+    "trust": "WhatsApp booking is a strong mobile CRO signal; no cert badges visible above fold",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 21,
+    "domain": "royaltyexoticcars.com",
+    "market": "Las Vegas NV / Scottsdale AZ",
+    "url": "https://www.royaltyexoticcars.com/locations/scottsdale",
+    "phone": "(855) 941-0335 (LV) | (702) 755-6076",
+    "email": "Not publicly listed \u2014 form only",
+    "issues": [
+      "Scored page is the Scottsdale locations page \u2014 regional, not conversion page",
+      "Locations page shows addresses without per-location phone or booking CTA \u2014 friction",
+      "CLOSED status showing on Yelp listing for LV \u2014 brand confidence concern for new visitors"
+    ],
+    "speed": "Multi-location site with Scottsdale + LV + OC; multiple assets and booking widget scripts",
+    "trust": "Strong brand name recognition in LV market but Yelp CLOSED label hurts online trust",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 22,
+    "domain": "selectsupercars.com",
+    "market": "Austin TX / Multi-city",
+    "url": "https://selectsupercars.com/fleet/",
+    "phone": "(512) 273-3755",
+    "email": "info@selectsupercars.com",
+    "issues": [
+      "Fleet page scored \u2014 browsing intent, not conversion ready; should be driving to booking page",
+      "'Fueled by Faith' brand positioning is unique but polarizing for non-religious buyers",
+      "$4,000 security deposit disclosed in FAQs but not flagged on fleet page \u2014 surprise friction later"
+    ],
+    "speed": "Austin TX HQ; fleet page with multiple vehicle cards; standard WordPress; no CDN signals",
+    "trust": "No review count above fold; faith-based positioning unusual for exotic rental market",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 23,
+    "domain": "777exotics.com",
+    "market": "Los Angeles CA / Las Vegas NV",
+    "url": "https://777exotics.com/exotic-car-rentals/",
+    "phone": "1-800-903-5926",
+    "email": "info@777exotics.com",
+    "issues": [
+      "Scored page (/exotic-car-rentals/) is a category page, not a direct booking CTA",
+      "Two markets (LA near LAX + Las Vegas Strip) \u2014 no geo-detection to show relevant location",
+      "No pricing on scored page \u2014 category browse required before seeing rates"
+    ],
+    "speed": "LA + LV two-location site; vehicle gallery pages; standard WordPress; no CDN signals",
+    "trust": "Founded 2015; no cert badges above fold; review count not visible on scored page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 24,
+    "domain": "sapphireexecutivetravel.com",
+    "market": "Houston TX",
+    "url": "https://sapphireexecutivetravel.com/our-fleet/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "FLAGGED: 'Executive travel' brand implies chauffeured/corporate, not self-drive exotic rental",
+      "Our-fleet page scored but no phone or email found publicly",
+      "Low frequency (2) \u2014 extremely limited paid search presence"
+    ],
+    "speed": "Unknown platform; low frequency = likely minimal optimization",
+    "trust": "No trust signals found; likely executive chauffeur not exotic self-drive",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 25,
+    "domain": "uptownexotics.com",
+    "market": "Houston TX",
+    "url": "https://uptownexotics.com/",
+    "phone": "(713) 784-8400",
+    "email": "info@uptownexotics.com",
+    "issues": [
+      "Phone is in contact page but not hero section of homepage \u2014 missed above-fold CTA",
+      "Texas multi-city (Houston, Austin, Dallas, San Antonio) \u2014 no geo-targeted homepage",
+      "No pricing on homepage \u2014 fleet browse required"
+    ],
+    "speed": "Houston Galleria area; Yelp-listed; standard WordPress; multi-city assets; no CDN signals",
+    "trust": "No cert badges above fold; membership program exists but not featured prominently",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 26,
+    "domain": "premierautolosangeles.com",
+    "market": "Los Angeles CA",
+    "url": "https://premierautolosangeles.com/landing/los-angeles/",
+    "phone": "+1-323-538-5046",
+    "email": "info@premierautolosangeles.com",
+    "issues": [
+      "PPC landing page (/landing/los-angeles/) scored \u2014 thin on organic authority",
+      "Beverly Hills address listed as 8383 Wilshire Blvd suite 114 \u2014 confirms premium geo but not verified on GMB",
+      "Multiple address variants on different pages \u2014 creates trust inconsistency"
+    ],
+    "speed": "PPC lander; tracking scripts overhead; standard landing page platform",
+    "trust": "No cert badges or review count on scored lander page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 27,
+    "domain": "mvpmiami.com",
+    "market": "Miami FL / Fort Lauderdale FL",
+    "url": "https://www.mvpmiami.com/rentals/",
+    "phone": "(786) 877-4317",
+    "email": "Not publicly listed \u2014 email form only",
+    "issues": [
+      "No email publicly listed \u2014 limits B2B and event inquiries",
+      "2500 NW 39th St Miami address is industrial area \u2014 not glamorous for high-end brand positioning",
+      "Vehicle rental + Sprinter transportation on same page \u2014 split purchase intent"
+    ],
+    "speed": "Yelp-listed; standard WordPress; multiple vehicle pages; no CDN signals",
+    "trust": "Celebrity-favorite claim in copy but no names cited or photos \u2014 unverifiable trust claim",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 28,
+    "domain": "premierluxuryclub.com",
+    "market": "Scottsdale AZ / Phoenix AZ",
+    "url": "https://premierluxuryclub.com/",
+    "phone": "(480) 256-8840",
+    "email": "info@premierluxuryclub.com",
+    "issues": [
+      "No pricing on homepage \u2014 form-only quote process for high-intent visitors",
+      "14982 N 83rd Pl Scottsdale \u2014 appointment-only location not disclosed upfront",
+      "24/7 availability claimed but no chat/text option visible on homepage"
+    ],
+    "speed": "Scottsdale small operator; standard WordPress; no CDN signals; 24/7 claim needs proof",
+    "trust": "BBB accredited (1126); no review count or cert badges above fold on homepage",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 29,
+    "domain": "monzaexotics.com",
+    "market": "Los Angeles CA / San Francisco CA",
+    "url": "https://monzaexotics.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found publicly \u2014 critical conversion blocker",
+      "Two markets (LA + SF) without geo-specific landing pages",
+      "Low frequency (6) \u2014 minimal paid search presence"
+    ],
+    "speed": "Unknown platform; low frequency = likely unoptimized",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 30,
+    "domain": "grantmotorgroup.com",
+    "market": "Scottsdale / Phoenix AZ",
+    "url": "https://grantmotorgroup.com/collection",
+    "phone": "(623) 400-3031",
+    "email": "Not publicly listed \u2014 Instagram DM focused",
+    "issues": [
+      "Contact method is Instagram DM (@grantmotorgroup) \u2014 unusual for luxury brand, not universally accessible",
+      "No email listed publicly \u2014 DM-first model limits non-social-media buyers",
+      "Collection page scored \u2014 browsing intent, not booking intent"
+    ],
+    "speed": "Scottsdale AZ; standard WordPress/Shopify; Instagram-first brand; no CDN signals",
+    "trust": "No cert badges; Instagram-first brand relies on social proof over formal trust signals",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 31,
+    "domain": "iexoticauto.com",
+    "market": "Houston TX / Austin / Dallas / Beverly Hills CA",
+    "url": "https://iexoticauto.com/",
+    "phone": "(888) 850-3155 | (888) 351-8616",
+    "email": "support@iexoticauto.com",
+    "issues": [
+      "Two toll-free numbers with no clear differentiation \u2014 which to call for what?",
+      "Chauffeur/airport transfer service prominently mixed with exotic self-drive rental \u2014 different buyer types",
+      "Gmail email listed for owner contact (seo338936@gmail.com via AllBusiness) \u2014 trust red flag"
+    ],
+    "speed": "Multi-service (rentals + chauffeur + yacht + corporate events); heavy homepage; standard WordPress",
+    "trust": "4.8 Google rating claimed but no widget above fold; no ARGUS cert visible",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 32,
+    "domain": "mericamusclerentals.com",
+    "market": "Atlanta GA",
+    "url": "https://mericamusclerentals.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found publicly \u2014 critical conversion blocker",
+      "Muscle/American car focus is niche \u2014 may not align perfectly with 'exotic' buyer expectations",
+      "Low frequency (23) \u2014 limited paid search presence for Atlanta"
+    ],
+    "speed": "Atlanta GA operator; unknown platform; no CDN signals",
+    "trust": "No trust signals found in search results",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 33,
+    "domain": "dsluxury.com",
+    "market": "Fort Lauderdale FL / Chicago IL",
+    "url": "https://www.dsluxury.com/fort-lauderdale",
+    "phone": "+1 (786) 422-1080 (FLL) | +1 (844) 364-4653 (Chicago)",
+    "email": "info@dsluxury.com | Info@dsmemberscollection.com",
+    "issues": [
+      "Membership-model business (appointment-only) \u2014 not a walk-in or immediate-booking competitor",
+      "Located inside Sheltair Aviation FLL \u2014 niche location not visible to casual web searchers",
+      "Two brands (dsluxury.com + dsmemberscollection.com) creates brand/domain confusion"
+    ],
+    "speed": "Two-city enterprise site; Sheltair FLL + Chicago Vertiport locations; multi-asset overhead",
+    "trust": "Named member relations staff (Tiffany, Francisco, Peter) \u2014 strong personal trust signal; aviation-adjacent",
+    "cta": "STRONG",
+    "risk": "LOW"
+  },
+  {
+    "n": 34,
+    "domain": "luxeafmotors.com",
+    "market": "Houston TX",
+    "url": "https://luxeafmotors.com/houston-luxury-exotic-car-rentals/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found \u2014 critical conversion blocker",
+      "Frequency 1 \u2014 essentially zero paid presence; no brand awareness built yet",
+      "Houston luxury page scored but no conversion mechanism found"
+    ],
+    "speed": "Unknown platform; lowest frequency (1) = minimal traffic and optimization",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 35,
+    "domain": "shiftrentalsllc.com",
+    "market": "New York NY",
+    "url": "https://shiftrentalsllc.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found \u2014 critical conversion blocker",
+      "LLC in name signals small operation \u2014 may reduce luxury brand confidence",
+      "Frequency 1 \u2014 negligible paid presence in NYC market"
+    ],
+    "speed": "Unknown platform; lowest frequency; likely minimal optimization",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 36,
+    "domain": "monarqmotors.com",
+    "market": "New York NY / Boca Raton FL",
+    "url": "https://monarqmotors.com/exotic-car-rental-new-york-city/",
+    "phone": "+1 (516) 206-2755",
+    "email": "booking@monarqmotors.com",
+    "issues": [
+      "Farmingdale NY location (Long Island) may disappoint NYC buyers expecting Manhattan pickup",
+      "No pricing on scored NYC page \u2014 click-through required per vehicle",
+      "Chauffeur and consignment services mixed with rental \u2014 split purchase intent on homepage"
+    ],
+    "speed": "Standard WordPress; Farmingdale NY + Boca Raton FL; multi-city assets; no CDN signals",
+    "trust": "Strong NYC SEO content (updated May 2026); no cert badges but detailed pricing guide is a trust signal",
+    "cta": "STRONG",
+    "risk": "LOW"
+  },
+  {
+    "n": 37,
+    "domain": "embryexotics.com",
+    "market": "Atlanta GA",
+    "url": "https://www.embryexotics.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found \u2014 critical conversion blocker",
+      "Frequency 1 \u2014 negligible paid presence in Atlanta",
+      "No scored conversion mechanism found"
+    ],
+    "speed": "Unknown platform; frequency 1",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 38,
+    "domain": "bluejaycars.com",
+    "market": "Austin TX",
+    "url": "https://www.bluejaycars.com/",
+    "phone": "(915) 474-6466",
+    "email": "bluejayclassiccars@gmail.com",
+    "issues": [
+      "NICHE FLAG: Classic/vintage wedding cars \u2014 not truly exotic/supercar competitor. Kept as niche classic",
+      "Gmail email on a commercial rental site \u2014 reduces professional trust signal",
+      "Georgetown TX location (not central Austin) reduces accessibility for Austin visitors"
+    ],
+    "speed": "Simple Wix-based site; wedding/event focused; no CDN signals",
+    "trust": "WeddingWire + The Knot listed \u2014 wedding niche trust; not exotic car rental trust",
+    "cta": "WEAK",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 39,
+    "domain": "prestigeblackrentals.com",
+    "market": "Dallas TX / Fort Worth TX",
+    "url": "https://prestigeblackrentals.com/",
+    "phone": "(214)-207-2481",
+    "email": "prestigeblackcorp@gmail.com",
+    "issues": [
+      "Gmail email on a luxury brand site \u2014 major CRO/trust red flag",
+      "DFW appointment-only pickup \u2014 no street presence or showroom disclosed upfront",
+      "Chauffeur/airport transfer prominently mixed with exotic self-drive rental"
+    ],
+    "speed": "Shopify-based; DFW delivery available; standard ecommerce overhead",
+    "trust": "No cert badges; Gmail email undercuts premium brand positioning",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 40,
+    "domain": "exoticsbylegacy.com",
+    "market": "Miami FL / Fort Lauderdale FL",
+    "url": "https://www.exoticsbylegacy.com/",
+    "phone": "(786) 642-4192",
+    "email": "info@exoticsbylegacy.com",
+    "issues": [
+      "No phone visible in hero on scored homepage \u2014 contact only via form and footer",
+      "Open Daily 8AM-10PM stated on contact page but not on homepage \u2014 trust gap",
+      "Low frequency (3) \u2014 limited paid search reach"
+    ],
+    "speed": "Miami FL; standard WordPress; no CDN signals; low frequency",
+    "trust": "No cert badges or review count visible on scored homepage",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 41,
+    "domain": "houstoncarsrental.com",
+    "market": "Houston TX / Humble TX",
+    "url": "https://www.houstoncarsrental.com/",
+    "phone": "(832) 966-0800",
+    "email": "Not publicly listed \u2014 form only",
+    "issues": [
+      "Humble TX location (15108 Lee Rd) far from central Houston \u2014 delivery dependency",
+      "No email publicly listed \u2014 form-only contact",
+      "Site design and URL structure appears dated \u2014 may reduce luxury brand confidence"
+    ],
+    "speed": "15108 Lee Rd Humble TX; standard platform; no CDN signals",
+    "trust": "No cert badges; unclear luxury positioning from site name vs. exotic fleet",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 42,
+    "domain": "diplomatrentals.com",
+    "market": "Las Vegas NV",
+    "url": "https://diplomatrentals.com/",
+    "phone": "(877) 457-4337 | Text: (725) 425-3583",
+    "email": "info@diplomatrentals.com",
+    "issues": [
+      "Diplomat is powered by Supercar Experience (same owner) \u2014 brand confusion with supercarexp.vip",
+      "'#1 rated on TripAdvisor' claim needs to be anchored with visible badge/widget",
+      "Two phone numbers (877 + 725 text) \u2014 which to use for bookings vs. questions?"
+    ],
+    "speed": "Shopify-based; Las Vegas Strip location; supercarexp.vip parent = same infrastructure overhead",
+    "trust": "TripAdvisor and Bizinga 941 reviews are strong \u2014 but badges not prominently displayed on scored page",
+    "cta": "STRONG",
+    "risk": "LOW"
+  },
+  {
+    "n": 43,
+    "domain": "gmluxe.net",
+    "market": "Miami FL / Fort Lauderdale FL",
+    "url": "https://www.gmluxe.net/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found publicly \u2014 critical conversion blocker",
+      "Low frequency (12) \u2014 limited paid presence in competitive Miami market",
+      ".net TLD for a luxury brand is unusual and may reduce trust vs. .com competitors"
+    ],
+    "speed": "Unknown platform; .net TLD; no CDN signals",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 44,
+    "domain": "vssrexotics.com",
+    "market": "Las Vegas NV",
+    "url": "https://www.vssrexotics.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found publicly \u2014 critical conversion blocker",
+      "Low frequency (7) in competitive Las Vegas market",
+      "VSSR brand name not descriptively tied to exotic cars \u2014 discoverability concern"
+    ],
+    "speed": "Unknown platform; no CDN signals",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 45,
+    "domain": "preferredexotics.com",
+    "market": "Miami FL / Fort Lauderdale FL",
+    "url": "https://preferredexotics.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found publicly \u2014 critical conversion blocker",
+      "Low frequency (6) in competitive South Florida market",
+      "Homepage scored but no conversion mechanism found"
+    ],
+    "speed": "Unknown platform; low frequency",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 46,
+    "domain": "bhcarrental.com",
+    "market": "Beverly Hills CA / Los Angeles CA",
+    "url": "https://www.bhcarrental.com/",
+    "phone": "(310) 274-6969 (BH) | (310) 256-4385 (LA)",
+    "email": "Not publicly listed",
+    "issues": [
+      "No email publicly listed \u2014 may limit B2B/event booking inquiries",
+      "General luxury car rental (not exclusively exotic) \u2014 BMW, Mercedes alongside Lamborghini",
+      "BW Rent-A-Car / Beverly Hills brand is more traditional rental than supercar boutique"
+    ],
+    "speed": "Beverly Hills CA; standard automotive site; no CDN signals evident",
+    "trust": "Established BH brand but no cert badges or visible review count on scored page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
+  },
+  {
+    "n": 47,
+    "domain": "bellablushcollective.com",
+    "market": "Dallas / Fort Lauderdale / Austin TX",
+    "url": "https://www.bellablushcollective.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "Brand name 'Bella Blush Collective' suggests wedding/events/fashion, not exotic car rental",
+      "No phone or email found publicly",
+      "Multi-city presence (DFW + FLL + Austin) but no geo-targeted pages found"
+    ],
+    "speed": "Unknown platform; mixed-brand niche",
+    "trust": "No trust signals found; brand name misaligns with exotic rental expectations",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 48,
+    "domain": "palmexoticrentals.com",
+    "market": "Miami FL",
+    "url": "https://palmexoticrentals.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found publicly \u2014 critical conversion blocker",
+      "Frequency 1 \u2014 essentially zero paid presence",
+      "Miami market requires strong paid presence; frequency 1 is negligible"
+    ],
+    "speed": "Unknown platform; frequency 1",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 49,
+    "domain": "sarasotaluxurycarrentals.com",
+    "market": "Austin TX (listed)",
+    "url": "https://www.sarasotaluxurycarrentals.com/",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "GEOGRAPHIC MISMATCH: Sarasota-branded but appearing in Austin TX searches \u2014 confusing for buyers",
+      "No phone or email found publicly",
+      "Frequency 1 \u2014 negligible paid presence"
+    ],
+    "speed": "Unknown platform; geo-brand mismatch",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": 50,
+    "domain": "blackravenluxury.com",
+    "market": "Fort Lauderdale / Miami FL",
+    "url": "https://www.blackravenluxury.com/vehicles",
+    "phone": "Not found",
+    "email": "Not found",
+    "issues": [
+      "No phone or email found publicly \u2014 critical conversion blocker",
+      "Vehicles page scored \u2014 browsing intent, not conversion ready",
+      "Low frequency (3) in competitive South Florida market"
+    ],
+    "speed": "Unknown platform; low frequency",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH"
+  },
+  {
+    "n": "Sources: Official site contact pages, Yelp, Google Maps, ZoomInfo, AllBusiness.com, Birdeye, Yahoo Local, Prospeo, Facebook | Removed: 28 non-exotic/non-luxury competitors (see 'Removed' sheet) | Generated: 2026-05-26 21:38",
+    "domain": null,
+    "market": null,
+    "url": null,
+    "phone": null,
+    "email": null,
+    "issues": [
+      null,
+      null,
+      null
+    ],
+    "speed": null,
+    "trust": null,
+    "cta": null,
+    "risk": null
+  }
+]

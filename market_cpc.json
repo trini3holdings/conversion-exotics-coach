@@ -1,0 +1,16 @@
+{
+  "_note": "Top-of-page bid range from Google Ads Keyword Planner. Search volumes are monthly avg. Pull date 2026-05-26.",
+  "Miami FL": {"primary_kw": "exotic car rental miami", "vol": 480, "cpc_low": 1.61, "cpc_high": 7.17, "near_me_high": 14.49, "competition": "HIGH"},
+  "Las Vegas NV": {"primary_kw": "exotic car rental las vegas", "vol": 40, "cpc_low": 1.62, "cpc_high": 4.37, "competition": "HIGH"},
+  "Los Angeles CA": {"primary_kw": "exotic car rental los angeles", "vol": 20, "cpc_low": 1.09, "cpc_high": 5.19, "competition": "HIGH"},
+  "Atlanta GA": {"primary_kw": "exotic car rental atlanta", "vol": 480, "cpc_low": 0.51, "cpc_high": 2.10, "competition": "HIGH"},
+  "Houston TX": {"primary_kw": "exotic car rental houston", "vol": 4400, "cpc_low": 0.37, "cpc_high": 2.64, "competition": "MEDIUM"},
+  "Dallas TX": {"primary_kw": "exotic car rental dallas", "vol": 880, "cpc_low": 0.85, "cpc_high": 3.20, "competition": "MEDIUM", "_estimated": true},
+  "Fort Lauderdale FL": {"primary_kw": "exotic car rental fort lauderdale", "vol": 260, "cpc_low": 1.40, "cpc_high": 6.50, "competition": "HIGH", "_proxy": "Miami market"},
+  "New York NY": {"primary_kw": "exotic car rental nyc", "vol": 320, "cpc_low": 1.80, "cpc_high": 8.50, "competition": "HIGH", "_estimated": true},
+  "Phoenix AZ": {"primary_kw": "exotic car rental phoenix", "vol": 210, "cpc_low": 0.70, "cpc_high": 2.40, "competition": "MEDIUM", "_estimated": true},
+  "Scottsdale AZ": {"primary_kw": "exotic car rental scottsdale", "vol": 170, "cpc_low": 0.90, "cpc_high": 3.10, "competition": "MEDIUM", "_estimated": true},
+  "Austin TX": {"primary_kw": "exotic car rental austin", "vol": 320, "cpc_low": 0.60, "cpc_high": 2.20, "competition": "MEDIUM", "_estimated": true},
+  "Beverly Hills CA": {"primary_kw": "exotic car rental beverly hills", "vol": 10, "cpc_low": 1.50, "cpc_high": 6.00, "competition": "HIGH"},
+  "_default": {"primary_kw": "exotic car rental", "vol": 200, "cpc_low": 1.20, "cpc_high": 5.00, "competition": "HIGH"}
+}
