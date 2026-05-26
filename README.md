@@ -2,7 +2,9 @@
 
 Single-page web app for live cold-call coaching. Built for Zack at Conversion Exotics. Runs entirely in the browser — no backend, no signup, no tracking.
 
-**Live site:** [https://YOUR-USERNAME.github.io/conversion-exotics-coach](https://YOUR-USERNAME.github.io/conversion-exotics-coach) *(auto-updated below after first deploy)*
+**Live site:** [https://trini3holdings.github.io/conversion-exotics-coach/](https://trini3holdings.github.io/conversion-exotics-coach/)
+
+**Repo:** [github.com/trini3holdings/conversion-exotics-coach](https://github.com/trini3holdings/conversion-exotics-coach)
 
 ## What it does
 
