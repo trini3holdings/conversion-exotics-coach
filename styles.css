@@ -251,6 +251,23 @@ kbd {
 .recon-meta { font-size: 12px; color: #B8B0A0; margin-bottom: 10px; }
 .recon-meta a { color: var(--gold); text-decoration: none; }
 .recon-meta a:hover { text-decoration: underline; }
+/* v3.8.9 — inline phone add/edit affordances */
+.recon-phone-add-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--gold); color: var(--ink);
+  border: none; border-radius: 4px;
+  padding: 3px 10px; font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: filter 120ms;
+}
+.recon-phone-add-btn:hover { filter: brightness(1.1); }
+.recon-phone-edit-btn {
+  background: transparent; border: 1px solid #444; color: var(--gold);
+  border-radius: 3px; padding: 1px 5px; font-size: 11px;
+  cursor: pointer; margin-left: 4px;
+}
+.recon-phone-edit-btn:hover { background: rgba(184,137,58,0.12); }
+.phone-added-by { color: #4ade80; font-size: 11px; font-weight: 600; margin-left: 4px; }
+.recon-phone-val { color: #fff; font-weight: 500; }
 .recon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));

@@ -2,307 +2,2716 @@
   "_meta": {
     "brand": "rme-roofing",
     "audit_value": 3000,
-    "generated_from": "RME_Roofing_Full_CRO_Audit_300.xlsx",
+    "generated_at": "2026-05-27T22:25:08.677802+00:00",
+    "generated_from": "multi_reaudit.py (heuristic re-score, moderate threshold)",
     "total_prospects": 299,
     "tier_definitions": {
       "1": "HIGH conversion risk + HIGH phone confidence — top priority cold call",
-      "2": "HIGH conversion risk + MEDIUM/LOW phone confidence — call with caution, verify number first",
+      "2": "HIGH conversion risk + MEDIUM/LOW phone confidence — call with caution",
       "3": "MEDIUM conversion risk + HIGH phone confidence — solid call, looser hook",
-      "4": "LOW conversion risk + HIGH phone confidence — warm conversation, lead with curiosity",
-      "no_phone": "HIGH risk but no verified phone — email/LinkedIn or research path"
+      "4": "LOW conversion risk + verified phone — warm conversation",
+      "no_phone": "No verified phone — email/LinkedIn or research path"
     }
   },
-  "tier_1_priority_calls": [],
+  "tier_1_priority_calls": [
+    {
+      "n": "rme-008",
+      "company": "Eastmanroofing",
+      "domain": "eastmanroofing.com",
+      "market": "Denver CO",
+      "phone": "(720) 236-4416",
+      "risk": "HIGH",
+      "leak_1": "Gmail email undermines trust for $10k+ roofing project"
+    },
+    {
+      "n": "rme-012",
+      "company": "Smithandramirezroofing",
+      "domain": "smithandramirezroofing.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(214) 821-2100",
+      "risk": "HIGH",
+      "leak_1": "Two-surname brand requires story — no faces or narrative above fold"
+    },
+    {
+      "n": "rme-013",
+      "company": "Lyonsroofing",
+      "domain": "lyonsroofing.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(972) 395-1300",
+      "risk": "HIGH",
+      "leak_1": "Lyons surname brand requires heritage story — not above fold"
+    },
+    {
+      "n": "rme-025",
+      "company": "Losgatosroofing",
+      "domain": "losgatosroofing.com",
+      "market": "San Jose/Santa Cruz CA",
+      "phone": "(408) 354-9999",
+      "risk": "HIGH",
+      "leak_1": "Hyper-local brand limits perceived service coverage in Bay Area"
+    },
+    {
+      "n": "rme-028",
+      "company": "Newviewroofing",
+      "domain": "newviewroofing.com",
+      "market": "Dallas-Fort Worth + Cleveland OH + Pittsburgh PA",
+      "phone": "(469) 232-7220",
+      "risk": "HIGH",
+      "leak_1": "Multi-state presence creates split identity and inconsistent local trust"
+    },
+    {
+      "n": "rme-030",
+      "company": "Chicagoflatroofingcontractors",
+      "domain": "chicagoflatroofingcontractors.org",
+      "market": "Chicago IL",
+      "phone": "(773) 209-1468",
+      "risk": "HIGH",
+      "leak_1": "Gmail email (sunnyross78@gmail.com) is unprofessional for a $5k+ transaction"
+    },
+    {
+      "n": "rme-032",
+      "company": "Onestoproofshop",
+      "domain": "onestoproofshop.com",
+      "market": "Las Vegas NV",
+      "phone": "(702) 500-0670",
+      "risk": "HIGH",
+      "leak_1": "Generic brand name lacks specialized roofing identity"
+    },
+    {
+      "n": "rme-040",
+      "company": "Guyroofing",
+      "domain": "guyroofing.com",
+      "market": "National (HQ Spartanburg SC)",
+      "phone": "1-800-771-0778",
+      "risk": "HIGH",
+      "leak_1": "National brand with $24.9M revenue but no local TX market presence identified"
+    },
+    {
+      "n": "rme-041",
+      "company": "Mnhroofingservices",
+      "domain": "mnhroofingservices.com",
+      "market": "Seattle WA",
+      "phone": "(206) 300-8576",
+      "risk": "HIGH",
+      "leak_1": "Gmail email (mnhroofing@gmail.com) undermines trust for high-ticket jobs"
+    },
+    {
+      "n": "rme-046",
+      "company": "Pioneerroofingep",
+      "domain": "pioneerroofingep.com",
+      "market": "El Paso TX",
+      "phone": "(915) 926-6099",
+      "risk": "HIGH",
+      "leak_1": "BBB-accredited family business but email domain (915pioneer.com) doesn't match website"
+    },
+    {
+      "n": "rme-049",
+      "company": "Bumbleroofing",
+      "domain": "bumbleroofing.com",
+      "market": "Multi-city — Austin TX + 15+ markets national",
+      "phone": "(512) 693-2055 (Austin)",
+      "risk": "HIGH",
+      "leak_1": "Franchise model creates inconsistent local experience across 15+ markets"
+    },
+    {
+      "n": "rme-059",
+      "company": "Veritasroofingtx",
+      "domain": "veritasroofingtx.com",
+      "market": "Fort Worth TX + Austin TX + College Station TX",
+      "phone": "(817) 455-0117",
+      "risk": "HIGH",
+      "leak_1": "Three-market presence with three phone numbers creates routing complexity"
+    },
+    {
+      "n": "rme-095",
+      "company": "Servpro",
+      "domain": "servpro.com",
+      "market": "National — franchise (multiple TX locations)",
+      "phone": "1-844-750-7219",
+      "risk": "HIGH",
+      "leak_1": "Restoration brand (fire/water primary) — roofing is secondary; buyers seeking roofing specialist may bounce"
+    }
+  ],
   "tier_2_call_with_caution": [
-    "rme-031",
-    "rme-107",
-    "rme-110",
-    "rme-112",
-    "rme-113",
-    "rme-122",
-    "rme-123",
-    "rme-135",
-    "rme-141",
-    "rme-148",
-    "rme-155",
-    "rme-170",
-    "rme-180",
-    "rme-184",
-    "rme-190",
-    "rme-193",
-    "rme-197",
-    "rme-198",
-    "rme-201",
-    "rme-204",
-    "rme-208",
-    "rme-212",
-    "rme-221",
-    "rme-230",
-    "rme-233",
-    "rme-237",
-    "rme-243",
-    "rme-245",
-    "rme-249",
-    "rme-256",
-    "rme-259",
-    "rme-263",
-    "rme-282",
-    "rme-284",
-    "rme-285",
-    "rme-286"
+    {
+      "n": "rme-031",
+      "company": "Riveraroofingco",
+      "domain": "riveraroofingco.xyz",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(469) 936-4001",
+      "risk": "HIGH",
+      "leak_1": ".xyz TLD instantly triggers spam/scam perception — major trust barrier"
+    },
+    {
+      "n": "rme-147",
+      "company": "Action Roofservice",
+      "domain": "action-roofservice.com",
+      "market": "Unknown",
+      "phone": "(786) 738-9601",
+      "risk": "HIGH",
+      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
+    },
+    {
+      "n": "rme-155",
+      "company": "Lucidroofing",
+      "domain": "lucidroofing.com",
+      "market": "San Jose CA",
+      "phone": "(408) 761-9700",
+      "risk": "HIGH",
+      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
+    },
+    {
+      "n": "rme-197",
+      "company": "Roofingrepairguy",
+      "domain": "roofingrepairguy.com",
+      "market": "Seattle WA",
+      "phone": "(913) 285-8807",
+      "risk": "HIGH",
+      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
+    },
+    {
+      "n": "rme-278",
+      "company": "Expertroofing Pros",
+      "domain": "expertroofing-pros.com",
+      "market": "Nashville TN",
+      "phone": "(615) 314-2670",
+      "risk": "HIGH",
+      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
+    }
   ],
   "tier_3_solid_calls": [
-    "rme-004",
-    "rme-005",
-    "rme-007",
-    "rme-008",
-    "rme-009",
-    "rme-010",
-    "rme-012",
-    "rme-013",
-    "rme-014",
-    "rme-015",
-    "rme-016",
-    "rme-017",
-    "rme-018",
-    "rme-019",
-    "rme-020",
-    "rme-021",
-    "rme-022",
-    "rme-023",
-    "rme-025",
-    "rme-027",
-    "rme-028",
-    "rme-030",
-    "rme-032",
-    "rme-035",
-    "rme-036",
-    "rme-041",
-    "rme-045",
-    "rme-049",
-    "rme-050",
-    "rme-128",
-    "rme-166",
-    "rme-210",
-    "rme-222",
-    "rme-236",
-    "rme-240",
-    "rme-271"
+    {
+      "n": "rme-004",
+      "company": "Rainierroofingcompany",
+      "domain": "rainierroofingcompany.com",
+      "market": "Seattle/Tacoma WA",
+      "phone": "(253) 204-9421",
+      "risk": "MEDIUM",
+      "leak_1": "No phone in sticky header — buyers must scroll to find contact"
+    },
+    {
+      "n": "rme-005",
+      "company": "Benefitroofing",
+      "domain": "benefitroofing.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(972) 434-0300",
+      "risk": "MEDIUM",
+      "leak_1": "Brand name 'Benefit' is ambiguous — no clarity on what differentiates them"
+    },
+    {
+      "n": "rme-007",
+      "company": "Universalroofingco",
+      "domain": "universalroofingco.com",
+      "market": "Phoenix AZ",
+      "phone": "(623) 748-1166",
+      "risk": "MEDIUM",
+      "leak_1": "Universal brand is generic — no Phoenix-specific differentiator"
+    },
+    {
+      "n": "rme-009",
+      "company": "Roofingcompanylv",
+      "domain": "roofingcompanylv.com",
+      "market": "Las Vegas NV",
+      "phone": "(702) 623-0140",
+      "risk": "MEDIUM",
+      "leak_1": "Exact-match keyword domain reduces perceived brand credibility"
+    },
+    {
+      "n": "rme-010",
+      "company": "Newroofplus",
+      "domain": "newroofplus.com",
+      "market": "Austin TX",
+      "phone": "(512) 777-3151",
+      "risk": "MEDIUM",
+      "leak_1": "'+' in brand name doesn't translate digitally — brand recall issues"
+    },
+    {
+      "n": "rme-014",
+      "company": "Abetterroofing",
+      "domain": "abetterroofing.com",
+      "market": "Austin TX",
+      "phone": "(512) 731-4663",
+      "risk": "MEDIUM",
+      "leak_1": "Comparative brand requires proof — no benchmarks shown"
+    },
+    {
+      "n": "rme-015",
+      "company": "Davisroofingsolutions",
+      "domain": "davisroofingsolutions.com",
+      "market": "Denver CO",
+      "phone": "(720) 370-9700",
+      "risk": "MEDIUM",
+      "leak_1": "'Solutions' suffix is overused — no differentiation in Denver"
+    },
+    {
+      "n": "rme-016",
+      "company": "Roofon",
+      "domain": "roofon.com",
+      "market": "Denver/CO",
+      "phone": "(720) 539-7000",
+      "risk": "MEDIUM",
+      "leak_1": "RoofOn brand is memorable but meaning unclear to first-time buyers"
+    },
+    {
+      "n": "rme-017",
+      "company": "Apolloroofingcompany",
+      "domain": "apolloroofingcompany.com",
+      "market": "San Francisco Bay Area CA",
+      "phone": "(650) 246-1400",
+      "risk": "MEDIUM",
+      "leak_1": "Apollo brand is aspirational but no CA roofing-specific trust anchor"
+    },
+    {
+      "n": "rme-018",
+      "company": "Gurrbrothersroofing",
+      "domain": "gurrbrothersroofing.com",
+      "market": "San Antonio TX",
+      "phone": "(210) 617-9800",
+      "risk": "MEDIUM",
+      "leak_1": "Brothers brand requires personal story — not featured above fold"
+    },
+    {
+      "n": "rme-019",
+      "company": "Dcpinesroofing",
+      "domain": "dcpinesroofing.com",
+      "market": "Washington DC / VA",
+      "phone": "(703) 789-7663",
+      "risk": "MEDIUM",
+      "leak_1": "DC/Pines brand confusing for Virginia buyers outside DC proper"
+    },
+    {
+      "n": "rme-020",
+      "company": "Phoenixroofingandrepair",
+      "domain": "phoenixroofingandrepair.com",
+      "market": "Phoenix AZ",
+      "phone": "(480) 578-3800",
+      "risk": "MEDIUM",
+      "leak_1": "Keyword domain reduces credibility vs. named brand competitors"
+    },
+    {
+      "n": "rme-021",
+      "company": "Allinroofingla",
+      "domain": "allinroofingla.com",
+      "market": "Los Angeles CA",
+      "phone": "(323) 455-7663",
+      "risk": "MEDIUM",
+      "leak_1": "All-in branding is generic; LA market requires specialization messaging"
+    },
+    {
+      "n": "rme-022",
+      "company": "Tophomeroofers",
+      "domain": "tophomeroofers.com",
+      "market": "Charlotte NC",
+      "phone": "(704) 543-6776",
+      "risk": "MEDIUM",
+      "leak_1": "Generic brand — no Charlotte identity or specialization messaging"
+    },
+    {
+      "n": "rme-023",
+      "company": "Foreverroofing",
+      "domain": "foreverroofing.net",
+      "market": "Denver CO",
+      "phone": "(720) 545-5557",
+      "risk": "MEDIUM",
+      "leak_1": ".net TLD is non-standard — minor trust concern vs. .com competitors"
+    }
   ],
   "tier_4_warm_calls": [
-    "rme-002",
-    "rme-003",
-    "rme-006",
-    "rme-011",
-    "rme-024",
-    "rme-034",
-    "rme-040",
-    "rme-044",
-    "rme-046",
-    "rme-052",
-    "rme-055",
-    "rme-059",
-    "rme-095",
-    "rme-102",
-    "rme-103",
-    "rme-104",
-    "rme-105",
-    "rme-106",
-    "rme-109",
-    "rme-111",
-    "rme-114",
-    "rme-115",
-    "rme-116",
-    "rme-117",
-    "rme-118",
-    "rme-120",
-    "rme-121",
-    "rme-124",
-    "rme-125",
-    "rme-126",
-    "rme-127",
-    "rme-129",
-    "rme-130",
-    "rme-131",
-    "rme-132",
-    "rme-133",
-    "rme-134",
-    "rme-136",
-    "rme-137",
-    "rme-138",
-    "rme-139",
-    "rme-140",
-    "rme-142",
-    "rme-143",
-    "rme-144",
-    "rme-145",
-    "rme-146",
-    "rme-149",
-    "rme-150",
-    "rme-151",
-    "rme-152",
-    "rme-153",
-    "rme-154",
-    "rme-157",
-    "rme-158",
-    "rme-159",
-    "rme-160",
-    "rme-161",
-    "rme-162",
-    "rme-163",
-    "rme-164",
-    "rme-165",
-    "rme-168",
-    "rme-169",
-    "rme-171",
-    "rme-172",
-    "rme-173",
-    "rme-174",
-    "rme-175",
-    "rme-176",
-    "rme-177",
-    "rme-178",
-    "rme-179",
-    "rme-181",
-    "rme-182",
-    "rme-183",
-    "rme-185",
-    "rme-186",
-    "rme-187",
-    "rme-188",
-    "rme-191",
-    "rme-192",
-    "rme-194",
-    "rme-195",
-    "rme-196",
-    "rme-199",
-    "rme-200",
-    "rme-202",
-    "rme-203",
-    "rme-205",
-    "rme-206",
-    "rme-207",
-    "rme-209",
-    "rme-211",
-    "rme-213",
-    "rme-214",
-    "rme-215",
-    "rme-216",
-    "rme-217",
-    "rme-218",
-    "rme-219",
-    "rme-220",
-    "rme-223",
-    "rme-224",
-    "rme-225",
-    "rme-226",
-    "rme-227",
-    "rme-228",
-    "rme-229",
-    "rme-231",
-    "rme-232",
-    "rme-234",
-    "rme-235",
-    "rme-238",
-    "rme-239",
-    "rme-241",
-    "rme-242",
-    "rme-244",
-    "rme-246",
-    "rme-247",
-    "rme-250",
-    "rme-251",
-    "rme-252",
-    "rme-253",
-    "rme-254",
-    "rme-255",
-    "rme-257",
-    "rme-258",
-    "rme-261",
-    "rme-262",
-    "rme-264",
-    "rme-265",
-    "rme-266",
-    "rme-267",
-    "rme-268",
-    "rme-269",
-    "rme-270",
-    "rme-272",
-    "rme-273",
-    "rme-274",
-    "rme-275",
-    "rme-276",
-    "rme-277",
-    "rme-279",
-    "rme-280",
-    "rme-281",
-    "rme-283",
-    "rme-287",
-    "rme-289",
-    "rme-290",
-    "rme-291",
-    "rme-292",
-    "rme-293",
-    "rme-294",
-    "rme-297",
-    "rme-298",
-    "rme-299",
-    "rme-300"
+    {
+      "n": "rme-002",
+      "company": "Jamarroofing",
+      "domain": "jamarroofing.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(972) 235-1991",
+      "risk": "LOW",
+      "leak_1": "50+ year heritage not above fold — greatest trust asset underutilized"
+    },
+    {
+      "n": "rme-003",
+      "company": "Arringtonroofing",
+      "domain": "arringtonroofing.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(214) 227-5000",
+      "risk": "LOW",
+      "leak_1": "24/7 emergency claim is strong but needs more above-fold real estate"
+    },
+    {
+      "n": "rme-006",
+      "company": "Fortituderoofing",
+      "domain": "fortituderoofing.com",
+      "market": "San Antonio TX",
+      "phone": "(210) 570-7663",
+      "risk": "LOW",
+      "leak_1": "Generic hero — no San Antonio landmark or community reference"
+    },
+    {
+      "n": "rme-011",
+      "company": "619Roofing",
+      "domain": "619roofing.com",
+      "market": "San Diego CA",
+      "phone": "(619) 431-8990",
+      "risk": "LOW",
+      "leak_1": "Area code brand works locally but fails digital recall for new buyers"
+    },
+    {
+      "n": "rme-024",
+      "company": "Guardianroofing",
+      "domain": "guardianroofing.com",
+      "market": "Pacific NW (Seattle/Portland)",
+      "phone": "1-888-371-6125",
+      "risk": "LOW",
+      "leak_1": "888 toll-free may reduce local trust signal vs. local area codes"
+    },
+    {
+      "n": "rme-027",
+      "company": "Metaep",
+      "domain": "metaep.com",
+      "market": "El Paso TX",
+      "phone": "(915) 252-2738",
+      "risk": "LOW",
+      "leak_1": "Financing-forward messaging dominates but no phone above fold"
+    },
+    {
+      "n": "rme-029",
+      "company": "Austinlocalroofing",
+      "domain": "austinlocalroofing.com",
+      "market": "Austin TX",
+      "phone": "(512) 259-5265",
+      "risk": "LOW",
+      "leak_1": "No email listed — form-only limits B2B and insurance adjuster trust"
+    },
+    {
+      "n": "rme-034",
+      "company": "Reimagineroofing",
+      "domain": "reimagineroofing.com",
+      "market": "Phoenix AZ",
+      "phone": "(480) 900-7663",
+      "risk": "LOW",
+      "leak_1": "500+ 5-star reviews is exceptional — should dominate hero section but doesn't"
+    },
+    {
+      "n": "rme-035",
+      "company": "Sandiegoroofing",
+      "domain": "sandiegoroofing.com",
+      "market": "San Diego CA",
+      "phone": "(619) 280-1000",
+      "risk": "LOW",
+      "leak_1": "Dual-division phone numbers create routing confusion for buyers"
+    },
+    {
+      "n": "rme-036",
+      "company": "Americanroofingnow",
+      "domain": "americanroofingnow.com",
+      "market": "Phoenix AZ + CO Springs CO",
+      "phone": "(602) 314-4650",
+      "risk": "LOW",
+      "leak_1": "Two-state operation with separate phone numbers creates geo confusion"
+    },
+    {
+      "n": "rme-038",
+      "company": "Shepherdroofingrenovations",
+      "domain": "shepherdroofingrenovations.com",
+      "market": "Dallas (Lancaster) TX",
+      "phone": "(972) 244-3705",
+      "risk": "LOW",
+      "leak_1": "Lancaster TX location may be perceived as suburban — North Dallas buyers may not convert"
+    },
+    {
+      "n": "rme-044",
+      "company": "Shamrockroofer",
+      "domain": "shamrockroofer.com",
+      "market": "Multi-state — 14+ locations (HQ Overland Park KS)",
+      "phone": "(913) 850-6556",
+      "risk": "LOW",
+      "leak_1": "Form-only online contact for emergency roofing needs — no phone prominently on homepage"
+    },
+    {
+      "n": "rme-045",
+      "company": "Clearviewroofers",
+      "domain": "clearviewroofers.com",
+      "market": "Southern CA",
+      "phone": "1-866-320-2160",
+      "risk": "LOW",
+      "leak_1": "Toll-free 866 number without local area code hurts SoCal local trust"
+    },
+    {
+      "n": "rme-050",
+      "company": "Txchoiceroofing",
+      "domain": "txchoiceroofing.com",
+      "market": "Austin TX",
+      "phone": "(512) 774-9149",
+      "risk": "LOW",
+      "leak_1": "Multiple Austin addresses listed (3 locations) create inconsistency for buyers"
+    },
+    {
+      "n": "rme-052",
+      "company": "Canroofconstruction",
+      "domain": "canroofconstruction.com",
+      "market": "Boston MA",
+      "phone": "(857) 415-7727",
+      "risk": "LOW",
+      "leak_1": "Boston/MA focus is completely outside target TX market — low competitive threat"
+    },
+    {
+      "n": "rme-055",
+      "company": "Zilkerroofing",
+      "domain": "zilkerroofing.com",
+      "market": "Austin TX — Central TX",
+      "phone": "(512) 893-7663",
+      "risk": "LOW",
+      "leak_1": "Zilker neighborhood brand limits perceived service area to South Austin"
+    },
+    {
+      "n": "rme-101",
+      "company": "Americanmasteroofing",
+      "domain": "americanmasteroofing.com",
+      "market": "Houston TX",
+      "phone": "(281) 529-7048",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-102",
+      "company": "Elliottroofs",
+      "domain": "elliottroofs.com",
+      "market": "Oklahoma City OK",
+      "phone": "(405) 789-4646",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-103",
+      "company": "Exteriormedics",
+      "domain": "exteriormedics.com",
+      "market": "Washington DC",
+      "phone": "(703) 942-6553",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-104",
+      "company": "Aebrothersroofing",
+      "domain": "aebrothersroofing.com",
+      "market": "Unknown",
+      "phone": "(305) 815-7208",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-105",
+      "company": "Bachmansroofingpa",
+      "domain": "bachmansroofingpa.com",
+      "market": "Philadelphia PA",
+      "phone": "(484) 739-0530",
+      "risk": "LOW",
+      "leak_1": "Strong CTA but trust stack thin — needs BBB / GAF / Google review count above the fold"
+    },
+    {
+      "n": "rme-106",
+      "company": "Bigboysconstructioninc",
+      "domain": "bigboysconstructioninc.com",
+      "market": "Indianapolis IN",
+      "phone": "(317) 672-9353",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-108",
+      "company": "Guardianroofs",
+      "domain": "guardianroofs.com",
+      "market": "San Diego CA",
+      "phone": "(858) 876-4230",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-109",
+      "company": "Infroofing",
+      "domain": "infroofing.com",
+      "market": "San Francisco CA | San Jose CA",
+      "phone": "(559) 215-8724",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-111",
+      "company": "Roofitforward",
+      "domain": "roofitforward.com",
+      "market": "Jacksonville FL",
+      "phone": "(888) 411-9310",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-114",
+      "company": "Cochranexteriors",
+      "domain": "cochranexteriors.com",
+      "market": "Indianapolis IN",
+      "phone": "(317) 766-3464",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-115",
+      "company": "Dshomeimprovement",
+      "domain": "dshomeimprovement.net",
+      "market": "Washington DC",
+      "phone": "(888) 896-1249",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-116",
+      "company": "Foothillroofing",
+      "domain": "foothillroofing.com",
+      "market": "Los Angeles CA",
+      "phone": "(866) 410-4856",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-117",
+      "company": "Maupinroofing",
+      "domain": "maupinroofing.com",
+      "market": "Oklahoma City OK",
+      "phone": "(405) 703-3843",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-118",
+      "company": "Mycityroofing",
+      "domain": "mycityroofing.com",
+      "market": "Unknown",
+      "phone": "(305) 248-2994",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-119",
+      "company": "Premanroofing",
+      "domain": "premanroofing.com",
+      "market": "San Diego CA",
+      "phone": "(619) 276-1700",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-120",
+      "company": "Riddlebrothersroofing",
+      "domain": "riddlebrothersroofing.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(214) 884-8346",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-121",
+      "company": "Squatchroofing",
+      "domain": "squatchroofing.com",
+      "market": "Seattle WA",
+      "phone": "(425) 249-3730",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-124",
+      "company": "Advancedexteriors",
+      "domain": "advancedexteriors.com",
+      "market": "Denver CO",
+      "phone": "(303) 756-7663",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-125",
+      "company": "Allovertxroofing",
+      "domain": "allovertxroofing.com",
+      "market": "Houston TX",
+      "phone": "(281) 846-6665",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-126",
+      "company": "Atlasroofingandsiding",
+      "domain": "atlasroofingandsiding.com",
+      "market": "Columbus OH",
+      "phone": "(614) 766-8100",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-127",
+      "company": "Castonroofing",
+      "domain": "castonroofing.com",
+      "market": "Unknown",
+      "phone": "(305) 279-0475",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-128",
+      "company": "Conradroofingservice",
+      "domain": "conradroofingservice.com",
+      "market": "San Jose CA",
+      "phone": "(408) 294-7615",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-129",
+      "company": "Discountedroofingllc",
+      "domain": "discountedroofingllc.com",
+      "market": "Philadelphia PA",
+      "phone": "(215) 431-2343",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-130",
+      "company": "Eastcoastmetalroofing",
+      "domain": "eastcoastmetalroofing.com",
+      "market": "Boston MA",
+      "phone": "(844) 611-3267",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-131",
+      "company": "Greatroofing",
+      "domain": "greatroofing.com",
+      "market": "Columbus OH",
+      "phone": "(614) 825-9565",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-132",
+      "company": "Hillcrestroofs",
+      "domain": "hillcrestroofs.com",
+      "market": "Los Angeles CA",
+      "phone": "(818) 275-0042",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-133",
+      "company": "Niroof",
+      "domain": "niroof.com",
+      "market": "Boston MA",
+      "phone": "(781) 874-0248",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-134",
+      "company": "Paularoofingllc",
+      "domain": "paularoofingllc.com",
+      "market": "Unknown",
+      "phone": "(786) 352-9005",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-136",
+      "company": "Roofmedic",
+      "domain": "roofmedic.com",
+      "market": "Charlotte NC",
+      "phone": "(704) 459-5951",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-137",
+      "company": "Signatureexteriorsinc",
+      "domain": "signatureexteriorsinc.com",
+      "market": "Charlotte NC",
+      "phone": "(980) 980-1855",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-138",
+      "company": "Southernnationalroofing",
+      "domain": "southernnationalroofing.com",
+      "market": "Charlotte NC",
+      "phone": "(704) 368-8564",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-139",
+      "company": "Throneroofing",
+      "domain": "throneroofing.com",
+      "market": "Charlotte NC",
+      "phone": "(704) 312-2388",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-140",
+      "company": "Timelessconstructiongroup",
+      "domain": "timelessconstructiongroup.com",
+      "market": "Los Angeles CA",
+      "phone": "(833) 333-4030",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-142",
+      "company": "Toptierphilly",
+      "domain": "toptierphilly.com",
+      "market": "Philadelphia PA",
+      "phone": "(215) 330-2664",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-143",
+      "company": "Twincreekroofing",
+      "domain": "twincreekroofing.com",
+      "market": "Columbus OH",
+      "phone": "(330) 275-4432",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-144",
+      "company": "Waukeganroofing",
+      "domain": "waukeganroofing.com",
+      "market": "Chicago IL",
+      "phone": "(847) 623-1625",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-145",
+      "company": "4Feldco",
+      "domain": "4feldco.com",
+      "market": "Chicago IL",
+      "phone": "(866) 433-5326",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-146",
+      "company": "A1 Exteriorsinc",
+      "domain": "a1-exteriorsinc.com",
+      "market": "Washington DC",
+      "phone": "(571) 340-2328",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-149",
+      "company": "Blackroofing",
+      "domain": "blackroofing.com",
+      "market": "Denver CO",
+      "phone": "(720) 316-2778",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-150",
+      "company": "Broadviewroofingco",
+      "domain": "broadviewroofingco.com",
+      "market": "Columbus OH",
+      "phone": "(888) 264-1444",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-151",
+      "company": "Caderoofingandexteriorsinc",
+      "domain": "caderoofingandexteriorsinc.com",
+      "market": "Philadelphia PA",
+      "phone": "(484) 630-2736",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-152",
+      "company": "Gfsprague",
+      "domain": "gfsprague.com",
+      "market": "Boston MA",
+      "phone": "(781) 455-0556",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-153",
+      "company": "Houston Properroofing",
+      "domain": "houston-properroofing.com",
+      "market": "Houston TX",
+      "phone": "(832) 554-7830",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-154",
+      "company": "Idroof",
+      "domain": "idroof.company",
+      "market": "Boston MA",
+      "phone": "(617) 299-0291",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-156",
+      "company": "Marlinexteriors",
+      "domain": "marlinexteriors.com",
+      "market": "Nashville TN",
+      "phone": "(615) 933-6997",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-157",
+      "company": "Mightydogroofingcolumbus",
+      "domain": "mightydogroofingcolumbus.com",
+      "market": "Columbus OH",
+      "phone": "(614) 810-8863",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-158",
+      "company": "Mrroofing",
+      "domain": "mrroofing.net",
+      "market": "San Francisco CA",
+      "phone": "(650) 832-9995",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-159",
+      "company": "Perrone Roofing",
+      "domain": "perrone-roofing.com",
+      "market": "Philadelphia PA",
+      "phone": "(267) 896-0711",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-160",
+      "company": "Porterroof",
+      "domain": "porterroof.com",
+      "market": "Indianapolis IN",
+      "phone": "(317) 350-7663",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-161",
+      "company": "Revivemyroof",
+      "domain": "revivemyroof.com",
+      "market": "Fort Worth TX + 2 more",
+      "phone": "(248) 266-5210",
+      "risk": "LOW",
+      "leak_1": "Strong CTA but trust stack thin — needs BBB / GAF / Google review count above the fold"
+    },
+    {
+      "n": "rme-162",
+      "company": "Rockstarroofs",
+      "domain": "rockstarroofs.com",
+      "market": "Oklahoma City OK",
+      "phone": "(405) 595-9123",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-163",
+      "company": "Roof Residential",
+      "domain": "roof-residential.com",
+      "market": "El Paso TX",
+      "phone": "(888) 792-1691",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-164",
+      "company": "Starcityroofingelpaso",
+      "domain": "starcityroofingelpaso.com",
+      "market": "El Paso TX",
+      "phone": "(915) 740-5961",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-165",
+      "company": "Unitedroofers",
+      "domain": "unitedroofers.co",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(888) 863-8858",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-166",
+      "company": "Whitneyroofingguttering",
+      "domain": "whitneyroofingguttering.com",
+      "market": "Oklahoma City OK",
+      "phone": "(660) 605-0255",
+      "risk": "LOW",
+      "leak_1": "Strong CTA but trust stack thin — needs BBB / GAF / Google review count above the fold"
+    },
+    {
+      "n": "rme-167",
+      "company": "7X7Roofing",
+      "domain": "7x7roofing.com",
+      "market": "San Francisco CA",
+      "phone": "(415) 535-8170",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-168",
+      "company": "Ableroof",
+      "domain": "ableroof.com",
+      "market": "Columbus OH",
+      "phone": "(614) 421-7954",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-169",
+      "company": "Alamoroofing",
+      "domain": "alamoroofing.com",
+      "market": "San Antonio TX | Austin TX",
+      "phone": "(512) 842-7000",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-171",
+      "company": "Azsuroofing",
+      "domain": "azsuroofing.com",
+      "market": "Phoenix AZ",
+      "phone": "(480) 582-1101",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-172",
+      "company": "Bestchoiceroofing",
+      "domain": "bestchoiceroofing.com",
+      "market": "Phoenix AZ + 5 more",
+      "phone": "(855) 918-2522",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-173",
+      "company": "Brownroofingaz",
+      "domain": "brownroofingaz.com",
+      "market": "Phoenix AZ",
+      "phone": "(602) 626-5559",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-174",
+      "company": "Burgerroofingco",
+      "domain": "burgerroofingco.com",
+      "market": "Jacksonville FL",
+      "phone": "(904) 355-2756",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-175",
+      "company": "Clearchoiceroofingatx",
+      "domain": "clearchoiceroofingatx.com",
+      "market": "San Antonio TX | Austin TX",
+      "phone": "(512) 712-4906",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-176",
+      "company": "Colonialroofingco",
+      "domain": "colonialroofingco.com",
+      "market": "Washington DC",
+      "phone": "(410) 729-3550",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-177",
+      "company": "Firstpointbuilders",
+      "domain": "firstpointbuilders.co",
+      "market": "Los Angeles CA",
+      "phone": "(818) 252-9584",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-178",
+      "company": "Goodcontractorsroofing",
+      "domain": "goodcontractorsroofing.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(682) 842-7663",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-179",
+      "company": "Goodguyroofing",
+      "domain": "goodguyroofing.com",
+      "market": "Unknown",
+      "phone": "(954) 247-9660",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-181",
+      "company": "Infinityroofing Nc",
+      "domain": "infinityroofing-nc.com",
+      "market": "Charlotte NC",
+      "phone": "(704) 386-1124",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-182",
+      "company": "Jackcwilsonroofing",
+      "domain": "jackcwilsonroofing.com",
+      "market": "Jacksonville FL",
+      "phone": "(904) 396-1546",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-183",
+      "company": "Jbr4You",
+      "domain": "jbr4you.com",
+      "market": "Chicago IL",
+      "phone": "(224) 481-4362",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-185",
+      "company": "Midwestroofingchicago",
+      "domain": "midwestroofingchicago.com",
+      "market": "Chicago IL",
+      "phone": "(773) 726-5869",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-186",
+      "company": "Oversonroofingaz",
+      "domain": "oversonroofingaz.com",
+      "market": "Phoenix AZ",
+      "phone": "(480) 422-2082",
+      "risk": "LOW",
+      "leak_1": "Strong CTA but trust stack thin — needs BBB / GAF / Google review count above the fold"
+    },
+    {
+      "n": "rme-187",
+      "company": "Pace Roofing",
+      "domain": "pace-roofing.com",
+      "market": "Philadelphia PA",
+      "phone": "(267) 554-2283",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-188",
+      "company": "Paceroofingphilly",
+      "domain": "paceroofingphilly.com",
+      "market": "Philadelphia PA",
+      "phone": "(267) 345-8270",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-189",
+      "company": "Peaktopeakroofing",
+      "domain": "peaktopeakroofing.com",
+      "market": "Denver CO",
+      "phone": "(720) 893-3823",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-191",
+      "company": "Precisionroofcrafters",
+      "domain": "precisionroofcrafters.com",
+      "market": "Houston TX",
+      "phone": "(713) 799-8555",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-192",
+      "company": "Reliantroofingtx",
+      "domain": "reliantroofingtx.com",
+      "market": "San Antonio TX",
+      "phone": "(210) 867-5051",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-194",
+      "company": "Rhinoroofers",
+      "domain": "rhinoroofers.com",
+      "market": "Austin TX | San Antonio TX",
+      "phone": "(210) 361-7663",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-195",
+      "company": "Rodriguezroof",
+      "domain": "rodriguezroof.com",
+      "market": "Houston TX",
+      "phone": "(281) 394-1876",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-196",
+      "company": "Roofbossusa",
+      "domain": "roofbossusa.com",
+      "market": "Seattle WA",
+      "phone": "(206) 206-2677",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-199",
+      "company": "Roofworxca",
+      "domain": "roofworxca.com",
+      "market": "San Francisco CA",
+      "phone": "(855) 209-0872",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-200",
+      "company": "Schottensteinroofing",
+      "domain": "schottensteinroofing.com",
+      "market": "Columbus OH",
+      "phone": "(614) 665-5136",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-202",
+      "company": "Solvistaroofingdenver",
+      "domain": "solvistaroofingdenver.com",
+      "market": "Denver CO",
+      "phone": "(720) 712-3516",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-203",
+      "company": "Staydryroofing",
+      "domain": "staydryroofing.com",
+      "market": "Indianapolis IN",
+      "phone": "(317) 308-7773",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-205",
+      "company": "Urbanshieldroof",
+      "domain": "urbanshieldroof.com",
+      "market": "Indianapolis IN",
+      "phone": "(812) 561-1810",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-206",
+      "company": "A Denverroofing",
+      "domain": "a-denverroofing.com",
+      "market": "Denver CO",
+      "phone": "(303) 455-3185",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-207",
+      "company": "Action Roof",
+      "domain": "action-roof.com",
+      "market": "Boston MA",
+      "phone": "(978) 726-9709",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-209",
+      "company": "Anyroofrepairsanjose",
+      "domain": "anyroofrepairsanjose.com",
+      "market": "San Jose CA",
+      "phone": "(669) 304-3716",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-210",
+      "company": "Bestroofing",
+      "domain": "bestroofing.net",
+      "market": "Unknown",
+      "phone": "(877) 510-4829",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-211",
+      "company": "Betterroofingusainc",
+      "domain": "betterroofingusainc.com",
+      "market": "San Antonio TX",
+      "phone": "(210) 971-8684",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-213",
+      "company": "Boycesroofing",
+      "domain": "boycesroofing.com",
+      "market": "San Diego CA",
+      "phone": "(760) 800-6040",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-214",
+      "company": "Christianroofing",
+      "domain": "christianroofing.com",
+      "market": "San Diego CA",
+      "phone": "(619) 812-2407",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-215",
+      "company": "Coreroofing",
+      "domain": "coreroofing.com",
+      "market": "Denver CO",
+      "phone": "(303) 997-1559",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-216",
+      "company": "Donkennedyroofing",
+      "domain": "donkennedyroofing.com",
+      "market": "Nashville TN",
+      "phone": "(615) 267-3129",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-217",
+      "company": "Edwinroofing",
+      "domain": "edwinroofing.expert",
+      "market": "Chicago IL",
+      "phone": "(773) 916-9836",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-218",
+      "company": "Elmroofingcontractors",
+      "domain": "elmroofingcontractors.com",
+      "market": "San Jose CA | San Francisco CA",
+      "phone": "(650) 203-6807",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-219",
+      "company": "Exclusivelyroofinginc",
+      "domain": "exclusivelyroofinginc.com",
+      "market": "San Diego CA",
+      "phone": "(619) 663-1261",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-220",
+      "company": "Fourseasonsroofing",
+      "domain": "fourseasonsroofing.com",
+      "market": "Seattle WA",
+      "phone": "(425) 388-9906",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-222",
+      "company": "Henryroofrepair",
+      "domain": "henryroofrepair.homes",
+      "market": "Nashville TN",
+      "phone": "(629) 500-2434",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-223",
+      "company": "Homesourceroofing",
+      "domain": "homesourceroofing.net",
+      "market": "Washington DC",
+      "phone": "(301) 848-8508",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-224",
+      "company": "Houstonroofingexperts",
+      "domain": "houstonroofingexperts.com",
+      "market": "Houston TX",
+      "phone": "(713) 291-3866",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-225",
+      "company": "Iconroofingaz",
+      "domain": "iconroofingaz.com",
+      "market": "Phoenix AZ",
+      "phone": "(480) 427-7600",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-226",
+      "company": "Kingdomroofingsystems",
+      "domain": "kingdomroofingsystems.com",
+      "market": "Indianapolis IN",
+      "phone": "(317) 674-4900",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-227",
+      "company": "Lapeyreroofing",
+      "domain": "lapeyreroofing.com",
+      "market": "Austin TX",
+      "phone": "(512) 877-3087",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-228",
+      "company": "Majorroofingok",
+      "domain": "majorroofingok.com",
+      "market": "Oklahoma City OK",
+      "phone": "(405) 659-3817",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-229",
+      "company": "Marinabayroofing",
+      "domain": "marinabayroofing.com",
+      "market": "San Francisco CA",
+      "phone": "(628) 233-8140",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-231",
+      "company": "Mbaroofing",
+      "domain": "mbaroofing.com",
+      "market": "Charlotte NC",
+      "phone": "(704) 727-4670",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-232",
+      "company": "Monarch Roofing",
+      "domain": "monarch-roofing.com",
+      "market": "Houston TX",
+      "phone": "(832) 215-0987",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-234",
+      "company": "Mountaintopmetalroofing",
+      "domain": "mountaintopmetalroofing.com",
+      "market": "Seattle WA",
+      "phone": "(888) 768-5615",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-235",
+      "company": "Nealrfg",
+      "domain": "nealrfg.com",
+      "market": "Unknown",
+      "phone": "(561) 915-0818",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-236",
+      "company": "Newcityroofingco",
+      "domain": "newcityroofingco.homes",
+      "market": "San Francisco CA",
+      "phone": "(628) 300-3022",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-238",
+      "company": "Nrroofingca",
+      "domain": "nrroofingca.com",
+      "market": "San Jose CA",
+      "phone": "(669) 345-4555",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-239",
+      "company": "Pacificroofingcompanyseattle",
+      "domain": "pacificroofingcompanyseattle.com",
+      "market": "Seattle WA",
+      "phone": "(206) 257-7338",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-240",
+      "company": "Premierroofingsolutions",
+      "domain": "premierroofingsolutions.homes",
+      "market": "San Francisco CA",
+      "phone": "(628) 877-2090",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-241",
+      "company": "Prqexteriors",
+      "domain": "prqexteriors.com",
+      "market": "Denver CO",
+      "phone": "(720) 706-6529",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-242",
+      "company": "Qualityexteriorsatx",
+      "domain": "qualityexteriorsatx.com",
+      "market": "Austin TX",
+      "phone": "(737) 308-2035",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-244",
+      "company": "Reesrestorationindy",
+      "domain": "reesrestorationindy.net",
+      "market": "Indianapolis IN",
+      "phone": "(463) 220-4080",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-246",
+      "company": "Roof Md",
+      "domain": "roof-md.com",
+      "market": "Nashville TN",
+      "phone": "(866) 604-2408",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-247",
+      "company": "Roofingandmoreinc",
+      "domain": "roofingandmoreinc.com",
+      "market": "Washington DC",
+      "phone": "(703) 467-0206",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-248",
+      "company": "Roofingbyhernandez",
+      "domain": "roofingbyhernandez.com",
+      "market": "Chicago IL",
+      "phone": "(312) 439-0556",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-250",
+      "company": "Roofingsidings",
+      "domain": "roofingsidings.com",
+      "market": "Phoenix AZ",
+      "phone": "(602) 854-2197",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-251",
+      "company": "Roofnowjax",
+      "domain": "roofnowjax.com",
+      "market": "Jacksonville FL",
+      "phone": "(904) 226-4556",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-252",
+      "company": "Seekoneroof",
+      "domain": "seekoneroof.com",
+      "market": "Nashville TN",
+      "phone": "(615) 619-7335",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-253",
+      "company": "Southedgeconstruction",
+      "domain": "southedgeconstruction.com",
+      "market": "Jacksonville FL",
+      "phone": "(904) 799-8000",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-254",
+      "company": "Stormroofhelp",
+      "domain": "stormroofhelp.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(214) 501-5998",
+      "risk": "LOW",
+      "leak_1": "Strong CTA but trust stack thin — needs BBB / GAF / Google review count above the fold"
+    },
+    {
+      "n": "rme-255",
+      "company": "Timleeperroofing",
+      "domain": "timleeperroofing.com",
+      "market": "Nashville TN",
+      "phone": "(615) 553-2782",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-257",
+      "company": "Valentineroof",
+      "domain": "valentineroof.com",
+      "market": "Seattle WA",
+      "phone": "(206) 766-3464",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-258",
+      "company": "1907Roofing",
+      "domain": "1907roofing.com",
+      "market": "Oklahoma City OK",
+      "phone": "(405) 768-2626",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-260",
+      "company": "702Roofing",
+      "domain": "702roofing.com",
+      "market": "Las Vegas NV",
+      "phone": "(702) 551-5715",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-261",
+      "company": "Aaroof",
+      "domain": "aaroof.net",
+      "market": "San Jose CA",
+      "phone": "(408) 426-0590",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-262",
+      "company": "Aceconstructionservices",
+      "domain": "aceconstructionservices.net",
+      "market": "Houston TX",
+      "phone": "(281) 961-7567",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-264",
+      "company": "Almaroofingsd",
+      "domain": "almaroofingsd.com",
+      "market": "San Diego CA",
+      "phone": "(619) 551-3331",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-265",
+      "company": "Austinroofingandconstruction",
+      "domain": "austinroofingandconstruction.com",
+      "market": "Austin TX",
+      "phone": "(512) 629-4949",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-266",
+      "company": "Bakerroofing",
+      "domain": "bakerroofing.com",
+      "market": "Washington DC | Jacksonville FL",
+      "phone": "(888) 585-1915",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-267",
+      "company": "Betterroof",
+      "domain": "betterroof.com",
+      "market": "Nashville TN",
+      "phone": "(615) 278-6600",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-268",
+      "company": "Billraganroofing",
+      "domain": "billraganroofing.com",
+      "market": "Nashville TN",
+      "phone": "(615) 242-0333",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-269",
+      "company": "Cencoroofing",
+      "domain": "cencoroofing.com",
+      "market": "Denver CO",
+      "phone": "(720) 776-8247",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-270",
+      "company": "Chetsroofing",
+      "domain": "chetsroofing.com",
+      "market": "Seattle WA",
+      "phone": "(877) 611-1514",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-271",
+      "company": "Clannmor",
+      "domain": "clannmor.com",
+      "market": "Seattle WA",
+      "phone": "(206) 390-9687",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-272",
+      "company": "Coomerroofing",
+      "domain": "coomerroofing.com",
+      "market": "Indianapolis IN",
+      "phone": "(317) 648-5401",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-273",
+      "company": "Covrco",
+      "domain": "covrco.com",
+      "market": "San Antonio TX | Denver CO",
+      "phone": "(844) 613-7663",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-274",
+      "company": "Diamondconstructionwa",
+      "domain": "diamondconstructionwa.com",
+      "market": "Seattle WA",
+      "phone": "(206) 973-6575",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-275",
+      "company": "Donerightroofingandconstruction",
+      "domain": "donerightroofingandconstruction.com",
+      "market": "El Paso TX",
+      "phone": "(915) 412-0525",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-276",
+      "company": "Eclatroofing",
+      "domain": "eclatroofing.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(214) 373-1500",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-277",
+      "company": "Ecoshieldexteriors",
+      "domain": "ecoshieldexteriors.com",
+      "market": "Denver CO",
+      "phone": "(720) 262-7794",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-279",
+      "company": "Firstqualityroof",
+      "domain": "firstqualityroof.com",
+      "market": "Las Vegas NV",
+      "phone": "(702) 262-7847",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-280",
+      "company": "Floridahome360",
+      "domain": "floridahome360.com",
+      "market": "Unknown",
+      "phone": "(954) 828-0208",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-281",
+      "company": "Formularoofing",
+      "domain": "formularoofing.com",
+      "market": "Denver CO",
+      "phone": "(303) 600-8696",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-283",
+      "company": "Gfedale",
+      "domain": "gfedale.com",
+      "market": "Philadelphia PA",
+      "phone": "(610) 877-7663",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-287",
+      "company": "Guardwhatmatters",
+      "domain": "guardwhatmatters.com",
+      "market": "Unknown",
+      "phone": "(954) 245-0497",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-288",
+      "company": "Htownroofco",
+      "domain": "htownroofco.com",
+      "market": "Houston TX",
+      "phone": "(346) 667-7118",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-289",
+      "company": "Integrityproroofing",
+      "domain": "integrityproroofing.com",
+      "market": "Denver CO",
+      "phone": "(303) 968-9842",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-290",
+      "company": "Ironcladroofing",
+      "domain": "ironcladroofing.com",
+      "market": "Indianapolis IN",
+      "phone": "(765) 789-0298",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-291",
+      "company": "Knowaguyroofingandexteriors",
+      "domain": "knowaguyroofingandexteriors.com",
+      "market": "Columbus OH",
+      "phone": "(614) 216-6175",
+      "risk": "LOW",
+      "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-292",
+      "company": "Lgcontractorsllc",
+      "domain": "lgcontractorsllc.com",
+      "market": "Washington DC",
+      "phone": "(240) 370-5534",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-293",
+      "company": "Merakirestoration",
+      "domain": "merakirestoration.com",
+      "market": "El Paso TX",
+      "phone": "(915) 881-3909",
+      "risk": "LOW",
+      "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-294",
+      "company": "Musiccityroofers",
+      "domain": "musiccityroofers.com",
+      "market": "Nashville TN",
+      "phone": "(615) 802-4999",
+      "risk": "LOW",
+      "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
+    },
+    {
+      "n": "rme-296",
+      "company": "Paragonroofingusa",
+      "domain": "paragonroofingusa.com",
+      "market": "Nashville TN",
+      "phone": "(615) 910-8310",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-297",
+      "company": "Performanceroofingtx",
+      "domain": "performanceroofingtx.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(972) 360-8042",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-298",
+      "company": "Premier Roofing",
+      "domain": "premier-roofing.com",
+      "market": "Denver CO",
+      "phone": "(844) 790-3420",
+      "risk": "LOW",
+      "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-299",
+      "company": "Ranchroofing",
+      "domain": "ranchroofing.com",
+      "market": "Boston MA",
+      "phone": "(866) 973-4491",
+      "risk": "LOW",
+      "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-300",
+      "company": "Rencoroofing",
+      "domain": "rencoroofing.com",
+      "market": "Phoenix AZ",
+      "phone": "(602) 867-9386",
+      "risk": "LOW",
+      "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    }
   ],
   "no_phone_email_path": [
-    "rme-026",
-    "rme-033",
-    "rme-037",
-    "rme-039",
-    "rme-042",
-    "rme-043",
-    "rme-047",
-    "rme-048",
-    "rme-051",
-    "rme-053",
-    "rme-054",
-    "rme-056",
-    "rme-057",
-    "rme-058",
-    "rme-060",
-    "rme-061",
-    "rme-062",
-    "rme-063",
-    "rme-064",
-    "rme-065",
-    "rme-066",
-    "rme-067",
-    "rme-068",
-    "rme-069",
-    "rme-070",
-    "rme-071",
-    "rme-072",
-    "rme-073",
-    "rme-074",
-    "rme-075",
-    "rme-076",
-    "rme-077",
-    "rme-078",
-    "rme-079",
-    "rme-080",
-    "rme-081",
-    "rme-082",
-    "rme-083",
-    "rme-084",
-    "rme-085",
-    "rme-086",
-    "rme-087",
-    "rme-088",
-    "rme-089",
-    "rme-090",
-    "rme-091",
-    "rme-092",
-    "rme-093",
-    "rme-094",
-    "rme-096",
-    "rme-097",
-    "rme-098",
-    "rme-099",
-    "rme-100"
+    {
+      "n": "rme-026",
+      "company": "Fortworthroofing",
+      "domain": "fortworthroofing.net",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion failure for any inbound buyer"
+    },
+    {
+      "n": "rme-033",
+      "company": "Ecosmartroofer",
+      "domain": "ecosmartroofer.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path despite 72 ad frequency"
+    },
+    {
+      "n": "rme-037",
+      "company": "Qwchicagoroof",
+      "domain": "qwchicagoroof.com",
+      "market": "Chicago IL",
+      "phone": "",
+      "risk": "HIGH",
+      "leak_1": "No contact information found — total conversion failure"
+    },
+    {
+      "n": "rme-039",
+      "company": "Americanqualityroofing",
+      "domain": "americanqualityroofing.biz",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": ".biz TLD signals low credibility — roofing buyers associate with spam"
+    },
+    {
+      "n": "rme-042",
+      "company": "Rmroofinginc",
+      "domain": "rmroofinginc.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-043",
+      "company": "Rodroofingsa",
+      "domain": "rodroofingsa.com",
+      "market": "San Antonio TX",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information despite targeting San Antonio market"
+    },
+    {
+      "n": "rme-047",
+      "company": "Terrywoodallroofing",
+      "domain": "terrywoodallroofing.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — complete conversion failure"
+    },
+    {
+      "n": "rme-048",
+      "company": "Finishedworkroofing",
+      "domain": "finishedworkroofing.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-051",
+      "company": "Franciscosroofinginc",
+      "domain": "franciscosroofinginc.co",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": ".co TLD (not .com) creates trust friction — buyers may distrust legitimacy"
+    },
+    {
+      "n": "rme-053",
+      "company": "Blakeroofing",
+      "domain": "blakeroofing.homes",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": ".homes TLD is non-standard — most buyers will doubt legitimacy"
+    },
+    {
+      "n": "rme-054",
+      "company": "Myroofhub",
+      "domain": "myroofhub.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "Hub/marketplace brand strongly implies lead-gen aggregator, not a contractor"
+    },
+    {
+      "n": "rme-056",
+      "company": "Srctn",
+      "domain": "srctn.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "HIGH",
+      "leak_1": "Cryptic acronym domain (SRCTN) has zero brand recall or trust signals"
+    },
+    {
+      "n": "rme-057",
+      "company": "Cjroofingdc",
+      "domain": "cjroofingdc.com",
+      "market": "Washington DC",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — DC market with no conversion path"
+    },
+    {
+      "n": "rme-058",
+      "company": "Roofreplacementphoenixaz",
+      "domain": "roofreplacementphoenixaz.com",
+      "market": "Phoenix AZ",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "Exact-match keyword domain with no brand identity or contact"
+    },
+    {
+      "n": "rme-060",
+      "company": "Roofwhiterock",
+      "domain": "roofwhiterock.com",
+      "market": "Dallas TX (White Rock Lake area)",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "Hyper-local White Rock Lake branding limits perceived Dallas service area"
+    },
+    {
+      "n": "rme-061",
+      "company": "Sanfranciscoroofspecialists",
+      "domain": "sanfranciscoroofspecialists.homes",
+      "market": "San Francisco CA",
+      "phone": "",
+      "risk": "HIGH",
+      "leak_1": ".homes TLD creates immediate trust barrier — SF buyers will question legitimacy"
+    },
+    {
+      "n": "rme-062",
+      "company": "Elmroofingcontractor",
+      "domain": "elmroofingcontractor.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-063",
+      "company": "Traditionsroofing",
+      "domain": "traditionsroofing.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-064",
+      "company": "Pacificperfectionroofing",
+      "domain": "pacificperfectionroofing.homes",
+      "market": "Pacific coast",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": ".homes TLD creates immediate trust barrier — third .homes domain in this dataset"
+    },
+    {
+      "n": "rme-065",
+      "company": "Advantageok",
+      "domain": "advantageok.net",
+      "market": "OK",
+      "phone": "",
+      "risk": "HIGH",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-066",
+      "company": "Statewideroofing",
+      "domain": "statewideroofing.com",
+      "market": "Unknown — multi-state implied",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-067",
+      "company": "Improveitmd",
+      "domain": "improveitmd.com",
+      "market": "MD",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "Home improvement generalist — roofing as secondary service, not specialist"
+    },
+    {
+      "n": "rme-068",
+      "company": "Unitedroofingdc",
+      "domain": "unitedroofingdc.com",
+      "market": "Washington DC",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — DC market with no conversion path"
+    },
+    {
+      "n": "rme-069",
+      "company": "Indytrojanroofing",
+      "domain": "indytrojanroofing.com",
+      "market": "Indianapolis IN",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-070",
+      "company": "Stateroofing",
+      "domain": "stateroofing.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-071",
+      "company": "Sterlingroofingrepair",
+      "domain": "sterlingroofingrepair.site",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": ".site TLD is non-standard — major trust barrier for roofing buyers"
+    },
+    {
+      "n": "rme-072",
+      "company": "Loonstynroofing1976",
+      "domain": "loonstynroofing1976.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "HIGH",
+      "leak_1": "'1976' in domain signals heritage but no verifiable contact found"
+    },
+    {
+      "n": "rme-073",
+      "company": "Therooferbros",
+      "domain": "therooferbros.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-074",
+      "company": "Southerncoastroofing",
+      "domain": "southerncoastroofing.us",
+      "market": "Southern US coast",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": ".us TLD is non-standard for roofing — credibility concern"
+    },
+    {
+      "n": "rme-075",
+      "company": "Isaacshomeimprovements",
+      "domain": "isaacshomeimprovements.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "Home improvements generalist — roofing is one of many services, not specialist"
+    },
+    {
+      "n": "rme-076",
+      "company": "Ascentroofingsd",
+      "domain": "ascentroofingsd.com",
+      "market": "San Diego CA",
+      "phone": "",
+      "risk": "HIGH",
+      "leak_1": "No contact information — San Diego market with no conversion path"
+    },
+    {
+      "n": "rme-077",
+      "company": "Southernrnr",
+      "domain": "southernrnr.com",
+      "market": "Southern US",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "RNR abbreviation (Roofing and Restoration) unclear to first-time buyers"
+    },
+    {
+      "n": "rme-078",
+      "company": "Indyroofandrestoration",
+      "domain": "indyroofandrestoration.com",
+      "market": "Indianapolis IN",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Indy market with no conversion path"
+    },
+    {
+      "n": "rme-079",
+      "company": "Costarroofinginc",
+      "domain": "costarroofinginc.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-080",
+      "company": "Streamlineroof",
+      "domain": "streamlineroof.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-081",
+      "company": "Loaconstruction",
+      "domain": "loaconstruction.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "Construction generalist — roofing is one of many services, not specialist"
+    },
+    {
+      "n": "rme-082",
+      "company": "Pacificroofers",
+      "domain": "pacificroofers.com",
+      "market": "Pacific Coast",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — broad Pacific coast geo with no conversion path"
+    },
+    {
+      "n": "rme-083",
+      "company": "Newhausroofing",
+      "domain": "newhausroofing.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-084",
+      "company": "Supremeexterior",
+      "domain": "supremeexterior.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "Exterior generalist — roofing competes with siding/windows for site focus"
+    },
+    {
+      "n": "rme-085",
+      "company": "Charlotteroofing",
+      "domain": "charlotteroofing.com",
+      "market": "Charlotte NC",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Charlotte market with no conversion path"
+    },
+    {
+      "n": "rme-086",
+      "company": "Southernexteriors",
+      "domain": "southernexteriors.co",
+      "market": "Southern US",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": ".co TLD creates trust friction — buyers may distrust as non-.com domain"
+    },
+    {
+      "n": "rme-087",
+      "company": "Theroofingcompanyfl",
+      "domain": "theroofingcompanyfl.com",
+      "market": "FL",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Florida market with no conversion path"
+    },
+    {
+      "n": "rme-088",
+      "company": "Okcroofers",
+      "domain": "okcroofers.com",
+      "market": "Oklahoma City OK",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — OKC market with no conversion path"
+    },
+    {
+      "n": "rme-089",
+      "company": "Rileysroofing",
+      "domain": "rileysroofing.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-090",
+      "company": "Horizonrr",
+      "domain": "horizonrr.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-091",
+      "company": "Standardroofingok",
+      "domain": "standardroofingok.com",
+      "market": "OK",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Oklahoma market with no conversion path"
+    },
+    {
+      "n": "rme-092",
+      "company": "Westshoreroofing",
+      "domain": "westshoreroofing.com",
+      "market": "Unknown — West Shore region",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-093",
+      "company": "Calihomesimprovements",
+      "domain": "calihomesimprovements.com",
+      "market": "CA",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "Home improvement generalist — roofing is one service among many"
+    },
+    {
+      "n": "rme-094",
+      "company": "Innovativeroofingsystemsoh",
+      "domain": "innovativeroofingsystemsoh.com",
+      "market": "OH",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Ohio market with no conversion path"
+    },
+    {
+      "n": "rme-096",
+      "company": "Qualityroofingspecialists",
+      "domain": "qualityroofingspecialists.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-097",
+      "company": "Buildwithabsolute",
+      "domain": "buildwithabsolute.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "Construction generalist — no roofing-specific identity"
+    },
+    {
+      "n": "rme-098",
+      "company": "Solvistaroofing",
+      "domain": "solvistaroofing.com",
+      "market": "Unknown",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-099",
+      "company": "Roofdoctorphilly",
+      "domain": "roofdoctorphilly.com",
+      "market": "Philadelphia PA",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Philadelphia market with no conversion path"
+    },
+    {
+      "n": "rme-100",
+      "company": "Elpasoroofings",
+      "domain": "elpasoroofings.com",
+      "market": "El Paso TX",
+      "phone": "",
+      "risk": "MEDIUM",
+      "leak_1": "Keyword domain competes in same market as metaep.com and pioneerroofingep.com — loses on trust"
+    },
+    {
+      "n": "rme-107",
+      "company": "Frtroof",
+      "domain": "frtroof.com",
+      "market": "Unknown",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-110",
+      "company": "Lynchroofingaz",
+      "domain": "lynchroofingaz.com",
+      "market": "Phoenix AZ",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-112",
+      "company": "Wilsonroofing",
+      "domain": "wilsonroofing.com",
+      "market": "Austin TX",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-113",
+      "company": "Charlottesbestroofing",
+      "domain": "charlottesbestroofing.com",
+      "market": "Charlotte NC",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-122",
+      "company": "Utxroofing",
+      "domain": "utxroofing.com",
+      "market": "El Paso TX",
+      "phone": "Not accessible — site blocked",
+      "risk": "MEDIUM",
+      "leak_1": "Landing page returned 403/blocked or no HTML response — bot protection prevents CRO audit"
+    },
+    {
+      "n": "rme-123",
+      "company": "Valorhome",
+      "domain": "valorhome.com",
+      "market": "Washington DC",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-135",
+      "company": "Premierroofersnh",
+      "domain": "premierroofersnh.com",
+      "market": "Boston MA",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-141",
+      "company": "Toproofing",
+      "domain": "toproofing.pro",
+      "market": "San Jose CA | San Francisco CA",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-148",
+      "company": "Atombuildersinc",
+      "domain": "atombuildersinc.com",
+      "market": "Los Angeles CA",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-170",
+      "company": "Allroofscommercialroofing",
+      "domain": "allroofscommercialroofing.com",
+      "market": "Chicago IL",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-180",
+      "company": "Idealprecisionroofing",
+      "domain": "idealprecisionroofing.com",
+      "market": "San Antonio TX",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-184",
+      "company": "Localrooferquotes",
+      "domain": "localrooferquotes.com",
+      "market": "San Francisco CA + 8 more",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-190",
+      "company": "Pinnacleext",
+      "domain": "pinnacleext.com",
+      "market": "Nashville TN",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-193",
+      "company": "Resultsroofing",
+      "domain": "resultsroofing.com",
+      "market": "Houston TX",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-198",
+      "company": "Roofjoker",
+      "domain": "roofjoker.com",
+      "market": "Austin TX",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-201",
+      "company": "Socalroof",
+      "domain": "socalroof.com",
+      "market": "Los Angeles CA",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-204",
+      "company": "Summitbuildingroofing",
+      "domain": "summitbuildingroofing.com",
+      "market": "Columbus OH",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-208",
+      "company": "Allroofsemergencyroofing",
+      "domain": "allroofsemergencyroofing.com",
+      "market": "Chicago IL",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-212",
+      "company": "Blacklineroofingaz",
+      "domain": "blacklineroofingaz.com",
+      "market": "Phoenix AZ",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-221",
+      "company": "Greaterbostonroofing",
+      "domain": "greaterbostonroofing.com",
+      "market": "Boston MA",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-230",
+      "company": "Matthewlorandroofing",
+      "domain": "matthewlorandroofing.com",
+      "market": "Austin TX",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-233",
+      "company": "Monragaroofing",
+      "domain": "monragaroofing.com",
+      "market": "Charlotte NC",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-237",
+      "company": "Newroofingpro",
+      "domain": "newroofingpro.com",
+      "market": "Charlotte NC + 2 more",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-243",
+      "company": "Raganroofingnashville",
+      "domain": "raganroofingnashville.com",
+      "market": "Nashville TN",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-245",
+      "company": "Rescueroofing",
+      "domain": "rescueroofing.co",
+      "market": "Houston TX",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-249",
+      "company": "Roofingchicagocompany",
+      "domain": "roofingchicagocompany.com",
+      "market": "Chicago IL",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-256",
+      "company": "Topsideroofingokc",
+      "domain": "topsideroofingokc.com",
+      "market": "Oklahoma City OK",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-259",
+      "company": "314Roofing",
+      "domain": "314roofing.com",
+      "market": "Houston TX",
+      "phone": "Not found on page",
+      "risk": "HIGH",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-263",
+      "company": "Allstar Roofing",
+      "domain": "allstar-roofing.com",
+      "market": "El Paso TX",
+      "phone": "Not accessible — site blocked",
+      "risk": "MEDIUM",
+      "leak_1": "Landing page returned 403/blocked or no HTML response — bot protection prevents CRO audit"
+    },
+    {
+      "n": "rme-282",
+      "company": "Fortworthroofing",
+      "domain": "fortworthroofing.com",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-284",
+      "company": "Ghostroofing",
+      "domain": "ghostroofing.com",
+      "market": "Phoenix AZ",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-285",
+      "company": "Greaterchicagoroofing",
+      "domain": "greaterchicagoroofing.com",
+      "market": "Chicago IL",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-286",
+      "company": "Greatroofingofhouston",
+      "domain": "greatroofingofhouston.com",
+      "market": "Houston TX",
+      "phone": "Not accessible — site blocked",
+      "risk": "MEDIUM",
+      "leak_1": "Landing page returned 403/blocked or no HTML response — bot protection prevents CRO audit"
+    },
+    {
+      "n": "rme-295",
+      "company": "Oklahoma Roofing",
+      "domain": "oklahoma-roofing.co",
+      "market": "Oklahoma City OK",
+      "phone": "Not found on page",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    }
   ]
 }

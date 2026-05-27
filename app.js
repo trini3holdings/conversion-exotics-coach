@@ -78,6 +78,8 @@ let state = {
   calls: [],
   selectedProspectN: null,
   customProspects: [],
+  prospectOverrides: {},      // v3.8.9 — per-prospect field overrides keyed by domain or 'n-<id>'
+                              //          e.g. { 'acme.com': { phone: '(214) 555-1234', phone_added_by: 'Zack', phone_added_ts: 1234567890 } }
   cloudProspects: [],         // pulled from Apps Script backend
   cloudCalls: {},             // {brandSlug: [{ts, prospect_id, domain, caller, outcome}]} cross-caller dedup
   // v3.7.2 — TZ gating
@@ -110,6 +112,7 @@ function loadState() {
     if (s.caller) state.caller = s.caller;
     if (s.sidePane) state.sidePane = s.sidePane;
     if (s.customProspects && Array.isArray(s.customProspects)) state.customProspects = s.customProspects;
+    if (s.prospectOverrides && typeof s.prospectOverrides === 'object') state.prospectOverrides = s.prospectOverrides;
     if (s.lockedVariant) state.lockedVariant = s.lockedVariant;
     if (s.manualVariant) state.manualVariant = s.manualVariant;
     if (s.backendUrl) state.backendUrl = s.backendUrl;
@@ -134,6 +137,7 @@ function saveState() {
       caller: state.caller,
       sidePane: state.sidePane,
       customProspects: state.customProspects,
+      prospectOverrides: state.prospectOverrides,
       cloudProspects: state.cloudProspects,
       cloudCalls: state.cloudCalls,
       tzGateMode: state.tzGateMode,
@@ -301,8 +305,22 @@ function lastCallForProspect(p) {
   return latest;
 }
 
+function prospectOverrideKey(p) {
+  // Stable key for overrides: prefer domain, fall back to id, then n
+  return ((p && (p.domain || p.id || ('n-' + p.n))) || '').toString().toLowerCase();
+}
+
+function applyProspectOverrides(p) {
+  // Returns a shallow-cloned prospect with any saved overrides merged on top
+  const key = prospectOverrideKey(p);
+  const ov = state.prospectOverrides && state.prospectOverrides[key];
+  if (!ov) return p;
+  return Object.assign({}, p, ov);
+}
+
 function mergeProspects() {
-  // Combines base JSON prospects + customProspects + cloudProspects, dedup by domain
+  // Combines base JSON prospects + customProspects + cloudProspects, dedup by domain.
+  // Then applies per-prospect overrides (e.g. phone numbers added in-app).
   const merged = [];
   const seen = new Set();
   const all = PROSPECTS_BASE.concat(state.customProspects || [], state.cloudProspects || []);
@@ -310,10 +328,65 @@ function mergeProspects() {
     const key = (p.domain || p.company || ('id-' + p.n)).toLowerCase();
     if (seen.has(key)) return;
     seen.add(key);
-    merged.push(p);
+    merged.push(applyProspectOverrides(p));
   });
   PROSPECTS = merged;
 }
+
+// v3.8.9 — Save or update an in-app phone number for a prospect
+function saveProspectPhone(prospect, rawPhone) {
+  if (!prospect) return;
+  const phone = (rawPhone || '').trim();
+  const key = prospectOverrideKey(prospect);
+  if (!key) return;
+  state.prospectOverrides = state.prospectOverrides || {};
+  const existing = state.prospectOverrides[key] || {};
+  if (phone) {
+    state.prospectOverrides[key] = Object.assign({}, existing, {
+      phone: phone,
+      phone_added_by: state.caller || 'unknown',
+      phone_added_ts: Date.now()
+    });
+  } else {
+    // Empty input clears the override
+    delete existing.phone;
+    delete existing.phone_added_by;
+    delete existing.phone_added_ts;
+    if (Object.keys(existing).length === 0) {
+      delete state.prospectOverrides[key];
+    } else {
+      state.prospectOverrides[key] = existing;
+    }
+  }
+  saveState();
+  mergeProspects();
+  // Queue a backend sync if configured (uses addProspect endpoint to upsert by domain)
+  if (state.backendUrl) {
+    const updated = PROSPECTS.find(x => prospectOverrideKey(x) === key);
+    if (updated) {
+      state.syncQueue.push({
+        action: 'addProspect',
+        brand: state.brand,
+        prospect: {
+          domain: updated.domain || '',
+          company: updated.company || updated.domain || '',
+          phone: updated.phone || '',
+          email: updated.email || '',
+          market: updated.market || '',
+          notes: (updated.notes || '') + (updated.phone_added_by ? ` [phone added by ${updated.phone_added_by}]` : '')
+        }
+      });
+      saveState();
+      drainSyncQueue && drainSyncQueue();
+    }
+  }
+  if (typeof toast === 'function') toast(phone ? `Saved phone: ${phone}` : 'Cleared phone override');
+  // Re-render recon + prospect list
+  if (typeof renderReconCard === 'function') renderReconCard();
+  if (typeof renderProspectList === 'function') renderProspectList();
+  if (typeof renderStats === 'function') renderStats();
+}
+window.saveProspectPhone = saveProspectPhone;
 
 // Holds the base (JSON file) prospects so merge can rebuild cleanly
 let PROSPECTS_BASE = [];
@@ -486,7 +559,13 @@ function renderReconCard() {
     : '';
 
   const contactBits = [];
-  if (p.phone) contactBits.push(`📞 ${escapeHTML(p.phone)}`);
+  // v3.8.9 — inline phone editor for prospects missing a phone (or to fix typos)
+  if (p.phone) {
+    const addedBy = p.phone_added_by ? ` <span class="phone-added-by" title="Added in-app by ${escapeHTML(p.phone_added_by)}">✓ saved</span>` : '';
+    contactBits.push(`📞 <span class="recon-phone-val">${escapeHTML(p.phone)}</span>${addedBy} <button class="recon-phone-edit-btn" type="button" data-prospect-n="${p.n}" data-action="edit-phone" title="Edit phone">✎</button>`);
+  } else {
+    contactBits.push(`<button class="recon-phone-add-btn" type="button" data-prospect-n="${p.n}" data-action="add-phone">➕ Add phone</button>`);
+  }
   if (p.email) contactBits.push(`✉ ${escapeHTML(p.email)}`);
   if (p.instagram) contactBits.push(`📷 ${escapeHTML(p.instagram)}`);
 
@@ -522,6 +601,25 @@ function renderReconCard() {
     ${notesHTML}
     ${historyHTML}
   `;
+
+  // v3.8.9 — wire phone add/edit buttons (delegated within the recon body)
+  body.querySelectorAll('[data-action="add-phone"], [data-action="edit-phone"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      const n = parseInt(btn.getAttribute('data-prospect-n'), 10);
+      const target = PROSPECTS.find(x => x.n === n);
+      if (!target) return;
+      const action = btn.getAttribute('data-action');
+      const current = action === 'edit-phone' ? (target.phone || '') : '';
+      const promptMsg = action === 'edit-phone'
+        ? `Edit phone for ${target.company || target.domain || 'this prospect'}:\n(blank to clear)`
+        : `Add phone for ${target.company || target.domain || 'this prospect'}:\n(format: (214) 555-1234)`;
+      const input = window.prompt(promptMsg, current);
+      if (input === null) return; // user cancelled
+      saveProspectPhone(target, input);
+    });
+  });
 }
 function statBox(label, val) {
   return `<div class="recon-stat"><div class="recon-stat-label">${escapeHTML(label)}</div><div class="recon-stat-val">${escapeHTML(String(val))}</div></div>`;

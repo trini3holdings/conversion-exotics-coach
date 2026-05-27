@@ -2,73 +2,475 @@
   "_meta": {
     "brand": "conversion-exotics",
     "audit_value": 3000,
-    "generated_from": "brands/conversion-exotics/prospects.json (auto-tiered by risk + phone confidence)",
+    "generated_at": "2026-05-27T22:25:08.573825+00:00",
+    "generated_from": "multi_reaudit.py (heuristic re-score, moderate threshold)",
     "total_prospects": 50,
-    "generated_at": "2026-05-27T22:15:12.809242Z",
     "tier_definitions": {
-      "1": "HIGH conversion risk + HIGH phone confidence \u2014 top priority cold call",
-      "2": "HIGH/MEDIUM risk + MEDIUM/LOW phone confidence \u2014 call with caution, verify number first",
-      "3": "MEDIUM risk + HIGH phone confidence \u2014 solid call, looser hook",
-      "4": "LOW risk + verified phone \u2014 warm conversation, lead with curiosity",
-      "no_phone": "Risk identified but no verified phone \u2014 email/LinkedIn or research path"
+      "1": "HIGH conversion risk + HIGH phone confidence — top priority cold call",
+      "2": "HIGH conversion risk + MEDIUM/LOW phone confidence — call with caution",
+      "3": "MEDIUM conversion risk + HIGH phone confidence — solid call, looser hook",
+      "4": "LOW conversion risk + verified phone — warm conversation",
+      "no_phone": "No verified phone — email/LinkedIn or research path"
     }
   },
-  "tier_1_priority_calls": [],
+  "tier_1_priority_calls": [
+    {
+      "n": 1,
+      "company": "turo.com",
+      "domain": "turo.com",
+      "market": "National (11 cities)",
+      "phone": "(415) 965-4525",
+      "risk": "HIGH",
+      "leak_1": "Peer-to-peer marketplace — no direct brand CTA; quality varies by host"
+    },
+    {
+      "n": 4,
+      "company": "velocityexoticcars.com",
+      "domain": "velocityexoticcars.com",
+      "market": "Los Angeles CA",
+      "phone": "(213) 340-1567",
+      "risk": "HIGH",
+      "leak_1": "Fleet page scored — browsing intent, not conversion intent; primary CTA should be booking page"
+    },
+    {
+      "n": 8,
+      "company": "dynastyluxuryrentals.com",
+      "domain": "dynastyluxuryrentals.com",
+      "market": "Miami FL / Multi-city",
+      "phone": "(786) 486-2285",
+      "risk": "HIGH",
+      "leak_1": "No email address publicly listed — form-only contact limits trust for premium buyers"
+    },
+    {
+      "n": 38,
+      "company": "bluejaycars.com",
+      "domain": "bluejaycars.com",
+      "market": "Austin TX",
+      "phone": "(915) 474-6466",
+      "risk": "HIGH",
+      "leak_1": "NICHE FLAG: Classic/vintage wedding cars — not truly exotic/supercar competitor. Kept as niche classic"
+    },
+    {
+      "n": 39,
+      "company": "prestigeblackrentals.com",
+      "domain": "prestigeblackrentals.com",
+      "market": "Dallas TX / Fort Worth TX",
+      "phone": "(214)-207-2481",
+      "risk": "HIGH",
+      "leak_1": "Gmail email on a luxury brand site — major CRO/trust red flag"
+    }
+  ],
   "tier_2_call_with_caution": [
-    "dreamexoticrentalcars.com",
-    "southbeachexoticrentals.com",
-    "supercarexp.vip",
-    "iceexotics.com",
-    "mphclub.com",
-    "milanoluxuryrental.com",
-    "premierautomiami.com",
-    "drmlxry.com",
-    "imperiumluxurymiami.com",
-    "95autoclub.com",
-    "royaltyexoticcars.com",
-    "sapphireexecutivetravel.com",
-    "monzaexotics.com",
-    "iexoticauto.com",
-    "mericamusclerentals.com",
-    "luxeafmotors.com",
-    "shiftrentalsllc.com",
-    "embryexotics.com",
-    "gmluxe.net",
-    "vssrexotics.com",
-    "preferredexotics.com",
-    "bhcarrental.com",
-    "bellablushcollective.com",
-    "palmexoticrentals.com",
-    "sarasotaluxurycarrentals.com",
-    "blackravenluxury.com"
+    {
+      "n": 2,
+      "company": "dreamexoticrentalcars.com",
+      "domain": "dreamexoticrentalcars.com",
+      "market": "Las Vegas NV",
+      "phone": "(888) 362-7791 | (800) 975-8382",
+      "risk": "HIGH",
+      "leak_1": "Two toll-free numbers on site without clear differentiation — which to call?"
+    },
+    {
+      "n": 6,
+      "company": "supercarexp.vip",
+      "domain": "supercarexp.vip",
+      "market": "Phoenix AZ / Las Vegas NV",
+      "phone": "(888) 678-6077 | Text: (725) 425-3583",
+      "risk": "HIGH",
+      "leak_1": "Multi-location site (LV, LA, Scottsdale, Boise, Miami, SLC) — homepage lacks geo-targeted CTA"
+    },
+    {
+      "n": 31,
+      "company": "iexoticauto.com",
+      "domain": "iexoticauto.com",
+      "market": "Houston TX / Austin / Dallas / Beverly Hills CA",
+      "phone": "(888) 850-3155 | (888) 351-8616",
+      "risk": "HIGH",
+      "leak_1": "Two toll-free numbers with no clear differentiation — which to call for what?"
+    }
   ],
   "tier_3_solid_calls": [
-    "turo.com",
-    "velocityexoticcars.com",
-    "centurionlifestyle.com",
-    "apexexoticrentals.com",
-    "dynastyluxuryrentals.com",
-    "emmonsluxurycarrental.com",
-    "luxride.miami",
-    "premierautoatlanta.com",
-    "lvcexotics.com",
-    "selectsupercars.com",
-    "777exotics.com",
-    "uptownexotics.com",
-    "premierautolosangeles.com",
-    "mvpmiami.com",
-    "premierluxuryclub.com",
-    "grantmotorgroup.com",
-    "bluejaycars.com",
-    "prestigeblackrentals.com",
-    "exoticsbylegacy.com",
-    "houstoncarsrental.com"
+    {
+      "n": 19,
+      "company": "lvcexotics.com",
+      "domain": "lvcexotics.com",
+      "market": "Las Vegas NV",
+      "phone": "(702) 586-0008",
+      "risk": "MEDIUM",
+      "leak_1": "Gmail email address on a professional exotic rental site — major trust/CRO red flag"
+    }
   ],
   "tier_4_warm_calls": [
-    "blacklabelexotics.com",
-    "dsluxury.com",
-    "monarqmotors.com",
-    "diplomatrentals.com"
+    {
+      "n": 5,
+      "company": "centurionlifestyle.com",
+      "domain": "centurionlifestyle.com",
+      "market": "Los Angeles CA",
+      "phone": "(888) 399-4356",
+      "risk": "LOW",
+      "leak_1": "Corporate transportation is a secondary service prominently featured — dilutes exotic identity"
+    },
+    {
+      "n": 7,
+      "company": "apexexoticrentals.com",
+      "domain": "apexexoticrentals.com",
+      "market": "Phoenix/Scottsdale AZ",
+      "phone": "602-402-5286",
+      "risk": "LOW",
+      "leak_1": "Owner first-name email (Aaron@) is both a trust signal and a scale concern for premium buyers"
+    },
+    {
+      "n": 9,
+      "company": "emmonsluxurycarrental.com",
+      "domain": "emmonsluxurycarrental.com",
+      "market": "Atlanta GA",
+      "phone": "+1 (877) 757-4115",
+      "risk": "LOW",
+      "leak_1": "Scored page is a specific vehicle VDP (McLaren 570GT) — not a conversion landing page for new visitors"
+    },
+    {
+      "n": 11,
+      "company": "blacklabelexotics.com",
+      "domain": "blacklabelexotics.com",
+      "market": "Dallas TX",
+      "phone": "(469) 200-0286",
+      "risk": "LOW",
+      "leak_1": "No email publicly listed — adds friction for business inquiries and invoice requests"
+    },
+    {
+      "n": 12,
+      "company": "mphclub.com",
+      "domain": "mphclub.com",
+      "market": "Miami FL / Fort Lauderdale FL",
+      "phone": "(888) 674-4044 | Local: (305) 330-6322",
+      "risk": "LOW",
+      "leak_1": "Multiple Miami-area locations (Miami, Miami Gardens, casino/resort) without clear primary CTA on homepage"
+    },
+    {
+      "n": 14,
+      "company": "premierautomiami.com",
+      "domain": "premierautomiami.com",
+      "market": "Miami Beach FL",
+      "phone": "(305) 680-1266 | (786) 886-3460",
+      "risk": "LOW",
+      "leak_1": "Landing page (/landing/miami/) = PPC lander — no clear organic authority signals on page"
+    },
+    {
+      "n": 15,
+      "company": "luxride.miami",
+      "domain": "luxride.miami",
+      "market": "Miami FL / Fort Lauderdale FL",
+      "phone": "(754) 280-8898",
+      "risk": "LOW",
+      "leak_1": "Phone is click-to-call in hero — strong CRO practice; but no chat alternative for non-callers"
+    },
+    {
+      "n": 16,
+      "company": "drmlxry.com",
+      "domain": "drmlxry.com",
+      "market": "Miami FL / Detroit MI",
+      "phone": "(313) 447-1684 (Detroit) | (786) 999-8288 (Miami)",
+      "risk": "LOW",
+      "leak_1": "Two-city brand (Detroit + Miami) with different phone numbers — creates confusion for Miami visitors"
+    },
+    {
+      "n": 17,
+      "company": "premierautoatlanta.com",
+      "domain": "premierautoatlanta.com",
+      "market": "Atlanta GA",
+      "phone": "(404) 537-5194",
+      "risk": "LOW",
+      "leak_1": "PPC landing page (/landing/atlanta/) scored — no organic brand authority on the page"
+    },
+    {
+      "n": 18,
+      "company": "imperiumluxurymiami.com",
+      "domain": "imperiumluxurymiami.com",
+      "market": "Miami FL / Fort Lauderdale FL",
+      "phone": "+1 (305) 850-6661 | +1 (305) 399-6675",
+      "risk": "LOW",
+      "leak_1": "No email on homepage or contact page — form-only is a premium brand credibility gap"
+    },
+    {
+      "n": 20,
+      "company": "95autoclub.com",
+      "domain": "95autoclub.com",
+      "market": "Miami FL / Fort Lauderdale FL",
+      "phone": "(954) 994-9494 | +1 (336) 575-9791",
+      "risk": "LOW",
+      "leak_1": "125-mile/day limit is prominently disclosed — creates pricing anxiety before conversion"
+    },
+    {
+      "n": 21,
+      "company": "royaltyexoticcars.com",
+      "domain": "royaltyexoticcars.com",
+      "market": "Las Vegas NV / Scottsdale AZ",
+      "phone": "(855) 941-0335 (LV) | (702) 755-6076",
+      "risk": "LOW",
+      "leak_1": "Scored page is the Scottsdale locations page — regional, not conversion page"
+    },
+    {
+      "n": 22,
+      "company": "selectsupercars.com",
+      "domain": "selectsupercars.com",
+      "market": "Austin TX / Multi-city",
+      "phone": "(512) 273-3755",
+      "risk": "LOW",
+      "leak_1": "Fleet page scored — browsing intent, not conversion ready; should be driving to booking page"
+    },
+    {
+      "n": 23,
+      "company": "777exotics.com",
+      "domain": "777exotics.com",
+      "market": "Los Angeles CA / Las Vegas NV",
+      "phone": "1-800-903-5926",
+      "risk": "LOW",
+      "leak_1": "Scored page (/exotic-car-rentals/) is a category page, not a direct booking CTA"
+    },
+    {
+      "n": 25,
+      "company": "uptownexotics.com",
+      "domain": "uptownexotics.com",
+      "market": "Houston TX",
+      "phone": "(713) 784-8400",
+      "risk": "LOW",
+      "leak_1": "Phone is in contact page but not hero section of homepage — missed above-fold CTA"
+    },
+    {
+      "n": 26,
+      "company": "premierautolosangeles.com",
+      "domain": "premierautolosangeles.com",
+      "market": "Los Angeles CA",
+      "phone": "+1-323-538-5046",
+      "risk": "LOW",
+      "leak_1": "PPC landing page (/landing/los-angeles/) scored — thin on organic authority"
+    },
+    {
+      "n": 27,
+      "company": "mvpmiami.com",
+      "domain": "mvpmiami.com",
+      "market": "Miami FL / Fort Lauderdale FL",
+      "phone": "(786) 877-4317",
+      "risk": "LOW",
+      "leak_1": "No email publicly listed — limits B2B and event inquiries"
+    },
+    {
+      "n": 28,
+      "company": "premierluxuryclub.com",
+      "domain": "premierluxuryclub.com",
+      "market": "Scottsdale AZ / Phoenix AZ",
+      "phone": "(480) 256-8840",
+      "risk": "LOW",
+      "leak_1": "No pricing on homepage — form-only quote process for high-intent visitors"
+    },
+    {
+      "n": 30,
+      "company": "grantmotorgroup.com",
+      "domain": "grantmotorgroup.com",
+      "market": "Scottsdale / Phoenix AZ",
+      "phone": "(623) 400-3031",
+      "risk": "LOW",
+      "leak_1": "Contact method is Instagram DM (@grantmotorgroup) — unusual for luxury brand, not universally accessible"
+    },
+    {
+      "n": 33,
+      "company": "dsluxury.com",
+      "domain": "dsluxury.com",
+      "market": "Fort Lauderdale FL / Chicago IL",
+      "phone": "+1 (786) 422-1080 (FLL) | +1 (844) 364-4653 (Chicago)",
+      "risk": "LOW",
+      "leak_1": "Membership-model business (appointment-only) — not a walk-in or immediate-booking competitor"
+    },
+    {
+      "n": 36,
+      "company": "monarqmotors.com",
+      "domain": "monarqmotors.com",
+      "market": "New York NY / Boca Raton FL",
+      "phone": "+1 (516) 206-2755",
+      "risk": "LOW",
+      "leak_1": "Farmingdale NY location (Long Island) may disappoint NYC buyers expecting Manhattan pickup"
+    },
+    {
+      "n": 40,
+      "company": "exoticsbylegacy.com",
+      "domain": "exoticsbylegacy.com",
+      "market": "Miami FL / Fort Lauderdale FL",
+      "phone": "(786) 642-4192",
+      "risk": "LOW",
+      "leak_1": "No phone visible in hero on scored homepage — contact only via form and footer"
+    },
+    {
+      "n": 41,
+      "company": "houstoncarsrental.com",
+      "domain": "houstoncarsrental.com",
+      "market": "Houston TX / Humble TX",
+      "phone": "(832) 966-0800",
+      "risk": "LOW",
+      "leak_1": "Humble TX location (15108 Lee Rd) far from central Houston — delivery dependency"
+    },
+    {
+      "n": 42,
+      "company": "diplomatrentals.com",
+      "domain": "diplomatrentals.com",
+      "market": "Las Vegas NV",
+      "phone": "(877) 457-4337 | Text: (725) 425-3583",
+      "risk": "LOW",
+      "leak_1": "Diplomat is powered by Supercar Experience (same owner) — brand confusion with supercarexp.vip"
+    },
+    {
+      "n": 46,
+      "company": "bhcarrental.com",
+      "domain": "bhcarrental.com",
+      "market": "Beverly Hills CA / Los Angeles CA",
+      "phone": "(310) 274-6969 (BH) | (310) 256-4385 (LA)",
+      "risk": "LOW",
+      "leak_1": "No email publicly listed — may limit B2B/event booking inquiries"
+    }
   ],
-  "no_phone_email_path": []
+  "no_phone_email_path": [
+    {
+      "n": 3,
+      "company": "southbeachexoticrentals.com",
+      "domain": "southbeachexoticrentals.com",
+      "market": "LA / Austin / Dallas",
+      "phone": "Not found",
+      "risk": "HIGH",
+      "leak_1": "No phone or email found publicly — critical conversion blocker"
+    },
+    {
+      "n": 10,
+      "company": "iceexotics.com",
+      "domain": "iceexotics.com",
+      "market": "Atlanta GA",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found publicly — critical conversion blocker"
+    },
+    {
+      "n": 13,
+      "company": "milanoluxuryrental.com",
+      "domain": "milanoluxuryrental.com",
+      "market": "Fort Lauderdale / Miami FL",
+      "phone": "Not found publicly",
+      "risk": "HIGH",
+      "leak_1": "No phone or email found on site — form-only and chat-only contact is a major CRO gap"
+    },
+    {
+      "n": 24,
+      "company": "sapphireexecutivetravel.com",
+      "domain": "sapphireexecutivetravel.com",
+      "market": "Houston TX",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "FLAGGED: 'Executive travel' brand implies chauffeured/corporate, not self-drive exotic rental"
+    },
+    {
+      "n": 29,
+      "company": "monzaexotics.com",
+      "domain": "monzaexotics.com",
+      "market": "Los Angeles CA / San Francisco CA",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found publicly — critical conversion blocker"
+    },
+    {
+      "n": 32,
+      "company": "mericamusclerentals.com",
+      "domain": "mericamusclerentals.com",
+      "market": "Atlanta GA",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found publicly — critical conversion blocker"
+    },
+    {
+      "n": 34,
+      "company": "luxeafmotors.com",
+      "domain": "luxeafmotors.com",
+      "market": "Houston TX",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 35,
+      "company": "shiftrentalsllc.com",
+      "domain": "shiftrentalsllc.com",
+      "market": "New York NY",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 37,
+      "company": "embryexotics.com",
+      "domain": "embryexotics.com",
+      "market": "Atlanta GA",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 43,
+      "company": "gmluxe.net",
+      "domain": "gmluxe.net",
+      "market": "Miami FL / Fort Lauderdale FL",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found publicly — critical conversion blocker"
+    },
+    {
+      "n": 44,
+      "company": "vssrexotics.com",
+      "domain": "vssrexotics.com",
+      "market": "Las Vegas NV",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found publicly — critical conversion blocker"
+    },
+    {
+      "n": 45,
+      "company": "preferredexotics.com",
+      "domain": "preferredexotics.com",
+      "market": "Miami FL / Fort Lauderdale FL",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found publicly — critical conversion blocker"
+    },
+    {
+      "n": 47,
+      "company": "bellablushcollective.com",
+      "domain": "bellablushcollective.com",
+      "market": "Dallas / Fort Lauderdale / Austin TX",
+      "phone": "Not found",
+      "risk": "HIGH",
+      "leak_1": "Brand name 'Bella Blush Collective' suggests wedding/events/fashion, not exotic car rental"
+    },
+    {
+      "n": 48,
+      "company": "palmexoticrentals.com",
+      "domain": "palmexoticrentals.com",
+      "market": "Miami FL",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found publicly — critical conversion blocker"
+    },
+    {
+      "n": 49,
+      "company": "sarasotaluxurycarrentals.com",
+      "domain": "sarasotaluxurycarrentals.com",
+      "market": "Austin TX (listed)",
+      "phone": "Not found",
+      "risk": "MEDIUM",
+      "leak_1": "GEOGRAPHIC MISMATCH: Sarasota-branded but appearing in Austin TX searches — confusing for buyers"
+    },
+    {
+      "n": 50,
+      "company": "blackravenluxury.com",
+      "domain": "blackravenluxury.com",
+      "market": "Fort Lauderdale / Miami FL",
+      "phone": "Not found",
+      "risk": "HIGH",
+      "leak_1": "No phone or email found publicly — critical conversion blocker"
+    }
+  ]
 }

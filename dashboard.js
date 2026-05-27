@@ -116,7 +116,17 @@ function renderBrandCard(slug, brand, intel, mode) {
   const auditValue = meta.audit_value || 3000;
   const industry = meta.industry || 'unspecified';
   const totalProspects = prospects.filter(p => !p.is_client).length;
-  const withPhone = prospects.filter(p => !p.is_client && p.phone).length;
+  // v3.8.9 — strict phone check: 'Not published', 'Form only', 'support via app only' etc. don't count
+  const looksLikeRealPhone = (ph) => {
+    if (!ph) return false;
+    const s = String(ph).trim();
+    if (!s) return false;
+    if (/not\s*publish|form\s*only|app\s*only|chat\s*only|none|n\/?a|tbd|unknown|123[-\s]?456/i.test(s)) return false;
+    // Require at least 7 digits
+    return (s.match(/\d/g) || []).length >= 7;
+  };
+  const withPhone = prospects.filter(p => !p.is_client && looksLikeRealPhone(p.phone)).length;
+  const withoutPhone = totalProspects - withPhone;
 
   // v3.6 — canonical unified hot list tiers
   const t1 = hotList?.tier_1?.length || 0;
@@ -219,7 +229,8 @@ function renderBrandCard(slug, brand, intel, mode) {
         <!-- Brand stats grid -->
         <div class="dash-stats-grid">
           <div class="dash-stat"><div class="ds-num">${totalProspects}</div><div class="ds-label">Total prospects</div></div>
-          <div class="dash-stat"><div class="ds-num">${withPhone}</div><div class="ds-label">With phone</div></div>
+          <div class="dash-stat"><div class="ds-num">${withPhone}</div><div class="ds-label">📞 Callable now</div></div>
+          <div class="dash-stat"><div class="ds-num" style="color:#f59e0b">${withoutPhone}</div><div class="ds-label">No phone yet</div></div>
           <div class="dash-stat"><div class="ds-num">$${auditValue.toLocaleString()}</div><div class="ds-label">Audit value</div></div>
           <div class="dash-stat"><div class="ds-num">${Object.keys(scripts).filter(k => !k.startsWith('_')).length}</div><div class="ds-label">Script variants</div></div>
         </div>
