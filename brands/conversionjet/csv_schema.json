@@ -1,0 +1,28 @@
+{
+  "brand": "ConversionJet",
+  "version": 1,
+  "description": "Column-header mapping + market inference rules for CSV uploads. Any column header that matches one of the aliases (case-insensitive, whitespace/underscore-normalized) maps to the canonical field. Aviation-specific aliases included (carrier, operator, fleet, base, etc.).",
+  "column_map": {
+    "domain": ["domain", "website", "url", "site", "homepage", "web", "scored_domain"],
+    "company": ["company", "operator", "carrier", "business", "business_name", "name", "charter_operator", "flight_dept"],
+    "market": ["market", "city", "base", "home_base", "metro", "headquarters", "hq", "location", "primary_market"],
+    "phone": ["phone", "phone_number", "tel", "telephone", "ops_phone", "main_line"],
+    "email": ["email", "contact_email", "ops_email", "sales_email"],
+    "issues": ["issues", "leaks", "findings", "problems", "audit_issues", "conversion_issues"],
+    "speed": ["speed", "speed_score", "page_speed", "load_time_score"],
+    "trust": ["trust", "trust_score", "trust_signals", "certifications"],
+    "cta": ["cta", "cta_score", "cta_strength", "quote_cta"],
+    "risk": ["risk", "risk_level", "risk_score"],
+    "phone_confidence": ["phone_confidence", "phone_conf", "phone_verified"],
+    "notes": ["notes", "note", "remarks", "comments"],
+    "url": ["scored_url", "audit_url", "landing_page", "lp_url", "quote_page"],
+    "certifications": ["argus", "wyvern", "isbao", "cert_level", "safety_rating"]
+  },
+  "required_columns": ["domain"],
+  "default_market": "National",
+  "industry_keyword_root": "private jet charter",
+  "icp_quick_signals": {
+    "high_fit_markers": ["Part 135", "ARGUS", "Wyvern", "IS-BAO", "charter", "fractional", "membership"],
+    "low_fit_markers": ["flight school", "drone", "skydiving", "balloon", "helicopter tour", "leisure"]
+  }
+}

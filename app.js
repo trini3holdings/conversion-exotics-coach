@@ -45,6 +45,7 @@ let SCRIPTS = {};
 let OBJECTIONS = [];
 let PROSPECTS = [];
 let MARKET_CPC = {};
+let CSV_SCHEMA = null;       // per-brand column-mapping rules
 
 // ============== STATE ==============
 let state = {
@@ -128,10 +129,10 @@ function setSyncBadge(status) {
   if (!el) return;
   el.className = 'sync-badge ' + status;
   const label = {
-    offline: '● offline',
-    online: '● synced',
-    syncing: '● syncing…',
-    error: '● error',
+    offline: '● No sheet linked',
+    online: '● Sheet synced',
+    syncing: '● Syncing…',
+    error: '● Sync error',
     queued: `● ${state.syncQueue.length} queued`
   }[status] || ('● ' + status);
   el.textContent = label;
@@ -233,16 +234,20 @@ async function loadBrandData(brandSlug) {
   }
   const base = `brands/${brandSlug}`;
   try {
-    const [scriptsRes, objRes, prospRes, cpcRes] = await Promise.all([
+    const [scriptsRes, objRes, prospRes, cpcRes, schemaRes] = await Promise.all([
       fetch(`${base}/scripts.json`),
       fetch(`${base}/objections.json`),
       fetch(`${base}/prospects.json`),
-      fetch(`${base}/market_cpc.json`)
+      fetch(`${base}/market_cpc.json`),
+      fetch(`${base}/csv_schema.json`).catch(() => null)
     ]);
     const scriptsData = await scriptsRes.json();
     const objData = await objRes.json();
     PROSPECTS_BASE = await prospRes.json();
     MARKET_CPC = await cpcRes.json();
+    // Per-brand CSV schema (optional — falls back to legacy parser if missing)
+    try { CSV_SCHEMA = schemaRes && schemaRes.ok ? await schemaRes.json() : null; }
+    catch (e) { CSV_SCHEMA = null; }
     SCRIPTS = scriptsData.variants;
     OBJECTIONS = objData.objections;
     mergeProspects();
@@ -773,23 +778,91 @@ function selectProspect(n) {
 }
 
 // ============== CSV UPLOAD ==============
+// Normalize header text → lowercase, alpha-only, underscore-collapsed
+function normHeader(h) {
+  return String(h || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+}
+// Build reverse alias map from CSV_SCHEMA.column_map (alias → canonical)
+function buildAliasMap() {
+  const map = {};
+  if (!CSV_SCHEMA || !CSV_SCHEMA.column_map) return map;
+  Object.entries(CSV_SCHEMA.column_map).forEach(([canonical, aliases]) => {
+    map[normHeader(canonical)] = canonical;
+    (aliases || []).forEach(a => { map[normHeader(a)] = canonical; });
+  });
+  return map;
+}
+// Infer market from US phone area code — used when CSV omits market
+const AREA_CODE_TO_MARKET = {
+  '305': 'Miami', '786': 'Miami', '954': 'Fort Lauderdale', '561': 'West Palm Beach',
+  '212': 'New York', '646': 'New York', '917': 'New York', '718': 'New York',
+  '310': 'Los Angeles', '424': 'Los Angeles', '323': 'Los Angeles', '213': 'Los Angeles',
+  '702': 'Las Vegas', '725': 'Las Vegas',
+  '480': 'Scottsdale', '602': 'Phoenix', '623': 'Phoenix',
+  '214': 'Dallas', '469': 'Dallas', '972': 'Dallas', '817': 'Fort Worth', '682': 'Fort Worth',
+  '713': 'Houston', '281': 'Houston', '832': 'Houston',
+  '404': 'Atlanta', '470': 'Atlanta', '678': 'Atlanta',
+  '407': 'Orlando', '321': 'Orlando',
+  '415': 'San Francisco', '628': 'San Francisco', '650': 'San Francisco',
+  '312': 'Chicago', '773': 'Chicago', '872': 'Chicago',
+  '617': 'Boston', '857': 'Boston',
+  '202': 'Washington DC', '703': 'Washington DC', '571': 'Washington DC',
+  '615': 'Nashville', '629': 'Nashville',
+  '843': 'Charleston', '912': 'Savannah',
+  '206': 'Seattle', '425': 'Seattle',
+  '503': 'Portland', '971': 'Portland',
+  '720': 'Denver', '303': 'Denver'
+};
+function inferMarketFromPhone(phone) {
+  if (!phone) return null;
+  const digits = String(phone).replace(/\D/g, '');
+  const ten = digits.length === 11 ? digits.slice(1) : digits;
+  if (ten.length < 3) return null;
+  return AREA_CODE_TO_MARKET[ten.slice(0, 3)] || null;
+}
 function parseCSV(text) {
   const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
-  const headers = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/\s+/g, '_'));
+  const aliasMap = buildAliasMap();
+  const rawHeaders = splitCSVLine(lines[0]).map(h => normHeader(h));
+  // Map each raw header to its canonical field name (or keep raw if unknown)
+  const canonicalHeaders = rawHeaders.map(h => aliasMap[h] || h);
+  const required = (CSV_SCHEMA && CSV_SCHEMA.required_columns) || ['domain'];
+  const missing = required.filter(r => !canonicalHeaders.includes(r));
+  if (missing.length) {
+    alert(`CSV missing required column(s): ${missing.join(', ')}\n\nFor ${CSV_SCHEMA ? CSV_SCHEMA.brand : 'this brand'}, recognized aliases for "${missing[0]}" include: ${(CSV_SCHEMA && CSV_SCHEMA.column_map[missing[0]]) ? CSV_SCHEMA.column_map[missing[0]].join(', ') : '(none configured)'}`);
+    return [];
+  }
+  const defaultMarket = (CSV_SCHEMA && CSV_SCHEMA.default_market) || '';
   return lines.slice(1).map((line, i) => {
     const cells = splitCSVLine(line);
     const row = { n: 1000 + i };
-    headers.forEach((h, j) => { row[h] = (cells[j] || '').trim(); });
+    canonicalHeaders.forEach((h, j) => { row[h] = (cells[j] || '').trim(); });
+    // Issues: support pipe-delimited OR semicolon-delimited
     if (row.issues && typeof row.issues === 'string') {
-      row.issues = row.issues.split('|').map(s => s.trim()).filter(Boolean);
+      row.issues = row.issues.split(/[|;]/).map(s => s.trim()).filter(Boolean);
     }
+    // Numeric coercion on score fields
     ['speed', 'trust', 'cta', 'speed_score', 'trust_score', 'cta_score'].forEach(k => {
       if (row[k] && !isNaN(Number(row[k]))) row[k] = Number(row[k]);
     });
     if (row.speed_score !== undefined) row.speed = row.speed_score;
     if (row.trust_score !== undefined) row.trust = row.trust_score;
     if (row.cta_score !== undefined) row.cta = row.cta_score;
+    // Market enrichment: explicit → phone area code → brand default
+    if (!row.market) {
+      row.market = inferMarketFromPhone(row.phone) || defaultMarket;
+    }
+    // CPC enrichment from market_cpc.json (read-only — stored for sheet sync)
+    const cpc = lookupMarketCPC(row.market);
+    if (cpc) {
+      row.primary_kw = cpc.primary_kw;
+      row.cpc_low = cpc.cpc_low;
+      row.cpc_high = cpc.cpc_high;
+    }
+    // Normalize risk + cta to uppercase enums
+    if (row.risk) row.risk = String(row.risk).toUpperCase().replace('MED', 'MEDIUM');
+    if (row.cta && typeof row.cta === 'string') row.cta = row.cta.toUpperCase();
     return row;
   });
 }
@@ -1075,6 +1148,10 @@ async function init() {
 
   // ============== EVENT BINDINGS ==============
   brandSel.addEventListener('change', e => switchBrand(e.target.value));
+  // Sync badge — click opens Backend modal so user can wire the sheet
+  const syncBadgeEl = document.getElementById('syncBadge');
+  if (syncBadgeEl) syncBadgeEl.addEventListener('click', () => openModal('backendModal'));
+
   // Topbar "📊 Sheet" button — opens the master sheet for the current brand
   document.getElementById('openSheetBtn').addEventListener('click', () => {
     const url = state.sheetUrlByBrand[state.brand];

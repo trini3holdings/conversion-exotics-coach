@@ -1,0 +1,27 @@
+{
+  "brand": "Conversion Exotics",
+  "version": 1,
+  "description": "Column-header mapping + market inference rules for CSV uploads. Any column header that matches one of the aliases (case-insensitive, whitespace/underscore-normalized) maps to the canonical field.",
+  "column_map": {
+    "domain": ["domain", "website", "url", "site", "homepage", "web"],
+    "company": ["company", "business", "business_name", "name", "shop", "rental_company"],
+    "market": ["market", "city", "location", "metro", "area", "geo", "region"],
+    "phone": ["phone", "phone_number", "tel", "telephone", "contact_phone"],
+    "email": ["email", "contact_email", "owner_email"],
+    "issues": ["issues", "leaks", "findings", "problems", "audit_issues"],
+    "speed": ["speed", "speed_score", "page_speed", "load_time_score"],
+    "trust": ["trust", "trust_score", "trust_signals"],
+    "cta": ["cta", "cta_score", "cta_strength"],
+    "risk": ["risk", "risk_level", "risk_score"],
+    "phone_confidence": ["phone_confidence", "phone_conf", "phone_verified"],
+    "notes": ["notes", "note", "remarks", "comments"],
+    "url": ["scored_url", "audit_url", "landing_page", "lp_url"]
+  },
+  "required_columns": ["domain"],
+  "default_market": "Miami",
+  "industry_keyword_root": "exotic car rental",
+  "icp_quick_signals": {
+    "high_fit_markers": ["Miami", "Los Angeles", "Las Vegas", "Scottsdale", "Dallas", "Houston", "Atlanta", "Orlando"],
+    "low_fit_markers": ["used car", "dealership", "auto repair", "tow"]
+  }
+}
