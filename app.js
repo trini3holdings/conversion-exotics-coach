@@ -89,7 +89,9 @@ let state = {
   // v3.3 UX
   saidBeats: {},              // {variantKey: [beatIdx,...]} per-call tracking
   reconRailOpen: false,
-  lastActiveBeatIdx: -1
+  lastActiveBeatIdx: -1,
+  // v3.6 validation
+  brandValidation: { ok: true, errors: [], warnings: [] }
 };
 
 // ============== STORAGE ==============
@@ -259,76 +261,93 @@ async function loadBrandData(brandSlug) {
   const brand = BRANDS[brandSlug];
   if (!brand || !brand.active) {
     SCRIPTS = {}; OBJECTIONS = []; PROSPECTS = []; PROSPECTS_BASE = []; MARKET_CPC = {};
+    state.brandValidation = { ok: true, errors: [], warnings: [] };
     return false;
   }
   const base = `brands/${brandSlug}`;
+  const safeFetch = (file, fallback) => fetch(`${base}/${file}`)
+    .then(r => r.ok ? r.json() : fallback)
+    .catch(() => fallback);
   try {
-    const [scriptsRes, objRes, prospRes, cpcRes, schemaRes] = await Promise.all([
-      fetch(`${base}/scripts.json`),
-      fetch(`${base}/objections.json`),
-      fetch(`${base}/prospects.json`),
-      fetch(`${base}/market_cpc.json`),
+    const [scriptsRaw, objRaw, prospRaw, cpcRaw, schemaRes] = await Promise.all([
+      safeFetch('scripts.json', {}),
+      safeFetch('objections.json', {}),
+      safeFetch('prospects.json', []),
+      safeFetch('market_cpc.json', {}),
       fetch(`${base}/csv_schema.json`).catch(() => null)
     ]);
-    const scriptsData = await scriptsRes.json();
-    const objData = await objRes.json();
-    const prospRaw = await prospRes.json();
-    MARKET_CPC = await cpcRes.json();
-    // Per-brand CSV schema (optional — falls back to legacy parser if missing)
     try { CSV_SCHEMA = schemaRes && schemaRes.ok ? await schemaRes.json() : null; }
     catch (e) { CSV_SCHEMA = null; }
 
-    // v3.5.1 — tolerate two prospects shapes:
-    //   A. [...] plain array (CE / CJ / RME)
-    //   B. { brand, prospects: [...] } wrapper (CritterClick)
-    if (Array.isArray(prospRaw)) {
-      PROSPECTS_BASE = prospRaw;
-    } else if (prospRaw && Array.isArray(prospRaw.prospects)) {
-      PROSPECTS_BASE = prospRaw.prospects;
-    } else if (prospRaw && Array.isArray(prospRaw.data)) {
-      PROSPECTS_BASE = prospRaw.data;
-    } else {
-      PROSPECTS_BASE = [];
-    }
-
-    // v3.5.1 — tolerate two scripts shapes:
-    //   A. { variants: { A, B, C }, target_length_sec, audit_value } (CE / CJ / CritterClick)
-    //   B. { _meta: {...}, A: {...}, B: {...}, C: {...} } (RME)
-    if (scriptsData && scriptsData.variants && typeof scriptsData.variants === 'object') {
-      SCRIPTS = scriptsData.variants;
-      SCRIPTS._meta = {
-        target_length_sec: scriptsData.target_length_sec || 220,
-        audit_value: scriptsData.audit_value || 0
+    // v3.6 — delegate ALL shape normalization to the validators module.
+    if (!window.CCValidators || typeof window.CCValidators.validateBrandBundle !== 'function') {
+      console.error('[app] validators.js missing — cannot load brand', brandSlug);
+      state.brandValidation = {
+        ok: false,
+        errors: ['validators.js failed to load — brand data cannot be normalized'],
+        warnings: []
       };
-    } else if (scriptsData && (scriptsData.A || scriptsData.B || scriptsData.C)) {
-      const m = scriptsData._meta || {};
-      SCRIPTS = {};
-      ['A', 'B', 'C'].forEach(k => { if (scriptsData[k]) SCRIPTS[k] = scriptsData[k]; });
-      SCRIPTS._meta = {
-        target_length_sec: m.target_length_sec || scriptsData.target_length_sec || 220,
-        audit_value: m.audit_value || scriptsData.audit_value || 0
-      };
-    } else {
       SCRIPTS = { _meta: { target_length_sec: 220, audit_value: 0 } };
+      OBJECTIONS = []; PROSPECTS_BASE = []; MARKET_CPC = {};
+      if (typeof renderBrandErrorBanner === 'function') renderBrandErrorBanner();
+      return false;
     }
-    // v3.4.1 — tolerate two shapes:
-    //   A. { objections: [ { cat, q, a }, ... ] }   (CE / CJ / CritterClick)
-    //   B. { _meta: {...}, CAT_NAME: { q, a }, ... } (RME)
-    if (objData && Array.isArray(objData.objections)) {
-      OBJECTIONS = objData.objections;
-    } else if (objData && typeof objData === 'object') {
-      OBJECTIONS = Object.entries(objData)
-        .filter(([k, v]) => k !== '_meta' && v && typeof v === 'object' && (v.q || v.a))
-        .map(([cat, v]) => ({ cat, q: v.q || '', a: v.a || '' }));
-    } else {
-      OBJECTIONS = [];
+    const result = window.CCValidators.validateBrandBundle(brandSlug, {
+      prospects: prospRaw,
+      scripts: scriptsRaw,
+      objections: objRaw,
+      callIntel: null,
+      marketCpc: cpcRaw,
+      hotList: null
+    });
+    if (result.errors && result.errors.length) {
+      console.warn('[app] ' + brandSlug + ' validation errors:', result.errors);
     }
+    if (result.warnings && result.warnings.length) {
+      console.info('[app] ' + brandSlug + ' validation warnings:', result.warnings);
+    }
+    PROSPECTS_BASE = (result.value && result.value.prospects) || [];
+    SCRIPTS = (result.value && result.value.scripts) || { _meta: { target_length_sec: 220, audit_value: 0 } };
+    OBJECTIONS = (result.value && result.value.objections) || [];
+    MARKET_CPC = (result.value && result.value.marketCpc) || {};
+    state.brandValidation = {
+      ok: result.ok,
+      errors: result.errors || [],
+      warnings: result.warnings || []
+    };
     mergeProspects();
+    if (typeof renderBrandErrorBanner === 'function') renderBrandErrorBanner();
     return true;
   } catch (e) {
     console.error('Brand data load failed:', e);
+    state.brandValidation = {
+      ok: false,
+      errors: ['Load threw: ' + (e.message || String(e))],
+      warnings: []
+    };
+    if (typeof renderBrandErrorBanner === 'function') renderBrandErrorBanner();
     return false;
   }
+}
+
+// ============== BRAND ERROR BANNER (v3.6) ==============
+function renderBrandErrorBanner() {
+  const banner = document.getElementById('brandErrorBanner');
+  if (!banner) return;
+  const v = state.brandValidation;
+  if (!v || v.ok) {
+    banner.classList.add('hidden');
+    banner.innerHTML = '';
+    return;
+  }
+  const errs = (v.errors || []).map(e => '<li>' + escapeHtml(e) + '</li>').join('');
+  const warns = (v.warnings || []).map(w => '<li>' + escapeHtml(w) + '</li>').join('');
+  banner.classList.remove('hidden');
+  banner.innerHTML =
+    '<div class="brand-error-banner-title">⚠️ Brand data validation failed</div>' +
+    (errs ? '<ul class="brand-error-banner-list">' + errs + '</ul>' : '') +
+    (warns ? '<div class="brand-error-banner-title" style="margin-top:8px;color:#a60;">Warnings</div><ul class="brand-error-banner-list" style="color:#840;">' + warns + '</ul>' : '') +
+    '<div style="font-size:12px;color:#666;margin-top:8px;font-style:italic;">Some script beats, objections, or prospects may not display correctly. Check console for details.</div>';
 }
 
 // ============== TOKEN REPLACEMENT ==============

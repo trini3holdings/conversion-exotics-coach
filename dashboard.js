@@ -11,46 +11,53 @@
 // Cache for loaded brand intel — avoid re-fetching on every refresh tick
 const DASH_CACHE = {};
 
-// Normalize prospects.json — accepts plain array OR { brand, prospects: [...] }
-function normalizeProspects(raw) {
-  if (Array.isArray(raw)) return raw;
-  if (raw && Array.isArray(raw.prospects)) return raw.prospects;
-  if (raw && Array.isArray(raw.data)) return raw.data;
-  return [];
-}
-
-// Normalize scripts.json — meta fields may sit at top level or under _meta
-function normalizeScripts(raw) {
-  if (!raw || typeof raw !== 'object') return { _meta: {} };
-  if (raw._meta) return raw;
-  const _meta = {
-    brand: raw.brand,
-    audit_value: raw.audit_value,
-    industry: raw.industry,
-    target_length_sec: raw.target_length_sec,
-    register: raw.register,
-  };
-  return Object.assign({}, raw, { _meta });
-}
-
+// v3.6 — all shape normalization moved to validators.js (window.CCValidators)
+// This loader only does the fetch + validate, then caches the canonical bundle.
 async function loadBrandIntel(slug) {
   if (DASH_CACHE[slug]) return DASH_CACHE[slug];
   const base = `brands/${slug}`;
+  const safeFetch = (file, fallback) =>
+    fetch(`${base}/${file}`)
+      .then(r => r.ok ? r.json() : fallback)
+      .catch(() => fallback);
   try {
-    const [prospectsRaw, scriptsRaw, callIntel, hotList, marketCpc] = await Promise.all([
-      fetch(`${base}/prospects.json`).then(r => r.ok ? r.json() : []).catch(() => []),
-      fetch(`${base}/scripts.json`).then(r => r.ok ? r.json() : {}).catch(() => ({})),
-      fetch(`${base}/call_intel.json`).then(r => r.ok ? r.json() : null).catch(() => null),
-      fetch(`${base}/_hot_list.json`).then(r => r.ok ? r.json() : null).catch(() => null),
-      fetch(`${base}/market_cpc.json`).then(r => r.ok ? r.json() : null).catch(() => null),
+    const [prospectsRaw, scriptsRaw, objectionsRaw, callIntelRaw, hotListRaw, marketCpcRaw] = await Promise.all([
+      safeFetch('prospects.json', []),
+      safeFetch('scripts.json', {}),
+      safeFetch('objections.json', {}),
+      safeFetch('call_intel.json', null),
+      safeFetch('_hot_list.json', null),
+      safeFetch('market_cpc.json', null),
     ]);
-    const prospects = normalizeProspects(prospectsRaw);
-    const scripts = normalizeScripts(scriptsRaw);
-    DASH_CACHE[slug] = { prospects, scripts, callIntel, hotList, marketCpc };
+    const V = window.CCValidators;
+    if (!V) {
+      console.error('CCValidators not loaded — falling back to raw bundle');
+      DASH_CACHE[slug] = {
+        prospects: Array.isArray(prospectsRaw) ? prospectsRaw : (prospectsRaw && prospectsRaw.prospects) || [],
+        scripts: scriptsRaw || { _meta: {} },
+        objections: [],
+        callIntel: callIntelRaw, hotList: hotListRaw, marketCpc: marketCpcRaw,
+        validation: { ok: false, errors: ['validators.js not loaded'], warnings: [] }
+      };
+      return DASH_CACHE[slug];
+    }
+    const result = V.validateBrandBundle(slug, {
+      prospects: prospectsRaw, scripts: scriptsRaw, objections: objectionsRaw,
+      callIntel: callIntelRaw, marketCpc: marketCpcRaw, hotList: hotListRaw
+    });
+    if (result.errors.length) console.warn('[dashboard] ' + slug + ' validation errors:', result.errors);
+    if (result.warnings.length) console.info('[dashboard] ' + slug + ' validation warnings:', result.warnings);
+    DASH_CACHE[slug] = Object.assign({}, result.value, {
+      validation: { ok: result.ok, errors: result.errors, warnings: result.warnings }
+    });
     return DASH_CACHE[slug];
   } catch (e) {
     console.error(`Failed to load intel for ${slug}:`, e);
-    return { prospects: [], scripts: { _meta: {} }, callIntel: null, hotList: null, marketCpc: null };
+    return {
+      prospects: [], scripts: { _meta: {} }, objections: [],
+      callIntel: null, hotList: { tier_1: [], tier_2: [], tier_3: [], tier_4: [], no_phone: [] }, marketCpc: {},
+      validation: { ok: false, errors: ['Fetch threw: ' + (e && e.message || e)], warnings: [] }
+    };
   }
 }
 
@@ -79,20 +86,47 @@ function formatMinutesAway(min) {
 }
 
 function renderBrandCard(slug, brand, intel, mode) {
-  const { prospects = [], scripts = {}, callIntel, hotList, marketCpc } = intel || {};
+  const { prospects = [], scripts = {}, callIntel, hotList, marketCpc, validation } = intel || {};
   const theme = brand.theme || { ink: '#1a1a1a', gold: '#888', cream: '#f4f0e8', highlight: '#fff8e8' };
+
+  // v3.6 — if validation fully failed, render an error card and exit
+  if (validation && validation.errors && validation.errors.length && prospects.length === 0) {
+    return `
+      <div class="dash-brand-card dash-brand-card-error" data-brand="${slug}" style="--brand-ink:${theme.ink};--brand-gold:${theme.gold};">
+        <div class="dash-brand-head">
+          <div class="dash-brand-short">${brand.short || '?'}</div>
+          <div class="dash-brand-meta">
+            <div class="dash-brand-name">${escapeHtml(brand.name || slug)}</div>
+            <div class="dash-brand-sub">Failed to load brand data</div>
+          </div>
+        </div>
+        <div class="dash-error-body">
+          <div class="dash-error-title">⚠️ Data validation failed</div>
+          <ul class="dash-error-list">
+            ${validation.errors.slice(0, 5).map(e => `<li>${escapeHtml(e)}</li>`).join('')}
+          </ul>
+          <div class="dash-error-help">Check brands/${slug}/ JSON files in the repo.</div>
+        </div>
+      </div>`;
+  }
+
   const meta = (scripts._meta) || {};
   const auditValue = meta.audit_value || 3000;
   const industry = meta.industry || 'unspecified';
   const totalProspects = prospects.filter(p => !p.is_client).length;
   const withPhone = prospects.filter(p => !p.is_client && p.phone).length;
 
-  // Hot list tiers
-  const t1 = hotList?.tier_1_priority_calls?.length || 0;
-  const t2 = hotList?.tier_2_call_with_caution?.length || 0;
-  const t3 = hotList?.tier_3_solid_calls?.length || 0;
-  const t4 = hotList?.tier_4_warm_calls?.length || 0;
-  const noPhone = hotList?.no_phone_email_path?.length || 0;
+  // v3.6 — canonical unified hot list tiers
+  const t1 = hotList?.tier_1?.length || 0;
+  const t2 = hotList?.tier_2?.length || 0;
+  const t3 = hotList?.tier_3?.length || 0;
+  const t4 = hotList?.tier_4?.length || 0;
+  const noPhone = hotList?.no_phone?.length || 0;
+
+  // v3.6 — if validation passed with warnings, show a small indicator
+  const warnBadge = (validation && validation.warnings && validation.warnings.length)
+    ? `<span class="dash-warn-badge" title="${escapeHtml(validation.warnings.join(' · '))}">!</span>`
+    : '';
 
   // Live classification
   const buckets = classifyProspects(prospects, callIntel, mode, new Date());
@@ -154,7 +188,7 @@ function renderBrandCard(slug, brand, intel, mode) {
         <div class="dch-left">
           <div class="dch-logo">${escapeHtml(brand.short || slug.slice(0,2).toUpperCase())}</div>
           <div class="dch-meta">
-            <h3 class="dch-name">${escapeHtml(brand.name)}</h3>
+            <h3 class="dch-name">${escapeHtml(brand.name)}${warnBadge}</h3>
             <div class="dch-sub">${escapeHtml(brand.sub || '')}</div>
           </div>
         </div>
