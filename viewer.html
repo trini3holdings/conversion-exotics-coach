@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Call Coach · Sheet Viewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A1A;
+    --gold: #B8893A;
+    --cream: #F4F0E8;
+    --highlight: #FFF8E8;
+    --gray: #6B6B6B;
+    --line: rgba(0,0,0,.1);
+    --bg-row-alt: rgba(0,0,0,.02);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 13px;
+  }
+  header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  header .meta { font-size: 12px; opacity: 0.7; }
+  header a, header button {
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  header a:hover, header button:hover { opacity: 0.9; }
+  .container { padding: 16px 20px; }
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .controls input, .controls select {
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+    background: white;
+  }
+  .controls input[type="search"] { min-width: 240px; }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--line);
+  }
+  .tab {
+    background: transparent;
+    border: none;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--gray);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+  }
+  .tab.active { color: var(--ink); border-bottom-color: var(--gold); }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .stat-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .stat-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 12px;
+  }
+  th {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  th:hover { background: #333; }
+  th .sort-ind { opacity: 0.5; margin-left: 4px; }
+  td {
+    padding: 6px 10px;
+    border-top: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: var(--bg-row-alt); }
+  tr:hover td { background: var(--highlight); }
+  .badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .badge.brand-ce { background: #FFE5D9; color: #8B3A1A; }
+  .badge.brand-cj { background: #D9E8FF; color: #1A3A8B; }
+  .badge.brand-cc { background: #E5F4D9; color: #3A6B1A; }
+  .badge.brand-rme { background: #FFE5F0; color: #8B1A4F; }
+  .badge.outcome-BK { background: #C8E6C9; color: #1B5E20; }
+  .badge.outcome-PP { background: #FFF59D; color: #614A00; }
+  .badge.outcome-RE { background: var(--highlight); color: var(--gold); border: 1px solid var(--gold); }
+  .badge.outcome-CL { background: #B3E5FC; color: #01579B; }
+  .badge.outcome-SH { background: #DCEDC8; color: #33691E; }
+  .badge.outcome-OBJ { background: #FFCCBC; color: #BF360C; }
+  .badge.outcome-DNC { background: #FFCDD2; color: #B71C1C; }
+  .badge.outcome-NA { background: #ECEFF1; color: #455A64; }
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray);
+  }
+  .empty-state h2 { font-family: 'DM Sans', sans-serif; }
+  .empty-state code {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .loading { padding: 40px; text-align: center; color: var(--gray); }
+  .score-bar {
+    display: inline-block;
+    width: 40px;
+    height: 8px;
+    background: var(--line);
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+  .score-bar > div { height: 100%; background: var(--gold); }
+  .footer {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    color: var(--gray);
+    font-size: 11px;
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    table { font-size: 11px; }
+    td, th { padding: 4px 6px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Call Coach Sheet</h1>
+  <span class="meta" id="metaInfo">loading…</span>
+  <div style="margin-left:auto;display:flex;gap:8px;">
+    <button id="refreshBtn" type="button">↻ Refresh</button>
+    <button id="exportBtn" type="button">⬇ Export CSV</button>
+    <a href="index.html">← Back to Call Coach</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="stats" id="statCards"></div>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-view="calls">Call Logs</button>
+    <button class="tab" data-view="overrides">Phone/Edit Overrides</button>
+    <button class="tab" data-view="deleted">Deleted Prospects</button>
+  </div>
+
+  <div class="controls">
+    <input type="search" id="searchBox" placeholder="🔍 Search company, domain, notes…" />
+    <select id="brandFilter">
+      <option value="">All brands</option>
+      <option value="conversion-exotics">Conversion Exotics</option>
+      <option value="conversionjet">ConversionJet</option>
+      <option value="critterclick">CritterClick</option>
+      <option value="rme-roofing">RME Roofing</option>
+    </select>
+    <select id="outcomeFilter">
+      <option value="">All outcomes</option>
+      <option>BK</option><option>PP</option><option>RE</option><option>CL</option>
+      <option>SH</option><option>OBJ</option><option>DNC</option><option>NA</option>
+    </select>
+    <select id="dateRange">
+      <option value="">All time</option>
+      <option value="1">Today</option>
+      <option value="7">Last 7 days</option>
+      <option value="30">Last 30 days</option>
+      <option value="90">Last 90 days</option>
+    </select>
+    <span id="rowCount" style="color:var(--gray);font-size:12px;"></span>
+  </div>
+
+  <div id="tableHost">
+    <div class="loading">Loading data from GitHub…</div>
+  </div>
+
+  <div class="footer">
+    Source of truth: <code id="srcCode">data/&lt;brand&gt;/data.json</code> on this repo.
+    Edit in <a href="index.html">Call Coach</a> — auto-commits in batches.
+  </div>
+
+</div>
+
+<script>
+const BRANDS = {
+  'conversion-exotics': { short: 'CE', name: 'Conversion Exotics' },
+  'conversionjet':      { short: 'CJ', name: 'ConversionJet' },
+  'critterclick':       { short: 'CC', name: 'CritterClick' },
+  'rme-roofing':        { short: 'RME', name: 'RME Roofing' }
+};
+
+const state = {
+  view: 'calls',
+  search: '',
+  brand: '',
+  outcome: '',
+  days: '',
+  sortKey: 'ts',
+  sortDir: 'desc',
+  data: { calls: [], overrides: [], deleted: [] }
+};
+
+async function loadAll() {
+  const calls = [];
+  const overrides = [];
+  const deleted = [];
+  let brandsLoaded = 0;
+  for (const slug of Object.keys(BRANDS)) {
+    try {
+      const res = await fetch('data/' + slug + '/data.json?t=' + Date.now());
+      if (!res.ok) continue;
+      const data = await res.json();
+      brandsLoaded++;
+      (data.call_logs || []).forEach(c => calls.push(Object.assign({ brand: c.brand || slug }, c)));
+      const ov = data.prospect_overrides || {};
+      Object.keys(ov).forEach(k => overrides.push(Object.assign({ _key: k, _brand: slug }, ov[k])));
+      const del = data.deleted_prospects || {};
+      Object.keys(del).forEach(k => deleted.push(Object.assign({ _key: k, _brand: slug }, del[k])));
+    } catch (e) {
+      console.warn('Failed to load', slug, e);
+    }
+  }
+  state.data = { calls, overrides, deleted };
+  document.getElementById('metaInfo').textContent =
+    brandsLoaded + ' brand file' + (brandsLoaded === 1 ? '' : 's') + ' loaded · ' +
+    calls.length + ' calls · last refresh ' + new Date().toLocaleTimeString();
+  render();
+}
+
+function applyFilters(rows, type) {
+  const search = state.search.toLowerCase();
+  const brand = state.brand;
+  const outcome = state.outcome;
+  const cutoff = state.days ? Date.now() - parseInt(state.days, 10) * 86400000 : 0;
+  return rows.filter(r => {
+    if (brand && (r.brand || r._brand) !== brand) return false;
+    if (type === 'calls' && outcome && r.outcome !== outcome) return false;
+    if (type === 'calls' && cutoff && (r.ts || 0) < cutoff) return false;
+    if (type !== 'calls' && cutoff && (r._ts || r.ts || 0) < cutoff) return false;
+    if (search) {
+      const hay = JSON.stringify(r).toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    return true;
+  });
+}
+
+function sortRows(rows) {
+  const k = state.sortKey;
+  const d = state.sortDir === 'asc' ? 1 : -1;
+  return rows.slice().sort((a, b) => {
+    let av = a[k], bv = b[k];
+    if (av == null) av = '';
+    if (bv == null) bv = '';
+    if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * d;
+    return String(av).localeCompare(String(bv)) * d;
+  });
+}
+
+function renderStats() {
+  const totalCalls = state.data.calls.length;
+  const booked = state.data.calls.filter(c => c.outcome === 'BK').length;
+  const requestedEmail = state.data.calls.filter(c => c.outcome === 'RE').length;
+  const avgScore = totalCalls ? Math.round(state.data.calls.reduce((s, c) => s + (c.score || 0), 0) / totalCalls) : 0;
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const todayCalls = state.data.calls.filter(c => c.ts >= today.getTime()).length;
+  const bookRate = totalCalls ? Math.round(booked / totalCalls * 100) : 0;
+  const host = document.getElementById('statCards');
+  host.innerHTML = [
+    ['Total calls', totalCalls],
+    ['Today', todayCalls],
+    ['Booked', booked + ' (' + bookRate + '%)'],
+    ['Requested email', requestedEmail],
+    ['Avg score', avgScore],
+    ['Overrides', state.data.overrides.length],
+    ['Deleted', state.data.deleted.length]
+  ].map(([l, n]) => '<div class="stat-card"><div class="stat-num">' + n + '</div><div class="stat-label">' + l + '</div></div>').join('');
+}
+
+function fmtDate(ts) {
+  if (!ts) return '';
+  const d = new Date(ts);
+  return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+function brandBadge(slug) {
+  const b = BRANDS[slug];
+  if (!b) return slug || '';
+  const cls = 'brand-' + b.short.toLowerCase();
+  return '<span class="badge ' + cls + '">' + b.short + '</span>';
+}
+
+function outcomeBadge(o) {
+  if (!o) return '';
+  return '<span class="badge outcome-' + o + '">' + o + '</span>';
+}
+
+function scoreBar(n) {
+  n = Math.max(0, Math.min(100, n || 0));
+  return n + '<span class="score-bar"><div style="width:' + n + '%"></div></span>';
+}
+
+function renderCallsTable(rows) {
+  const cols = [
+    { k: 'ts',       l: 'When',      fmt: r => fmtDate(r.ts) },
+    { k: 'brand',    l: 'Brand',     fmt: r => brandBadge(r.brand) },
+    { k: 'company',  l: 'Company',   fmt: r => esc(r.company || '') },
+    { k: 'domain',   l: 'Domain',    fmt: r => esc(r.domain || '') },
+    { k: 'caller',   l: 'Caller',    fmt: r => esc(r.caller || '') },
+    { k: 'variant',  l: 'V',         fmt: r => esc(r.variant || '') },
+    { k: 'outcome',  l: 'Outcome',   fmt: r => outcomeBadge(r.outcome) },
+    { k: 'score',    l: 'Score',     fmt: r => scoreBar(r.score) },
+    { k: 'duration', l: 'Dur (s)',   fmt: r => r.duration || 0 },
+    { k: 'phone',    l: 'Phone',     fmt: r => esc(r.phone || '') },
+    { k: 'notes',    l: 'Notes',     fmt: r => '<div style="max-width:280px;white-space:normal;">' + esc((r.notes || '').slice(0, 200)) + '</div>' }
+  ];
+  return renderTable(cols, rows);
+}
+
+function renderOverridesTable(rows) {
+  const cols = [
+    { k: '_key',    l: 'Key (domain)', fmt: r => esc(r._key) },
+    { k: '_brand',  l: 'Brand file',   fmt: r => brandBadge(r._brand) },
+    { k: 'phone',   l: 'Phone',        fmt: r => esc(r.phone || '') },
+    { k: 'email',   l: 'Email',        fmt: r => esc(r.email || '') },
+    { k: 'company', l: 'Company',      fmt: r => esc(r.company || '') },
+    { k: 'phone_source', l: 'Source',  fmt: r => esc(r.phone_source || '') },
+    { k: '_ts',     l: 'Updated',      fmt: r => fmtDate(r._ts) }
+  ];
+  return renderTable(cols, rows);
+}
+
+function renderDeletedTable(rows) {
+  const cols = [
+    { k: 'ts',      l: 'Deleted',  fmt: r => fmtDate(r.ts) },
+    { k: '_brand',  l: 'Brand',    fmt: r => brandBadge(r._brand) },
+    { k: 'company', l: 'Company',  fmt: r => esc(r.company || '') },
+    { k: 'domain',  l: 'Domain',   fmt: r => esc(r.domain || '') },
+    { k: 'by',      l: 'By',       fmt: r => esc(r.by || '') },
+    { k: 'reason',  l: 'Reason',   fmt: r => esc(r.reason || '') }
+  ];
+  return renderTable(cols, rows);
+}
+
+function renderTable(cols, rows) {
+  const head = cols.map(c => {
+    const ind = state.sortKey === c.k ? (state.sortDir === 'asc' ? '↑' : '↓') : '';
+    return '<th data-k="' + c.k + '">' + c.l + ' <span class="sort-ind">' + ind + '</span></th>';
+  }).join('');
+  const body = rows.map(r =>
+    '<tr>' + cols.map(c => '<td>' + (c.fmt ? c.fmt(r) : (r[c.k] || '')) + '</td>').join('') + '</tr>'
+  ).join('');
+  return '<table><thead><tr>' + head + '</tr></thead><tbody>' + body + '</tbody></table>';
+}
+
+function esc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function render() {
+  renderStats();
+  let rows = [];
+  if (state.view === 'calls') {
+    rows = applyFilters(state.data.calls, 'calls');
+    rows = sortRows(rows);
+    document.getElementById('tableHost').innerHTML = rows.length
+      ? renderCallsTable(rows)
+      : '<div class="empty-state"><h2>No call logs match.</h2><p>Try clearing filters, or log a call in <a href="index.html">Call Coach</a>.</p></div>';
+  } else if (state.view === 'overrides') {
+    rows = applyFilters(state.data.overrides, 'overrides');
+    rows = sortRows(rows);
+    document.getElementById('tableHost').innerHTML = rows.length
+      ? renderOverridesTable(rows)
+      : '<div class="empty-state"><h2>No phone/email overrides yet.</h2><p>Bulk-import phones or edit a prospect in Call Coach.</p></div>';
+  } else if (state.view === 'deleted') {
+    rows = applyFilters(state.data.deleted, 'deleted');
+    rows = sortRows(rows);
+    document.getElementById('tableHost').innerHTML = rows.length
+      ? renderDeletedTable(rows)
+      : '<div class="empty-state"><h2>No deleted prospects.</h2></div>';
+  }
+  document.getElementById('rowCount').textContent = rows.length + ' row' + (rows.length === 1 ? '' : 's');
+
+  // Wire sort
+  document.querySelectorAll('th[data-k]').forEach(th => {
+    th.addEventListener('click', () => {
+      const k = th.getAttribute('data-k');
+      if (state.sortKey === k) state.sortDir = state.sortDir === 'asc' ? 'desc' : 'asc';
+      else { state.sortKey = k; state.sortDir = 'desc'; }
+      render();
+    });
+  });
+}
+
+function exportCsv() {
+  let rows = [];
+  let cols = [];
+  if (state.view === 'calls') {
+    rows = applyFilters(state.data.calls, 'calls');
+    cols = ['ts', 'brand', 'caller', 'variant', 'company', 'domain', 'phone', 'email', 'market', 'outcome', 'score', 'duration', 'whatWorked', 'nextStep', 'notes'];
+  } else if (state.view === 'overrides') {
+    rows = applyFilters(state.data.overrides, 'overrides');
+    cols = ['_key', '_brand', 'phone', 'email', 'company', 'phone_source', '_ts'];
+  } else {
+    rows = applyFilters(state.data.deleted, 'deleted');
+    cols = ['ts', '_brand', 'company', 'domain', 'by', 'reason'];
+  }
+  const header = cols.join(',');
+  const body = rows.map(r => cols.map(c => {
+    let v = r[c];
+    if (c === 'ts' || c === '_ts') v = v ? new Date(v).toISOString() : '';
+    if (v == null) v = '';
+    v = String(v).replace(/"/g, '""');
+    return '"' + v + '"';
+  }).join(',')).join('\n');
+  const csv = header + '\n' + body;
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'call-coach-' + state.view + '-' + new Date().toISOString().slice(0, 10) + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Wire controls
+document.getElementById('searchBox').addEventListener('input', e => { state.search = e.target.value; render(); });
+document.getElementById('brandFilter').addEventListener('change', e => { state.brand = e.target.value; render(); });
+document.getElementById('outcomeFilter').addEventListener('change', e => { state.outcome = e.target.value; render(); });
+document.getElementById('dateRange').addEventListener('change', e => { state.days = e.target.value; render(); });
+document.getElementById('refreshBtn').addEventListener('click', loadAll);
+document.getElementById('exportBtn').addEventListener('click', exportCsv);
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    state.view = t.getAttribute('data-view');
+    state.sortKey = state.view === 'calls' ? 'ts' : '_ts';
+    state.sortDir = 'desc';
+    render();
+  });
+});
+
+loadAll();
+</script>
+
+</body>
+</html>

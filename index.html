@@ -85,6 +85,35 @@
       <button class="modal-close" data-close="backendModal">✕</button>
     </div>
     <div class="modal-body">
+      <h4 style="margin:0 0 8px;font-family:'DM Sans',sans-serif;">🐙 GitHub Sheet (recommended, v3.10)</h4>
+      <p class="modal-help">
+        Single source of truth — call logs, edits, and deletions auto-commit to GitHub in batches.
+        Paste a <a href="https://github.com/settings/tokens/new?scopes=repo&description=call-coach" target="_blank">Personal Access Token</a> with <code>repo</code> scope.
+        Then open the <a href="viewer.html" target="_blank">📊 Sheet Viewer</a>.
+      </p>
+      <label class="form-row">
+        <span>GitHub PAT (repo scope)</span>
+        <input type="password" id="ghToken" placeholder="ghp_…" autocomplete="off" />
+      </label>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+        <label class="form-row"><span>Owner</span><input type="text" id="ghOwner" placeholder="trini3holdings" /></label>
+        <label class="form-row"><span>Repo</span><input type="text" id="ghRepo" placeholder="call-coach" /></label>
+        <label class="form-row"><span>Branch</span><input type="text" id="ghBranch" placeholder="data-log" /></label>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <label class="form-row"><span>Auto-commit every N calls</span><input type="number" id="ghBatchThreshold" min="1" max="500" placeholder="10" /></label>
+        <label class="form-row"><span>… or every (min)</span><input type="number" id="ghBatchInterval" min="5" max="1440" placeholder="60" /></label>
+      </div>
+      <div id="ghStatus" class="backend-status"></div>
+      <div class="form-actions">
+        <button id="ghSaveConfig" class="btn btn-gold" type="button">Save & Connect</button>
+        <button id="ghSyncNow" class="btn btn-ghost" type="button">Sync now</button>
+        <button id="ghPull" class="btn btn-ghost" type="button">Pull from GitHub</button>
+        <a href="viewer.html" target="_blank" class="btn btn-ghost" style="text-decoration:none;display:inline-block;">📊 Open Viewer</a>
+      </div>
+
+      <hr style="margin:18px 0;border:none;border-top:1px solid rgba(0,0,0,.12)" />
+      <h4 style="margin:0 0 8px;font-family:'DM Sans',sans-serif;">📄 Google Sheet (legacy)</h4>
       <p class="modal-help">
         Paste your Google Apps Script Web App URL. <strong>v3.8</strong>: all 4 brands
         now flow into ONE master sheet with a Brand column. Each row gets an “X · date”
@@ -490,10 +519,11 @@
   </div>
 </div>
 
-<script src="validators.js?v=3.8.10"></script>
-<script src="market_timezones.js?v=3.8.10"></script>
-<script src="acronyms.js?v=3.8.10"></script>
-<script src="dashboard.js?v=3.8.10"></script>
-<script src="app.js?v=3.8.10"></script>
+<script src="validators.js?v=3.10.0"></script>
+<script src="market_timezones.js?v=3.10.0"></script>
+<script src="acronyms.js?v=3.10.0"></script>
+<script src="dashboard.js?v=3.10.0"></script>
+<script src="app.js?v=3.10.0"></script>
+<script src="github-sync.js?v=3.10.0"></script>
 </body>
 </html>

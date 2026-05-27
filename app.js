@@ -1348,6 +1348,12 @@ function logCall() {
     enqueueCallSync(call);
   }
 
+  // v3.10.0 — GitHub batched sync
+  if (window.GitHubSync && window.GitHubSync.configured()) {
+    window.GitHubSync.markDirty();
+    window.GitHubSync.maybeAutoCommit();
+  }
+
   // Show undo toast (8s)
   showUndoToast();
 
@@ -2297,6 +2303,9 @@ async function init() {
   }
   document.getElementById('backendSyncNow').addEventListener('click', () => drainSyncQueue());
 
+  // ============== v3.10.0 — GITHUB SHEET WIRING ==============
+  initGitHubSyncUI();
+
   // v3.9.1 — Push EVERY prospect across all 4 brands to the master sheet (upsert by domain).
   // Used after a phone-research drop — floods the new phones into the Sheet.
   const pushAllBtn = document.getElementById('backendPushAll');
@@ -2499,6 +2508,103 @@ async function init() {
     }
   });
   window.addEventListener('offline', () => setSyncBadge('offline'));
+}
+
+// ============== v3.10.0 — GITHUB SHEET UI ==============
+function initGitHubSyncUI() {
+  if (!window.GitHubSync) return;
+  const cfg = window.GitHubSync.config();
+  const get = (id) => document.getElementById(id);
+
+  // Hydrate fields
+  const tokenEl = get('ghToken');
+  if (tokenEl) tokenEl.value = cfg.token || '';
+  if (get('ghOwner')) get('ghOwner').value = cfg.owner || 'trini3holdings';
+  if (get('ghRepo')) get('ghRepo').value = cfg.repo || 'call-coach';
+  if (get('ghBranch')) get('ghBranch').value = cfg.branch || 'data-log';
+  if (get('ghBatchThreshold')) get('ghBatchThreshold').value = cfg.batchThreshold || 10;
+  if (get('ghBatchInterval')) get('ghBatchInterval').value = Math.round((cfg.batchIntervalMs || 3600000) / 60000);
+  renderGhStatus();
+
+  // Save
+  if (get('ghSaveConfig')) {
+    get('ghSaveConfig').addEventListener('click', async () => {
+      const token = (get('ghToken').value || '').trim();
+      const owner = (get('ghOwner').value || '').trim() || 'trini3holdings';
+      const repo = (get('ghRepo').value || '').trim() || 'call-coach';
+      const branch = (get('ghBranch').value || '').trim() || 'data-log';
+      const batchThreshold = parseInt(get('ghBatchThreshold').value, 10) || 10;
+      const batchIntervalMs = (parseInt(get('ghBatchInterval').value, 10) || 60) * 60000;
+      if (!token) { setGhStatus('Paste a PAT first.', 'err'); return; }
+      window.GitHubSync.saveConfig({ token, owner, repo, branch, batchThreshold, batchIntervalMs });
+      setGhStatus('Connecting to GitHub…', '');
+      try {
+        const r = await window.GitHubSync.pullAll();
+        setGhStatus('✓ Connected to ' + owner + '/' + repo + '#' + branch + ' · pulled ' + r.calls + ' calls, ' + r.overrides + ' edits, ' + r.deletes + ' deletes from ' + r.brands + ' brand file' + (r.brands === 1 ? '' : 's') + '.', 'ok');
+        if (typeof renderStats === 'function') renderStats();
+        if (typeof renderCallLog === 'function') renderCallLog();
+      } catch (e) {
+        setGhStatus('✗ ' + e.message, 'err');
+      }
+      renderGhStatus();
+    });
+  }
+
+  // Sync now (push)
+  if (get('ghSyncNow')) {
+    get('ghSyncNow').addEventListener('click', async () => {
+      if (!window.GitHubSync.configured()) { setGhStatus('Save config first.', 'err'); return; }
+      setGhStatus('Pushing to GitHub…', '');
+      try {
+        const r = await window.GitHubSync.pushAll(true);
+        setGhStatus('✓ Pushed ' + r.pushed + ' brand file' + (r.pushed === 1 ? '' : 's') + '.', 'ok');
+      } catch (e) {
+        setGhStatus('✗ ' + e.message, 'err');
+      }
+      renderGhStatus();
+    });
+  }
+
+  // Pull
+  if (get('ghPull')) {
+    get('ghPull').addEventListener('click', async () => {
+      if (!window.GitHubSync.configured()) { setGhStatus('Save config first.', 'err'); return; }
+      setGhStatus('Pulling from GitHub…', '');
+      try {
+        const r = await window.GitHubSync.pullAll();
+        setGhStatus('✓ Pulled ' + r.calls + ' new calls, ' + r.overrides + ' edits, ' + r.deletes + ' deletes.', 'ok');
+        if (typeof renderStats === 'function') renderStats();
+        if (typeof renderCallLog === 'function') renderCallLog();
+        if (typeof renderProspectPicker === 'function') renderProspectPicker();
+      } catch (e) {
+        setGhStatus('✗ ' + e.message, 'err');
+      }
+      renderGhStatus();
+    });
+  }
+
+  // Auto-pull on init if configured
+  if (window.GitHubSync.configured()) {
+    window.GitHubSync.pullAll().catch(e => console.warn('GitHub auto-pull:', e));
+  }
+}
+
+function setGhStatus(msg, kind) {
+  const el = document.getElementById('ghStatus');
+  if (!el) return;
+  el.textContent = msg;
+  el.className = 'backend-status' + (kind ? ' ' + kind : '');
+}
+
+function renderGhStatus() {
+  if (!window.GitHubSync) return;
+  const el = document.getElementById('ghStatus');
+  if (!el || !el.textContent) {
+    const s = window.GitHubSync.status();
+    if (!s.configured) { setGhStatus('Not connected. Paste a PAT and click Save & Connect.', ''); return; }
+    const last = s.lastSyncTs ? new Date(s.lastSyncTs).toLocaleString() : 'never';
+    setGhStatus(s.pendingCalls + ' calls pending · last sync ' + last + (s.lastError ? ' · ⚠ ' + s.lastError : ''), s.lastError ? 'err' : 'ok');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', init);
