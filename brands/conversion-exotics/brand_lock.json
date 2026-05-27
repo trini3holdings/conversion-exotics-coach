@@ -1,0 +1,142 @@
+{
+  "brand": "Conversion Exotics",
+  "version": "1.0",
+  "locked_date": "2026-05-27",
+  "source_url": "https://conversionexotics.com",
+  "slots": {
+    "1_brand_name": "Conversion Exotics",
+    "2_caller_identity": "I review exotic and luxury car rental sites for a living",
+    "3_target_buyer": "Owner-operator, GM, or sales lead at exotic/luxury car rental company",
+    "4_who_answers": "Receptionist, owner (small shops), booking team, sales lead",
+    "5_dollar_anchor": "$5,000 to $15,000 a week in booked rentals",
+    "5_anchor_math": "1-3 missed weekend bookings/wk \u00d7 $2,500-$5,000 avg = $5K-$15K/wk for smaller operators (1-3 cars). Source: Ferrari/Lambo day rates $900-$2,500 (rodeoexoticrentals.com, monzaexotics.com).",
+    "6_cpc_range": "$1.50 to $7 per click ($14 near-me top end in Miami/NYC)",
+    "6_cpc_source": "market_cpc.json \u2014 Google Ads Keyword Planner, 2026-05-26",
+    "7_issues_hierarchy": [
+      {
+        "rank": 1,
+        "issue": "Weak/moderate CTA",
+        "frequency": "46/50 (92%)"
+      },
+      {
+        "rank": 2,
+        "issue": "Form friction",
+        "frequency": "29/50 (58%)"
+      },
+      {
+        "rank": 3,
+        "issue": "Hero copy / above-fold weak",
+        "frequency": "22/50 (44%)"
+      },
+      {
+        "rank": 4,
+        "issue": "Trust signals missing",
+        "frequency": "21/50 (42%)"
+      },
+      {
+        "rank": 5,
+        "issue": "Phone problems (buried/missing)",
+        "frequency": "19/50 (38%)"
+      },
+      {
+        "rank": 6,
+        "issue": "No price anchor",
+        "frequency": "12/50 (24%)"
+      },
+      {
+        "rank": 7,
+        "issue": "Booking funnel friction",
+        "frequency": "12/50 (24%)"
+      },
+      {
+        "rank": 8,
+        "issue": "Slow load / heavy JS",
+        "frequency": "7/50 (14%)"
+      }
+    ],
+    "8_audit_value": 3000,
+    "9_banned_terms": [
+      "Turo (as competitor name on-call \u2014 use 'the next ad' or 'the next competitor')",
+      "supercar (use 'exotic')",
+      "ride (use 'rental')",
+      "VIP",
+      "concierge service",
+      "ADR",
+      "RPD",
+      "utilization rate",
+      "{first_name}",
+      "{prospect_name}",
+      "Part 135",
+      "{company} in beat copy (use 'your site')",
+      "Miner-style apology hedges (appreciate you picking up, out of the blue, etc.)",
+      "Slang permission (got a sec, cool?, Quick on me)",
+      "CTA (use 'booking button' / 'the button to book' / 'how they book')",
+      "hero / hero copy (use 'top of your page' / 'first thing they see')",
+      "above the fold (use 'top of the page')",
+      "conversion rate (use 'how many actually book')",
+      "funnel (use 'booking process' / 'the steps to book')",
+      "TTI / LCP / Core Web Vitals (use 'load time' / 'how long the page takes')",
+      "page speed (use 'how fast it loads')",
+      "developer / dev work / dev (frame fixes as fast + us doing them, not them hiring someone)",
+      "weekend of dev work (use 'quick fix' / 'I'd handle that in a day' / 'one of the fast wins')",
+      "afternoon work for a developer (use 'fast fix' / 'one of the quick wins')"
+    ],
+    "10_three_pillars": [
+      "CTA strength",
+      "Form friction",
+      "Above-fold trust"
+    ]
+  },
+  "universal_voice_locks": [
+    "No name tokens",
+    "No Miner apologies",
+    "No slang permission",
+    "I not we",
+    "Plain English \u2014 no acronyms",
+    "No {company} in beat copy \u2014 use 'your site'",
+    "Dual-path close (booked call OR email sample)"
+  ],
+  "verbatim_site_language": {
+    "five_second_mobile": "Five-second mobile load. They book the next listing in three.",
+    "luxury_renter_visual": "A luxury renter taps the link, counts to three, opens the next ad.",
+    "32_percent_stat": "Every one-second delay on mobile cuts conversions roughly 32%.",
+    "audit_format": "Thirty minutes. Your live site on screen.",
+    "differentiator": "Every leak named in plain English no agency would dare use.",
+    "dollar_anchored": "Dollar-anchored estimates per leak",
+    "yours_to_keep": "Yours to keep whether you hire me to ship it or not.",
+    "90_day_plan": "Sequenced 90-day plan, ranked by conversion impact and effort to ship.",
+    "tiered_wins": "Week-one quick wins, 30-day medium lifts, 90-day rebuilds.",
+    "tone_setter": "Not vibes, math."
+  },
+  "variant_angle_map": {
+    "A": {
+      "name": "The CTA Leak",
+      "hook": "Lead with the universal weakness \u2014 their call-to-action is doing the opposite of what it should",
+      "data_backing": "92% of audited prospects (46/50) have weak or moderate CTAs",
+      "lever": "Specificity + dollar anchor",
+      "best_for": "Operators running ads \u2014 the weak CTA wastes every click"
+    },
+    "B": {
+      "name": "Next Ad Steals It",
+      "hook": "A luxury renter taps your ad, counts to three, opens the next ad",
+      "data_backing": "Verbatim from conversionexotics.com + universal mobile-load gap",
+      "lever": "Status loss + FOMO + competitor frame (without naming names)",
+      "best_for": "Operators losing share to peer-to-peer marketplaces and competitor ads"
+    },
+    "C": {
+      "name": "The 3-Issue Reveal",
+      "hook": "I pulled up your site and saw three issues \u2014 the worst one is invisible to most operators",
+      "data_backing": "CTA (92%) + Form friction (58%) + Hero/Trust (42-44%) \u2014 all data-backed",
+      "lever": "Curiosity gap + loss aversion \u2014 hold the worst issue back for the audit",
+      "best_for": "Operators with 'we just redesigned' objection-prone responses"
+    }
+  },
+  "beat_skeleton": {
+    "1_OPEN": "9-11s \u2014 earned-attention hook + routing question",
+    "2_PROBLEM": "17-24s \u2014 industry context, ends with question they can't answer",
+    "3_AGITATION": "30-40s \u2014 concrete walk-through + dollar anchor",
+    "4_SOLUTION": "15-20s \u2014 credibility (X sites diagnosed, 10-point checklist)",
+    "5_AUDIT_OFFER": "33s \u2014 $3K audit, free, 30 min shared screen, minute-20 decision",
+    "6_CLOSE": "30s \u2014 Thursday 10 or Friday 2, OR sample audit by email"
+  }
+}

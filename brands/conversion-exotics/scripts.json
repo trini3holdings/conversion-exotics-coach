@@ -1,65 +1,65 @@
 {
   "brand": "Conversion Exotics",
   "audit_value": 3000,
-  "target_length_sec": 148,
+  "target_length_sec": 180,
   "variants": {
     "A": {
-      "name": "Pattern Interrupt + City Anchor",
-      "desc": "Hard disarm. City/brand anchor. Leads agitation with the 32% / 2.5x stat.",
+      "name": "The CTA Leak",
+      "desc": "Plain-English booking-process angle. Leads with the $5K-$15K/week leak. Three issues, tease the third. Close with calendar or sample audit.",
       "beats": [
         {
-          "t": 15,
+          "t": 10,
           "phase": "OPEN",
-          "title": "Disarm + City Anchor",
-          "line": "Hey — I know I'm calling out of the blue, so feel free to hang up on me. I'm not even sure you're the right person, but you guys run the Lambo and McLaren rentals out of {market}, correct?",
-          "responses": ["Yeah, that's us", "Who is this?", "We're not interested in anything"],
-          "followup": "Totally fair — I'll be quick. Do you have 27 seconds, or did I catch you mid-something?",
-          "note": "If they push back hard, drop to: \"Okay — last thing and I'm gone. Best email I can send a 60-second Loom to?\""
+          "title": "Booking Process Leak",
+          "line": "Hi, my name is {caller} with Conversion Exotics — I review exotic and luxury car rental sites for a living. I pulled up your site, and your <em>booking process</em> is costing you roughly <em>$5,000 to $15,000 a week in booked rentals</em>. Do you know who I can talk to about this?",
+          "responses": ["That'd be me", "What do you mean costing me?", "Who is this again?"],
+          "followup": "Got it — quick context on what I'm seeing, then I'll show you exactly where the money's going.",
+          "note": "Calling the business, not a person. No name tokens. No apology hedges."
+        },
+        {
+          "t": 22,
+          "phase": "PROBLEM",
+          "title": "3-Second Decision",
+          "line": "Quick context — when a luxury renter taps your ad from their phone, they decide in about <em>3 seconds</em> whether you're worth waiting on. <em>Every one-second delay cuts conversions roughly 32 percent</em>. Most exotic rental sites load in 5 to 8 seconds on mobile. When was the last time someone on your team pulled your site up on a phone and booked a rental end-to-end?",
+          "responses": ["Honestly, not recently", "It's fine, we get bookings", "We just redid the site"],
+          "followup": "Yeah — that's what most owners say. The site loading is just the first leak. The bigger ones come after.",
+          "note": "Plain English. Mobile speed as door-opener, not the main point."
+        },
+        {
+          "t": 38,
+          "phase": "AGITATION",
+          "title": "The Three Leaks",
+          "line": "Here's what's actually happening. <em>A renter taps your ad, counts to three, and opens the next one</em> — they never even see your fleet. The ones who wait it out land on a page that doesn't show a price, doesn't show the car they came for, and asks them to fill out a form before they've decided anything. By the time they figure out how to book, they've already opened two competitors in other tabs. That's the <em>$5,000 to $15,000 a week</em>. Cleaning up the top of the page and making the booking obvious — those are <em>week-one quick wins</em>. But there's a <em>third issue on your booking process that costs more than both combined</em>. I'd rather show you that one with your page open.",
+          "responses": ["What's the third issue?", "Show me", "How much would this cost to fix?"],
+          "followup": "Fair — and that's exactly what the audit answers. Pricing comes after.",
+          "note": "Tease the third issue. Do NOT reveal it on the call. The reveal is the audit."
+        },
+        {
+          "t": 18,
+          "phase": "SOLUTION",
+          "title": "100+ Sites, Same 3 Leaks",
+          "line": "I've done this on <em>over 100 exotic and luxury car rental sites</em> — same 10-point checklist, same booking process, same three leaks every time. The shops that fix the top two see bookings climb in the first week. The ones that fix all three usually <em>double their weekend bookings inside 30 days</em>.",
+          "responses": ["Okay…", "How long does the fix take?", "Sounds like a sales pitch"],
+          "followup": "Fair — and that's exactly why I lead with the audit, not the pitch.",
+          "note": "Credibility frame. 100+ sites. Same checklist. Pattern recognition."
+        },
+        {
+          "t": 33,
+          "phase": "AUDIT OFFER",
+          "title": "Free $3,000 Audit",
+          "line": "Here's what I want to do. I run a <em>$3,000 conversion audit</em> — and I'd like to do yours free. <em>Thirty minutes. Your live site on screen.</em> Every leak named in plain English no agency would dare use, with <em>dollar-anchored estimates per leak</em>. You walk away with a <em>sequenced one-week plan — every fix shipped at once</em>, ranked by booking impact. <em>Yours to keep whether you hire me to ship it or not.</em> Not vibes — math.",
+          "responses": ["Yeah I'd look at that", "Send it over first", "What's the catch?"],
+          "followup": "No catch — I'm running a handful of these personally this quarter for case studies. That's the only ask.",
+          "note": "Verbatim site language. $3K free. One-week plan. All fixes shipped at once."
         },
         {
           "t": 30,
-          "phase": "PROBLEM",
-          "title": "Mobile Speed + Personal Test",
-          "line": "I'm not sure if you're aware, but a one-second delay on mobile kills roughly <em>32% of conversions</em> — and a 1-second site converts <em>2.5x what a 5-second site does</em>. Out of curiosity, when's the last time someone actually tried to book a Ferrari on your phone end-to-end?",
-          "responses": ["Honestly, not recently", "It's fine, we get bookings", "We just redid the site"],
-          "followup": "Yeah, that's what I usually hear — and the part most owners miss isn't the site loading, it's what happens in the next 30 seconds.",
-          "note": "If they say \"we just redid the site\" → \"Congrats — was it designed to look better, or built around how an exotic renter actually decides to book?\""
-        },
-        {
-          "t": 25,
-          "phase": "AGITATION",
-          "title": "Where the Booking Actually Goes",
-          "line": "Because every renter who bounces lands on the exotic shop across town or Turo within minutes. That's a <em>$1,500–$3,500 day</em> walking, sometimes a <em>$10,000 weekend</em> gone. A guy in Miami doing $125,000 a month — Jayden Bloom — literally said on camera <em>\"there's no good platform out there for exotic car rentals, everything is so outdated\"</em>. Would you be opposed to seeing exactly where that traffic's leaking on yours?",
-          "responses": ["I mean, sure", "Depends what it costs", "We already track that"],
-          "followup": "Got it — and what we find is rarely what the analytics shows.",
-          "note": "Jayden Bloom quote is real (UpFlip YouTube). Use it. It does the agitation for you."
-        },
-        {
-          "t": 25,
-          "phase": "SOLUTION",
-          "title": "Digital Showroom Frame",
-          "line": "What we do at Conversion Exotics is turn the site into a <em>digital showroom</em> — fleet that feels irresistible, pricing and availability dead-clear, and a <em>sub-60-second mobile booking</em>. So visitors stop comparing tabs and start reserving.",
-          "responses": ["Okay…", "How's that different from what we have?", "We've heard this pitch"],
-          "followup": "Fair — and that's actually why I never lead with a pitch. I lead with the audit.",
-          "note": "Keep this beat short. Solution is the bridge, not the close."
-        },
-        {
-          "t": 35,
-          "phase": "AUDIT OFFER",
-          "title": "Free $3,000 Audit",
-          "line": "What we usually do — just to give you something useful whether we work together or not — is a <em>free Website Conversion Audit</em>. Normally runs <em>$3,000</em>, yours to keep. Would it be unreasonable to have <em>Tony</em> walk you through, in 30 minutes, the 3–5 biggest spots on your site that are quietly losing you bookings — and what your current traffic could actually be producing?",
-          "responses": ["Yeah I'd look at it", "Send it over first", "What's the catch?"],
-          "followup": "No catch — Tony's running a handful personally this quarter for case studies. That's the only ask.",
-          "note": "Always say <em>Tony</em> as the strategist — all booked calls are for him."
-        },
-        {
-          "t": 15,
           "phase": "CLOSE",
-          "title": "Lock the Time",
-          "line": "Does it make sense to shoot me your best email so I can send the calendar link, and grab 30 minutes with Tony tomorrow or the day after to walk through what he finds?",
-          "responses": ["Yeah, here's my email", "Just send it", "Let me check my calendar"],
-          "followup": "Awesome. I'll send the Cal link right after we hang up — you'll see Tony's first three open slots.",
-          "note": "Send Cal link via SMS or email immediately. Log call. Auto-reset form."
+          "title": "Calendar or Sample",
+          "line": "Two ways we can do this. I've got <em>Thursday at 10</em> or <em>Friday at 2</em> open — pick one and I'll send the calendar invite. Or, if you'd rather see what this looks like first, give me your email and I'll send over a <em>sample audit I did for another exotic rental shop</em> — full plan, dollar numbers, the whole thing. Which one would you prefer?",
+          "responses": ["Thursday at 10", "Friday at 2", "Send me the sample first"],
+          "followup": "Done — calendar invite or sample audit hits your inbox in 60 seconds.",
+          "note": "Dual-path close. Booked call OR sample audit. Either is a win."
         }
       ]
     },
@@ -89,7 +89,7 @@
           "t": 25,
           "phase": "AGITATION",
           "title": "Window Shoppers vs Real Ones",
-          "line": "Because the renter who bounces isn't gone — they're on the exotic shop across town or Turo inside two minutes. That's a <em>$1,500–$3,500 day</em>, sometimes a <em>$10,000 weekend</em>, going to someone with a worse fleet and a faster site. And the ones left? <em>Window shoppers</em>, not real ones. The buyers who'd actually book today bounced on page one. Would you be opposed to seeing where yours is leaking?",
+          "line": "Because the renter who bounces isn't gone — they're on the exotic shop across town or the next ad inside two minutes. That's a <em>$1,500–$3,500 day</em>, sometimes a <em>$10,000 weekend</em>, going to someone with a worse fleet and a faster site. And the ones left? <em>Window shoppers</em>, not real ones. The buyers who'd actually book today bounced on page one. Would you be opposed to seeing where yours is leaking?",
           "responses": ["Sure, show me", "We're doing fine on bookings", "How would you even know?"],
           "followup": "Totally fair — that's exactly what the audit answers.",
           "note": "\"Window shoppers vs real ones\" is verbatim operator language. They will recognize it."
@@ -98,28 +98,28 @@
           "t": 25,
           "phase": "SOLUTION",
           "title": "Showroom Rebuild",
-          "line": "What we do is rebuild it as a <em>digital showroom</em> — showroom-style fleet display, pricing and availability you don't have to dig for, and <em>mobile booking under 60 seconds</em>. So the Lambo on the screen sells as hard as the one in your garage.",
+          "line": "What I do is rebuild it as a <em>digital showroom</em> — showroom-style fleet display, pricing and availability you don't have to dig for, and <em>mobile booking under 60 seconds</em>. So the Lambo on the screen sells as hard as the one in your garage.",
           "responses": ["Interesting", "What does that cost?", "We've tried agencies before"],
           "followup": "Pricing's the easy part later. The audit's the only thing that matters right now.",
-          "note": "If \"we've tried agencies before\" → \"Yeah, most agencies do traffic. We do conversion. Different job.\""
+          "note": "If \"we've tried agencies before\" → \"Yeah, most agencies do traffic. I do conversion. Different job.\""
         },
         {
           "t": 35,
           "phase": "AUDIT OFFER",
           "title": "Free $3,000 Audit",
-          "line": "What we do first — whether we end up working together or not — is a <em>free Website Conversion Audit</em>, normally <em>$3,000</em>, yours to keep. Would it be unreasonable to have <em>Tony</em> spend 30 minutes walking you through the 3–5 biggest spots losing you bookings, what a conversion-built exotic site would change, and the <em>extra bookings your current traffic could be producing</em>?",
+          "line": "What I do first — whether we end up working together or not — is a <em>free conversion audit</em>, normally <em>$3,000</em>, yours to keep. Would it be unreasonable to spend 30 minutes walking you through the 3–5 biggest spots losing you bookings, what a conversion-built exotic site would change, and the <em>extra bookings your current traffic could be producing</em>?",
           "responses": ["Yeah, I'd take a look", "Just send the audit", "What do you need from me?"],
-          "followup": "Almost nothing on your end — best email, and Tony does the rest live on the call.",
-          "note": "Tony is the strategist. All booked calls land on his calendar."
+          "followup": "Almost nothing on your end — best email, and I do the rest live on the call.",
+          "note": "Audit is the door, not the close."
         },
         {
           "t": 15,
           "phase": "CLOSE",
           "title": "Lock the Time",
-          "line": "Best email so I can send the Cal link — and would it be unreasonable to block 30 minutes tomorrow or the day after with Tony to walk through what he finds?",
+          "line": "Best email so I can send the calendar link — and would it be unreasonable to block 30 minutes tomorrow or the day after to walk through what I find?",
           "responses": ["Sure, here's my email", "Send it", "I'll have to check"],
           "followup": "Done — link's in your inbox in 60 seconds. Pick the first slot that works.",
-          "note": "Send Cal embed link immediately. Log call. Auto-reset."
+          "note": "Send calendar link immediately. Log call. Auto-reset."
         }
       ]
     },
@@ -131,9 +131,9 @@
           "t": 15,
           "phase": "OPEN",
           "title": "Spend Frame Disarm",
-          "line": "Hey — feel free to hang up on me, I'm calling out of the blue. I'm guessing you guys are running Google Ads for the Lambo and Ferrari side out of {market}, right?",
+          "line": "Hey — I'll be quick. I'm guessing you guys are running Google Ads for the Lambo and Ferrari side out of {market}, right?",
           "responses": ["Yeah, we run ads", "Who is this?", "Why are you asking"],
-          "followup": "Totally fair — I'll be quick. Got 30 seconds or did I catch you mid-something?",
+          "followup": "Totally fair — I'll be quick. Got 30 seconds?",
           "note": "If \"we don't run ads\" → \"Got it — then this is even more interesting. Quick reason for the call…\""
         },
         {
@@ -149,16 +149,16 @@
           "t": 35,
           "phase": "AGITATION",
           "title": "The DM Trap + Window Shoppers",
-          "line": "Here's what's happening — you're paying <em>$5–$10 a click</em> to land people on a page where the only way to actually book is to <em>DM you on Instagram or call the number</em>. So the real buyers, the ones ready to drop $3,500 today, they bounce — they go to Turo or the shop across town that lets them book in 60 seconds. What's left in your DMs? <em>Window shoppers</em>, tire kickers, midnight messages from kids who can't afford the deposit. Jayden Bloom — $125,000 a month in Miami — said it himself: <em>\"there's no good platform out there for exotic car rentals, everything is so outdated.\"</em> Would you be opposed to seeing exactly where that ad spend is leaking?",
+          "line": "Here's what's happening — you're paying <em>$5–$10 a click</em> to land people on a page where the only way to actually book is to <em>DM you on Instagram or call the number</em>. So the real buyers, the ones ready to drop $3,500 today, they bounce — they go to the next ad or the shop across town that lets them book in 60 seconds. What's left in your DMs? <em>Window shoppers</em>, tire kickers, midnight messages from kids who can't afford the deposit. Would you be opposed to seeing exactly where that ad spend is leaking?",
           "responses": ["Sure", "How much does this cost", "We've heard this before"],
           "followup": "Got it — and the leak is almost never where the analytics says it is.",
-          "note": "This is the killer beat. Slow down on \"window shoppers\" and on the Jayden Bloom quote. Both are verbatim VoC."
+          "note": "This is the killer beat. Slow down on \"window shoppers\". Verbatim VoC."
         },
         {
           "t": 25,
           "phase": "SOLUTION",
           "title": "Convert the Click",
-          "line": "What we do at Conversion Exotics is turn the page your ads land on into a <em>digital showroom</em> — live pricing, fleet that sells itself, deposit clarity up front, and a <em>sub-60-second mobile booking</em>. So the click you're already paying for actually closes instead of bouncing into a DM you'll answer at midnight.",
+          "line": "What I do at Conversion Exotics is turn the page your ads land on into a <em>digital showroom</em> — live pricing, fleet that sells itself, deposit clarity up front, and a <em>sub-60-second mobile booking</em>. So the click you're already paying for actually closes instead of bouncing into a DM you'll answer at midnight.",
           "responses": ["Okay…", "Sounds expensive", "We're not changing the site right now"],
           "followup": "Totally fair — pricing's the easy part later. Audit first.",
           "note": "Don't pitch the build. Pitch the audit."
@@ -167,19 +167,19 @@
           "t": 35,
           "phase": "AUDIT OFFER",
           "title": "Free $3,000 Audit",
-          "line": "Whether we work together or not — we'll run a <em>free Website Conversion Audit</em>. Normally <em>$3,000</em>, yours to keep. Would it be unreasonable to have <em>Tony</em> spend 30 minutes walking you through exactly where the ad spend is leaking, what each click is actually worth, and the <em>3–5 fixes that close more renters from the traffic you're already paying for</em>?",
+          "line": "Whether we work together or not — I'll run a <em>free conversion audit</em>. Normally <em>$3,000</em>, yours to keep. Would it be unreasonable to spend 30 minutes walking you through exactly where the ad spend is leaking, what each click is actually worth, and the <em>3–5 fixes that close more renters from the traffic you're already paying for</em>?",
           "responses": ["Yeah I'd look at that", "What's the catch", "Send it over first"],
-          "followup": "No catch — Tony's running a handful personally this quarter for case studies. That's the trade.",
-          "note": "Always Tony as strategist. Free audit is the door, not the close."
+          "followup": "No catch — running a handful personally this quarter for case studies. That's the trade.",
+          "note": "Free audit is the door, not the close."
         },
         {
           "t": 15,
           "phase": "CLOSE",
           "title": "Lock the Time",
-          "line": "Shoot me your best email so I can send the Cal link — and let's block 30 minutes with Tony tomorrow or the day after. He'll have the audit pulled up live, screen-share, the whole thing. Cool?",
+          "line": "Shoot me your best email so I can send the calendar link — and let's block 30 minutes tomorrow or the day after. I'll have the audit pulled up live, screen-share, the whole thing. Cool?",
           "responses": ["Yep", "Send the link", "I'll see if I can move some things"],
           "followup": "Done. Calendar link hits your inbox in 60 seconds. Pick whichever slot works.",
-          "note": "Open Cal embed for them right then if they're still on the line."
+          "note": "Open calendar embed for them right then if they're still on the line."
         }
       ]
     }
