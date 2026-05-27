@@ -1,0 +1,2222 @@
+[
+  {
+    "n": 1,
+    "domain": "privatejetclub.com",
+    "market": "National",
+    "url": "https://privatejetclub.com/explore-membership/",
+    "phone": "Not published",
+    "email": "Form only",
+    "issues": [
+      "No phone on scored page \u2014 kills impulse call conversions",
+      "Passive CTA ('Explore Membership') vs. action-forward language",
+      "No live chat; no trust badges (ARGUS/Wyvern) on page"
+    ],
+    "speed": "Heavy membership pricing tables; no lazy loading evident",
+    "trust": "No safety certifications or media mentions above fold",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Privatejetclub",
+    "notes": "No phone found on site or via search. Bermuda pjcbermuda.com is a different company."
+  },
+  {
+    "n": 2,
+    "domain": "magellanjets.com",
+    "market": "National",
+    "url": "https://magellanjets.com/book-on-demand-private-jet-charter-flights/",
+    "phone": "+1 (877) 550-5387",
+    "email": "Form only",
+    "issues": [
+      "Whitepaper download before quote \u2014 top-of-funnel friction on conversion page",
+      "Phone not prominently displayed in hero \u2014 buried",
+      "Empty leg tool draws attention away from primary CTA"
+    ],
+    "speed": "Multiple 3rd-party scripts likely; heavy FAQ section delays TTI",
+    "trust": "'Best Private Jet Charter' award mentioned but no star rating above fold",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Magellanjets",
+    "notes": "Phone verified: magellanjets.com/contact + aviation-safety blog"
+  },
+  {
+    "n": 3,
+    "domain": "interstellaraviation.com",
+    "market": "National",
+    "url": "https://www.interstellaraviation.com/request-flight/",
+    "phone": "202) 796-1222 (",
+    "email": "Form only",
+    "issues": [
+      "No phone on scored page \u2014 single form only, no alternate conversion path",
+      "'$8,000/hr' anchor without context can repel flexible buyers",
+      "No social proof, reviews, or certifications on conversion page"
+    ],
+    "speed": "Sparse page but no CDN evidence; small co. = likely shared hosting",
+    "trust": "No ARGUS/Wyvern badge; no testimonials on scored page",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "low",
+    "company": "Interstellaraviation",
+    "notes": "ZoomInfo shows (202) 796-1222 but not confirmed on official site"
+  },
+  {
+    "n": 4,
+    "domain": "mercuryjets.com",
+    "market": "National",
+    "url": "https://www.mercuryjets.com/",
+    "phone": "+1-212-840-8000",
+    "email": "info@mercuryjets.com",
+    "issues": [
+      "Extremely long homepage dilutes primary CTA",
+      "Multiple quote CTAs compete without a single dominant path",
+      "'4.9 stars' claimed in copy but no live review widget linked"
+    ],
+    "speed": "Very long page = large DOM; aircraft galleries = heavy images",
+    "trust": "ARGUS Certified noted in body copy but not badged prominently above fold",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Mercuryjets",
+    "notes": "mercuryjets.com/contact-us + BBB + ZoomInfo all consistent"
+  },
+  {
+    "n": 5,
+    "domain": "solairus.aero",
+    "market": "National",
+    "url": "https://go.solairus.aero/charter-aircraft-guidebook",
+    "phone": "800-359-7861",
+    "email": "charter@solairus.aero",
+    "issues": [
+      "Scored page is TOFU guidebook download \u2014 wrong funnel stage for paid traffic",
+      "Phone absent from scored HubSpot subdomain page",
+      "No instant quote or pricing on scored page"
+    ],
+    "speed": "HubSpot subdomain adds tracking script overhead (200-400ms)",
+    "trust": "Safety certifications not shown on scored page",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "high",
+    "company": "Solairus",
+    "notes": "Phone/email triple-verified: contact page, support portal, LinkedIn, JetMembership"
+  },
+  {
+    "n": 6,
+    "domain": "jsx.com",
+    "market": "National",
+    "url": "https://www.jsx.com/",
+    "phone": "800) 435-9579",
+    "email": "customersupport@jsx.com",
+    "issues": [
+      "Semi-private product may confuse full-charter buyers vs. competitors",
+      "Route search widget requires input before pricing \u2014 friction",
+      "No trust badges or safety certs above fold on homepage"
+    ],
+    "speed": "App-download CTAs + route widget = heavy JS payload",
+    "trust": "Missing: explicit safety cert badges and review count above fold",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Jsx",
+    "notes": "Phone/email verified across 5 independent sources"
+  },
+  {
+    "n": 7,
+    "domain": "flyalliance.com",
+    "market": "National",
+    "url": "https://fly.flyalliance.com/get-a-private-charter-quote",
+    "phone": "407) 747-0037",
+    "email": "Form only",
+    "issues": [
+      "HubSpot subdomain (fly.flyalliance.com) disconnected branding reduces trust",
+      "No phone, live chat, or trust signals on scored landing page",
+      "No aircraft imagery or value prop on HubSpot form page"
+    ],
+    "speed": "HubSpot subdomain tracking scripts add overhead by default",
+    "trust": "No certifications, reviews, or testimonials on scored page",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "high",
+    "company": "Flyalliance",
+    "notes": "Both phones confirmed via LinkedIn + main site + ZoomInfo"
+  },
+  {
+    "n": 8,
+    "domain": "sentient.com",
+    "market": "Austin",
+    "url": "https://sentient.com/the-original-jet-card/",
+    "phone": "1-866-602-0044",
+    "email": "Form only",
+    "issues": [
+      "Fuel surcharge + FET disclaimer buried \u2014 transparency issue causing drop-off",
+      "Phone not prominently displayed on scored page (requires scrolling)",
+      "Two product options (SJ25/SJ25+) simultaneously = choice paralysis"
+    ],
+    "speed": "Marketing-heavy page; form tracking scripts add load overhead",
+    "trust": "25+ years heritage not visualized; no star rating above fold",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Sentient",
+    "notes": "Phone triple-verified: homepage, learn-more, ZoomInfo, PrivateJetCardComparisons"
+  },
+  {
+    "n": 9,
+    "domain": "flyusa.com",
+    "market": "National",
+    "url": "https://flyusa.com/book-private-flights/",
+    "phone": "727) 240-2408",
+    "email": "trips@flyusa.com",
+    "issues": [
+      "Duplicate conversion copy block appears twice on page \u2014 template error",
+      "No phone displayed on scored booking page",
+      "Value prop ('Why FlyUSA?') positioned after form, not above it"
+    ],
+    "speed": "Duplicate content block signals unoptimized template; Gravity Forms scripts",
+    "trust": "No trust badges or certifications visible on scored page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Flyusa",
+    "notes": "Phone + email triple-verified across 3 official sources"
+  },
+  {
+    "n": 10,
+    "domain": "luxuryaircraftsolutions.com",
+    "market": "National",
+    "url": "https://luxuryaircraftsolutions.com/",
+    "phone": "631) 676-7488",
+    "email": "charter@luxuryaircraftsolutions.com",
+    "issues": [
+      "CRITICAL: Homepage rendering as 200+ page directory list \u2014 not a landing page",
+      "No hero, no headline, no CTA visible if page loads incorrectly",
+      "New platform (April 2026) \u2014 UI/UX instability likely"
+    ],
+    "speed": "New platform = not fully optimized; 200+ links = massive DOM load",
+    "trust": "No review history; ARGUS/Wyvern not shown on homepage",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Luxuryaircraftsolutions",
+    "notes": "Phone/email verified: Yelp + ZoomInfo + EINPresswire + blog posts"
+  },
+  {
+    "n": 11,
+    "domain": "avalonairllc.com",
+    "market": "National",
+    "url": "https://www.avalonairllc.com/charter-flights",
+    "phone": "Not published",
+    "email": "Not published",
+    "issues": [
+      "Small Fort Worth operator \u2014 no click-to-call on scored charter page",
+      "No trust badges or safety certs visible",
+      "No live pricing or instant quote"
+    ],
+    "speed": "Likely small shared hosting; no CDN signals",
+    "trust": "No certifications or review count visible",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "low",
+    "company": "Avalonairllc",
+    "notes": "Could not confirm phone via site or searches; Fort Worth-based operator"
+  },
+  {
+    "n": 12,
+    "domain": "jets.com",
+    "market": "National",
+    "url": "https://jets.com/jet-cards",
+    "phone": "+1 866-631-0875",
+    "email": "Form only",
+    "issues": [
+      "Phone present but not prominent in hero section of scored page",
+      "Jet card pricing tiers not shown \u2014 requires form submission for pricing",
+      "Chat widget may compete with primary CTA for attention"
+    ],
+    "speed": "Large site with likely heavy JS; mobile app + marketing assets",
+    "trust": "Missing: ARGUS/Wyvern badges on scored page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Jets",
+    "notes": "Primary: 866-631-0875 on jets.com footer/contact. ZoomInfo shows 877-534-6691 (older listing)"
+  },
+  {
+    "n": 13,
+    "domain": "trilogyaviationgroup.com",
+    "market": "National",
+    "url": "https://trilogyaviationgroup.com/takeoff/",
+    "phone": "817) 769-8714",
+    "email": "charter@trilogyaviationgroup.com | sales@trilogyaviationgroup.com",
+    "issues": [
+      "Scored page (/takeoff/) is likely a PPC landing page \u2014 unclear if optimized",
+      "No phone displayed on scored /takeoff/ page (based on layout)",
+      "Limited trust signals on a PPC conversion page"
+    ],
+    "speed": "WordPress PPC lander likely has unoptimized scripts",
+    "trust": "No certs visible on scored page; safety claims need verification",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Trilogyaviationgroup",
+    "notes": "Phone confirmed: contact page + FlightList PRO + Yelp all show 817-769-8714"
+  },
+  {
+    "n": 14,
+    "domain": "flybitlux.com",
+    "market": "National",
+    "url": "https://flybitlux.com/",
+    "phone": "561) 421-8620",
+    "email": "clientservices@flybitlux.com",
+    "issues": [
+      "Homepage CTA is phone-first which is strong, but no chat alternative",
+      "No instant pricing tool \u2014 form and phone only",
+      "ARGUS Rated mentioned on Yelp but not badged on homepage"
+    ],
+    "speed": "Multiple Bitcoin/crypto payment integrations add JS overhead",
+    "trust": "ARGUS Rated per Yelp but badge not visible on homepage",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Flybitlux",
+    "notes": "All sources agree on (561) 421-8620; secondary: 561-235-8098 from Facebook"
+  },
+  {
+    "n": 15,
+    "domain": "oneairjet.com",
+    "market": "National",
+    "url": "https://oneairjet.com/",
+    "phone": "303-717-2433",
+    "email": "info@oneairjet.com",
+    "issues": [
+      "Phone shown as text/call option \u2014 good, but not formatted for click-to-call on mobile",
+      "No pricing or instant quote on homepage",
+      "No trust badges (ARGUS/Wyvern) visible"
+    ],
+    "speed": "Form-heavy page with contact forms across multiple pages",
+    "trust": "No certifications; limited trust signals beyond testimonials",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Oneairjet",
+    "notes": "Phone/email confirmed on homepage and on-demand charter page"
+  },
+  {
+    "n": 16,
+    "domain": "manext.com",
+    "market": "National",
+    "url": "https://manext.com/private-jet-charter-services/",
+    "phone": "877) 359-6263",
+    "email": "Form only",
+    "issues": [
+      "Phone number not prominently featured on scored services page",
+      "MAnext brand is new (2023 launch) \u2014 brand recognition still low",
+      "No pricing, no instant quote tool on services page"
+    ],
+    "speed": "Standard WordPress setup likely; no CDN optimization signals",
+    "trust": "New brand \u2014 limited trust history; leverages Million Air heritage",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Manext",
+    "notes": "(877) 359-6263 confirmed via Prospeo and BusinessWire MAnext launch release"
+  },
+  {
+    "n": 17,
+    "domain": "365aviation.com",
+    "market": "National",
+    "url": "https://www.365aviation.com/book-private-jet-usa",
+    "phone": "+44 20 3651 5665 (",
+    "email": "charter@365aviation.com",
+    "issues": [
+      "UK-based company \u2014 US scored page but UK phone creates friction for American callers",
+      "No US-specific phone number on scored US-market page",
+      "No live pricing on scored page"
+    ],
+    "speed": "RocketReach/365aviation.com confirms UK phone \u2014 US visitors face friction",
+    "trust": "No US-specific trust badges; UK company selling to US market",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "med",
+    "company": "365aviation",
+    "notes": "UK HQ: +44 20 3651 5665. No US phone confirmed. charter@365aviation.com from site"
+  },
+  {
+    "n": 18,
+    "domain": "executivejetmanagement.com",
+    "market": "San Francisco",
+    "url": "https://www.executivejetmanagement.com/s/private-jet-charter-flights",
+    "phone": "800) 451-2822",
+    "email": "ejmmarketing@ejmjets.com",
+    "issues": [
+      "Salesforce-powered site (.com/s/) can be slow to load \u2014 Enterprise tech overhead",
+      "Phone not prominently featured on scored charter page",
+      "No instant quote \u2014 enterprise form flow"
+    ],
+    "speed": "Salesforce/MkCloud scripts = heavy initial page load",
+    "trust": "Established operator but safety cert badges not visible on scored page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Executivejetmanagement",
+    "notes": "(800) 451-2822 verified: Facebook, ZoomInfo, contact page. Email: Facebook"
+  },
+  {
+    "n": 19,
+    "domain": "flyexclusive.com",
+    "market": "National",
+    "url": "https://www.flyexclusive.com/jet-club",
+    "phone": "833-359-2582",
+    "email": "investors@flyexclusive.com (IR); charter via form",
+    "issues": [
+      "Multiple phone numbers split by service type \u2014 confusing for new prospects",
+      "No email shown on scored /jet-club/ page",
+      "Publicly traded company (FLYX) \u2014 corporate complexity may hinder sales UX"
+    ],
+    "speed": "Publicly traded co. = heavy marketing/compliance tracking scripts",
+    "trust": "IR contact shown vs. charter contact \u2014 mixed messaging",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Flyexclusive",
+    "notes": "Phones confirmed via ir.flyexclusive.com and success/join page"
+  },
+  {
+    "n": 20,
+    "domain": "globalcharter.com",
+    "market": "National",
+    "url": "https://www.globalcharter.com/us",
+    "phone": "+1 305-504-2449 (",
+    "email": "fly@globalcharter.com",
+    "issues": [
+      "US-specific page present but primary global branding is UK \u2014 may reduce US trust",
+      "No single dominant US phone number \u2014 office locations split conversion",
+      "No instant pricing on US scored page"
+    ],
+    "speed": "Global site with multiple office scripts, maps, and assets = heavy load",
+    "trust": "Strong testimonials (Edward Weisfelner etc.) \u2014 good trust signal",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Globalcharter",
+    "notes": "Multiple US offices confirmed with direct numbers on globalcharter.com"
+  },
+  {
+    "n": 21,
+    "domain": "theflightking.com",
+    "market": "National",
+    "url": "https://www.theflightking.com/private-charter/",
+    "phone": "833-358-5464)",
+    "email": "info@theflightking.com | support@theflightking.com",
+    "issues": [
+      "WhatsApp (212-201-1202) prominently offered \u2014 good for mobile but no call alternative",
+      "'Up to 70% off' language may confuse vs. pure private jet competitors",
+      "Luxury + discount framing creates mixed brand positioning"
+    ],
+    "speed": "WordPress site with booking widget; search flight form adds JS weight",
+    "trust": "No ARGUS/Wyvern badges visible; mixed positioning (luxury + discount)",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Theflightking",
+    "notes": "Phone/email verified: contact page + Facebook official page"
+  },
+  {
+    "n": 22,
+    "domain": "munserfbo.com",
+    "market": "National",
+    "url": "https://www.munserfbo.com/en/services/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "FBO/airport services page \u2014 not a charter conversion page; wrong audience fit",
+      "No charter-specific CTA on scored services page",
+      "No contact info found publicly"
+    ],
+    "speed": "FBO site likely not optimized for charter conversion traffic",
+    "trust": "No charter trust signals; FBO positioning confuses charter buyers",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Munserfbo",
+    "notes": "munserfbo.com appears to be an FBO, not a charter broker. Very low frequency (2)"
+  },
+  {
+    "n": 23,
+    "domain": "wheelsup.com",
+    "market": "National",
+    "url": "https://www.wheelsup.com/",
+    "phone": "8760 (855-259-8760)",
+    "email": "info@wheelsup.com",
+    "issues": [
+      "Post-restructuring brand trust concerns \u2014 Chapter 11 awareness in market",
+      "Complex membership tiers without clear pricing on homepage",
+      "Multiple CTAs (membership, on-demand, corporate) compete"
+    ],
+    "speed": "Major enterprise platform \u2014 heavy marketing stack, likely slow mobile",
+    "trust": "Chapter 11 restructuring history may reduce high-value buyer trust",
+    "cta": "STRONG",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Wheelsup",
+    "notes": "855-259-8760 confirmed: wheelsup.com, Business Air News, ZoomInfo"
+  },
+  {
+    "n": 24,
+    "domain": "presidential-aviation.com",
+    "market": "Miami",
+    "url": "https://www.presidential-aviation.com/",
+    "phone": "954) 481-0344",
+    "email": "sales@presidential-aviation.com | charter@presidential-aviation.com",
+    "issues": [
+      "Fort Lauderdale-based; homepage not specifically targeted at scored page audience",
+      "No instant pricing or quote tool on homepage",
+      "Government/charter background not clearly differentiated for private flyers"
+    ],
+    "speed": "Standard WordPress aviation site; no CDN optimization signals",
+    "trust": "Debra Higgins (VP Sales) profiled \u2014 personal touch good",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Presidential Aviation",
+    "notes": "Both phones verified: management page + Fort Lauderdale Airport directory"
+  },
+  {
+    "n": 25,
+    "domain": "flyjetaccess.com",
+    "market": "Dallas",
+    "url": "https://www.flyjetaccess.com/city/dallas/",
+    "phone": "800) 554-9489",
+    "email": "info@flyjetaccess.com",
+    "issues": [
+      "City-specific page (/city/dallas/) exists \u2014 good local SEO but thin on conversion content",
+      "No prominent phone on Dallas city page",
+      "No pricing or jet size options visible on city scored page"
+    ],
+    "speed": "Indianapolis-HQ'd company \u2014 city pages may be templated/thin content",
+    "trust": "City landing pages often lack social proof specific to that city",
+    "cta": "WEAK",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Flyjetaccess",
+    "notes": "Phone/email confirmed: contact page, devsite, aviamarket.aero"
+  },
+  {
+    "n": 26,
+    "domain": "privatejet.com",
+    "market": "National",
+    "url": "https://privatejet.com/",
+    "phone": "+1 (954) 869-7191",
+    "email": "charter@privatejet.com",
+    "issues": [
+      "Premium domain name but contact info only found on /company/contact-us/ \u2014 not homepage",
+      "Homepage may over-rely on SEO traffic without clear conversion path",
+      "No live pricing or instant quote on homepage"
+    ],
+    "speed": "Premium domain = likely high traffic; needs robust page speed",
+    "trust": "Strong domain authority but contact info buried",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Privatejet",
+    "notes": "Phone/email both confirmed on contact page"
+  },
+  {
+    "n": 27,
+    "domain": "fxair.com",
+    "market": "National",
+    "url": "https://www.fxair.com/en-us/premium-charter",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Premium charter page with likely high purchase intent but no public phone",
+      "No email listed publicly",
+      "Form-only conversion on premium charter page"
+    ],
+    "speed": "Enterprise platform; likely tracking heavy but need direct verification",
+    "trust": "Premium branding but no visible trust cert badges",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "low",
+    "company": "Fxair",
+    "notes": "fxair.com scored on premium-charter page; no contact info found in searches"
+  },
+  {
+    "n": 28,
+    "domain": "surfair.com",
+    "market": "National",
+    "url": "https://fly.surfair.com/explore/on-demand/quote",
+    "phone": "877-359-7873 (",
+    "email": "sales@surfair.com | privacy@surfair.com",
+    "issues": [
+      "Surf Air Mobility app-focused brand; quote page is a subdomain (fly.surfair.com)",
+      "No direct phone on scored quote subdomain",
+      "App-first orientation may confuse non-app users visiting the web"
+    ],
+    "speed": "Subdomain + app tracking = multiple JS payloads; mobile first needed",
+    "trust": "Publicly traded (SRFM) \u2014 financial instability concerns in market",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Surfair",
+    "notes": "Phone verified: Facebook posts + Prospeo. Email: surfair.com legal page"
+  },
+  {
+    "n": 29,
+    "domain": "privejets.com",
+    "market": "National",
+    "url": "https://privejets.com/jet-charter-service-pricing/",
+    "phone": "305) 917-1600",
+    "email": "Form only",
+    "issues": [
+      "Pricing page scored \u2014 strong intent signal but pricing ranges too broad without form",
+      "Phone (305-917-1600) not on scored pricing page based on ZoomInfo match",
+      "No instant booking \u2014 pricing page still requires advisor contact"
+    ],
+    "speed": "Standard aviation broker site; no evident CDN",
+    "trust": "No ARGUS/Wyvern badge on scored pricing page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Privejets",
+    "notes": "(305) 917-1600 confirmed: ZoomInfo, RocketReach, Aviapages"
+  },
+  {
+    "n": 30,
+    "domain": "element-aviation.com",
+    "market": "National",
+    "url": "https://element-aviation.com/jet-charters/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Charter services page with no visible phone number in search results",
+      "No public contact info found",
+      "Form-only contact suspected"
+    ],
+    "speed": "Standard charter broker site; performance unknown",
+    "trust": "No trust signals found in available data",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Element Aviation",
+    "notes": "element-aviation.com \u2014 no phone or email confirmed via searches"
+  },
+  {
+    "n": 31,
+    "domain": "exquisiteaircharter.com",
+    "market": "National",
+    "url": "https://exquisiteaircharter.com/charter-flight-pricing/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Pricing page scored \u2014 good intent but no public phone found",
+      "No email found publicly",
+      "Likely form-only"
+    ],
+    "speed": "Small operator \u2014 likely shared hosting, unoptimized",
+    "trust": "No certifications found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Exquisiteaircharter",
+    "notes": "exquisiteaircharter.com \u2014 no contact info confirmed"
+  },
+  {
+    "n": 32,
+    "domain": "surfondemand.com",
+    "market": "National",
+    "url": "https://www.surfondemand.com/jet-card/",
+    "phone": "877-359-7873 (",
+    "email": "Not confirmed separately",
+    "issues": [
+      "Surf On Demand is a Surf Air sub-brand \u2014 brand confusion if user expects premium private",
+      "Jet card page does not appear to show direct contact info",
+      "No standalone contact distinct from parent Surf Air brand"
+    ],
+    "speed": "Inherits Surf Air platform overhead",
+    "trust": "Surf Air financial concerns apply to sub-brand trust",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "med",
+    "company": "Surfondemand",
+    "notes": "surfondemand.com = Surf Air product; phone inherits from parent brand"
+  },
+  {
+    "n": 33,
+    "domain": "heraflight.com",
+    "market": "National",
+    "url": "https://heraflight.com/",
+    "phone": "1-833-359-4372)",
+    "email": "charter@heraflight.com",
+    "issues": [
+      "Strong phone and email above fold \u2014 above average for small operator",
+      "No ARGUS/Wyvern cert badges visible",
+      "No instant pricing"
+    ],
+    "speed": "Clearwater FL operator; likely standard WordPress; no CDN signals",
+    "trust": "Pilot-founded messaging is a trust signal; no safety certs visible",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Heraflight",
+    "notes": "Phone/email confirmed: contact page, homepage, Instagram all consistent"
+  },
+  {
+    "n": 34,
+    "domain": "cieljets.com",
+    "market": "National",
+    "url": "https://www.cieljets.com/jet-card-alternative/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "'Jet card alternative' framing is a smart differentiator but no phone to close",
+      "No contact info found on scored page",
+      "No pricing or instant quote"
+    ],
+    "speed": "Standard charter site; performance unknown",
+    "trust": "No certifications found in search results",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Cieljets",
+    "notes": "cieljets.com \u2014 no phone or email confirmed; cieljets.com \u2260 cilajet.com"
+  },
+  {
+    "n": 35,
+    "domain": "aircharterserviceusa.com",
+    "market": "National",
+    "url": "https://www.aircharterserviceusa.com/private-charter/private-jets-charter",
+    "phone": "+1 (954) 686-5220",
+    "email": "Not found \u2014 form/callback focus",
+    "issues": [
+      "US page of UK-HQ'd company (Reigate, Surrey) \u2014 US number present but UK feel",
+      "Callback-focused contact flow adds friction vs. direct phone",
+      "No instant pricing on scored page"
+    ],
+    "speed": "Large international site with multi-region scripts = heavy load",
+    "trust": "30+ years experience is strong; US presence less clear than UK brand",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Aircharterserviceusa",
+    "notes": "(954) 686-5220 confirmed on airlines sector page"
+  },
+  {
+    "n": 36,
+    "domain": "swartzaviationgroup.com",
+    "market": "National",
+    "url": "https://swartzaviationgroup.com/buy/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "'/buy/' URL is unconventional for luxury aviation \u2014 trust concern",
+      "No contact info found publicly",
+      "No pricing or form info available"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Swartzaviationgroup",
+    "notes": "swartzaviationgroup.com \u2014 very low frequency (2); no contact info found"
+  },
+  {
+    "n": 37,
+    "domain": "flytangojets.com",
+    "market": "National",
+    "url": "https://flytangojets.com/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "No contact info found for this domain",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Flytangojets",
+    "notes": "flytangojets.com \u2014 low frequency (1); no contact info confirmed"
+  },
+  {
+    "n": 38,
+    "domain": "outlierjets.com",
+    "market": "National",
+    "url": "https://landing.outlierjets.com/jet-card-ppc",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Scored page is a PPC landing page on a subdomain \u2014 standard for ad campaigns",
+      "No public contact info found",
+      "Likely form capture only"
+    ],
+    "speed": "HubSpot/Unbounce PPC lander = tracking scripts overhead",
+    "trust": "No trust signals found; PPC lander typically stripped",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Outlierjets",
+    "notes": "outlierjets.com PPC lander \u2014 no contact info confirmed"
+  },
+  {
+    "n": 39,
+    "domain": "flyxo.com",
+    "market": "National",
+    "url": "https://flyxo.com/promotion/pricing/",
+    "phone": "+1 (888) 80-",
+    "email": "ClientServices@flyxo.com | sales.US@flyxo.com",
+    "issues": [
+      "Pricing promotion page scored \u2014 high intent but no phone on promo URL",
+      "Multiple phone numbers for different departments create confusion",
+      "Promo page may not match main XO branding"
+    ],
+    "speed": "XO (VistaGlobal) is a large platform with heavy tracking stack",
+    "trust": "VistaGlobal ownership = strong trust; no cert badges on promo page",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Flyxo",
+    "notes": "Phones confirmed: flyxo.com/contact, FAQ, pissedconsumer.com"
+  },
+  {
+    "n": 40,
+    "domain": "vistajet.com",
+    "market": "National",
+    "url": "https://www.vistajet.com/en-us/",
+    "phone": "+1 (833) 853-8872",
+    "email": "press@vistajet.com (media); form for sales",
+    "issues": [
+      "Strong brand with phone in hero \u2014 above average CRO execution",
+      "Media email shown but no general sales email publicly listed",
+      "Multiple aircraft programs (Program vs. On Demand) without clear differentiation"
+    ],
+    "speed": "Global enterprise platform; likely CDN-optimized but asset-heavy",
+    "trust": "Strong trust signals \u2014 global brand, decades history",
+    "cta": "STRONG",
+    "risk": "LOW",
+    "phone_confidence": "high",
+    "company": "Vistajet",
+    "notes": "Both US phones confirmed on vistajet.com homepage and contact page"
+  },
+  {
+    "n": 41,
+    "domain": "dynamicjetcharter.com",
+    "market": "National",
+    "url": "https://www.dynamicjetcharter.com/luxury-aircraft-charter/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Luxury charter page with no public contact info found",
+      "No phone or email confirmed",
+      "Form-only contact suspected"
+    ],
+    "speed": "Low frequency (1) site; likely small operator",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Dynamicjetcharter",
+    "notes": "Very low frequency (1); no contact confirmed"
+  },
+  {
+    "n": 42,
+    "domain": "sunairjets.com",
+    "market": "Van Nuys",
+    "url": "https://www.sunairjets.com/private-jet-charter-los-angeles/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Los Angeles city page scored \u2014 high-value market but no contact found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "City landing page may be thin content",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Sunairjets",
+    "notes": "Low frequency (3); no contact info confirmed"
+  },
+  {
+    "n": 43,
+    "domain": "jethandling.com",
+    "market": "National",
+    "url": "https://jethandling.com/contact/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Contact page scored but no contact info extracted",
+      "Likely an FBO/handling company, not charter broker",
+      "Misaligned audience for charter conversion"
+    ],
+    "speed": "FBO site; unknown performance",
+    "trust": "FBO positioning \u2014 may not be a charter competitor",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Jethandling",
+    "notes": "jethandling.com = FBO/handling. Low frequency (1). Contact info not confirmed"
+  },
+  {
+    "n": 44,
+    "domain": "charterhub.com",
+    "market": "National",
+    "url": "https://www.charterhub.com/listings/for-charter/jet-aircraft/3",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Aircraft listings page \u2014 marketplace model, not direct charter operator",
+      "No direct contact info; marketplace platform",
+      "Marketplace model limits direct conversion"
+    ],
+    "speed": "Marketplace platform with dynamic listings = heavy JS",
+    "trust": "Marketplace trust differs from operator trust",
+    "cta": "WEAK",
+    "risk": "MEDIUM",
+    "phone_confidence": "none",
+    "company": "Charterhub",
+    "notes": "charterhub.com = aircraft listings marketplace. Contact via individual operators"
+  },
+  {
+    "n": 45,
+    "domain": "jetoneaviation.net",
+    "market": "National",
+    "url": "https://www.jetoneaviation.net/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Homepage scored but no contact info found",
+      "No phone or email confirmed",
+      "Likely form-only"
+    ],
+    "speed": "Unknown; very low frequency (1)",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Jetoneaviation",
+    "notes": "jetoneaviation.net \u2014 very low frequency (1); no contact confirmed"
+  },
+  {
+    "n": 46,
+    "domain": "northernjet.com",
+    "market": "National",
+    "url": "https://northernjet.com/private-jet-charter-flights/",
+    "phone": "616-336-4800",
+    "email": "information@northernjet.com",
+    "issues": [
+      "Charter flights page scored \u2014 good intent page but phone not prominent on scored URL",
+      "Phone is in footer only on scored page \u2014 not above fold",
+      "No instant pricing"
+    ],
+    "speed": "Grand Rapids MI operator; $100M-500M revenue; likely multiple scripts",
+    "trust": "Strong company footprint; personal/authentic messaging noted",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Northernjet",
+    "notes": "Phone/email confirmed: homepage, contact page, LinkedIn, Seamless.AI"
+  },
+  {
+    "n": 47,
+    "domain": "jet-bay.com",
+    "market": "National",
+    "url": "https://www.jet-bay.com/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Homepage scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Low frequency (6); unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Jet Bay",
+    "notes": "jet-bay.com \u2014 frequency 6; no contact info confirmed"
+  },
+  {
+    "n": 48,
+    "domain": "accaircharterusa.com",
+    "market": "National",
+    "url": "https://accaircharterusa.com/charter/private-jet-rental/",
+    "phone": "+1 (954) 686-5220",
+    "email": "DC@ACCaviation.com",
+    "issues": [
+      "Same ACC Aviation USA as row 35 \u2014 UK HQ with US number",
+      "Callback-preferred UX adds friction",
+      "UK company on US page creates trust gap"
+    ],
+    "speed": "International scripts from multi-region site",
+    "trust": "30+ years experience is strong trust signal",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Accaircharterusa",
+    "notes": "Same as aircharterserviceusa.com. (954) 686-5220 confirmed"
+  },
+  {
+    "n": 49,
+    "domain": "jet365.com",
+    "market": "National",
+    "url": "https://jet365.com/",
+    "phone": "+1 302-208-6118",
+    "email": "info@jet365.com",
+    "issues": [
+      "Canadian HQ (Toronto) \u2014 302 number (Delaware) may confuse US callers",
+      "No instant pricing on homepage",
+      "Contact form prominent but no phone in hero"
+    ],
+    "speed": "Toronto-based; standard platform; unknown CDN",
+    "trust": "Young brand; no certifications found in search results",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Jet365",
+    "notes": "Phone/email confirmed: jet365.com/contact page"
+  },
+  {
+    "n": 50,
+    "domain": "justlandedjets.com",
+    "market": "National",
+    "url": "https://justlandedjets.com/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Homepage scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Low frequency (13); unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Justlandedjets",
+    "notes": "justlandedjets.com \u2014 frequency 13; no contact info confirmed"
+  },
+  {
+    "n": 51,
+    "domain": "businessjet.com",
+    "market": "National",
+    "url": "https://www.businessjet.com/aircraft-management/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Aircraft management page scored \u2014 not a charter conversion page",
+      "Misaligned audience (management vs. charter)",
+      "No contact info found"
+    ],
+    "speed": "Unknown platform",
+    "trust": "Management vs. charter creates audience mismatch",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Businessjet",
+    "notes": "businessjet.com \u2014 management page scored; contact info not found"
+  },
+  {
+    "n": 52,
+    "domain": "charterjetone.com",
+    "market": "National",
+    "url": "https://charterjetone.com/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Homepage scored; no contact info confirmed",
+      "No phone or email found",
+      "Form-only suspected"
+    ],
+    "speed": "Low frequency (13); unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Charterjetone",
+    "notes": "charterjetone.com \u2014 frequency 13; no contact info confirmed"
+  },
+  {
+    "n": 53,
+    "domain": "jetlinx.com",
+    "market": "Dallas",
+    "url": "https://jetlinx.com/services/jet-card/",
+    "phone": "402) 991-8060 (",
+    "email": "info@jetlinx.com",
+    "issues": [
+      "Jet card page scored \u2014 strong, high-intent page; local phone network is strong CRO asset",
+      "HQ phone (402) should be replaced with local base phone for conversion",
+      "No instant pricing on jet card page"
+    ],
+    "speed": "20+ location site = large asset set; likely CDN-managed",
+    "trust": "Strong trust: ARGUS/Wyvern, local presence, since 1999",
+    "cta": "STRONG",
+    "risk": "LOW",
+    "phone_confidence": "high",
+    "company": "Jetlinx",
+    "notes": "HQ: (402) 991-8060; Dallas: (214) 350-1327; email: info@jetlinx.com \u2014 all verified"
+  },
+  {
+    "n": 54,
+    "domain": "charterflightsflorida.com",
+    "market": "National",
+    "url": "https://charterflightsflorida.com/charter-flights/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Florida charter flights page scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Low frequency (45); likely thin content site",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Charterflightsflorida",
+    "notes": "charterflightsflorida.com \u2014 frequency 45; no contact info found"
+  },
+  {
+    "n": 55,
+    "domain": "theearlyairway.com",
+    "market": "National",
+    "url": "https://theearlyairway.com/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Homepage scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Low frequency (27); unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Theearlyairway",
+    "notes": "theearlyairway.com \u2014 frequency 27; no contact confirmed"
+  },
+  {
+    "n": 56,
+    "domain": "flystraightline.com",
+    "market": "National",
+    "url": "https://join.flystraightline.com/fly-straightline",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Scored page is a join/signup subdomain \u2014 likely a membership funnel page",
+      "No phone or public contact found",
+      "Lead capture form only"
+    ],
+    "speed": "Subdomain + signup tracking scripts overhead",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Flystraightline",
+    "notes": "flystraightline.com join subdomain; no contact confirmed"
+  },
+  {
+    "n": 57,
+    "domain": "epcvipair.com",
+    "market": "National",
+    "url": "https://www.epcvipair.com/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Homepage scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Low frequency (4); unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Epcvipair",
+    "notes": "epcvipair.com \u2014 frequency 4; no contact confirmed"
+  },
+  {
+    "n": 58,
+    "domain": "royalpalmjets.com",
+    "market": "National",
+    "url": "https://www.royalpalmjets.com/",
+    "phone": "561) 825-8891",
+    "email": "info@royalpalmjets.com",
+    "issues": [
+      "Pilot-founded \u2014 strong trust messaging; phone and email visible",
+      "No ARGUS/Wyvern cert badges found",
+      "No pricing on homepage"
+    ],
+    "speed": "Boca Raton small operator; likely WordPress; no CDN signals",
+    "trust": "Pilot-founded messaging is strong; no safety cert badges",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Royalpalmjets",
+    "notes": "Phone/email confirmed: homepage. CEO contact bob@royalpalmjets.com also found"
+  },
+  {
+    "n": 59,
+    "domain": "jetdirect.com",
+    "market": "National",
+    "url": "https://jetdirect.com/private-jet-charters/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Charter page scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Frequency 5; unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Jetdirect",
+    "notes": "jetdirect.com \u2014 frequency 5; no contact confirmed"
+  },
+  {
+    "n": 60,
+    "domain": "rairaviation.com",
+    "market": "National",
+    "url": "https://www.rairaviation.com/privatecharter",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Private charter page scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Low frequency (8); unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Rairaviation",
+    "notes": "rairaviation.com \u2014 frequency 8; no contact confirmed"
+  },
+  {
+    "n": 61,
+    "domain": "hautejets.com",
+    "market": "National",
+    "url": "https://www.hautejets.com/routes",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Routes page scored \u2014 audience is browsing not converting on this page",
+      "No contact info found",
+      "Routes page is wrong-funnel stage for conversion"
+    ],
+    "speed": "Low frequency (10); unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Hautejets",
+    "notes": "hautejets.com \u2014 frequency 10; routes page is TOFU content"
+  },
+  {
+    "n": 62,
+    "domain": "flytradewind.com",
+    "market": "National",
+    "url": "https://www.flytradewind.com/charter/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Charter page scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Low frequency (frequency not listed); unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Flytradewind",
+    "notes": "flytradewind.com \u2014 no contact info confirmed"
+  },
+  {
+    "n": 63,
+    "domain": "truairadvisors.com",
+    "market": "National",
+    "url": "https://www.truairadvisors.com/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Homepage scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Truairadvisors",
+    "notes": "truairadvisors.com \u2014 no contact info confirmed"
+  },
+  {
+    "n": 64,
+    "domain": "jetout.com",
+    "market": "National",
+    "url": "https://jetout.com/regions",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Regions page scored \u2014 geographic browsing, not high-intent conversion",
+      "No contact info found",
+      "Regions page is wrong-funnel stage"
+    ],
+    "speed": "Unknown platform; low frequency",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Jetout",
+    "notes": "jetout.com \u2014 regions page is TOFU; no contact found"
+  },
+  {
+    "n": 65,
+    "domain": "flyairshare.com",
+    "market": "National",
+    "url": "https://flyairshare.com/private-charter-flights/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Private charter page scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Flyairshare",
+    "notes": "flyairshare.com \u2014 no contact info confirmed"
+  },
+  {
+    "n": 66,
+    "domain": "jetaxess.com",
+    "market": "National",
+    "url": "https://jetaxess.com/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Homepage scored; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Jetaxess",
+    "notes": "jetaxess.com \u2014 no contact info confirmed"
+  },
+  {
+    "n": 67,
+    "domain": "flyambu.com",
+    "market": "National",
+    "url": "https://www.flyambu.com/services/executive-air-charter/",
+    "phone": "1-800-633-3590",
+    "email": "quote@flyambu.com",
+    "issues": [
+      "Flyambu = Air Ambulance company \u2014 executive charter is secondary service",
+      "Medical/ambulance branding may misalign with luxury private charter expectations",
+      "Niche mismatch with private jet audience"
+    ],
+    "speed": "Medical site; likely compliant/standard WordPress",
+    "trust": "Air ambulance trust differs from luxury charter trust",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "high",
+    "company": "Flyambu",
+    "notes": "Phones confirmed: quote page, coverage page, Trustpilot reviews"
+  },
+  {
+    "n": 68,
+    "domain": "leviateair.com",
+    "market": "Dallas",
+    "url": "https://leviateair.com/",
+    "phone": "877) 407-8507",
+    "email": "fly@leviateair.com | info@leviateair.com",
+    "issues": [
+      "Dallas-based FAA licensed carrier; strong credentials",
+      "No instant pricing on homepage",
+      "Contact forms split across management vs. sales vs. acquisitions pages"
+    ],
+    "speed": "Dallas HQ; Seamless.AI shows (469) 610-xxxx; Facebook confirms 877-407-8507",
+    "trust": "FAA Licensed Air Carrier is strong trust signal",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Leviateair",
+    "notes": "(877) 407-8507 confirmed via Facebook. fly@leviateair.com confirmed"
+  },
+  {
+    "n": 69,
+    "domain": "flymore.app",
+    "market": "National",
+    "url": "https://flymore.app/",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "App-first brand with .app domain \u2014 unusual for traditional private jet buyers",
+      "No public contact info found",
+      "App-only conversion path loses non-app visitors"
+    ],
+    "speed": "App-focused = mobile-first; unknown web performance",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Flymore",
+    "notes": "flymore.app \u2014 app-focused brand; no web contact info confirmed"
+  },
+  {
+    "n": 70,
+    "domain": "austinprivatejetco.com",
+    "market": "Austin",
+    "url": "austinprivatejetco.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists but no scored URL in spreadsheet \u2014 needs lookup",
+      "No contact info confirmed",
+      "No scored page to audit"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Austinprivatejetco",
+    "notes": "Column F empty; domain searched; no verified contact info"
+  },
+  {
+    "n": 71,
+    "domain": "flyjetoptions.com",
+    "market": "National",
+    "url": "flyjetoptions.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists but no scored URL provided",
+      "No contact info confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Flyjetoptions",
+    "notes": "Column F empty; no contact info confirmed"
+  },
+  {
+    "n": 72,
+    "domain": "saturnaviation.com",
+    "market": "National",
+    "url": "saturnaviation.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists but no scored URL provided",
+      "No contact info confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Saturnaviation",
+    "notes": "Column F empty; no contact info confirmed"
+  },
+  {
+    "n": 73,
+    "domain": "vaultjet.com",
+    "market": "Dallas",
+    "url": "vaultjet.com (no scored URL)",
+    "phone": "1-866-325-4569",
+    "email": "fly@vaultjet.com",
+    "issues": [
+      "Dallas-based \u2014 strong local presence; phone and email confirmed",
+      "No scored URL \u2014 scoring domain homepage: vaultjet.com",
+      "Contact info strong but no specific landing page to audit"
+    ],
+    "speed": "Dallas TX operator; Business Air News confirms",
+    "trust": "Established Dallas brand with ARGUS track record",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Vaultjet",
+    "notes": "Phone/email confirmed: contact page, FAQ, Business Air News, Prospeo"
+  },
+  {
+    "n": 74,
+    "domain": "jetaviation.com",
+    "market": "National",
+    "url": "jetaviation.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Jet Aviation is a global FBO/MRO brand \u2014 not primarily a charter broker",
+      "FBO/maintenance positioning misaligns with charter conversion",
+      "Likely form-only contact"
+    ],
+    "speed": "Enterprise global platform",
+    "trust": "Strong FBO brand globally; charter is secondary",
+    "cta": "WEAK",
+    "risk": "MEDIUM",
+    "phone_confidence": "none",
+    "company": "Jetaviation",
+    "notes": "jetaviation.com = Jet Aviation (FBO/MRO). Very different from charter broker competitors"
+  },
+  {
+    "n": 75,
+    "domain": "Texas Jet",
+    "market": "National",
+    "url": "texasjet.com (company name in col A)",
+    "phone": "817) 624-8438",
+    "email": "customerservice@texasjet.com",
+    "issues": [
+      "Texas Jet = FBO at Fort Worth Meacham (KFTW) \u2014 not a charter broker",
+      "FBO services page \u2260 charter conversion page",
+      "Mismatch: FBO audience vs. charter buyer"
+    ],
+    "speed": "FBO site; 24/7 operations; likely minimal web optimization",
+    "trust": "33 years in business \u2014 strong local credibility",
+    "cta": "WEAK",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Texas jet",
+    "notes": "All sources confirm same contact. Texas Jet = FBO, not charter broker"
+  },
+  {
+    "n": 76,
+    "domain": "houstonprivatejetco.com",
+    "market": "Houston",
+    "url": "houstonprivatejetco.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Houston Private Jet Co. \u2014 domain exists; no contact found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform; city-targeted domain",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Houstonprivatejetco",
+    "notes": "houstonprivatejetco.com \u2014 no contact info found; TravelKing association noted"
+  },
+  {
+    "n": 77,
+    "domain": "lonestaraviators.com",
+    "market": "Houston",
+    "url": "lonestaraviators.com (no scored URL)",
+    "phone": "832) 792-1020",
+    "email": "Form only",
+    "issues": [
+      "Houston-based full-service operator with strong VP Sales and CEO profiled",
+      "No scored URL \u2014 homepage or charter page to audit",
+      "Phone confirmed; no email found publicly"
+    ],
+    "speed": "Houston + Dallas presence; likely WordPress; unknown CDN",
+    "trust": "VP Sales and CEO named \u2014 personal trust signal",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Lonestaraviators",
+    "notes": "(832) 792-1020 confirmed: charter page + Yahoo Local + Prospeo"
+  },
+  {
+    "n": 78,
+    "domain": "amalfijets.com",
+    "market": "National",
+    "url": "amalfijets.com (no scored URL)",
+    "phone": "877) 626-2534",
+    "email": "enquiry@amalfijets.com",
+    "issues": [
+      "LA/Calabasas-based; phone and email confirmed \u2014 good CRO foundation",
+      "Two different phones (877 vs 424) may confuse callers",
+      "No scored URL to audit specific page"
+    ],
+    "speed": "Westlake Village CA; founder-profiled (Kolin Jones, pilot)",
+    "trust": "Pilot-founded and CEO-profiled \u2014 strong trust",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Amalfijets",
+    "notes": "(877) 626-2534 verified: site + ZoomInfo. enquiry@amalfijets.com confirmed on site"
+  },
+  {
+    "n": 79,
+    "domain": "FlyUSA - Private Jet Charter",
+    "market": "National",
+    "url": "flyusa.com (duplicate entry in col A)",
+    "phone": "727) 240-2408",
+    "email": "trips@flyusa.com",
+    "issues": [
+      "DUPLICATE of Row 9 (flyusa.com) \u2014 same company, same site",
+      "Same issues as Row 9 apply",
+      "Duplicate entry in spreadsheet"
+    ],
+    "speed": "Same as Row 9",
+    "trust": "Same as Row 9",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Flyusa   private jet charter",
+    "notes": "This row is a duplicate of Row 9 (flyusa.com). Same verified contacts apply"
+  },
+  {
+    "n": 80,
+    "domain": "Flight King Charter Rental",
+    "market": "National",
+    "url": "theflightking.com",
+    "phone": "833-358-5464",
+    "email": "info@theflightking.com",
+    "issues": [
+      "DUPLICATE of Row 21 (theflightking.com)",
+      "Same issues as Row 21",
+      "Duplicate entry"
+    ],
+    "speed": "Same as Row 21",
+    "trust": "Same as Row 21",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Flight king charter rental",
+    "notes": "Duplicate of Row 21 (theflightking.com). Same verified contacts"
+  },
+  {
+    "n": 81,
+    "domain": "flyvade.com",
+    "market": "National",
+    "url": "flyvade.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info or scored URL found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Flyvade",
+    "notes": "flyvade.com \u2014 no contact info confirmed"
+  },
+  {
+    "n": 82,
+    "domain": "triumphjets.com",
+    "market": "National",
+    "url": "triumphjets.com (no scored URL)",
+    "phone": "872) 333-9444",
+    "email": "Experience@triumphjets.com",
+    "issues": [
+      "Two phone numbers creates confusion \u2014 choose one for primary CTA",
+      "No scored URL \u2014 homepage or real-time quote page",
+      "Phone and email confirmed \u2014 strong CRO starting point"
+    ],
+    "speed": "Chicago area; standard WordPress; unknown CDN",
+    "trust": "NACA member mentioned; founder-profiled \u2014 trust signals present",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Triumphjets",
+    "notes": "Both phones confirmed + email on site + executive team page"
+  },
+  {
+    "n": 83,
+    "domain": "chicagoprivatejetco.com",
+    "market": "Chicago",
+    "url": "chicagoprivatejetco.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "City-targeted domain",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Chicagoprivatejetco",
+    "notes": "chicagoprivatejetco.com \u2014 no contact confirmed"
+  },
+  {
+    "n": 84,
+    "domain": "tapjets.com",
+    "market": "National",
+    "url": "tapjets.com (no scored URL)",
+    "phone": "888) 500-4385",
+    "email": "concierge@tapjets.com",
+    "issues": [
+      "App-first platform with strong tech differentiation; phone confirmed",
+      "No scored URL \u2014 app/platform homepage",
+      "Most safety audit among competitors claim (MSCA)"
+    ],
+    "speed": "Houston-based tech platform; app + web",
+    "trust": "App-first + pre-flight safety audit = strong differentiators",
+    "cta": "STRONG",
+    "risk": "LOW",
+    "phone_confidence": "high",
+    "company": "Tapjets",
+    "notes": "(888) 500-4385 confirmed: Google Play, ZoomInfo, tapjets.com/help"
+  },
+  {
+    "n": 85,
+    "domain": "priorityonejets.com",
+    "market": "Teterboro",
+    "url": "priorityonejets.com (no scored URL)",
+    "phone": "888-671-5387",
+    "email": "sales@priorityonejets.com",
+    "issues": [
+      "New York-based (15 Maiden Lane); phone and email confirmed",
+      "No scored URL",
+      "Contact info strong; no landing page to audit"
+    ],
+    "speed": "NY-based; unknown platform",
+    "trust": "No trust signals found beyond contact page info",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Priorityonejets",
+    "notes": "Phone/email confirmed: contact-us page"
+  },
+  {
+    "n": 86,
+    "domain": "executivejets.nyc",
+    "market": "Teterboro",
+    "url": "executivejets.nyc (no scored URL)",
+    "phone": "212) 532-9122",
+    "email": "support@executivejetsllc.com",
+    "issues": [
+      "NYC-based (1 World Trade Center); premium address is a trust signal",
+      ".nyc domain + executivejetsllc.com mismatch creates brand confusion",
+      "No scored URL to audit"
+    ],
+    "speed": "NYC-based enterprise-looking site; unknown performance",
+    "trust": "1 WTC address = premium trust signal",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Executivejets",
+    "notes": "(212) 532-9122 confirmed: contact-us page + ZoomInfo"
+  },
+  {
+    "n": 87,
+    "domain": "charterjetairlines.com",
+    "market": "National",
+    "url": "charterjetairlines.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Charterjetairlines",
+    "notes": "charterjetairlines.com \u2014 no contact confirmed"
+  },
+  {
+    "n": 88,
+    "domain": "merlin1.com",
+    "market": "National",
+    "url": "merlin1.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Merlin1",
+    "notes": "merlin1.com \u2014 no contact confirmed"
+  },
+  {
+    "n": 89,
+    "domain": "jetcharterflightschicago.com",
+    "market": "Chicago",
+    "url": "jetcharterflightschicago.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Chicago city-targeted domain; no contact found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "City-targeted domain; thin content likely",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Jetcharterflightschicago",
+    "notes": "jetcharterflightschicago.com \u2014 no contact confirmed"
+  },
+  {
+    "n": 90,
+    "domain": "newyorkprivatejetco.com",
+    "market": "Teterboro",
+    "url": "newyorkprivatejetco.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "NYC city-targeted domain; no contact found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "City-targeted domain",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Newyorkprivatejetco",
+    "notes": "newyorkprivatejetco.com \u2014 no contact confirmed"
+  },
+  {
+    "n": 91,
+    "domain": "aircharteradvisors.com",
+    "market": "National",
+    "url": "aircharteradvisors.com (no scored URL)",
+    "phone": "1-888-987-5387",
+    "email": "info@PrivateJetsNashville.com (affiliate)",
+    "issues": [
+      "Wyvern Wingman Broker \u2014 strong trust signal; phone confirmed",
+      "Wyvern certification is the primary differentiator \u2014 needs to be above fold",
+      "No scored URL \u2014 scoring main homepage"
+    ],
+    "speed": "Blue Bell PA; strong SEO content site; scripts heavy",
+    "trust": "Wyvern Wingman + 25/50/100hr jet cards = strong differentiators",
+    "cta": "STRONG",
+    "risk": "LOW",
+    "phone_confidence": "high",
+    "company": "Aircharteradvisors",
+    "notes": "(888) 987-5387 confirmed: site, FlightList PRO, Business Travel News. President: adam@aircharteradvisors.com"
+  },
+  {
+    "n": 92,
+    "domain": "greatprivatejets.com",
+    "market": "National",
+    "url": "greatprivatejets.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Greatprivatejets",
+    "notes": "greatprivatejets.com \u2014 no contact confirmed"
+  },
+  {
+    "n": 93,
+    "domain": "aviationcharters.com",
+    "market": "National",
+    "url": "aviationcharters.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Aviationcharters",
+    "notes": "aviationcharters.com \u2014 no contact confirmed"
+  },
+  {
+    "n": 94,
+    "domain": "vjetsaviation.com",
+    "market": "National",
+    "url": "vjetsaviation.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Vjetsaviation",
+    "notes": "vjetsaviation.com \u2014 no contact confirmed"
+  },
+  {
+    "n": 95,
+    "domain": "Los Angeles Private Jet Charter",
+    "market": "Van Nuys",
+    "url": "Company name only; no domain confirmed",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Company name in Col A with no domain \u2014 need manual lookup",
+      "No URL, no phone, no email found",
+      "Cannot audit without site"
+    ],
+    "speed": "N/A \u2014 no site identified",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Los angeles private jet charter",
+    "notes": "'Los Angeles Private Jet Charter' \u2014 generic name; likely a local operator; no site confirmed"
+  },
+  {
+    "n": 96,
+    "domain": "Flight King - Private Jet Charter Rental",
+    "market": "National",
+    "url": "theflightking.com (same as row 21, 80)",
+    "phone": "833-358-5464",
+    "email": "info@theflightking.com",
+    "issues": [
+      "DUPLICATE of Rows 21 and 80 \u2014 same company",
+      "Same issues apply",
+      "Third duplicate entry for The Flight King"
+    ],
+    "speed": "Same as rows 21 and 80",
+    "trust": "Same as rows 21 and 80",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Flight king   private jet charter rental",
+    "notes": "Third instance. theflightking.com. Same contacts."
+  },
+  {
+    "n": 97,
+    "domain": "allegiancejet.com",
+    "market": "Scottsdale",
+    "url": "allegiancejet.com (no scored URL)",
+    "phone": "877-940-7328",
+    "email": "charter@allegiancejet.com",
+    "issues": [
+      "Phoenix-based; phone and email visible on city pages \u2014 good CRO",
+      "No scored URL \u2014 uses city-specific landing pages",
+      "Contact info solid; no primary homepage audit possible"
+    ],
+    "speed": "Phoenix AZ; city landing page strategy",
+    "trust": "City pages use direct phone \u2014 strong local CRO tactic",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Allegiancejet",
+    "notes": "Phone/email confirmed on multiple city pages"
+  },
+  {
+    "n": 98,
+    "domain": "wixsite.com",
+    "market": "National",
+    "url": "wixsite.com (generic Wix URL in Col A)",
+    "phone": "Not published",
+    "email": "N/A",
+    "issues": [
+      "Wix.com generic domain \u2014 this is a website builder URL, not a company",
+      "Cannot score or audit; this is a platform not a brand",
+      "No contact info applicable"
+    ],
+    "speed": "Wix platform; score the specific Wix subdomain if provided",
+    "trust": "No trust signals \u2014 platform URL, not brand",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "none",
+    "company": "Wixsite",
+    "notes": "wixsite.com is a Wix.com site builder URL. The actual company's subdomain is needed"
+  },
+  {
+    "n": 99,
+    "domain": "americharter.com",
+    "market": "San Diego",
+    "url": "americharter.com (no scored URL)",
+    "phone": "888) 625-2487",
+    "email": "Form only",
+    "issues": [
+      "San Diego-based; 2025 Inc. 5000 honoree \u2014 strong credibility signal",
+      "No scored URL to audit",
+      "Phone confirmed; no email listed"
+    ],
+    "speed": "San Diego CA; Prospeo + Yelp confirm; Inc. 5000 honoree",
+    "trust": "Inc. 5000 honoree 2025 is a strong trust signal",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Americharter",
+    "notes": "(888) 625-2487 confirmed: site, Prospeo, Yelp. Inc. 5000 honoree 2025"
+  },
+  {
+    "n": 100,
+    "domain": "centurionjets.aero",
+    "market": "San Diego",
+    "url": "centurionjets.aero (no scored URL)",
+    "phone": "858) 683-3591",
+    "email": "charter@centurionjets.aero | sales@centurionjets.aero",
+    "issues": [
+      "San Marcos/San Diego CA; phone and email confirmed; 24/7 service",
+      "Two phone numbers \u2014 minor confusion",
+      "No scored URL to audit"
+    ],
+    "speed": "San Diego area; FlightList PRO listed",
+    "trust": "Global service promise; 24/7 availability; ARGUS track record noted",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Centurionjets",
+    "notes": "Phones confirmed: contact-us, ZoomInfo, Facebook, FlightList PRO. Email on Facebook"
+  },
+  {
+    "n": 101,
+    "domain": "Amalfi Private Jets - Global Private Jet Charter",
+    "market": "National",
+    "url": "amalfijets.com (same as row 78)",
+    "phone": "877) 626-2534",
+    "email": "enquiry@amalfijets.com",
+    "issues": [
+      "DUPLICATE of Row 78 (amalfijets.com)",
+      "Same issues apply",
+      "Duplicate entry"
+    ],
+    "speed": "Same as row 78",
+    "trust": "Same as row 78",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Amalfi private jets   global private jet charter",
+    "notes": "Duplicate of Row 78. amalfijets.com. Same verified contacts."
+  },
+  {
+    "n": 102,
+    "domain": "prismjet.net",
+    "market": "National",
+    "url": "prismjet.net (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Prismjet",
+    "notes": "prismjet.net \u2014 no contact info confirmed"
+  },
+  {
+    "n": 103,
+    "domain": "affordableaircharter.com",
+    "market": "San Diego",
+    "url": "affordableaircharter.com (no scored URL)",
+    "phone": "858) 243-2451",
+    "email": "Jimapia@gmail.com (owner email) / jimapia@gmail.com",
+    "issues": [
+      "Gmail email address on a professional charter site \u2014 major trust/CRO red flag",
+      "Single-owner operation (San Diego CA); limited scalability signal",
+      "No professional email domain"
+    ],
+    "speed": "West Coast small operator; FAA certified air carrier",
+    "trust": "FAA Certified Air Carrier \u2014 legitimate; no complaints/accidents claimed",
+    "cta": "WEAK",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Affordableaircharter",
+    "notes": "Phone: (858) 243-2451 confirmed across 3 sources. Gmail owner email is a concern"
+  },
+  {
+    "n": 104,
+    "domain": "usprivatejets.com",
+    "market": "Teterboro",
+    "url": "usprivatejets.com (no scored URL)",
+    "phone": "212) 931-4870",
+    "email": "Form only",
+    "issues": [
+      "NYC-based; two phone options \u2014 good for call conversions",
+      "No scored URL",
+      "No email found publicly"
+    ],
+    "speed": "Manhattan-based; ZoomInfo + Prospeo confirm",
+    "trust": "NYC address adds credibility; no certifications found",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Usprivatejets",
+    "notes": "(212) 931-4870 confirmed: ZoomInfo. (877) 672-5387 confirmed: Prospeo"
+  },
+  {
+    "n": 105,
+    "domain": "Midlantic Jet Charters Inc",
+    "market": "National",
+    "url": "midlanticjet.com (likely domain)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Company name in Col A; no URL or contact found",
+      "Cannot audit without site",
+      "No phone or email confirmed"
+    ],
+    "speed": "N/A \u2014 no site identified",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Midlantic jet charters inc",
+    "notes": "'Midlantic Jet Charters Inc' \u2014 searched but no matching verified contact found"
+  },
+  {
+    "n": 106,
+    "domain": "2jetset.com",
+    "market": "National",
+    "url": "2jetset.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "2jetset",
+    "notes": "2jetset.com \u2014 no contact info confirmed"
+  },
+  {
+    "n": 107,
+    "domain": "Sun Jet International",
+    "market": "National",
+    "url": "sunjetsintl.com or similar",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Company name in Col A; no URL confirmed",
+      "No phone or email found",
+      "Cannot audit without confirmed domain"
+    ],
+    "speed": "N/A \u2014 no confirmed domain",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Sun jet international",
+    "notes": "'Sun Jet International' \u2014 searched; no confirmed matching domain or contacts"
+  },
+  {
+    "n": 108,
+    "domain": "flynda.com",
+    "market": "National",
+    "url": "flynda.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Flynda",
+    "notes": "flynda.com \u2014 no contact info confirmed"
+  },
+  {
+    "n": 109,
+    "domain": "boltjets.com",
+    "market": "National",
+    "url": "boltjets.com (no scored URL)",
+    "phone": "1-833-265-8538",
+    "email": "Form only",
+    "issues": [
+      "24/7 agents confirmed; jet card product; 1,200 jet network",
+      "No email listed publicly",
+      "Phone confirmed; no scored URL to audit specific page"
+    ],
+    "speed": "Jet card platform; unknown CDN",
+    "trust": "1,200 jets globally is a credibility signal; no ARGUS/Wyvern badge found",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_confidence": "high",
+    "company": "Boltjets",
+    "notes": "(833) 265-8538 confirmed across boltjets.com homepage, contact, and jet-card pages"
+  },
+  {
+    "n": 110,
+    "domain": "americanflightsupport.com",
+    "market": "National",
+    "url": "americanflightsupport.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Domain exists; no contact info found",
+      "No phone or email confirmed",
+      "Form-only suspected"
+    ],
+    "speed": "Unknown platform",
+    "trust": "No trust signals found",
+    "cta": "WEAK",
+    "risk": "HIGH",
+    "phone_confidence": "none",
+    "company": "Americanflightsupport",
+    "notes": "americanflightsupport.com \u2014 no contact confirmed"
+  },
+  {
+    "n": 111,
+    "domain": "atlanticaviation.com",
+    "market": "National",
+    "url": "atlanticaviation.com (no scored URL)",
+    "phone": "Not published",
+    "email": "Not found",
+    "issues": [
+      "Atlantic Aviation is a major FBO chain (now Signature Aviation) \u2014 not a charter broker",
+      "FBO brand misaligns with charter conversion audience",
+      "Cannot identify specific URL to audit"
+    ],
+    "speed": "Major FBO platform; likely CDN-optimized but FBO-focused",
+    "trust": "Strong FBO brand (Atlantic/Signature); charter is not their focus",
+    "cta": "WEAK",
+    "risk": "MEDIUM",
+    "phone_confidence": "none",
+    "company": "Atlanticaviation",
+    "notes": "atlanticaviation.com = Atlantic Aviation FBO (now part of Signature). FBO, not charter broker"
+  }
+]

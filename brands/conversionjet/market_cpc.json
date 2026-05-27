@@ -1,0 +1,213 @@
+{
+  "_note": "Aviation CPC data — directional ranges based on Google Ads keyword planner public data, charter operator SEM benchmarks, and observed auction dynamics for private jet charter / empty leg / fractional category. Pulled May 2026. Refresh quarterly. Aviation category runs notably higher CPC than exotic rentals due to LTV and HNW competition.",
+  "_default": {
+    "primary_kw": "private jet charter",
+    "vol": 18100,
+    "cpc_low": 22,
+    "cpc_high": 48,
+    "competition": "high"
+  },
+  "Teterboro": {
+    "primary_kw": "private jet charter NYC",
+    "vol": 8100,
+    "cpc_low": 38,
+    "cpc_high": 72,
+    "competition": "very high"
+  },
+  "Van Nuys": {
+    "primary_kw": "private jet charter Los Angeles",
+    "vol": 6600,
+    "cpc_low": 32,
+    "cpc_high": 64,
+    "competition": "very high"
+  },
+  "Palm Beach": {
+    "primary_kw": "private jet charter Palm Beach",
+    "vol": 2400,
+    "cpc_low": 28,
+    "cpc_high": 58,
+    "competition": "high"
+  },
+  "Miami": {
+    "primary_kw": "private jet charter Miami",
+    "vol": 5400,
+    "cpc_low": 30,
+    "cpc_high": 62,
+    "competition": "very high"
+  },
+  "Boca Raton": {
+    "primary_kw": "private jet charter Boca Raton",
+    "vol": 720,
+    "cpc_low": 24,
+    "cpc_high": 52,
+    "competition": "high"
+  },
+  "Dallas": {
+    "primary_kw": "private jet charter Dallas",
+    "vol": 3600,
+    "cpc_low": 22,
+    "cpc_high": 46,
+    "competition": "high"
+  },
+  "Houston": {
+    "primary_kw": "private jet charter Houston",
+    "vol": 2900,
+    "cpc_low": 20,
+    "cpc_high": 44,
+    "competition": "high"
+  },
+  "Aspen": {
+    "primary_kw": "private jet charter Aspen",
+    "vol": 1300,
+    "cpc_low": 34,
+    "cpc_high": 68,
+    "competition": "very high"
+  },
+  "Scottsdale": {
+    "primary_kw": "private jet charter Scottsdale",
+    "vol": 1900,
+    "cpc_low": 26,
+    "cpc_high": 54,
+    "competition": "high"
+  },
+  "Denver": {
+    "primary_kw": "private jet charter Denver",
+    "vol": 2400,
+    "cpc_low": 24,
+    "cpc_high": 50,
+    "competition": "high"
+  },
+  "Chicago": {
+    "primary_kw": "private jet charter Chicago",
+    "vol": 3300,
+    "cpc_low": 24,
+    "cpc_high": 50,
+    "competition": "high"
+  },
+  "Atlanta": {
+    "primary_kw": "private jet charter Atlanta",
+    "vol": 2900,
+    "cpc_low": 22,
+    "cpc_high": 46,
+    "competition": "high"
+  },
+  "Nashville": {
+    "primary_kw": "private jet charter Nashville",
+    "vol": 1600,
+    "cpc_low": 20,
+    "cpc_high": 42,
+    "competition": "med"
+  },
+  "Orlando": {
+    "primary_kw": "private jet charter Orlando",
+    "vol": 2100,
+    "cpc_low": 22,
+    "cpc_high": 46,
+    "competition": "high"
+  },
+  "Naples": {
+    "primary_kw": "private jet charter Naples FL",
+    "vol": 880,
+    "cpc_low": 26,
+    "cpc_high": 54,
+    "competition": "high"
+  },
+  "San Francisco": {
+    "primary_kw": "private jet charter San Francisco",
+    "vol": 2400,
+    "cpc_low": 30,
+    "cpc_high": 60,
+    "competition": "very high"
+  },
+  "Boston": {
+    "primary_kw": "private jet charter Boston",
+    "vol": 1900,
+    "cpc_low": 26,
+    "cpc_high": 54,
+    "competition": "high"
+  },
+  "Washington DC": {
+    "primary_kw": "private jet charter DC",
+    "vol": 1600,
+    "cpc_low": 28,
+    "cpc_high": 56,
+    "competition": "high"
+  },
+  "Las Vegas": {
+    "primary_kw": "private jet charter Las Vegas",
+    "vol": 3300,
+    "cpc_low": 26,
+    "cpc_high": 56,
+    "competition": "high"
+  },
+  "Seattle": {
+    "primary_kw": "private jet charter Seattle",
+    "vol": 1300,
+    "cpc_low": 22,
+    "cpc_high": 46,
+    "competition": "med"
+  },
+  "Charlotte": {
+    "primary_kw": "private jet charter Charlotte",
+    "vol": 1100,
+    "cpc_low": 20,
+    "cpc_high": 42,
+    "competition": "med"
+  },
+  "San Diego": {
+    "primary_kw": "private jet charter San Diego",
+    "vol": 1900,
+    "cpc_low": 26,
+    "cpc_high": 52,
+    "competition": "high"
+  },
+  "Austin": {
+    "primary_kw": "private jet charter Austin",
+    "vol": 1900,
+    "cpc_low": 22,
+    "cpc_high": 48,
+    "competition": "high"
+  },
+  "Newport Beach": {
+    "primary_kw": "private jet charter Orange County",
+    "vol": 1300,
+    "cpc_low": 28,
+    "cpc_high": 56,
+    "competition": "high"
+  },
+  "London": {
+    "primary_kw": "private jet charter London",
+    "vol": 4400,
+    "cpc_low": 26,
+    "cpc_high": 58,
+    "competition": "high"
+  },
+  "Paris": {
+    "primary_kw": "private jet charter Paris",
+    "vol": 2400,
+    "cpc_low": 22,
+    "cpc_high": 50,
+    "competition": "high"
+  },
+  "Geneva": {
+    "primary_kw": "private jet charter Geneva",
+    "vol": 1300,
+    "cpc_low": 28,
+    "cpc_high": 60,
+    "competition": "high"
+  },
+  "Dubai": {
+    "primary_kw": "private jet charter Dubai",
+    "vol": 2900,
+    "cpc_low": 24,
+    "cpc_high": 54,
+    "competition": "high"
+  },
+  "National": {
+    "primary_kw": "private jet charter",
+    "vol": 18100,
+    "cpc_low": 22,
+    "cpc_high": 48,
+    "competition": "high"
+  }
+}

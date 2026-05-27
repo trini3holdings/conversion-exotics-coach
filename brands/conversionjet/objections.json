@@ -1,0 +1,59 @@
+{
+  "objections": [
+    {
+      "cat": "NOT_INTERESTED",
+      "q": "\"Not interested\" / \"We're good\"",
+      "a": "Totally understood — and most flight departments tell me that before they've seen the audit. Quick question though: if we found one thing on your page costing you <em>$40k+ in walked-away charter quotes</em> this quarter, would you want to know what it was? If yes, I'll send it as a PDF — no call required. If no, I'll close the file and we move on. Fair?"
+    },
+    {
+      "cat": "NOT_INTERESTED",
+      "q": "\"We don't take cold calls\"",
+      "a": "Respect that — and I won't keep you. The audit itself is already done. Want me to send it discreetly to whoever owns the charter page, and you decide whether a follow-up makes sense?"
+    },
+    {
+      "cat": "REBUILT",
+      "q": "\"We just rebuilt the site\" / \"We just relaunched\"",
+      "a": "Congrats — and honestly that makes this a <em>better</em> conversation, not a worse one. Most rebuilds optimize for design and SEO, not conversion. Did the rebuild brief specifically include flight-request form completion as a KPI? If not, that's exactly the gap our audit catches — same agency, same design, three structural tweaks."
+    },
+    {
+      "cat": "EMAIL_INSTEAD",
+      "q": "\"Just email it\" / \"Send it over\"",
+      "a": "Happy to. To make sure the right things land — are you the person who owns the charter inquiry page, or should I be cc'ing your marketing lead or webmaster? And do you want the 2-page exec summary or the full 8-page audit?"
+    },
+    {
+      "cat": "EMAIL_INSTEAD",
+      "q": "\"I'll review and get back\"",
+      "a": "Of course. To save us both the back-and-forth — if the audit shows three fixable items, do you want rough effort estimates for each, or just the diagnosis? I'll include both — keeps the next conversation shorter."
+    },
+    {
+      "cat": "PRICE",
+      "q": "\"How much?\" / \"What's the cost?\"",
+      "a": "The audit is free — that part's already done. Implementation depends entirely on what we find. Some operators take the document and have their in-house team execute. For the ones who want us to handle it, scope ranges from <em>$4k for surgical fixes to $25k for a full conversion redesign</em>. Want to see the audit first? Then you'll know which bucket you're in."
+    },
+    {
+      "cat": "PRICE",
+      "q": "\"We don't have budget for this\"",
+      "a": "Hear you. The audit's free regardless — and most of what we find, an in-house dev can fix in an afternoon at no out-of-pocket. Want to see it and decide? Worst case, you have a free playbook in your inbox."
+    },
+    {
+      "cat": "PARTNER",
+      "q": "\"I need to talk to my partner\" / \"I need to check with the principal\"",
+      "a": "Smart. Two questions to make that conversation easier: First — what's your partner most likely to push back on, cost or timing? Second — would it help if I sent a one-page exec summary, <em>separate from the full audit</em>, that you can forward without context? I'll send both. You decide which to lead with."
+    },
+    {
+      "cat": "BROKERS",
+      "q": "\"We use brokers\" / \"We're broker-driven\" / \"Sales reps handle it\"",
+      "a": "Right — and brokers will always be part of the mix. The question is what percentage of your bookings come from your direct page versus broker channel, and what's your margin on each. <em>Direct charters typically net 18–25% better than broker-sourced.</em> If your direct page is converting at 1%, you're effectively subsidizing brokers. The audit shows you exactly what your direct page is leaking — independent of broker volume."
+    },
+    {
+      "cat": "ADS_WORK",
+      "q": "\"Our ads are working fine\" / \"We're happy with our marketing\"",
+      "a": "Good — that's actually the precondition for this conversation to matter. If your ads are bringing qualified traffic, every percentage point of conversion lift compounds against the same ad spend. <em>We're not auditing your ads. We're auditing what happens after the click.</em> What's your current page-to-form conversion rate? If you don't know, that's already a data point worth ten minutes."
+    },
+    {
+      "cat": "AGENCY",
+      "q": "\"We have an agency\" / \"We have an in-house marketing team\"",
+      "a": "Excellent — they'll appreciate this then. We're not replacing anyone. The audit is a third-party diagnostic. Your team can implement, your agency can implement, or we can — totally up to you. Half the time we deliver, the in-house team executes within two weeks and we never speak again. Want me to send it to you direct, or loop in your marketing lead from the start?"
+    }
+  ]
+}

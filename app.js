@@ -26,7 +26,16 @@ const BRANDS = {
     active: true,
     theme: { ink: '#1A1A1A', gold: '#B8893A', cream: '#F4F0E8', highlight: '#FFF8E8' }
   },
-  'brand-2': { slug: 'brand-2', name: 'Brand 2 (slot)', short: 'B2', sub: 'Coming soon', strategist: 'Tony', active: false, theme: null },
+  'conversionjet': {
+    slug: 'conversionjet',
+    name: 'ConversionJet',
+    short: 'CJ',
+    sub: 'Cold call → free Charter Page Conversion Audit · HNW aviation · v3.2',
+    strategist: 'Tony',
+    caller_default: 'Tony',
+    active: true,
+    theme: { ink: '#0B1426', gold: '#C5A572', cream: '#F5F2EC', highlight: '#FAF6EE' }
+  },
   'brand-3': { slug: 'brand-3', name: 'Brand 3 (slot)', short: 'B3', sub: 'Coming soon', strategist: 'Tony', active: false, theme: null },
   'brand-4': { slug: 'brand-4', name: 'Brand 4 (slot)', short: 'B4', sub: 'Coming soon', strategist: 'Tony', active: false, theme: null }
 };

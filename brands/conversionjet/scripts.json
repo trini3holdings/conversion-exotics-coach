@@ -1,0 +1,178 @@
+{
+  "brand": "ConversionJet",
+  "audit_value": 4500,
+  "target_length_sec": 240,
+  "register": "HNW aviation — discreet, surgical, layman's-first then framework",
+  "variants": {
+    "A": {
+      "name": "Pattern Interrupt + Carrier Anchor",
+      "desc": "NEPQ + Challenger. Best for never-engaged operators where you have a verified phone.",
+      "beats": [
+        {
+          "t": 18,
+          "phase": "OPEN",
+          "title": "Disarm + Carrier Anchor",
+          "line": "Hi — I know this is out of the blue. I'm not even sure you're the right person, but you all run the charter operation out of {market}, correct? I pulled up {company}'s scored page this morning for an audit we're running this quarter.",
+          "responses": [
+            "Yeah, that's us",
+            "Who is this?",
+            "What are you calling about?"
+          ],
+          "followup": "Totally fair — I'll be quick. Do you have 90 seconds, or did I catch you mid-something?",
+          "note": "Pause after 'this quarter.' Don't fill the silence. Let them ask."
+        },
+        {
+          "t": 30,
+          "phase": "FRAME",
+          "title": "What We Actually Do",
+          "line": "Quick context — we review the conversion path on charter operator landing pages. Not the marketing, not the SEO. Just the page a flight-shopper actually sees after they click. Most operators we audit are losing 25–40% of qualified inquiries before they ever fill the request form.",
+          "responses": ["Okay…", "Go on", "We're already optimized"],
+          "followup": "The good news is, the leaks are almost always small — three or four structural items.",
+          "note": "Keep voice level. Never sell hard on this beat — you're building credibility."
+        },
+        {
+          "t": 50,
+          "phase": "REVEAL",
+          "title": "Their Specific Leaks",
+          "line": "On {company} specifically, two things jumped out. First — {leak_1}. Second — {leak_2}. Neither one is fatal. But together, on a $25k to $80k charter, that's real money walking off the page.",
+          "responses": [
+            "We've heard that before",
+            "What would you change?",
+            "Show me"
+          ],
+          "followup": "I have a third one I'd rather walk you through on a screen share — it's the one that costs the most and is the easiest to fix.",
+          "note": "If they ask 'what's the third one?' — DON'T tell. That's the hook for the meeting."
+        },
+        {
+          "t": 25,
+          "phase": "CRED",
+          "title": "Why Us",
+          "line": "We work exclusively in private aviation — charter, fractional, and membership operators. ARGUS-platinum, Wyvern-rated, the works. We don't touch leisure or commercial. Discreet — everything stays between us and the principal.",
+          "responses": ["What's your background?", "Who else have you worked with?"],
+          "followup": "Happy to share references after the audit call if it's a fit.",
+          "note": "DO NOT name-drop specific operators on this beat. Discretion is the product."
+        },
+        {
+          "t": 30,
+          "phase": "ASK",
+          "title": "The Audit Offer",
+          "line": "Want me to send the full audit — it's about 8 pages, takes me an hour to read aloud — or jump on a 15-minute screen share with you and whoever owns the page?",
+          "responses": ["Send the doc", "Let's do the screen share", "Maybe later"],
+          "followup": "If 'send the doc' — get email confirmation. If 'screen share' — go straight to close.",
+          "note": "Some HNW operators will take the doc and call you 3 weeks later. That's a win — log them as 'doc-only follow-up' in notes."
+        },
+        {
+          "t": 20,
+          "phase": "CLOSE",
+          "title": "Book the Call",
+          "line": "I have Thursday at 10am Eastern or Friday at 2pm. Which works better for you?",
+          "responses": ["Thursday", "Friday", "Neither — next week"],
+          "followup": "Perfect — I'll send a calendar invite to {email}. Anyone else on your end should join? Operations or the website owner?",
+          "note": "Double-confirm email. Aviation operators are bad at calendar invites — confirm the email is live."
+        }
+      ]
+    },
+    "B": {
+      "name": "Curiosity Hook (Withhold the Leak)",
+      "desc": "Belief-Building + Sandler Negative Reverse. Best for re-engagement or warm prospects.",
+      "beats": [
+        {
+          "t": 18,
+          "phase": "OPEN",
+          "title": "Curiosity Hook",
+          "line": "Hi {first_name}, this is {strategist}. I work with charter operators on something most flight departments don't realize is costing them roughly 30% of inbound requests. Got 90 seconds for me to tell you what it is?",
+          "responses": ["What is it?", "Go ahead", "Who is this again?"],
+          "followup": "Quick context — I'm not selling anything on this call. I'm telling you what I see, and you decide if it's worth a follow-up.",
+          "note": "If they say 'what is it?' — you've already won. Slow down."
+        },
+        {
+          "t": 35,
+          "phase": "BUILD",
+          "title": "Build the Belief",
+          "line": "Without going into the weeds — when a high-net-worth flight-shopper lands on a charter page, there's roughly an 8-second window where their brain decides 'these people are serious' or 'these people are not.' Most operators lose them at second 6. Not because of price. Because of three things on the page that have nothing to do with the aircraft.",
+          "responses": ["Like what?", "What three things?", "Interesting"],
+          "followup": "I'll show you specifically what I found on your page, but first — quick — does your flight department track form-submit conversion rate as a KPI, or is that more of a marketing metric for you?",
+          "note": "If they say 'we don't track that' — that's diagnostic gold. Note it."
+        },
+        {
+          "t": 45,
+          "phase": "REVEAL",
+          "title": "Two of Three Leaks",
+          "line": "I audited {company}'s page this morning. {leak_1} is one. {leak_2} is the second. The third I'd rather show you on a screen share — it's the one that costs the most and is the easiest to fix.",
+          "responses": ["Show me", "Send it over", "What's the third one?"],
+          "followup": "If 'what's the third one' — say: 'I'll show you Thursday or Friday, I promise it's worth the 15 minutes.'",
+          "note": "Hold the third leak. The third leak IS the meeting."
+        },
+        {
+          "t": 35,
+          "phase": "LOWER_BAR",
+          "title": "Lower the Stakes",
+          "line": "It's not a sales call. We don't sell anything on the audit call. We walk you through what we'd change, in what order, and then you either do it yourself, hand it to your in-house team, or — if it's a fit — we do it for you. Most clients take the document and run.",
+          "responses": ["Okay, fair", "Sounds reasonable"],
+          "followup": "What's your schedule look like Thursday or Friday? 15 minutes.",
+          "note": "The Sandler Negative Reverse: tell them you're EASY to say no to. Counterintuitive — but it works on HNW."
+        },
+        {
+          "t": 20,
+          "phase": "CLOSE",
+          "title": "Close",
+          "line": "Thursday at 10am Eastern or Friday at 2pm — pick one.",
+          "responses": ["Thursday works", "Friday is better", "Neither this week"],
+          "followup": "Perfect — calendar invite incoming. Best email for that?",
+          "note": "Don't offer 'whenever' — give two specific slots."
+        }
+      ]
+    },
+    "C": {
+      "name": "Empty-Leg Leak (Paid-Ads Anchor)",
+      "desc": "Specificity Cluster + Loss-Frame. Best for operators visibly running paid search (check {market} SERP first).",
+      "beats": [
+        {
+          "t": 15,
+          "phase": "OPEN",
+          "title": "Paid-Ads Anchor",
+          "line": "Hi {first_name}, {strategist} here. I see {company} is running paid search for '{primary_kw}' out of {market} — CPCs in your category are running ${cpc_low} to ${cpc_high} a click right now. Got 60 seconds?",
+          "responses": ["What's the call about?", "Yeah we run ads", "Why?"],
+          "followup": "Quick — it's about what happens AFTER the click, not the ads themselves.",
+          "note": "Pre-call: verify they're actually running ads. If they're not — switch to Variant A or B."
+        },
+        {
+          "t": 40,
+          "phase": "MATH",
+          "title": "The Numbers",
+          "line": "At ${cpc_high} a click and a typical 1.5% form-completion rate, you're paying roughly ${high_per_lead} per quote request. If we can take that page from 1.5% to 3% — which is well inside normal range — your effective cost per quote roughly cuts in half. Same ad spend.",
+          "responses": ["That's interesting", "What's it take?", "We're at higher than 1.5%"],
+          "followup": "If they say 'we're higher' — ask 'higher than 3%, or higher than 1.5%?' The distinction matters.",
+          "note": "Don't argue numbers. Anchor on the LIFT, not the current state."
+        },
+        {
+          "t": 40,
+          "phase": "REVEAL",
+          "title": "Where It's Leaking",
+          "line": "I looked at where the spend is landing. Two things jumped out. {leak_1}, and {leak_2}. Neither of those would be hard to fix — they're literally things a developer can change in an afternoon.",
+          "responses": ["Specifics?", "How much would that cost?", "We've tried that"],
+          "followup": "If 'how much' — defer: 'audit's free, implementation depends on what we find.'",
+          "note": "The phrase 'fix in an afternoon' is intentional — it makes them feel close to the win."
+        },
+        {
+          "t": 25,
+          "phase": "CRED",
+          "title": "Why Us",
+          "line": "We only work in private aviation. No leisure, no commercial. Everything we benchmark against ARGUS-platinum and Wyvern-rated operators. Discreet — names stay between us.",
+          "responses": ["Who have you worked with?"],
+          "followup": "References after the audit call if it's a fit.",
+          "note": "Same discretion rule as Variant A."
+        },
+        {
+          "t": 25,
+          "phase": "CLOSE",
+          "title": "Close",
+          "line": "Want me to send the full breakdown, or 15 minutes Thursday or Friday on a screen share with whoever owns this page?",
+          "responses": ["Send it", "Screen share", "Send it AND screen share"],
+          "followup": "Great — what's your best email? And anyone else who should be on the call from your side?",
+          "note": "Confirm the email is live — read it back. Aviation operators routinely give the wrong email."
+        }
+      ]
+    }
+  }
+}
