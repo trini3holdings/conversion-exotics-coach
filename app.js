@@ -279,7 +279,18 @@ async function loadBrandData(brandSlug) {
     catch (e) { CSV_SCHEMA = null; }
     SCRIPTS = scriptsData.variants;
     SCRIPTS._meta = { target_length_sec: scriptsData.target_length_sec || 220, audit_value: scriptsData.audit_value || 0 };
-    OBJECTIONS = objData.objections;
+    // v3.4.1 — tolerate two shapes:
+    //   A. { objections: [ { cat, q, a }, ... ] }   (CE / CJ / CritterClick)
+    //   B. { _meta: {...}, CAT_NAME: { q, a }, ... } (RME)
+    if (objData && Array.isArray(objData.objections)) {
+      OBJECTIONS = objData.objections;
+    } else if (objData && typeof objData === 'object') {
+      OBJECTIONS = Object.entries(objData)
+        .filter(([k, v]) => k !== '_meta' && v && typeof v === 'object' && (v.q || v.a))
+        .map(([cat, v]) => ({ cat, q: v.q || '', a: v.a || '' }));
+    } else {
+      OBJECTIONS = [];
+    }
     mergeProspects();
     return true;
   } catch (e) {
@@ -451,6 +462,8 @@ function renderBeats() {
     state.lastActiveBeatIdx = activeIdx;
     const activeEl = container.querySelector(`[data-beat-idx="${activeIdx}"]`);
     if (activeEl) activeEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // v3.4.1 — also auto-follow the objection card for this phase
+    autoFollowObjection(beats[activeIdx]);
   }
   // Update phase chip on big timer
   if (activeIdx >= 0) {
@@ -519,6 +532,69 @@ function toggleReconRail() {
   rail.classList.toggle('collapsed');
   state.reconRailOpen = !rail.classList.contains('collapsed');
   saveState();
+}
+
+// ============== AUTO-FOLLOW OBJECTION CARD (v3.4.1) ==============
+// Map each script phase to the objection category most likely to surface in that beat.
+// Falls back through a per-brand chain so every brand's category names work.
+const PHASE_TO_OBJECTION = {
+  // First category in each list that actually exists in OBJECTIONS wins.
+  // Built around the real cats used across all 4 brands:
+  // NOT_INTERESTED | REBUILT | EMAIL_INSTEAD | PRICE | PARTNER | BROKERS | ADS_WORK | AGENCY
+  'OPEN':        ['NOT_INTERESTED', 'EMAIL_INSTEAD', 'AGENCY'],
+  'PROBLEM':     ['REBUILT', 'NOT_INTERESTED', 'ADS_WORK'],
+  'AGITATION':   ['REBUILT', 'ADS_WORK', 'AGENCY'],
+  'SOLUTION':    ['PRICE', 'AGENCY', 'BROKERS'],
+  'AUDIT OFFER': ['PRICE', 'EMAIL_INSTEAD', 'PARTNER'],
+  'CLOSE':       ['EMAIL_INSTEAD', 'PARTNER', 'PRICE']
+};
+
+function autoFollowObjection(beat) {
+  if (!beat || !OBJECTIONS.length) return;
+  const container = document.getElementById('objectionsContainer');
+  if (!container) return;
+
+  // 1. Beat may explicitly declare an objection category.
+  let targetCat = beat.objection_likely || beat.expected_objection || null;
+
+  // 2. Otherwise map by phase, walking the candidate list and picking the
+  //    first one that actually exists in this brand's objections.
+  if (!targetCat && beat.phase) {
+    const cands = PHASE_TO_OBJECTION[String(beat.phase).toUpperCase()] || [];
+    const available = new Set(OBJECTIONS.map(o => o.cat));
+    targetCat = cands.find(c => available.has(c)) || null;
+  }
+
+  // 3. If we still don't have one, pick the first objection so something is in view.
+  if (!targetCat) targetCat = OBJECTIONS[0].cat;
+
+  const idx = OBJECTIONS.findIndex(o => o.cat === targetCat);
+  if (idx < 0) return;
+  const card = container.querySelector(`.objection-card[data-idx="${idx}"]`);
+  if (!card) return;
+
+  // Highlight: mark all others as not-following, this one as following.
+  container.querySelectorAll('.objection-card.auto-follow').forEach(c => {
+    c.classList.remove('auto-follow');
+    // Close anything we previously auto-opened, so the panel stays tidy.
+    if (c.dataset.autoOpened === '1') {
+      c.classList.remove('open');
+      delete c.dataset.autoOpened;
+    }
+  });
+  card.classList.add('auto-follow');
+  if (!card.classList.contains('open')) {
+    card.classList.add('open');
+    card.dataset.autoOpened = '1';
+  }
+
+  // Scroll into view inside the objections column only — never the whole page,
+  // so we don't fight the beats column auto-scroll.
+  const colRect = container.getBoundingClientRect();
+  const cardRect = card.getBoundingClientRect();
+  const offsetInside = cardRect.top - colRect.top + container.scrollTop;
+  const target = offsetInside - (container.clientHeight / 2) + (card.clientHeight / 2);
+  container.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
 }
 
 // ============== QUICK-OBJECTION HOTKEY BAR ==============
