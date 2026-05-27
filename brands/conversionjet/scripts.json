@@ -14,12 +14,12 @@
           "title": "Dollar-Anchored Leak",
           "line": "Hi, my name is {caller} with ConversionJet — I review private charter sites for a living. I pulled up your site, and there's <em>a problem</em> on your quote page costing you roughly <em>$25,000 to $75,000 a week in booked charters</em>. Do you know who I can talk to about this?",
           "responses": [
-            "What's the problem?",
-            "Who is this?",
-            "I'm the right person"
+            "That's me / I handle the site",
+            "Let me transfer you",
+            "What's this regarding?"
           ],
-          "followup": "Got it — 60 seconds and you'll see exactly where it's going.",
-          "note": "Earned attention via research. No name token. No Miner hedges. Pause after the dollar number."
+          "followup": "Quick context — I noticed a problem on your quote page that's likely costing you between $25K and $75K a week. Worth 60 seconds to hear it?",
+          "note": "Pause AFTER the dollar number — let it land. If transferred, restart from Beat 1. If asked 'regarding?', use the followup verbatim. Never apologize for calling."
         },
         {
           "t": 24,
@@ -27,12 +27,12 @@
           "title": "The 3-Second Mobile Window",
           "line": "Quick context — when a buyer pulls up a charter site from their phone, they decide in about <em>3 seconds</em> whether you're worth waiting on. Every second past that cuts bookings around <em>20 percent</em>. Most charter sites load in 15 to 20 seconds on mobile. When was the last time someone on your team pulled your site up on a phone and requested a quote end-to-end?",
           "responses": [
-            "I'm not sure",
-            "Probably never",
-            "We just redesigned it"
+            "Honestly, not in a while",
+            "We just redesigned it",
+            "Our designer handles that"
           ],
-          "followup": "Most operators haven't tested it themselves in months. That's the issue.",
-          "note": "Mobile-first question. The 'when was the last time' lands hard because they almost never have."
+          "followup": "That's the issue — most operators haven't tested their own quote flow on mobile in months. The buyers have.",
+          "note": "Mobile-only question — do NOT let them shift to desktop. If 'we just redesigned it', say: 'Then this'll either confirm it's working or surface something the redesign missed.' Stay on mobile."
         },
         {
           "t": 40,
@@ -41,11 +41,11 @@
           "line": "So here's what's happening on your site. That same buyer from the back of the car — they tap your ad. Page takes <em>12 to 15 seconds</em> to load. By the time it renders, they're already losing patience.\n\nFirst thing they see? A headline that doesn't mention their route, their aircraft, or a price. By second 8, they're scrolling for a phone number — yours isn't pinned in the top right, so they hunt for it. By the time they find it buried in the footer, they've already opened the next operator in another tab.\n\nThat's where the <em>$25,000 to $75,000 a week</em> goes.\n\nTwo fixes — pinning the phone, rewriting the hero — are <em>afternoon work for a developer</em>. There's a third issue on your quote flow costing you <em>more than both combined</em>. I'd rather walk you through that one with your page open in front of us.",
           "responses": [
             "What's the third issue?",
-            "We can fix that ourselves",
+            "We can fix the first two ourselves",
             "How long does the audit take?"
           ],
-          "followup": "I'd rather show you on a shared screen — it's faster than describing it.",
-          "note": "Hold back the third issue. Curiosity gap drives the audit ask."
+          "followup": "I'd rather show you on a shared screen — it's faster than describing it, and you'll see the dollar cost on each one.",
+          "note": "DO NOT reveal the third issue on the cold call — curiosity gap is what books the audit. If pushed hard, say 'It's a 30-second walk-through with your page open — describing it doesn't do it justice.'"
         },
         {
           "t": 18,
@@ -53,12 +53,12 @@
           "title": "100-Site Checklist",
           "line": "A bit about me, I've diagnosed <em>over 100 charter and aircraft sites</em> against the same 10-point checklist. Same conversion math every time — trip values get bigger, speed-to-quote window shorter. The two issues I named on your site aren't theory; they're the same two I've fixed before.",
           "responses": [
-            "Who else have you worked with?",
-            "What's on the checklist?",
-            "What does this cost?"
+            "Which operators have you worked with?",
+            "What's on the 10-point checklist?",
+            "How much do you charge to do the fix?"
           ],
-          "followup": "I'll show you the checklist on the call. That's actually what the audit is.",
-          "note": "Credibility without name-dropping. Builds the bridge to the audit ask."
+          "followup": "I'll walk you through the full checklist on the audit — that 30 minutes is literally the checklist applied to your page.",
+          "note": "No name-dropping competitors. Stay vague on names, specific on numbers. If asked pricing, deflect: 'Pricing depends on what we find — that's the audit.'"
         },
         {
           "t": 33,
@@ -67,11 +67,11 @@
           "line": "Here's where I'd take this. <em>In 30 minutes, shared screen, your website open in front of us.</em> I'll walk through every issue in plain English, name the dollars lost on each one, and you keep the <em>prioritized fix-list</em>. The audit runs <em>$3,000</em> — <em>but, I'll run it for free</em>. The only thing you have to lose is the <em>$25,000 to $75,000 a week</em> in lost charters from the issues I named. No pitch on the call. By minute 20 most operators already know if they're running the fixes in-house or would prefer having me handle it.",
           "responses": [
             "What's the catch?",
-            "Why free?",
-            "Sounds interesting"
+            "Why are you running it for free?",
+            "What do I need to have ready?"
           ],
-          "followup": "No catch — I get to see what's actually breaking on charter sites, you get the fix-list.",
-          "note": "$3K anchor is the value frame. 'No pitch' kills the catch reflex."
+          "followup": "No catch — I get to see what's actually breaking on charter sites in your market, you get the fix-list either way. If we're a fit after, we talk. If not, you keep the list.",
+          "note": "Lead with 'No pitch on the call' — that's the trust unlock. If 'why free?', use followup verbatim. Never discount the $3K anchor — it's the value frame."
         },
         {
           "t": 30,
@@ -83,8 +83,8 @@
             "Friday at 2",
             "Send the sample first"
           ],
-          "followup": "Perfect — what's the best email for the calendar invite (or sample)?",
-          "note": "Dual-path close. Assumptive on calendar. Email is the soft fallback."
+          "followup": "Perfect — what's the best email for the calendar invite (or the sample)?",
+          "note": "Assumptive close — don't offer 'next week' unless they push. If 'send sample', commit to a follow-up call: 'I'll send it today — when can I call you back to walk through it?' Email is the soft fallback, NOT the goal."
         }
       ]
     },
@@ -98,12 +98,12 @@
           "title": "Peer Comparison",
           "line": "Hi, my name is {caller} with ConversionJet — I review private charter sites for a living. I just finished comparing your site against three other operators in your market, and you're losing to all three on the one thing that decides who gets the booking. Do you know who I can talk to about this?",
           "responses": [
-            "Who are the three?",
-            "What's the one thing?",
-            "I'm the right person"
+            "That's me / I handle marketing",
+            "Let me transfer you",
+            "Who are the three operators?"
           ],
-          "followup": "I'd rather walk you through it — 60 seconds and you'll see exactly where they're ahead.",
-          "note": "Status loss frame. Hold back the named competitors until the audit. Plural 'three' is the curiosity hook."
+          "followup": "I'd rather walk you through the comparison with your page open — 60 seconds and you'll see where they're ahead. Worth it?",
+          "note": "DO NOT name the three competitors on the cold call — that's the audit hook. If pushed, say: 'I'll walk you through them on a shared screen.' Plural 'three' is the curiosity."
         },
         {
           "t": 17,
@@ -112,11 +112,11 @@
           "line": "Here's where they're losing it. Their pages load in <em>3 to 4 seconds</em>, ask for a route, show a price range. <em>Yours takes 14</em>, asks for a phone number, drops a contact form. The buyer is already typing into a competitor's quote form before your site finishes loading.",
           "responses": [
             "Our site isn't that slow",
-            "How do you know?",
-            "That's a fair point"
+            "How did you measure?",
+            "Mobile or desktop?"
           ],
-          "followup": "I ran the load times myself on mobile this morning — happy to show you on the audit.",
-          "note": "Concrete side-by-side punch. No 'three competitors' restated — already said in Beat 1."
+          "followup": "I tested all four on mobile this morning, same connection, same time. I'll show you the actual load comparison on the audit.",
+          "note": "If they dispute the load time, DO NOT argue — offer to show on the audit. The screenshot proof is what closes the meeting. Mobile-only, never desktop."
         },
         {
           "t": 36,
@@ -124,12 +124,12 @@
           "title": "Monthly Math",
           "line": "Now do the math on a month of this. Say <em>20 buyers a week</em> hit your ad and your competitors' ads at the same time. <em>14 of them</em> never wait out your load. The 6 that do see a page that doesn't sell them. The other operators? Same 20 buyers, three-second load, route and price on screen. <em>They're booking 12 of yours every month.</em> That's the <em>$25,000 to $75,000 a week</em> — except it's not a week, it's a compounding lead off your top line.",
           "responses": [
-            "That math seems high",
+            "That math seems aggressive",
             "What's the fix?",
-            "I want to see this"
+            "Show me how you got 12"
           ],
-          "followup": "Conservative actually — happy to walk you through the math on the audit.",
-          "note": "Zooms out from one buyer to monthly volume. The 'compounding' kicker raises stakes."
+          "followup": "Conservative actually — I'd rather walk you through the math on the audit with your real numbers, not my estimates.",
+          "note": "If they push on the 12-of-20 number, do NOT debate it — anchor to 'I'd rather use YOUR ad spend numbers on the audit.' Pulls them toward the meeting."
         },
         {
           "t": 17,
@@ -138,11 +138,11 @@
           "line": "A bit about me — I've diagnosed <em>over 100 charter and aircraft sites</em> against the same 10-point checklist. The three operators ahead of your site aren't doing anything you can't. They just closed the gap I'm describing. <em>It's the same playbook every time.</em>",
           "responses": [
             "What's the playbook?",
-            "Who's on it?",
-            "How fast can we close the gap?"
+            "How fast can the gap close?",
+            "What do those operators do differently?"
           ],
-          "followup": "I'll show you the full playbook on the call — it's literally what the audit is.",
-          "note": "Reframes the gap as closeable, not structural. Removes the 'we're too far behind' objection."
+          "followup": "I'll walk through the full playbook on the audit — most operators implement the first three plays in under two weeks.",
+          "note": "Frame the gap as CLOSEABLE, not structural. The word 'playbook' implies repeatable — lean into it. Never reveal specific plays here."
         },
         {
           "t": 33,
@@ -151,11 +151,11 @@
           "line": "Here's where I'd take this. <em>In 30 minutes, shared screen, your website open in front of us.</em> I'll walk through every issue in plain English, name the dollars lost on each one, and you keep the <em>prioritized fix-list</em>. The audit runs <em>$3,000</em> — <em>but, I'll run it for free</em>. The only thing you have to lose is the <em>$25,000 to $75,000 a week</em> in lost charters from the issues I named. No pitch on the call. By minute 20 most operators already know if they're running the fixes in-house or would prefer having me handle it.",
           "responses": [
             "What's the catch?",
-            "Why free?",
-            "Sounds interesting"
+            "Why are you running it for free?",
+            "What do I need to have ready?"
           ],
-          "followup": "No catch — I get to see what's actually breaking on charter sites, you get the fix-list.",
-          "note": "Identical to Variant A. Locked brand voice."
+          "followup": "No catch — I get to see what's actually breaking on charter sites in your market, you get the fix-list either way. If we're a fit after, we talk. If not, you keep the list.",
+          "note": "Identical to Variant A. Lead with 'No pitch on the call.' Never discount the $3K anchor."
         },
         {
           "t": 30,
@@ -167,8 +167,8 @@
             "Friday at 2",
             "Send the sample first"
           ],
-          "followup": "Perfect — what's the best email for the calendar invite (or sample)?",
-          "note": "Identical to Variant A close."
+          "followup": "Perfect — what's the best email for the calendar invite (or the sample)?",
+          "note": "Identical to Variant A. Email is the soft fallback, NOT the goal."
         }
       ]
     },
@@ -182,12 +182,12 @@
           "title": "Hidden Quote-Flow Issue",
           "line": "Hi, my name is {caller} with ConversionJet — I review private charter sites for a living. I saw your company is running ads for <em>private charter flights</em>, I pulled up your site this morning, and noticed <em>an issue on your quote request flow</em> — it's costing you <em>more than every other problem on the page combined</em>. Do you know who I can talk to about this?",
           "responses": [
-            "What's the issue?",
-            "Who is this?",
-            "I'm the right person"
+            "That's me / I handle the site",
+            "Let me transfer you",
+            "What's the issue?"
           ],
-          "followup": "I'd rather walk you through it — 60 seconds and you'll see exactly where the leak is.",
-          "note": "Earned-attention via ads research. Hold back the specific issue until Beat 3 — curiosity gap drives the call."
+          "followup": "I'd rather walk you through it with your page open — 60 seconds and you'll see the leak. It's bigger than most operators expect.",
+          "note": "DO NOT reveal the specific quote-flow issue on the cold call — curiosity is the entire close mechanic. If pushed, deflect to 'I'll show you on a shared screen.'"
         },
         {
           "t": 22,
@@ -195,12 +195,12 @@
           "title": "Quote Form Is the Bleeder",
           "line": "Quick context — you're paying <em>$40 to $90 per click</em> to get a buyer to your page, and the <em>quote request form is where 80 percent of those clicks die</em>. Buyers will sit through a slow page, a generic headline, a buried phone number — but the moment the form asks them something it shouldn't, or asks it in the wrong order, they're gone. And the buyers booking the <em>biggest trips</em> are the first ones to leave.",
           "responses": [
-            "Why the biggest trips first?",
+            "Why do the biggest trips bounce first?",
             "What's wrong with our form?",
-            "How do you know?"
+            "Where do you get $40-$90 per click?"
           ],
-          "followup": "Bigger trip = more cautious buyer. I'll show you the exact pattern on the audit.",
-          "note": "CPC anchor makes the leak feel live, not theoretical. Sets up Beat 3 reveal."
+          "followup": "Bigger trip = more cautious buyer, more comparison shopping. I'll show you the exact pattern on your form during the audit.",
+          "note": "CPC numbers are from public Google Ads benchmarks for charter terms — defendable. DO NOT reveal the specific form issues yet. Save for Beat 3."
         },
         {
           "t": 34,
@@ -209,11 +209,11 @@
           "line": "Here's what's happening on your quote flow. The form opens by asking for <em>name, phone, and email</em> — before it asks anything about the trip. You're demanding contact info from a buyer who hasn't decided to talk to you yet.\n\nThe ones who push through get to the trip section, and the form asks for <em>departure city as free text</em>. No autocomplete. They start typing, second-guess the format, and leave.\n\nThat's the <em>$25,000 to $75,000 a week</em>. Every <em>$40 to $90 click</em> you paid for is funding it.",
           "responses": [
             "What's the fix?",
-            "Our form is industry standard",
+            "Every form does that",
             "I want to see this"
           ],
-          "followup": "I'd rather walk through the fix with your page open — happens fast on a shared screen.",
-          "note": "Concrete two-issue reveal. Industry-standard objection is the most common — followup deflects to the audit."
+          "followup": "Not every form — the operators converting at 2-3x your rate ask for the trip first, contact info last. I'd rather walk through it with your page open.",
+          "note": "'Every form does that' is the most common objection — pre-loaded comeback is in the followup. Never argue, always pivot to 'let me show you on the audit.'"
         },
         {
           "t": 17,
@@ -221,12 +221,12 @@
           "title": "Same Pattern, Fixed Before",
           "line": "A bit about me — I've diagnosed <em>over 100 charter and aircraft sites</em> against the same 10-point checklist. The quote-flow pattern I just walked you through isn't unique to your site. <em>I've fixed it before</em>, and the conversion math holds every time.",
           "responses": [
-            "Who else have you fixed it for?",
-            "What's the checklist?",
+            "Which operators have you fixed it for?",
+            "What's on the 10-point checklist?",
             "How long does the fix take?"
           ],
-          "followup": "I'll show you the checklist on the audit — that's actually what the 30 minutes is.",
-          "note": "Pattern-recognition credibility. Same playbook frame as B."
+          "followup": "I'll walk through the checklist on the audit — typical fix is 1-2 weeks of dev work, paid back in lost charters inside the first month.",
+          "note": "Stay vague on operator names, specific on timeline. The '1-2 weeks' anchor sets expectation BEFORE the audit ask."
         },
         {
           "t": 33,
@@ -235,11 +235,11 @@
           "line": "Here's where I'd take this. <em>In 30 minutes, shared screen, your website open in front of us.</em> I'll walk through every issue in plain English, name the dollars lost on each one, and you keep the <em>prioritized fix-list</em>. The audit runs <em>$3,000</em> — <em>but, I'll run it for free</em>. The only thing you have to lose is the <em>$25,000 to $75,000 a week</em> in lost charters from the issues I named. No pitch on the call. By minute 20 most operators already know if they're running the fixes in-house or would prefer having me handle it.",
           "responses": [
             "What's the catch?",
-            "Why free?",
-            "Sounds interesting"
+            "Why are you running it for free?",
+            "What do I need to have ready?"
           ],
-          "followup": "No catch — I get to see what's actually breaking on charter sites, you get the fix-list.",
-          "note": "Identical to A/B."
+          "followup": "No catch — I get to see what's actually breaking on charter sites in your market, you get the fix-list either way. If we're a fit after, we talk. If not, you keep the list.",
+          "note": "Identical to A/B. Lead with 'No pitch on the call.' Never discount the $3K anchor."
         },
         {
           "t": 30,
@@ -251,8 +251,8 @@
             "Friday at 2",
             "Send the sample first"
           ],
-          "followup": "Perfect — what's the best email for the calendar invite (or sample)?",
-          "note": "Identical to A/B close."
+          "followup": "Perfect — what's the best email for the calendar invite (or the sample)?",
+          "note": "Identical to A/B. Email is the soft fallback, NOT the goal."
         }
       ]
     }
