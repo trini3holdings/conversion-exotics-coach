@@ -190,6 +190,19 @@ function resolveMarketTZ(marketRaw) {
   return null;
 }
 
+// v3.6.1 — convert a 24-hour HH:MM string to a 12-hour 'h:MM AM/PM' string.
+function to12h(hhmm) {
+  if (!hhmm || typeof hhmm !== 'string') return hhmm || '';
+  const m = hhmm.match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return hhmm;
+  let h = parseInt(m[1], 10);
+  const min = m[2];
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12;
+  if (h === 0) h = 12;
+  return h + ':' + min + '\u202f' + ampm;
+}
+
 // Compute local time HH:MM and weekday short name in a given IANA TZ.
 function localTimeIn(tz, refDate = new Date()) {
   if (!tz) return null;
@@ -206,7 +219,8 @@ function localTimeIn(tz, refDate = new Date()) {
     const m = parseInt(parts.find(p => p.type === 'minute').value, 10);
     const wd = parts.find(p => p.type === 'weekday').value;
     const minutesOfDay = h * 60 + m;
-    return { h, m, minutesOfDay, weekday: wd, hhmm: `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}` };
+    const hhmm = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+    return { h, m, minutesOfDay, weekday: wd, hhmm, hhmm12: to12h(hhmm) };
   } catch (e) {
     return null;
   }
@@ -244,11 +258,11 @@ function callabilityStatus(callIntel, marketRaw, refDate = new Date(), lookahead
   for (const aw of avoidWindows) {
     if (aw.day_filter && aw.day_filter !== todayDay) continue;
     if (inWindow(aw.start, aw.end, lt.minutesOfDay)) {
-      return { status: 'avoid', label: aw.label || 'Avoid window', tz, localTime: lt.hhmm };
+      return { status: 'avoid', label: aw.label || 'Avoid window', tz, localTime: lt.hhmm12 };
     }
   }
   if (avoidDays.includes(todayDay)) {
-    return { status: 'avoid', label: `${todayDay} is a low-quality day`, tz, localTime: lt.hhmm };
+    return { status: 'avoid', label: `${todayDay} is a low-quality day`, tz, localTime: lt.hhmm12 };
   }
 
   // Prime check (best days + primary block)
@@ -257,7 +271,7 @@ function callabilityStatus(callIntel, marketRaw, refDate = new Date(), lookahead
       const blockDays = pb.days || bestDays;
       if (!blockDays.includes(todayDay)) continue;
       if (inWindow(pb.start, pb.end, lt.minutesOfDay)) {
-        return { status: 'prime', label: pb.label || 'Prime', block: pb, tz, localTime: lt.hhmm };
+        return { status: 'prime', label: pb.label || 'Prime', block: pb, tz, localTime: lt.hhmm12 };
       }
     }
   }
@@ -271,12 +285,12 @@ function callabilityStatus(callIntel, marketRaw, refDate = new Date(), lookahead
       const startMin = sh * 60 + sm;
       const delta = startMin - lt.minutesOfDay;
       if (delta > 0 && delta <= lookaheadMinutes) {
-        return { status: 'soon', label: `Opens in ${delta} min — ${pb.label || 'Block'}`, block: pb, tz, localTime: lt.hhmm, opensIn: delta };
+        return { status: 'soon', label: `Opens in ${delta} min — ${pb.label || 'Block'}`, block: pb, tz, localTime: lt.hhmm12, opensIn: delta };
       }
     }
   }
 
-  return { status: 'ok', label: 'Neutral window', tz, localTime: lt.hhmm };
+  return { status: 'ok', label: 'Neutral window', tz, localTime: lt.hhmm12 };
 }
 
 // Compute the next prime window's start (today or later) for a given call_intel.
@@ -306,10 +320,11 @@ function nextPrimeWindow(callIntel, marketRaw, refDate = new Date()) {
       return {
         weekday: checkDay,
         hhmm: pb.start,
+        hhmm12: to12h(pb.start),
         label: pb.label,
         opensInMinutes: minutesUntil,
         tz,
-        localTime: lt.hhmm,
+        localTime: lt.hhmm12,
       };
     }
   }
@@ -321,3 +336,4 @@ window.resolveMarketTZ = resolveMarketTZ;
 window.localTimeIn = localTimeIn;
 window.callabilityStatus = callabilityStatus;
 window.nextPrimeWindow = nextPrimeWindow;
+window.to12h = to12h;

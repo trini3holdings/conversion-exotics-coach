@@ -123,9 +123,18 @@ function renderBrandCard(slug, brand, intel, mode) {
   const t4 = hotList?.tier_4?.length || 0;
   const noPhone = hotList?.no_phone?.length || 0;
 
-  // v3.6 — if validation passed with warnings, show a small indicator
-  const warnBadge = (validation && validation.warnings && validation.warnings.length)
-    ? `<span class="dash-warn-badge" title="${escapeHtml(validation.warnings.join(' · '))}">!</span>`
+  // v3.6 — only badge for actionable warnings; suppress internal shape-normalization notices.
+  const NOISE_PATTERNS = [
+    /used wrapper shape/i,
+    /used flat A\/B\/C shape/i,
+    /call_intel\.json missing/i,
+    /unwrapped/i,
+  ];
+  const actionableWarnings = (validation?.warnings || []).filter(w =>
+    !NOISE_PATTERNS.some(rx => rx.test(w))
+  );
+  const warnBadge = actionableWarnings.length
+    ? `<span class="dash-warn-badge" title="${escapeHtml(actionableWarnings.join(' · '))}">!</span>`
     : '';
 
   // Live classification
@@ -162,7 +171,7 @@ function renderBrandCard(slug, brand, intel, mode) {
   const primaryBlocks = (callIntel?.primary_blocks || []).map(pb => `
     <div class="dash-block-row">
       <span class="dbr-label">${pb.label}</span>
-      <span class="dbr-time">${pb.start}–${pb.end}</span>
+      <span class="dbr-time">${window.to12h(pb.start)}–${window.to12h(pb.end)}</span>
       <span class="dbr-days">${(pb.days || []).join(' · ')}</span>
     </div>
   `).join('');
@@ -202,7 +211,7 @@ function renderBrandCard(slug, brand, intel, mode) {
           <div class="dash-live-num">${liveCount}</div>
           <div class="dash-live-label">${liveLabel}</div>
           ${mode === 'now' && soonCount > 0 ? `<div class="dash-live-sub">+${soonCount} more in next 2 hours</div>` : ''}
-          ${nextWindow ? `<div class="dash-live-sub">Next prime: ${nextWindow.weekday} ${nextWindow.hhmm} (${formatMinutesAway(nextWindow.opensInMinutes)} away)</div>` : ''}
+          ${nextWindow ? `<div class="dash-live-sub">Next prime: ${nextWindow.weekday} ${nextWindow.hhmm12 || window.to12h(nextWindow.hhmm)} (${formatMinutesAway(nextWindow.opensInMinutes)} away)</div>` : ''}
         </div>
 
         <!-- Brand stats grid -->
@@ -265,11 +274,12 @@ async function renderDashboard(mode = 'now') {
 
   // Header + global toggle
   const tonyLocal = window.localTimeIn('America/Chicago');
+  const tonyLocalDisplay = tonyLocal ? (tonyLocal.hhmm12 || tonyLocal.hhmm) : '';
   root.innerHTML = `
     <div class="dash-topnav">
       <div class="dash-topnav-left">
         <div class="dash-title">Call Coach Dashboard</div>
-        <div class="dash-sub">Per-brand call intelligence · ${tonyLocal ? `Central time ${tonyLocal.hhmm} (${tonyLocal.weekday})` : ''}</div>
+        <div class="dash-sub">Per-brand call intelligence · ${tonyLocal ? `Central time ${tonyLocalDisplay} (${tonyLocal.weekday})` : ''}</div>
       </div>
       <div class="dash-topnav-right">
         <div class="dash-mode-toggle">
@@ -327,7 +337,7 @@ async function openTrainingTab(slug) {
     <div class="train-row">
       <div class="tr-head">
         <span class="tr-label">${escapeHtml(item[key] || '')}</span>
-        ${item.start ? `<span class="tr-time">${item.start}–${item.end}</span>` : ''}
+        ${item.start ? `<span class="tr-time">${window.to12h(item.start)}–${window.to12h(item.end)}</span>` : ''}
         ${item.day ? `<span class="tr-time">${item.day}</span>` : ''}
         ${item.days ? `<span class="tr-time">${(item.days || []).join(' · ')}</span>` : ''}
       </div>

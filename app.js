@@ -935,7 +935,7 @@ function renderCallLog() {
       ${c.followup && c.followup.date ? `<span class="log-followup" title="Follow-up ${c.followup.date}">📅</span>` : ''}
       <span class="log-score" title="Auto-score">${c.score || 0}</span>
       <span style="color:#888;">${c.variant}·${(c.caller || 'Z').slice(0, 1)}</span>
-      <span class="log-time">${new Date(c.ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+      <span class="log-time">${new Date(c.ts).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}</span>
     </div>
   `).join('');
 }
