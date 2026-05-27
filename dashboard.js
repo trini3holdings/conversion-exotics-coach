@@ -11,22 +11,46 @@
 // Cache for loaded brand intel — avoid re-fetching on every refresh tick
 const DASH_CACHE = {};
 
+// Normalize prospects.json — accepts plain array OR { brand, prospects: [...] }
+function normalizeProspects(raw) {
+  if (Array.isArray(raw)) return raw;
+  if (raw && Array.isArray(raw.prospects)) return raw.prospects;
+  if (raw && Array.isArray(raw.data)) return raw.data;
+  return [];
+}
+
+// Normalize scripts.json — meta fields may sit at top level or under _meta
+function normalizeScripts(raw) {
+  if (!raw || typeof raw !== 'object') return { _meta: {} };
+  if (raw._meta) return raw;
+  const _meta = {
+    brand: raw.brand,
+    audit_value: raw.audit_value,
+    industry: raw.industry,
+    target_length_sec: raw.target_length_sec,
+    register: raw.register,
+  };
+  return Object.assign({}, raw, { _meta });
+}
+
 async function loadBrandIntel(slug) {
   if (DASH_CACHE[slug]) return DASH_CACHE[slug];
   const base = `brands/${slug}`;
   try {
-    const [prospects, scripts, callIntel, hotList, marketCpc] = await Promise.all([
-      fetch(`${base}/prospects.json`).then(r => r.ok ? r.json() : []),
-      fetch(`${base}/scripts.json`).then(r => r.ok ? r.json() : {}),
-      fetch(`${base}/call_intel.json`).then(r => r.ok ? r.json() : null),
-      fetch(`${base}/_hot_list.json`).then(r => r.ok ? r.json() : null),
-      fetch(`${base}/market_cpc.json`).then(r => r.ok ? r.json() : null),
+    const [prospectsRaw, scriptsRaw, callIntel, hotList, marketCpc] = await Promise.all([
+      fetch(`${base}/prospects.json`).then(r => r.ok ? r.json() : []).catch(() => []),
+      fetch(`${base}/scripts.json`).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+      fetch(`${base}/call_intel.json`).then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch(`${base}/_hot_list.json`).then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch(`${base}/market_cpc.json`).then(r => r.ok ? r.json() : null).catch(() => null),
     ]);
+    const prospects = normalizeProspects(prospectsRaw);
+    const scripts = normalizeScripts(scriptsRaw);
     DASH_CACHE[slug] = { prospects, scripts, callIntel, hotList, marketCpc };
     return DASH_CACHE[slug];
   } catch (e) {
     console.error(`Failed to load intel for ${slug}:`, e);
-    return null;
+    return { prospects: [], scripts: { _meta: {} }, callIntel: null, hotList: null, marketCpc: null };
   }
 }
 

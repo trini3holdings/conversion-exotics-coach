@@ -272,13 +272,45 @@ async function loadBrandData(brandSlug) {
     ]);
     const scriptsData = await scriptsRes.json();
     const objData = await objRes.json();
-    PROSPECTS_BASE = await prospRes.json();
+    const prospRaw = await prospRes.json();
     MARKET_CPC = await cpcRes.json();
     // Per-brand CSV schema (optional — falls back to legacy parser if missing)
     try { CSV_SCHEMA = schemaRes && schemaRes.ok ? await schemaRes.json() : null; }
     catch (e) { CSV_SCHEMA = null; }
-    SCRIPTS = scriptsData.variants;
-    SCRIPTS._meta = { target_length_sec: scriptsData.target_length_sec || 220, audit_value: scriptsData.audit_value || 0 };
+
+    // v3.5.1 — tolerate two prospects shapes:
+    //   A. [...] plain array (CE / CJ / RME)
+    //   B. { brand, prospects: [...] } wrapper (CritterClick)
+    if (Array.isArray(prospRaw)) {
+      PROSPECTS_BASE = prospRaw;
+    } else if (prospRaw && Array.isArray(prospRaw.prospects)) {
+      PROSPECTS_BASE = prospRaw.prospects;
+    } else if (prospRaw && Array.isArray(prospRaw.data)) {
+      PROSPECTS_BASE = prospRaw.data;
+    } else {
+      PROSPECTS_BASE = [];
+    }
+
+    // v3.5.1 — tolerate two scripts shapes:
+    //   A. { variants: { A, B, C }, target_length_sec, audit_value } (CE / CJ / CritterClick)
+    //   B. { _meta: {...}, A: {...}, B: {...}, C: {...} } (RME)
+    if (scriptsData && scriptsData.variants && typeof scriptsData.variants === 'object') {
+      SCRIPTS = scriptsData.variants;
+      SCRIPTS._meta = {
+        target_length_sec: scriptsData.target_length_sec || 220,
+        audit_value: scriptsData.audit_value || 0
+      };
+    } else if (scriptsData && (scriptsData.A || scriptsData.B || scriptsData.C)) {
+      const m = scriptsData._meta || {};
+      SCRIPTS = {};
+      ['A', 'B', 'C'].forEach(k => { if (scriptsData[k]) SCRIPTS[k] = scriptsData[k]; });
+      SCRIPTS._meta = {
+        target_length_sec: m.target_length_sec || scriptsData.target_length_sec || 220,
+        audit_value: m.audit_value || scriptsData.audit_value || 0
+      };
+    } else {
+      SCRIPTS = { _meta: { target_length_sec: 220, audit_value: 0 } };
+    }
     // v3.4.1 — tolerate two shapes:
     //   A. { objections: [ { cat, q, a }, ... ] }   (CE / CJ / CritterClick)
     //   B. { _meta: {...}, CAT_NAME: { q, a }, ... } (RME)
@@ -1179,6 +1211,8 @@ function showDashboard() {
   const dv = document.getElementById('dashboardView');
   if (cc) cc.classList.add('hidden');
   if (dv) dv.classList.remove('hidden');
+  document.body.classList.add('view-dashboard');
+  document.body.classList.remove('view-coach');
   if (window.renderDashboard) window.renderDashboard('now');
 }
 window.showDashboard = showDashboard;
@@ -1188,6 +1222,8 @@ window.enterBrand = async function(slug, prospectId) {
   const dv = document.getElementById('dashboardView');
   if (dv) dv.classList.add('hidden');
   if (cc) cc.classList.remove('hidden');
+  document.body.classList.remove('view-dashboard');
+  document.body.classList.add('view-coach');
   const sel = document.getElementById('brandSelect');
   if (sel) sel.value = slug;
   await switchBrand(slug);
@@ -1467,6 +1503,7 @@ async function init() {
   // But keep call-coach view hidden until user picks a brand from dashboard
   document.getElementById('callCoachView').classList.add('hidden');
   document.getElementById('dashboardView').classList.remove('hidden');
+  document.body.classList.add('view-dashboard');
 
   if (!state.manualVariant && !state.lockedVariant) {
     const want = computeAutoVariant();

@@ -1278,3 +1278,21 @@ body { padding-bottom: 64px; }
   padding: 2px 7px; border-radius: 999px;
   letter-spacing: .04em;
 }
+
+/* ============== v3.5.1: Hide call-coach chrome on dashboard view ============== */
+body.view-dashboard #progressBar,
+body.view-dashboard #bigTimer,
+body.view-dashboard .topbar,
+body.view-dashboard #legendBar,
+body.view-dashboard #samplingBanner,
+body.view-dashboard #reconRail,
+body.view-dashboard #quickObjBar,
+body.view-dashboard #qoPop,
+body.view-dashboard #undoToast,
+body.view-dashboard #winnerBanner {
+  display: none !important;
+}
+body.view-dashboard .dashboard-view {
+  margin-top: 0;
+  padding-top: 32px;
+}
