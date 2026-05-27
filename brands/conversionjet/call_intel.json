@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "brand": "conversionjet",
+    "vertical": "B2B — private jet charter operators, fractional / shared-ownership programs, concierge + travel-manager partners",
+    "audience": "Decision-maker at private flight operator (founder, ops director, head of sales) — office hours, professional cell or main line",
+    "source_note": "Aggregated from large B2B outbound datasets. Office-hours pattern. Validate per-account with your own dial logs."
+  },
+  "core_windows": [
+    {"label": "Morning planning window", "start": "08:00", "end": "11:00", "tz": "prospect_local", "strength": "highest", "note": "Golden hour around 8–9 or 9–10 a.m. — decision-makers are planning their day, not yet in back-to-back meetings."},
+    {"label": "Late afternoon decision window", "start": "14:00", "end": "16:00", "tz": "prospect_local", "strength": "highest", "note": "Several B2B studies show 3–5 p.m. as one of the best windows to reach decision-makers and qualify."}
+  ],
+  "primary_blocks": [
+    {"label": "Block 1", "days": ["Tue", "Wed", "Thu"], "start": "09:00", "end": "11:00", "tz": "prospect_local"},
+    {"label": "Block 2", "days": ["Tue", "Wed", "Thu"], "start": "14:30", "end": "16:30", "tz": "prospect_local"}
+  ],
+  "experimental_blocks": [
+    {"label": "Late executive window", "days": ["Tue", "Wed", "Thu"], "start": "16:30", "end": "17:30", "tz": "prospect_local", "note": "Some operator owners and founders pick up after support staff has gone. Treat as experiment, not core block."},
+    {"label": "Monday afternoon recovery", "days": ["Mon"], "start": "14:00", "end": "16:00", "tz": "prospect_local", "note": "If you must touch Monday, afternoon beats morning. Monday morning prospects are in catch-up mode."}
+  ],
+  "avoid_windows": [
+    {"label": "Lunch / midday crunch", "start": "11:00", "end": "14:00", "reason": "B2B contact + qualification rates dip during the lunch/crunch hours."},
+    {"label": "Monday morning", "start": "00:00", "end": "11:00", "day_filter": "Mon", "reason": "Prospects in catch-up mode, less open to new vendors."},
+    {"label": "After-hours personal time", "start": "18:00", "end": "23:59", "reason": "Travel + charter prospects guard personal hours. After 5:30-6 p.m. risks pushing into family time."}
+  ],
+  "avoid_days": [
+    {"day": "Mon", "reason": "Catch-up mode; weakest for new-vendor outreach."},
+    {"day": "Fri", "reason": "Wind-down day; B2B contact rates drop."},
+    {"day": "Sat", "reason": "Personal time; respect it."},
+    {"day": "Sun", "reason": "Personal time; respect it."}
+  ],
+  "best_days": ["Tue", "Wed", "Thu"],
+  "homeowner_nuances": [
+    "This is B2B HNW — your prospect is the operator or their sales lead, not the flier. Treat as classic office-hours prospecting.",
+    "Decision-makers at jet charter operators often travel on Mondays and Fridays. Mid-week reach is dramatically higher.",
+    "Concierge + travel-manager partners answer office lines + cells. After 5 p.m. you're likely catching personal time.",
+    "Aviation operators run 24/7 dispatch but the conversion-audit conversation is with sales leadership — strict 9-to-5.",
+    "Use first-name-only Tony variant per HNW discretion rules. No mascots, no real-photo Tony for ConversionJet."
+  ],
+  "metrics_to_track": [
+    "Connect rate by 30-min increment",
+    "Decision-maker reach rate (vs gatekeeper / voicemail)",
+    "Conversation length by hour-of-day",
+    "Booked-audit rate by hour + day",
+    "Cost-per-booked-audit by day-of-week"
+  ]
+}

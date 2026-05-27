@@ -58,6 +58,8 @@ const BRANDS = {
     theme: { ink: '#2C3E50', gold: '#C84B31', cream: '#F2EDE6', highlight: '#FBF4EC' }
   }
 };
+// Expose for dashboard.js
+window.BRANDS = BRANDS;
 
 // Loaded per-brand at runtime
 let SCRIPTS = {};
@@ -1087,6 +1089,34 @@ function splitCSVLine(line) {
   return out;
 }
 
+// ============== DASHBOARD <-> CALL COACH VIEW SWITCH (v3.4) ==============
+function showDashboard() {
+  const cc = document.getElementById('callCoachView');
+  const dv = document.getElementById('dashboardView');
+  if (cc) cc.classList.add('hidden');
+  if (dv) dv.classList.remove('hidden');
+  if (window.renderDashboard) window.renderDashboard('now');
+}
+window.showDashboard = showDashboard;
+
+window.enterBrand = async function(slug, prospectId) {
+  const cc = document.getElementById('callCoachView');
+  const dv = document.getElementById('dashboardView');
+  if (dv) dv.classList.add('hidden');
+  if (cc) cc.classList.remove('hidden');
+  const sel = document.getElementById('brandSelect');
+  if (sel) sel.value = slug;
+  await switchBrand(slug);
+  if (prospectId) {
+    // Try to auto-select the prospect inside the brand
+    state.selectedProspectN = prospectId;
+    try { saveState(); } catch (e) {}
+    if (typeof renderProspectPicker === 'function') renderProspectPicker();
+    if (typeof renderReconCard === 'function') renderReconCard();
+    if (typeof renderReconRail === 'function') renderReconRail();
+  }
+};
+
 // ============== BRAND + CALLER SWITCH ==============
 async function switchBrand(slug) {
   state.brand = slug;
@@ -1100,7 +1130,7 @@ async function switchBrand(slug) {
   }
   saveState();
   document.getElementById('logoMark').textContent = brand.short;
-  document.getElementById('brandName').textContent = `${brand.name} · Call Coach`;
+  document.getElementById('brandName').textContent = `Call Coach · ${brand.name}`;
   document.querySelector('.brand-sub').textContent = brand.sub;
   if (brand.theme) {
     const root = document.documentElement;
@@ -1337,7 +1367,22 @@ async function init() {
   document.getElementById('topbarDate').textContent =
     new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
+  // v3.4: dashboard is the default landing view. Don't auto-switch into a brand.
+  // BRANDS is already exposed on window for dashboard.js.
+  // Wire the topbar Dashboard button.
+  const dashBtn = document.getElementById('dashboardBtn');
+  if (dashBtn) dashBtn.addEventListener('click', () => showDashboard());
+
+  // Render dashboard immediately
+  if (window.renderDashboard) {
+    window.renderDashboard('now');
+  }
+
+  // Still load the last brand's data in the background so app is ready when user enters
   await switchBrand(state.brand);
+  // But keep call-coach view hidden until user picks a brand from dashboard
+  document.getElementById('callCoachView').classList.add('hidden');
+  document.getElementById('dashboardView').classList.remove('hidden');
 
   if (!state.manualVariant && !state.lockedVariant) {
     const want = computeAutoVariant();

@@ -1,0 +1,43 @@
+{
+  "_meta": {
+    "brand": "critterclick",
+    "vertical": "Residential wildlife removal (raccoons, squirrels, bats, skunks, opossums, birds)",
+    "audience": "Homeowner — personal cell phone",
+    "source_note": "Aggregated from large outbound call-data studies (millions of calls) plus residential home-services nuances. Validate per-market with your own dial logs."
+  },
+  "core_windows": [
+    {"label": "Late morning sweet spot", "start": "10:00", "end": "11:00", "tz": "prospect_local", "strength": "highest", "note": "9–10 a.m. is the single strongest hour in most studies; 10–11 a.m. is the working-but-not-distracted window."},
+    {"label": "Late afternoon wrap-up", "start": "16:00", "end": "18:00", "tz": "prospect_local", "strength": "highest", "note": "Consistently tests as near-highest engagement; prospects are wrapping the day, not yet in evening routine."}
+  ],
+  "primary_blocks": [
+    {"label": "Block 1", "days": ["Tue", "Wed", "Thu"], "start": "09:30", "end": "11:30", "tz": "prospect_local"},
+    {"label": "Block 2", "days": ["Tue", "Wed", "Thu"], "start": "16:00", "end": "18:00", "tz": "prospect_local"}
+  ],
+  "experimental_blocks": [
+    {"label": "Working-homeowner evening", "days": ["Wed", "Thu"], "start": "17:30", "end": "19:00", "tz": "prospect_local", "note": "Productive if script is tight and respectful of family time."},
+    {"label": "Saturday morning", "days": ["Sat"], "start": "10:00", "end": "13:00", "tz": "prospect_local", "note": "Under-used for residential home services. Verify any local TCPA / time-of-day rules before dialing."}
+  ],
+  "avoid_windows": [
+    {"label": "Lunchtime dip", "start": "11:30", "end": "14:00", "reason": "Answer + engagement rates drop during pure lunch hours."},
+    {"label": "Very early", "start": "00:00", "end": "08:00", "reason": "Annoyance + TCPA risk."},
+    {"label": "Very late", "start": "20:00", "end": "23:59", "reason": "Annoyance + TCPA risk."}
+  ],
+  "avoid_days": [
+    {"day": "Mon", "reason": "Lowest quality for cold calls in most studies."},
+    {"day": "Fri", "reason": "Hit-or-miss; mid-week outperforms."},
+    {"day": "Sun", "reason": "Respect family time; weak engagement."}
+  ],
+  "best_days": ["Tue", "Wed", "Thu"],
+  "homeowner_nuances": [
+    "Wildlife removal is emergency-driven — answer rate spikes in the 24-48 hours after a sighting or noise complaint. If you have inbound web traffic data, prioritize callbacks within 60 minutes.",
+    "Most calls go to personal cells, not landlines. Expect mixed workday + off-hours behavior.",
+    "Hot lead window: 5-7 p.m. for working homeowners who couldn't deal with the wildlife issue during the day.",
+    "Avoid scheduled dial blasts during local school pickup hours (2:30-3:30 p.m.) — answer rate drops sharply."
+  ],
+  "metrics_to_track": [
+    "Answer rate by 30-min increment",
+    "Conversation length by hour-of-day",
+    "Booked-inspection rate by hour + day",
+    "Cost-per-booked-inspection by day-of-week"
+  ]
+}

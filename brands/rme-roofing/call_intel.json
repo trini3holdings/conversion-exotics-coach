@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "brand": "rme-roofing",
+    "vertical": "Residential roofing (replacement, storm/hail restoration, insurance claim)",
+    "audience": "Roofing company owner-operator + homeowner (B2B + B2C mix depending on call list)",
+    "source_note": "Aggregated from large outbound call-data studies (millions of calls) plus residential home-services nuances. B2B roofer-to-roofer calls follow more standard business hours."
+  },
+  "core_windows": [
+    {"label": "Late morning sweet spot", "start": "10:00", "end": "11:00", "tz": "prospect_local", "strength": "highest", "note": "9–10 a.m. is the strongest hour. Roofing owners are usually in the office or truck after the morning crew dispatch but before the first jobsite walk."},
+    {"label": "Late afternoon wrap-up", "start": "16:00", "end": "18:00", "tz": "prospect_local", "strength": "highest", "note": "Owners are off the jobsite, back at the truck, processing the day. Highest engagement window."}
+  ],
+  "primary_blocks": [
+    {"label": "Block 1", "days": ["Tue", "Wed", "Thu"], "start": "09:30", "end": "11:30", "tz": "prospect_local"},
+    {"label": "Block 2", "days": ["Tue", "Wed", "Thu"], "start": "16:00", "end": "18:00", "tz": "prospect_local"}
+  ],
+  "experimental_blocks": [
+    {"label": "Owner cool-down", "days": ["Wed", "Thu"], "start": "17:30", "end": "19:00", "tz": "prospect_local", "note": "Roofing owners who took crew calls all day are most receptive after 5:30 p.m."},
+    {"label": "Saturday morning", "days": ["Sat"], "start": "09:00", "end": "12:00", "tz": "prospect_local", "note": "Single-truck and small-shop owners often work Saturdays. Verify TCPA / state rules."}
+  ],
+  "avoid_windows": [
+    {"label": "Crew dispatch chaos", "start": "06:30", "end": "08:30", "reason": "Roofing owners are loading trucks and dispatching crews — terrible time to ring."},
+    {"label": "Jobsite walk window", "start": "12:30", "end": "14:30", "reason": "Mid-day jobsite walks + lunch. Lowest connect rate."},
+    {"label": "Very late", "start": "20:00", "end": "23:59", "reason": "Annoyance + TCPA risk."}
+  ],
+  "avoid_days": [
+    {"day": "Mon", "reason": "Crew scheduling chaos + worst connect-rate day in most studies."},
+    {"day": "Fri", "reason": "Hit-or-miss; owners doing payroll + Friday close-outs."},
+    {"day": "Sun", "reason": "Respect family time; very weak engagement for roofers."}
+  ],
+  "best_days": ["Tue", "Wed", "Thu"],
+  "homeowner_nuances": [
+    "Roofing is seasonal — answer rate and engagement spike 3-10 days after a hail or wind event in the prospect's metro. Pull NOAA/SPC alerts and prioritize storm-affected lists.",
+    "Owner-operators answer their own cells. Mid-size companies (5+ trucks) usually have a gatekeeper between 9-5 — call before 9 a.m. or after 5 p.m. to reach the owner directly.",
+    "Hail-belt markets (DFW, OKC, Denver, Houston, Phoenix) have higher CPCs ($35-$80) and storm-week CPC spikes — call when ad-spend pain is freshest.",
+    "Insurance-claim narrative resonates strongest in TX, OK, CO, KS, FL, NC. Reference {leak_2} as the missing claim-buyer language."
+  ],
+  "metrics_to_track": [
+    "Answer rate by 30-min increment",
+    "Owner-vs-gatekeeper reach rate by hour",
+    "Booked-audit rate by hour + day",
+    "Cost-per-booked-audit by day-of-week",
+    "Storm-window vs dry-window engagement delta"
+  ]
+}

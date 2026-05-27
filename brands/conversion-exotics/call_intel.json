@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "brand": "conversion-exotics",
+    "vertical": "B2B — exotic car rental companies, luxury concierges, hospitality partners",
+    "audience": "Owner-operator or sales lead at exotic rental / concierge company — office hours, mobile + main line",
+    "source_note": "Aggregated from large B2B outbound datasets. Office-hours pattern, with adjustment for owner-operators who pick up their own cells. Validate per-account with your own dial logs."
+  },
+  "core_windows": [
+    {"label": "Morning planning window", "start": "08:00", "end": "11:00", "tz": "prospect_local", "strength": "highest", "note": "Golden hour around 8–9 or 9–10 a.m. — decision-makers are planning the day, not yet in meetings."},
+    {"label": "Late afternoon decision window", "start": "14:00", "end": "16:00", "tz": "prospect_local", "strength": "highest", "note": "3–5 p.m. consistently strong for reaching B2B decision-makers and qualifying."}
+  ],
+  "primary_blocks": [
+    {"label": "Block 1", "days": ["Tue", "Wed", "Thu"], "start": "09:00", "end": "11:00", "tz": "prospect_local"},
+    {"label": "Block 2", "days": ["Tue", "Wed", "Thu"], "start": "14:30", "end": "16:30", "tz": "prospect_local"}
+  ],
+  "experimental_blocks": [
+    {"label": "Owner late window", "days": ["Tue", "Wed", "Thu"], "start": "16:30", "end": "17:30", "tz": "prospect_local", "note": "Smaller exotic rental shops have owner-operators who answer their own cells after staff leaves. Experimental, not core."},
+    {"label": "Monday afternoon recovery", "days": ["Mon"], "start": "14:00", "end": "16:00", "tz": "prospect_local", "note": "If you have to touch Monday, afternoon is materially better than morning catch-up mode."}
+  ],
+  "avoid_windows": [
+    {"label": "Lunch / midday crunch", "start": "11:00", "end": "14:00", "reason": "B2B contact + qualification dip during the lunch/crunch hours."},
+    {"label": "Monday morning", "start": "00:00", "end": "11:00", "day_filter": "Mon", "reason": "Catch-up mode, less open to new vendors."},
+    {"label": "After-hours personal time", "start": "18:00", "end": "23:59", "reason": "Concierge / hospitality prospects guard personal hours. After 5:30–6 p.m. risks family time."}
+  ],
+  "avoid_days": [
+    {"day": "Mon", "reason": "Catch-up mode; weakest for new-vendor outreach."},
+    {"day": "Fri", "reason": "Wind-down day for office decision-makers; rental ops shift focus to weekend bookings."},
+    {"day": "Sat", "reason": "Peak rental delivery day — owners are slammed with car prep and client pickups. Avoid."},
+    {"day": "Sun", "reason": "Personal time; respect it."}
+  ],
+  "best_days": ["Tue", "Wed", "Thu"],
+  "homeowner_nuances": [
+    "Exotic rental is a hybrid B2B/B2C business — the owner you're calling is often the lead salesperson AND the car-prep manager. Mid-week midday is rough because they're prepping vehicles for weekend bookings.",
+    "Concierge partners answer office lines during business hours. Owner-operators answer cells almost any time but resent off-hours interruptions.",
+    "Avoid Friday afternoons entirely — that's when owners are confirming weekend delivery logistics and the last thing they want is a cold pitch.",
+    "B2B office-hours pattern dominates. Treat after-hours as experiment, not core block."
+  ],
+  "metrics_to_track": [
+    "Connect rate by 30-min increment",
+    "Decision-maker reach rate (vs front-desk / voicemail)",
+    "Conversation length by hour-of-day",
+    "Booked-audit rate by hour + day",
+    "Cost-per-booked-audit by day-of-week"
+  ]
+}

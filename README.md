@@ -1,8 +1,10 @@
-# Conversion Exotics Call Coach v2
+# Call Coach v3.4
 
-A focused, single-page cold-call coaching tool for the Conversion Exotics outbound program. Built for Zack to run live discovery calls against 51 pre-audited exotic-car-rental prospects without losing the script, the objections, or the day's stats.
+Multi-brand cold-call cockpit. Center dashboard surfaces per-brand call intelligence: which prospects are callable *right now* in their local time, top markets, hot-list tier counts, audit value, and a deep "Train me" drilldown per vertical. Drill in to any brand to run the live A/B/C script + objection coach + recon card + Sheet sync.
 
-**Live:** https://trini3holdings.github.io/conversion-exotics-coach/
+Active brands: Conversion Exotics, ConversionJet, CritterClick, RME Roofing.
+
+**Live:** https://trini3holdings.github.io/call-coach/
 
 ---
 
