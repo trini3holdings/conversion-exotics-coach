@@ -4,7 +4,7 @@
     "domain": "privatejetclub.com",
     "market": "National",
     "url": "https://privatejetclub.com/explore-membership/",
-    "phone": "Not published",
+    "phone": "(888) 422-2021",
     "email": "Form only",
     "issues": [
       "No phone on scored page — kills impulse call conversions",
@@ -17,7 +17,9 @@
     "risk": "HIGH",
     "phone_confidence": "none",
     "company": "Privatejetclub",
-    "notes": "No phone found on site or via search. Bermuda pjcbermuda.com is a different company."
+    "notes": "No phone found on site or via search. Bermuda pjcbermuda.com is a different company.",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://privatejetclub.com"
   },
   {
     "n": 2,
@@ -93,8 +95,8 @@
     ],
     "speed": "HubSpot subdomain adds tracking script overhead (200-400ms)",
     "trust": "Safety certifications not shown on scored page",
-    "cta": "WEAK",
-    "risk": "HIGH",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
     "phone_confidence": "high",
     "company": "Solairus",
     "notes": "Phone/email triple-verified: contact page, support portal, LinkedIn, JetMembership"
@@ -493,8 +495,8 @@
     ],
     "speed": "Indianapolis-HQ'd company — city pages may be templated/thin content",
     "trust": "City landing pages often lack social proof specific to that city",
-    "cta": "WEAK",
-    "risk": "HIGH",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
     "phone_confidence": "high",
     "company": "Flyjetaccess",
     "notes": "Phone/email confirmed: contact page, devsite, aviamarket.aero"
@@ -524,7 +526,7 @@
     "domain": "fxair.com",
     "market": "National",
     "url": "https://www.fxair.com/en-us/premium-charter",
-    "phone": "Not published",
+    "phone": "(866) 726-1222",
     "email": "Not found",
     "issues": [
       "Premium charter page with likely high purchase intent but no public phone",
@@ -537,7 +539,9 @@
     "risk": "HIGH",
     "phone_confidence": "low",
     "company": "Fxair",
-    "notes": "fxair.com scored on premium-charter page; no contact info found in searches"
+    "notes": "fxair.com scored on premium-charter page; no contact info found in searches",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.fxair.com/en-us"
   },
   {
     "n": 28,
@@ -584,7 +588,7 @@
     "domain": "element-aviation.com",
     "market": "National",
     "url": "https://element-aviation.com/jet-charters/",
-    "phone": "Not published",
+    "phone": "(561) 203-8203",
     "email": "Not found",
     "issues": [
       "Charter services page with no visible phone number in search results",
@@ -597,14 +601,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Element Aviation",
-    "notes": "element-aviation.com — no phone or email confirmed via searches"
+    "notes": "element-aviation.com — no phone or email confirmed via searches",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://element-aviation.com"
   },
   {
     "n": 31,
     "domain": "exquisiteaircharter.com",
     "market": "National",
     "url": "https://exquisiteaircharter.com/charter-flight-pricing/",
-    "phone": "Not published",
+    "phone": "(800) 806-1178",
     "email": "Not found",
     "issues": [
       "Pricing page scored — good intent but no public phone found",
@@ -617,7 +623,9 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Exquisiteaircharter",
-    "notes": "exquisiteaircharter.com — no contact info confirmed"
+    "notes": "exquisiteaircharter.com — no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://exquisiteaircharter.com"
   },
   {
     "n": 32,
@@ -633,8 +641,8 @@
     ],
     "speed": "Inherits Surf Air platform overhead",
     "trust": "Surf Air financial concerns apply to sub-brand trust",
-    "cta": "WEAK",
-    "risk": "HIGH",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
     "phone_confidence": "med",
     "company": "Surfondemand",
     "notes": "surfondemand.com = Surf Air product; phone inherits from parent brand"
@@ -664,7 +672,7 @@
     "domain": "cieljets.com",
     "market": "National",
     "url": "https://www.cieljets.com/jet-card-alternative/",
-    "phone": "Not published",
+    "phone": "(561) 895-7000",
     "email": "Not found",
     "issues": [
       "'Jet card alternative' framing is a smart differentiator but no phone to close",
@@ -677,7 +685,9 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Cieljets",
-    "notes": "cieljets.com — no phone or email confirmed; cieljets.com ≠ cilajet.com"
+    "notes": "cieljets.com — no phone or email confirmed; cieljets.com ≠ cilajet.com",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.cieljets.com/"
   },
   {
     "n": 35,
@@ -704,7 +714,7 @@
     "domain": "swartzaviationgroup.com",
     "market": "National",
     "url": "https://swartzaviationgroup.com/buy/",
-    "phone": "Not published",
+    "phone": "(940) 455-2900",
     "email": "Not found",
     "issues": [
       "'/buy/' URL is unconventional for luxury aviation — trust concern",
@@ -717,14 +727,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Swartzaviationgroup",
-    "notes": "swartzaviationgroup.com — very low frequency (2); no contact info found"
+    "notes": "swartzaviationgroup.com — very low frequency (2); no contact info found",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://swartzaviationgroup.com"
   },
   {
     "n": 37,
     "domain": "flytangojets.com",
     "market": "National",
     "url": "https://flytangojets.com/",
-    "phone": "Not published",
+    "phone": "(954) 444-0031",
     "email": "Not found",
     "issues": [
       "No contact info found for this domain",
@@ -737,14 +749,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Flytangojets",
-    "notes": "flytangojets.com — low frequency (1); no contact info confirmed"
+    "notes": "flytangojets.com — low frequency (1); no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://flytangojets.com/contact-us"
   },
   {
     "n": 38,
     "domain": "outlierjets.com",
     "market": "National",
     "url": "https://landing.outlierjets.com/jet-card-ppc",
-    "phone": "Not published",
+    "phone": "(866) 538-7247",
     "email": "Not found",
     "issues": [
       "Scored page is a PPC landing page on a subdomain — standard for ad campaigns",
@@ -757,14 +771,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Outlierjets",
-    "notes": "outlierjets.com PPC lander — no contact info confirmed"
+    "notes": "outlierjets.com PPC lander — no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.outlierjets.com/contact-us"
   },
   {
     "n": 39,
     "domain": "flyxo.com",
     "market": "National",
     "url": "https://flyxo.com/promotion/pricing/",
-    "phone": "+1 (888) 80-",
+    "phone": "(866) 709-3018",
     "email": "ClientServices@flyxo.com | sales.US@flyxo.com",
     "issues": [
       "Pricing promotion page scored — high intent but no phone on promo URL",
@@ -777,7 +793,9 @@
     "risk": "HIGH",
     "phone_confidence": "high",
     "company": "Flyxo",
-    "notes": "Phones confirmed: flyxo.com/contact, FAQ, pissedconsumer.com"
+    "notes": "Phones confirmed: flyxo.com/contact, FAQ, pissedconsumer.com",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://flyxo.com"
   },
   {
     "n": 40,
@@ -804,7 +822,7 @@
     "domain": "dynamicjetcharter.com",
     "market": "National",
     "url": "https://www.dynamicjetcharter.com/luxury-aircraft-charter/",
-    "phone": "Not published",
+    "phone": "(844) 577-8222",
     "email": "Not found",
     "issues": [
       "Luxury charter page with no public contact info found",
@@ -817,14 +835,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Dynamicjetcharter",
-    "notes": "Very low frequency (1); no contact confirmed"
+    "notes": "Very low frequency (1); no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.dynamicjetcharter.com/"
   },
   {
     "n": 42,
     "domain": "sunairjets.com",
     "market": "Van Nuys",
     "url": "https://www.sunairjets.com/private-jet-charter-los-angeles/",
-    "phone": "Not published",
+    "phone": "(805) 389-9301",
     "email": "Not found",
     "issues": [
       "Los Angeles city page scored — high-value market but no contact found",
@@ -837,7 +857,9 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Sunairjets",
-    "notes": "Low frequency (3); no contact info confirmed"
+    "notes": "Low frequency (3); no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.sunairjets.com/about"
   },
   {
     "n": 43,
@@ -884,7 +906,7 @@
     "domain": "jetoneaviation.net",
     "market": "National",
     "url": "https://www.jetoneaviation.net/",
-    "phone": "Not published",
+    "phone": "(720) 595-0999",
     "email": "Not found",
     "issues": [
       "Homepage scored but no contact info found",
@@ -897,7 +919,9 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Jetoneaviation",
-    "notes": "jetoneaviation.net — very low frequency (1); no contact confirmed"
+    "notes": "jetoneaviation.net — very low frequency (1); no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.jetoneaviation.net/"
   },
   {
     "n": 46,
@@ -933,8 +957,8 @@
     ],
     "speed": "Low frequency (6); unknown platform",
     "trust": "No trust signals found",
-    "cta": "MODERATE",
-    "risk": "MEDIUM",
+    "cta": "WEAK",
+    "risk": "HIGH",
     "phone_confidence": "none",
     "company": "Jet Bay",
     "notes": "jet-bay.com — frequency 6; no contact info confirmed"
@@ -984,7 +1008,7 @@
     "domain": "justlandedjets.com",
     "market": "National",
     "url": "https://justlandedjets.com/",
-    "phone": "Not published",
+    "phone": "(844) 435-9555",
     "email": "Not found",
     "issues": [
       "Homepage scored; no contact info found",
@@ -997,14 +1021,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Justlandedjets",
-    "notes": "justlandedjets.com — frequency 13; no contact info confirmed"
+    "notes": "justlandedjets.com — frequency 13; no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://justlandedjets.com"
   },
   {
     "n": 51,
     "domain": "businessjet.com",
     "market": "National",
     "url": "https://www.businessjet.com/aircraft-management/",
-    "phone": "Not published",
+    "phone": "(214) 654-1600",
     "email": "Not found",
     "issues": [
       "Aircraft management page scored — not a charter conversion page",
@@ -1017,14 +1043,16 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Businessjet",
-    "notes": "businessjet.com — management page scored; contact info not found"
+    "notes": "businessjet.com — management page scored; contact info not found",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.businessjet.com/"
   },
   {
     "n": 52,
     "domain": "charterjetone.com",
     "market": "National",
     "url": "https://charterjetone.com/",
-    "phone": "Not published",
+    "phone": "(212) 279-1095",
     "email": "Not found",
     "issues": [
       "Homepage scored; no contact info confirmed",
@@ -1037,7 +1065,9 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Charterjetone",
-    "notes": "charterjetone.com — frequency 13; no contact info confirmed"
+    "notes": "charterjetone.com — frequency 13; no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://charterjetone.com"
   },
   {
     "n": 53,
@@ -1064,7 +1094,7 @@
     "domain": "charterflightsflorida.com",
     "market": "National",
     "url": "https://charterflightsflorida.com/charter-flights/",
-    "phone": "Not published",
+    "phone": "(954) 771-0330",
     "email": "Not found",
     "issues": [
       "Florida charter flights page scored; no contact info found",
@@ -1077,14 +1107,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Charterflightsflorida",
-    "notes": "charterflightsflorida.com — frequency 45; no contact info found"
+    "notes": "charterflightsflorida.com — frequency 45; no contact info found",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://charterflightsflorida.com/contact"
   },
   {
     "n": 55,
     "domain": "theearlyairway.com",
     "market": "National",
     "url": "https://theearlyairway.com/",
-    "phone": "Not published",
+    "phone": "(800) 783-2970",
     "email": "Not found",
     "issues": [
       "Homepage scored; no contact info found",
@@ -1097,14 +1129,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Theearlyairway",
-    "notes": "theearlyairway.com — frequency 27; no contact confirmed"
+    "notes": "theearlyairway.com — frequency 27; no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://theearlyairway.com"
   },
   {
     "n": 56,
     "domain": "flystraightline.com",
     "market": "National",
     "url": "https://join.flystraightline.com/fly-straightline",
-    "phone": "Not published",
+    "phone": "(303) 562-1578",
     "email": "Not found",
     "issues": [
       "Scored page is a join/signup subdomain — likely a membership funnel page",
@@ -1117,14 +1151,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Flystraightline",
-    "notes": "flystraightline.com join subdomain; no contact confirmed"
+    "notes": "flystraightline.com join subdomain; no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://flystraightline.com"
   },
   {
     "n": 57,
     "domain": "epcvipair.com",
     "market": "National",
     "url": "https://www.epcvipair.com/",
-    "phone": "Not published",
+    "phone": "(833) 702-3322",
     "email": "Not found",
     "issues": [
       "Homepage scored; no contact info found",
@@ -1137,7 +1173,9 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Epcvipair",
-    "notes": "epcvipair.com — frequency 4; no contact confirmed"
+    "notes": "epcvipair.com — frequency 4; no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://epcvipair.com"
   },
   {
     "n": 58,
@@ -1164,7 +1202,7 @@
     "domain": "jetdirect.com",
     "market": "National",
     "url": "https://jetdirect.com/private-jet-charters/",
-    "phone": "Not published",
+    "phone": "(713) 454-1400",
     "email": "Not found",
     "issues": [
       "Charter page scored; no contact info found",
@@ -1177,14 +1215,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Jetdirect",
-    "notes": "jetdirect.com — frequency 5; no contact confirmed"
+    "notes": "jetdirect.com — frequency 5; no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://jetdirect.com"
   },
   {
     "n": 60,
     "domain": "rairaviation.com",
     "market": "National",
     "url": "https://www.rairaviation.com/privatecharter",
-    "phone": "Not published",
+    "phone": "(866) 359-7247",
     "email": "Not found",
     "issues": [
       "Private charter page scored; no contact info found",
@@ -1197,14 +1237,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Rairaviation",
-    "notes": "rairaviation.com — frequency 8; no contact confirmed"
+    "notes": "rairaviation.com — frequency 8; no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.rairaviation.com/"
   },
   {
     "n": 61,
     "domain": "hautejets.com",
     "market": "National",
     "url": "https://www.hautejets.com/routes",
-    "phone": "Not published",
+    "phone": "(888) 585-3095",
     "email": "Not found",
     "issues": [
       "Routes page scored — audience is browsing not converting on this page",
@@ -1217,7 +1259,9 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Hautejets",
-    "notes": "hautejets.com — frequency 10; routes page is TOFU content"
+    "notes": "hautejets.com — frequency 10; routes page is TOFU content",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.hautejets.com/contact"
   },
   {
     "n": 62,
@@ -1233,8 +1277,8 @@
     ],
     "speed": "Low frequency (frequency not listed); unknown platform",
     "trust": "No trust signals found",
-    "cta": "MODERATE",
-    "risk": "MEDIUM",
+    "cta": "WEAK",
+    "risk": "HIGH",
     "phone_confidence": "none",
     "company": "Flytradewind",
     "notes": "flytradewind.com — no contact info confirmed"
@@ -1244,7 +1288,7 @@
     "domain": "truairadvisors.com",
     "market": "National",
     "url": "https://www.truairadvisors.com/",
-    "phone": "Not published",
+    "phone": "(281) 213-4050",
     "email": "Not found",
     "issues": [
       "Homepage scored; no contact info found",
@@ -1257,14 +1301,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Truairadvisors",
-    "notes": "truairadvisors.com — no contact info confirmed"
+    "notes": "truairadvisors.com — no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.truairadvisors.com/"
   },
   {
     "n": 64,
     "domain": "jetout.com",
     "market": "National",
     "url": "https://jetout.com/regions",
-    "phone": "Not published",
+    "phone": "(414) 410-9000",
     "email": "Not found",
     "issues": [
       "Regions page scored — geographic browsing, not high-intent conversion",
@@ -1277,14 +1323,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Jetout",
-    "notes": "jetout.com — regions page is TOFU; no contact found"
+    "notes": "jetout.com — regions page is TOFU; no contact found",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://jetout.com"
   },
   {
     "n": 65,
     "domain": "flyairshare.com",
     "market": "National",
     "url": "https://flyairshare.com/private-charter-flights/",
-    "phone": "Not published",
+    "phone": "(877) 483-5855",
     "email": "Not found",
     "issues": [
       "Private charter page scored; no contact info found",
@@ -1297,14 +1345,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Flyairshare",
-    "notes": "flyairshare.com — no contact info confirmed"
+    "notes": "flyairshare.com — no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://flyairshare.com"
   },
   {
     "n": 66,
     "domain": "jetaxess.com",
     "market": "National",
     "url": "https://jetaxess.com/",
-    "phone": "Not published",
+    "phone": "(807) 697-7717",
     "email": "Not found",
     "issues": [
       "Homepage scored; no contact info found",
@@ -1317,7 +1367,9 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Jetaxess",
-    "notes": "jetaxess.com — no contact info confirmed"
+    "notes": "jetaxess.com — no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://jetaxess.com"
   },
   {
     "n": 67,
@@ -1333,8 +1385,8 @@
     ],
     "speed": "Medical site; likely compliant/standard WordPress",
     "trust": "Air ambulance trust differs from luxury charter trust",
-    "cta": "WEAK",
-    "risk": "HIGH",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
     "phone_confidence": "high",
     "company": "Flyambu",
     "notes": "Phones confirmed: quote page, coverage page, Trustpilot reviews"
@@ -1364,7 +1416,7 @@
     "domain": "flymore.app",
     "market": "National",
     "url": "https://flymore.app/",
-    "phone": "Not published",
+    "phone": "(877) 407-8507",
     "email": "Not found",
     "issues": [
       "App-first brand with .app domain — unusual for traditional private jet buyers",
@@ -1377,14 +1429,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Flymore",
-    "notes": "flymore.app — app-focused brand; no web contact info confirmed"
+    "notes": "flymore.app — app-focused brand; no web contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://flymore.app"
   },
   {
     "n": 70,
     "domain": "austinprivatejetco.com",
     "market": "Austin",
     "url": "austinprivatejetco.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(512) 580-9065",
     "email": "Not found",
     "issues": [
       "Domain exists but no scored URL in spreadsheet — needs lookup",
@@ -1397,14 +1451,16 @@
     "risk": "HIGH",
     "phone_confidence": "none",
     "company": "Austinprivatejetco",
-    "notes": "Column F empty; domain searched; no verified contact info"
+    "notes": "Column F empty; domain searched; no verified contact info",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.flytravelking.com/private-jet-charter/austin-private-jet-charter/"
   },
   {
     "n": 71,
     "domain": "flyjetoptions.com",
     "market": "National",
     "url": "flyjetoptions.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(888) 535-9538",
     "email": "Not found",
     "issues": [
       "Domain exists but no scored URL provided",
@@ -1417,14 +1473,16 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Flyjetoptions",
-    "notes": "Column F empty; no contact info confirmed"
+    "notes": "Column F empty; no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.flyjetoptions.com/"
   },
   {
     "n": 72,
     "domain": "saturnaviation.com",
     "market": "National",
     "url": "saturnaviation.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(512) 530-7080",
     "email": "Not found",
     "issues": [
       "Domain exists but no scored URL provided",
@@ -1437,7 +1495,9 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Saturnaviation",
-    "notes": "Column F empty; no contact info confirmed"
+    "notes": "Column F empty; no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.saturnaviation.com/"
   },
   {
     "n": 73,
@@ -1464,7 +1524,7 @@
     "domain": "jetaviation.com",
     "market": "National",
     "url": "jetaviation.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(917) 398-9760",
     "email": "Not found",
     "issues": [
       "Jet Aviation is a global FBO/MRO brand — not primarily a charter broker",
@@ -1477,7 +1537,9 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Jetaviation",
-    "notes": "jetaviation.com = Jet Aviation (FBO/MRO). Very different from charter broker competitors"
+    "notes": "jetaviation.com = Jet Aviation (FBO/MRO). Very different from charter broker competitors",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.jetaviation.com/"
   },
   {
     "n": 75,
@@ -1493,8 +1555,8 @@
     ],
     "speed": "FBO site; 24/7 operations; likely minimal web optimization",
     "trust": "33 years in business — strong local credibility",
-    "cta": "WEAK",
-    "risk": "HIGH",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
     "phone_confidence": "high",
     "company": "Texas jet",
     "notes": "All sources confirm same contact. Texas Jet = FBO, not charter broker"
@@ -1504,7 +1566,7 @@
     "domain": "houstonprivatejetco.com",
     "market": "Houston",
     "url": "houstonprivatejetco.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(281) 214-6555",
     "email": "Not found",
     "issues": [
       "Houston Private Jet Co. — domain exists; no contact found",
@@ -1517,7 +1579,9 @@
     "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Houstonprivatejetco",
-    "notes": "houstonprivatejetco.com — no contact info found; TravelKing association noted"
+    "notes": "houstonprivatejetco.com — no contact info found; TravelKing association noted",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.flytravelking.com/private-jet-charter/houston-private-jet-charter/"
   },
   {
     "n": 77,
@@ -1613,8 +1677,8 @@
     ],
     "speed": "Unknown platform",
     "trust": "No trust signals found",
-    "cta": "MODERATE",
-    "risk": "MEDIUM",
+    "cta": "WEAK",
+    "risk": "HIGH",
     "phone_confidence": "none",
     "company": "Flyvade",
     "notes": "flyvade.com — no contact info confirmed"
@@ -1644,7 +1708,7 @@
     "domain": "chicagoprivatejetco.com",
     "market": "Chicago",
     "url": "chicagoprivatejetco.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(972) 235-9500",
     "email": "Not found",
     "issues": [
       "Domain exists; no contact info found",
@@ -1653,11 +1717,13 @@
     ],
     "speed": "City-targeted domain",
     "trust": "No trust signals found",
-    "cta": "MODERATE",
-    "risk": "MEDIUM",
+    "cta": "STRONG",
+    "risk": "LOW",
     "phone_confidence": "none",
     "company": "Chicagoprivatejetco",
-    "notes": "chicagoprivatejetco.com — no contact confirmed"
+    "notes": "chicagoprivatejetco.com — no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.flytravelking.com/private-jet-charter/chicago-private-jet-charter/"
   },
   {
     "n": 84,
@@ -1724,7 +1790,7 @@
     "domain": "charterjetairlines.com",
     "market": "National",
     "url": "charterjetairlines.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(786) 947-4040",
     "email": "Not found",
     "issues": [
       "Domain exists; no contact info found",
@@ -1733,11 +1799,13 @@
     ],
     "speed": "Unknown platform",
     "trust": "No trust signals found",
-    "cta": "MODERATE",
-    "risk": "MEDIUM",
+    "cta": "STRONG",
+    "risk": "LOW",
     "phone_confidence": "none",
     "company": "Charterjetairlines",
-    "notes": "charterjetairlines.com — no contact confirmed"
+    "notes": "charterjetairlines.com — no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://charterjetairlines.com"
   },
   {
     "n": 88,
@@ -1753,8 +1821,8 @@
     ],
     "speed": "Unknown platform",
     "trust": "No trust signals found",
-    "cta": "MODERATE",
-    "risk": "MEDIUM",
+    "cta": "WEAK",
+    "risk": "HIGH",
     "phone_confidence": "none",
     "company": "Merlin1",
     "notes": "merlin1.com — no contact confirmed"
@@ -1764,7 +1832,7 @@
     "domain": "jetcharterflightschicago.com",
     "market": "Chicago",
     "url": "jetcharterflightschicago.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(312) 252-1717",
     "email": "Not found",
     "issues": [
       "Chicago city-targeted domain; no contact found",
@@ -1773,18 +1841,20 @@
     ],
     "speed": "City-targeted domain; thin content likely",
     "trust": "No trust signals found",
-    "cta": "MODERATE",
-    "risk": "MEDIUM",
+    "cta": "STRONG",
+    "risk": "LOW",
     "phone_confidence": "none",
     "company": "Jetcharterflightschicago",
-    "notes": "jetcharterflightschicago.com — no contact confirmed"
+    "notes": "jetcharterflightschicago.com — no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://jetcharterflightschicago.com"
   },
   {
     "n": 90,
     "domain": "newyorkprivatejetco.com",
     "market": "Teterboro",
     "url": "newyorkprivatejetco.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(332) 895-1765",
     "email": "Not found",
     "issues": [
       "NYC city-targeted domain; no contact found",
@@ -1797,7 +1867,9 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Newyorkprivatejetco",
-    "notes": "newyorkprivatejetco.com — no contact confirmed"
+    "notes": "newyorkprivatejetco.com — no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.flytravelking.com/private-jet-charter/new-york-private-jet-charter/"
   },
   {
     "n": 91,
@@ -1824,7 +1896,7 @@
     "domain": "greatprivatejets.com",
     "market": "National",
     "url": "greatprivatejets.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(888) 365-5387",
     "email": "Not found",
     "issues": [
       "Domain exists; no contact info found",
@@ -1837,14 +1909,16 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Greatprivatejets",
-    "notes": "greatprivatejets.com — no contact confirmed"
+    "notes": "greatprivatejets.com — no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://greatprivatejets.com"
   },
   {
     "n": 93,
     "domain": "aviationcharters.com",
     "market": "National",
     "url": "aviationcharters.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(877) 988-6868",
     "email": "Not found",
     "issues": [
       "Domain exists; no contact info found",
@@ -1857,14 +1931,16 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Aviationcharters",
-    "notes": "aviationcharters.com — no contact confirmed"
+    "notes": "aviationcharters.com — no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://aviationcharters.com"
   },
   {
     "n": 94,
     "domain": "vjetsaviation.com",
     "market": "National",
     "url": "vjetsaviation.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(800) 647-0677",
     "email": "Not found",
     "issues": [
       "Domain exists; no contact info found",
@@ -1877,7 +1953,9 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Vjetsaviation",
-    "notes": "vjetsaviation.com — no contact confirmed"
+    "notes": "vjetsaviation.com — no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://vjetsaviation.com"
   },
   {
     "n": 95,
@@ -1893,8 +1971,8 @@
     ],
     "speed": "N/A — no site identified",
     "trust": "No trust signals found",
-    "cta": "STRONG",
-    "risk": "LOW",
+    "cta": "WEAK",
+    "risk": "HIGH",
     "phone_confidence": "none",
     "company": "Los angeles private jet charter",
     "notes": "'Los Angeles Private Jet Charter' — generic name; likely a local operator; no site confirmed"
@@ -2024,7 +2102,7 @@
     "domain": "prismjet.net",
     "market": "National",
     "url": "prismjet.net (no scored URL)",
-    "phone": "Not published",
+    "phone": "(480) 426-8180",
     "email": "Not found",
     "issues": [
       "Domain exists; no contact info found",
@@ -2037,7 +2115,9 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Prismjet",
-    "notes": "prismjet.net — no contact info confirmed"
+    "notes": "prismjet.net — no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://prismjet.net"
   },
   {
     "n": 103,
@@ -2093,8 +2173,8 @@
     ],
     "speed": "N/A — no site identified",
     "trust": "No trust signals found",
-    "cta": "STRONG",
-    "risk": "LOW",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Midlantic jet charters inc",
     "notes": "'Midlantic Jet Charters Inc' — searched but no matching verified contact found"
@@ -2104,7 +2184,7 @@
     "domain": "2jetset.com",
     "market": "National",
     "url": "2jetset.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(833) 253-8738",
     "email": "Not found",
     "issues": [
       "Domain exists; no contact info found",
@@ -2117,7 +2197,9 @@
     "risk": "HIGH",
     "phone_confidence": "none",
     "company": "2jetset",
-    "notes": "2jetset.com — no contact info confirmed"
+    "notes": "2jetset.com — no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://2jetset.com"
   },
   {
     "n": 107,
@@ -2133,8 +2215,8 @@
     ],
     "speed": "N/A — no confirmed domain",
     "trust": "No trust signals found",
-    "cta": "STRONG",
-    "risk": "LOW",
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
     "phone_confidence": "none",
     "company": "Sun jet international",
     "notes": "'Sun Jet International' — searched; no confirmed matching domain or contacts"
@@ -2144,7 +2226,7 @@
     "domain": "flynda.com",
     "market": "National",
     "url": "flynda.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(972) 233-3334",
     "email": "Not found",
     "issues": [
       "Domain exists; no contact info found",
@@ -2157,7 +2239,9 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Flynda",
-    "notes": "flynda.com — no contact info confirmed"
+    "notes": "flynda.com — no contact info confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.flynda.com/"
   },
   {
     "n": 109,
@@ -2184,7 +2268,7 @@
     "domain": "americanflightsupport.com",
     "market": "National",
     "url": "americanflightsupport.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(888) 245-4017",
     "email": "Not found",
     "issues": [
       "Domain exists; no contact info found",
@@ -2197,14 +2281,16 @@
     "risk": "HIGH",
     "phone_confidence": "none",
     "company": "Americanflightsupport",
-    "notes": "americanflightsupport.com — no contact confirmed"
+    "notes": "americanflightsupport.com — no contact confirmed",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://americanflightsupport.com"
   },
   {
     "n": 111,
     "domain": "atlanticaviation.com",
     "market": "National",
     "url": "atlanticaviation.com (no scored URL)",
-    "phone": "Not published",
+    "phone": "(972) 905-2500",
     "email": "Not found",
     "issues": [
       "Atlantic Aviation is a major FBO chain (now Signature Aviation) — not a charter broker",
@@ -2217,6 +2303,8 @@
     "risk": "LOW",
     "phone_confidence": "none",
     "company": "Atlanticaviation",
-    "notes": "atlanticaviation.com = Atlantic Aviation FBO (now part of Signature). FBO, not charter broker"
+    "notes": "atlanticaviation.com = Atlantic Aviation FBO (now part of Signature). FBO, not charter broker",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.atlanticaviation.com/contact"
   }
 ]

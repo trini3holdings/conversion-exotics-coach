@@ -38,7 +38,7 @@
     "domain": "southbeachexoticrentals.com",
     "market": "LA / Austin / Dallas",
     "url": "https://southbeachexoticrentals.com/",
-    "phone": "Not found",
+    "phone": "(305) 890-2051",
     "email": "Not found",
     "issues": [
       "No phone or email found publicly — critical conversion blocker",
@@ -48,7 +48,9 @@
     "speed": "Unknown platform; no CDN signals found; low frequency (5) = likely slow/unoptimized",
     "trust": "No trust badges, certifications, or review counts found",
     "cta": "WEAK",
-    "risk": "HIGH"
+    "risk": "HIGH",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://southbeachexoticrentals.com"
   },
   {
     "n": 4,
@@ -132,8 +134,8 @@
     ],
     "speed": "Miami NW location; standard WordPress; Yelp confirms; multiple city assets = large DOM",
     "trust": "No review widget above fold; no ARGUS/certification badges visible",
-    "cta": "WEAK",
-    "risk": "HIGH"
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
   },
   {
     "n": 9,
@@ -157,7 +159,7 @@
     "domain": "iceexotics.com",
     "market": "Atlanta GA",
     "url": "https://iceexotics.com/",
-    "phone": "Not found",
+    "phone": "(404) 938-3572",
     "email": "Not found",
     "issues": [
       "No phone or email found publicly — critical conversion blocker",
@@ -167,7 +169,9 @@
     "speed": "Unknown platform; low frequency = likely unoptimized site",
     "trust": "No trust signals found via searches",
     "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://iceexotics.com"
   },
   {
     "n": 11,
@@ -208,7 +212,7 @@
     "domain": "milanoluxuryrental.com",
     "market": "Fort Lauderdale / Miami FL",
     "url": "https://milanoluxuryrental.com/rentals/",
-    "phone": "Not found publicly",
+    "phone": "(239) 351-7715",
     "email": "Not found publicly",
     "issues": [
       "No phone or email found on site — form-only and chat-only contact is a major CRO gap",
@@ -218,7 +222,9 @@
     "speed": "Standard site; FAQ-heavy; unknown CDN; no performance signals found",
     "trust": "No trust certifications or review count visible",
     "cta": "WEAK",
-    "risk": "HIGH"
+    "risk": "HIGH",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://milanoluxuryrental.com"
   },
   {
     "n": 14,
@@ -395,7 +401,7 @@
     "domain": "sapphireexecutivetravel.com",
     "market": "Houston TX",
     "url": "https://sapphireexecutivetravel.com/our-fleet/",
-    "phone": "Not found",
+    "phone": "(281) 800-5523",
     "email": "Not found",
     "issues": [
       "FLAGGED: 'Executive travel' brand implies chauffeured/corporate, not self-drive exotic rental",
@@ -405,7 +411,9 @@
     "speed": "Unknown platform; low frequency = likely minimal optimization",
     "trust": "No trust signals found; likely executive chauffeur not exotic self-drive",
     "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://sapphireexecutivetravel.com/contact"
   },
   {
     "n": 25,
@@ -480,7 +488,7 @@
     "domain": "monzaexotics.com",
     "market": "Los Angeles CA / San Francisco CA",
     "url": "https://monzaexotics.com/",
-    "phone": "Not found",
+    "phone": "(949) 877-6485",
     "email": "Not found",
     "issues": [
       "No phone or email found publicly — critical conversion blocker",
@@ -490,7 +498,9 @@
     "speed": "Unknown platform; low frequency = likely unoptimized",
     "trust": "No trust signals found",
     "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://monzaexotics.com"
   },
   {
     "n": 30,
@@ -531,7 +541,7 @@
     "domain": "mericamusclerentals.com",
     "market": "Atlanta GA",
     "url": "https://mericamusclerentals.com/",
-    "phone": "Not found",
+    "phone": "(470) 906-7828",
     "email": "Not found",
     "issues": [
       "No phone or email found publicly — critical conversion blocker",
@@ -541,7 +551,9 @@
     "speed": "Atlanta GA operator; unknown platform; no CDN signals",
     "trust": "No trust signals found in search results",
     "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://mericamusclerentals.com"
   },
   {
     "n": 33,
@@ -565,7 +577,7 @@
     "domain": "luxeafmotors.com",
     "market": "Houston TX",
     "url": "https://luxeafmotors.com/houston-luxury-exotic-car-rentals/",
-    "phone": "Not found",
+    "phone": "(877) 881-7866",
     "email": "Not found",
     "issues": [
       "No phone or email found — critical conversion blocker",
@@ -575,7 +587,9 @@
     "speed": "Unknown platform; lowest frequency (1) = minimal traffic and optimization",
     "trust": "No trust signals found",
     "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://luxeafmotors.com"
   },
   {
     "n": 35,
@@ -591,8 +605,8 @@
     ],
     "speed": "Unknown platform; lowest frequency; likely minimal optimization",
     "trust": "No trust signals found",
-    "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "cta": "WEAK",
+    "risk": "HIGH"
   },
   {
     "n": 36,
@@ -616,7 +630,7 @@
     "domain": "embryexotics.com",
     "market": "Atlanta GA",
     "url": "https://www.embryexotics.com/",
-    "phone": "Not found",
+    "phone": "(404) 436-0722",
     "email": "Not found",
     "issues": [
       "No phone or email found — critical conversion blocker",
@@ -626,7 +640,9 @@
     "speed": "Unknown platform; frequency 1",
     "trust": "No trust signals found",
     "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://embryexotics.com/contact"
   },
   {
     "n": 38,
@@ -642,8 +658,8 @@
     ],
     "speed": "Simple Wix-based site; wedding/event focused; no CDN signals",
     "trust": "WeddingWire + The Knot listed — wedding niche trust; not exotic car rental trust",
-    "cta": "WEAK",
-    "risk": "HIGH"
+    "cta": "MODERATE",
+    "risk": "MEDIUM"
   },
   {
     "n": 39,
@@ -727,15 +743,15 @@
     ],
     "speed": "Unknown platform; .net TLD; no CDN signals",
     "trust": "No trust signals found",
-    "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "cta": "WEAK",
+    "risk": "HIGH"
   },
   {
     "n": 44,
     "domain": "vssrexotics.com",
     "market": "Las Vegas NV",
     "url": "https://www.vssrexotics.com/",
-    "phone": "Not found",
+    "phone": "(702) 907-8477",
     "email": "Not found",
     "issues": [
       "No phone or email found publicly — critical conversion blocker",
@@ -745,14 +761,16 @@
     "speed": "Unknown platform; no CDN signals",
     "trust": "No trust signals found",
     "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.vssrexotics.com/"
   },
   {
     "n": 45,
     "domain": "preferredexotics.com",
     "market": "Miami FL / Fort Lauderdale FL",
     "url": "https://preferredexotics.com/",
-    "phone": "Not found",
+    "phone": "(305) 209-3090",
     "email": "Not found",
     "issues": [
       "No phone or email found publicly — critical conversion blocker",
@@ -762,7 +780,9 @@
     "speed": "Unknown platform; low frequency",
     "trust": "No trust signals found",
     "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://preferredexotics.com"
   },
   {
     "n": 46,
@@ -786,7 +806,7 @@
     "domain": "bellablushcollective.com",
     "market": "Dallas / Fort Lauderdale / Austin TX",
     "url": "https://www.bellablushcollective.com/",
-    "phone": "Not found",
+    "phone": "(205) 413-5103",
     "email": "Not found",
     "issues": [
       "Brand name 'Bella Blush Collective' suggests wedding/events/fashion, not exotic car rental",
@@ -795,15 +815,17 @@
     ],
     "speed": "Unknown platform; mixed-brand niche",
     "trust": "No trust signals found; brand name misaligns with exotic rental expectations",
-    "cta": "WEAK",
-    "risk": "HIGH"
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.bellablushcollective.com/"
   },
   {
     "n": 48,
     "domain": "palmexoticrentals.com",
     "market": "Miami FL",
     "url": "https://palmexoticrentals.com/",
-    "phone": "Not found",
+    "phone": "(939) 241-7326",
     "email": "Not found",
     "issues": [
       "No phone or email found publicly — critical conversion blocker",
@@ -813,14 +835,16 @@
     "speed": "Unknown platform; frequency 1",
     "trust": "No trust signals found",
     "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://palmexoticrentals.com"
   },
   {
     "n": 49,
     "domain": "sarasotaluxurycarrentals.com",
     "market": "Austin TX (listed)",
     "url": "https://www.sarasotaluxurycarrentals.com/",
-    "phone": "Not found",
+    "phone": "(941) 600-9900",
     "email": "Not found",
     "issues": [
       "GEOGRAPHIC MISMATCH: Sarasota-branded but appearing in Austin TX searches — confusing for buyers",
@@ -829,15 +853,17 @@
     ],
     "speed": "Unknown platform; geo-brand mismatch",
     "trust": "No trust signals found",
-    "cta": "MODERATE",
-    "risk": "MEDIUM"
+    "cta": "STRONG",
+    "risk": "LOW",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.sarasotaluxurycarrentals.com/"
   },
   {
     "n": 50,
     "domain": "blackravenluxury.com",
     "market": "Fort Lauderdale / Miami FL",
     "url": "https://www.blackravenluxury.com/vehicles",
-    "phone": "Not found",
+    "phone": "(786) 202-6662",
     "email": "Not found",
     "issues": [
       "No phone or email found publicly — critical conversion blocker",
@@ -846,7 +872,9 @@
     ],
     "speed": "Unknown platform; low frequency",
     "trust": "No trust signals found",
-    "cta": "WEAK",
-    "risk": "HIGH"
+    "cta": "MODERATE",
+    "risk": "MEDIUM",
+    "phone_source": "auto_research_2026-05",
+    "phone_source_url": "https://www.blackravenluxury.com/"
   }
 ]

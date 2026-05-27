@@ -2,7 +2,7 @@
   "_meta": {
     "brand": "conversionjet",
     "audit_value": 3000,
-    "generated_at": "2026-05-27T22:25:08.604968+00:00",
+    "generated_at": "2026-05-27T22:45:07.672451+00:00",
     "generated_from": "multi_reaudit.py (heuristic re-score, moderate threshold)",
     "total_prospects": 111,
     "tier_definitions": {
@@ -15,13 +15,13 @@
   },
   "tier1_HIGH_risk_callable": [
     {
-      "n": 5,
-      "company": "Solairus",
-      "domain": "solairus.aero",
+      "n": 1,
+      "company": "Privatejetclub",
+      "domain": "privatejetclub.com",
       "market": "National",
-      "phone": "800-359-7861",
+      "phone": "(888) 422-2021",
       "risk": "HIGH",
-      "leak_1": "Scored page is TOFU guidebook download — wrong funnel stage for paid traffic"
+      "leak_1": "No phone on scored page — kills impulse call conversions"
     },
     {
       "n": 6,
@@ -78,40 +78,22 @@
       "leak_1": "Multiple phone numbers split by service type — confusing for new prospects"
     },
     {
-      "n": 25,
-      "company": "Flyjetaccess",
-      "domain": "flyjetaccess.com",
-      "market": "Dallas",
-      "phone": "800) 554-9489",
-      "risk": "HIGH",
-      "leak_1": "City-specific page (/city/dallas/) exists — good local SEO but thin on conversion content"
-    },
-    {
       "n": 39,
       "company": "Flyxo",
       "domain": "flyxo.com",
       "market": "National",
-      "phone": "+1 (888) 80-",
+      "phone": "(866) 709-3018",
       "risk": "HIGH",
       "leak_1": "Pricing promotion page scored — high intent but no phone on promo URL"
     },
     {
-      "n": 67,
-      "company": "Flyambu",
-      "domain": "flyambu.com",
-      "market": "National",
-      "phone": "1-800-633-3590",
+      "n": 70,
+      "company": "Austinprivatejetco",
+      "domain": "austinprivatejetco.com",
+      "market": "Austin",
+      "phone": "(512) 580-9065",
       "risk": "HIGH",
-      "leak_1": "Flyambu = Air Ambulance company — executive charter is secondary service"
-    },
-    {
-      "n": 75,
-      "company": "Texas jet",
-      "domain": "Texas Jet",
-      "market": "National",
-      "phone": "817) 624-8438",
-      "risk": "HIGH",
-      "leak_1": "Texas Jet = FBO at Fort Worth Meacham (KFTW) — not a charter broker"
+      "leak_1": "Domain exists but no scored URL in spreadsheet — needs lookup"
     },
     {
       "n": 103,
@@ -121,6 +103,24 @@
       "phone": "858) 243-2451",
       "risk": "HIGH",
       "leak_1": "Gmail email address on a professional charter site — major trust/CRO red flag"
+    },
+    {
+      "n": 106,
+      "company": "2jetset",
+      "domain": "2jetset.com",
+      "market": "National",
+      "phone": "(833) 253-8738",
+      "risk": "HIGH",
+      "leak_1": "Domain exists; no contact info found"
+    },
+    {
+      "n": 110,
+      "company": "Americanflightsupport",
+      "domain": "americanflightsupport.com",
+      "market": "National",
+      "phone": "(888) 245-4017",
+      "risk": "HIGH",
+      "leak_1": "Domain exists; no contact info found"
     }
   ],
   "tier2_MEDIUM_risk_callable": [
@@ -143,16 +143,269 @@
       "leak_1": "UK-based company — US scored page but UK phone creates friction for American callers"
     },
     {
-      "n": 32,
-      "company": "Surfondemand",
-      "domain": "surfondemand.com",
+      "n": 27,
+      "company": "Fxair",
+      "domain": "fxair.com",
       "market": "National",
-      "phone": "877-359-7873 (",
+      "phone": "(866) 726-1222",
       "risk": "HIGH",
-      "leak_1": "Surf On Demand is a Surf Air sub-brand — brand confusion if user expects premium private"
+      "leak_1": "Premium charter page with likely high purchase intent but no public phone"
     }
   ],
-  "tier3_LOW_risk_callable": [],
+  "tier3_LOW_risk_callable": [
+    {
+      "n": 5,
+      "company": "Solairus",
+      "domain": "solairus.aero",
+      "market": "National",
+      "phone": "800-359-7861",
+      "risk": "MEDIUM",
+      "leak_1": "Scored page is TOFU guidebook download — wrong funnel stage for paid traffic"
+    },
+    {
+      "n": 25,
+      "company": "Flyjetaccess",
+      "domain": "flyjetaccess.com",
+      "market": "Dallas",
+      "phone": "800) 554-9489",
+      "risk": "MEDIUM",
+      "leak_1": "City-specific page (/city/dallas/) exists — good local SEO but thin on conversion content"
+    },
+    {
+      "n": 30,
+      "company": "Element Aviation",
+      "domain": "element-aviation.com",
+      "market": "National",
+      "phone": "(561) 203-8203",
+      "risk": "MEDIUM",
+      "leak_1": "Charter services page with no visible phone number in search results"
+    },
+    {
+      "n": 36,
+      "company": "Swartzaviationgroup",
+      "domain": "swartzaviationgroup.com",
+      "market": "National",
+      "phone": "(940) 455-2900",
+      "risk": "MEDIUM",
+      "leak_1": "'/buy/' URL is unconventional for luxury aviation — trust concern"
+    },
+    {
+      "n": 37,
+      "company": "Flytangojets",
+      "domain": "flytangojets.com",
+      "market": "National",
+      "phone": "(954) 444-0031",
+      "risk": "MEDIUM",
+      "leak_1": "No contact info found for this domain"
+    },
+    {
+      "n": 38,
+      "company": "Outlierjets",
+      "domain": "outlierjets.com",
+      "market": "National",
+      "phone": "(866) 538-7247",
+      "risk": "MEDIUM",
+      "leak_1": "Scored page is a PPC landing page on a subdomain — standard for ad campaigns"
+    },
+    {
+      "n": 41,
+      "company": "Dynamicjetcharter",
+      "domain": "dynamicjetcharter.com",
+      "market": "National",
+      "phone": "(844) 577-8222",
+      "risk": "MEDIUM",
+      "leak_1": "Luxury charter page with no public contact info found"
+    },
+    {
+      "n": 42,
+      "company": "Sunairjets",
+      "domain": "sunairjets.com",
+      "market": "Van Nuys",
+      "phone": "(805) 389-9301",
+      "risk": "MEDIUM",
+      "leak_1": "Los Angeles city page scored — high-value market but no contact found"
+    },
+    {
+      "n": 45,
+      "company": "Jetoneaviation",
+      "domain": "jetoneaviation.net",
+      "market": "National",
+      "phone": "(720) 595-0999",
+      "risk": "MEDIUM",
+      "leak_1": "Homepage scored but no contact info found"
+    },
+    {
+      "n": 50,
+      "company": "Justlandedjets",
+      "domain": "justlandedjets.com",
+      "market": "National",
+      "phone": "(844) 435-9555",
+      "risk": "MEDIUM",
+      "leak_1": "Homepage scored; no contact info found"
+    },
+    {
+      "n": 52,
+      "company": "Charterjetone",
+      "domain": "charterjetone.com",
+      "market": "National",
+      "phone": "(212) 279-1095",
+      "risk": "MEDIUM",
+      "leak_1": "Homepage scored; no contact info confirmed"
+    },
+    {
+      "n": 54,
+      "company": "Charterflightsflorida",
+      "domain": "charterflightsflorida.com",
+      "market": "National",
+      "phone": "(954) 771-0330",
+      "risk": "MEDIUM",
+      "leak_1": "Florida charter flights page scored; no contact info found"
+    },
+    {
+      "n": 55,
+      "company": "Theearlyairway",
+      "domain": "theearlyairway.com",
+      "market": "National",
+      "phone": "(800) 783-2970",
+      "risk": "MEDIUM",
+      "leak_1": "Homepage scored; no contact info found"
+    },
+    {
+      "n": 56,
+      "company": "Flystraightline",
+      "domain": "flystraightline.com",
+      "market": "National",
+      "phone": "(303) 562-1578",
+      "risk": "MEDIUM",
+      "leak_1": "Scored page is a join/signup subdomain — likely a membership funnel page"
+    },
+    {
+      "n": 57,
+      "company": "Epcvipair",
+      "domain": "epcvipair.com",
+      "market": "National",
+      "phone": "(833) 702-3322",
+      "risk": "MEDIUM",
+      "leak_1": "Homepage scored; no contact info found"
+    },
+    {
+      "n": 59,
+      "company": "Jetdirect",
+      "domain": "jetdirect.com",
+      "market": "National",
+      "phone": "(713) 454-1400",
+      "risk": "MEDIUM",
+      "leak_1": "Charter page scored; no contact info found"
+    },
+    {
+      "n": 60,
+      "company": "Rairaviation",
+      "domain": "rairaviation.com",
+      "market": "National",
+      "phone": "(866) 359-7247",
+      "risk": "MEDIUM",
+      "leak_1": "Private charter page scored; no contact info found"
+    },
+    {
+      "n": 61,
+      "company": "Hautejets",
+      "domain": "hautejets.com",
+      "market": "National",
+      "phone": "(888) 585-3095",
+      "risk": "MEDIUM",
+      "leak_1": "Routes page scored — audience is browsing not converting on this page"
+    },
+    {
+      "n": 63,
+      "company": "Truairadvisors",
+      "domain": "truairadvisors.com",
+      "market": "National",
+      "phone": "(281) 213-4050",
+      "risk": "MEDIUM",
+      "leak_1": "Homepage scored; no contact info found"
+    },
+    {
+      "n": 64,
+      "company": "Jetout",
+      "domain": "jetout.com",
+      "market": "National",
+      "phone": "(414) 410-9000",
+      "risk": "MEDIUM",
+      "leak_1": "Regions page scored — geographic browsing, not high-intent conversion"
+    },
+    {
+      "n": 65,
+      "company": "Flyairshare",
+      "domain": "flyairshare.com",
+      "market": "National",
+      "phone": "(877) 483-5855",
+      "risk": "MEDIUM",
+      "leak_1": "Private charter page scored; no contact info found"
+    },
+    {
+      "n": 66,
+      "company": "Jetaxess",
+      "domain": "jetaxess.com",
+      "market": "National",
+      "phone": "(807) 697-7717",
+      "risk": "MEDIUM",
+      "leak_1": "Homepage scored; no contact info found"
+    },
+    {
+      "n": 67,
+      "company": "Flyambu",
+      "domain": "flyambu.com",
+      "market": "National",
+      "phone": "1-800-633-3590",
+      "risk": "MEDIUM",
+      "leak_1": "Flyambu = Air Ambulance company — executive charter is secondary service"
+    },
+    {
+      "n": 69,
+      "company": "Flymore",
+      "domain": "flymore.app",
+      "market": "National",
+      "phone": "(877) 407-8507",
+      "risk": "MEDIUM",
+      "leak_1": "App-first brand with .app domain — unusual for traditional private jet buyers"
+    },
+    {
+      "n": 71,
+      "company": "Flyjetoptions",
+      "domain": "flyjetoptions.com",
+      "market": "National",
+      "phone": "(888) 535-9538",
+      "risk": "MEDIUM",
+      "leak_1": "Domain exists but no scored URL provided"
+    },
+    {
+      "n": 72,
+      "company": "Saturnaviation",
+      "domain": "saturnaviation.com",
+      "market": "National",
+      "phone": "(512) 530-7080",
+      "risk": "MEDIUM",
+      "leak_1": "Domain exists but no scored URL provided"
+    },
+    {
+      "n": 75,
+      "company": "Texas jet",
+      "domain": "Texas Jet",
+      "market": "National",
+      "phone": "817) 624-8438",
+      "risk": "MEDIUM",
+      "leak_1": "Texas Jet = FBO at Fort Worth Meacham (KFTW) — not a charter broker"
+    },
+    {
+      "n": 76,
+      "company": "Houstonprivatejetco",
+      "domain": "houstonprivatejetco.com",
+      "market": "Houston",
+      "phone": "(281) 214-6555",
+      "risk": "MEDIUM",
+      "leak_1": "Houston Private Jet Co. — domain exists; no contact found"
+    }
+  ],
   "tier4_warm_callable": [
     {
       "n": 2,
@@ -290,6 +543,24 @@
       "leak_1": "Pricing page scored — strong intent signal but pricing ranges too broad without form"
     },
     {
+      "n": 31,
+      "company": "Exquisiteaircharter",
+      "domain": "exquisiteaircharter.com",
+      "market": "National",
+      "phone": "(800) 806-1178",
+      "risk": "LOW",
+      "leak_1": "Pricing page scored — good intent but no public phone found"
+    },
+    {
+      "n": 32,
+      "company": "Surfondemand",
+      "domain": "surfondemand.com",
+      "market": "National",
+      "phone": "877-359-7873 (",
+      "risk": "MEDIUM",
+      "leak_1": "Surf On Demand is a Surf Air sub-brand — brand confusion if user expects premium private"
+    },
+    {
       "n": 33,
       "company": "Heraflight",
       "domain": "heraflight.com",
@@ -297,6 +568,15 @@
       "phone": "1-833-359-4372)",
       "risk": "LOW",
       "leak_1": "Strong phone and email above fold — above average for small operator"
+    },
+    {
+      "n": 34,
+      "company": "Cieljets",
+      "domain": "cieljets.com",
+      "market": "National",
+      "phone": "(561) 895-7000",
+      "risk": "LOW",
+      "leak_1": "'Jet card alternative' framing is a smart differentiator but no phone to close"
     },
     {
       "n": 35,
@@ -344,6 +624,15 @@
       "leak_1": "Canadian HQ (Toronto) — 302 number (Delaware) may confuse US callers"
     },
     {
+      "n": 51,
+      "company": "Businessjet",
+      "domain": "businessjet.com",
+      "market": "National",
+      "phone": "(214) 654-1600",
+      "risk": "LOW",
+      "leak_1": "Aircraft management page scored — not a charter conversion page"
+    },
+    {
       "n": 53,
       "company": "Jetlinx",
       "domain": "jetlinx.com",
@@ -378,6 +667,15 @@
       "phone": "1-866-325-4569",
       "risk": "LOW",
       "leak_1": "Dallas-based — strong local presence; phone and email confirmed"
+    },
+    {
+      "n": 74,
+      "company": "Jetaviation",
+      "domain": "jetaviation.com",
+      "market": "National",
+      "phone": "(917) 398-9760",
+      "risk": "LOW",
+      "leak_1": "Jet Aviation is a global FBO/MRO brand — not primarily a charter broker"
     },
     {
       "n": 77,
@@ -425,6 +723,15 @@
       "leak_1": "Two phone numbers creates confusion — choose one for primary CTA"
     },
     {
+      "n": 83,
+      "company": "Chicagoprivatejetco",
+      "domain": "chicagoprivatejetco.com",
+      "market": "Chicago",
+      "phone": "(972) 235-9500",
+      "risk": "LOW",
+      "leak_1": "Domain exists; no contact info found"
+    },
+    {
       "n": 84,
       "company": "Tapjets",
       "domain": "tapjets.com",
@@ -452,6 +759,33 @@
       "leak_1": "NYC-based (1 World Trade Center); premium address is a trust signal"
     },
     {
+      "n": 87,
+      "company": "Charterjetairlines",
+      "domain": "charterjetairlines.com",
+      "market": "National",
+      "phone": "(786) 947-4040",
+      "risk": "LOW",
+      "leak_1": "Domain exists; no contact info found"
+    },
+    {
+      "n": 89,
+      "company": "Jetcharterflightschicago",
+      "domain": "jetcharterflightschicago.com",
+      "market": "Chicago",
+      "phone": "(312) 252-1717",
+      "risk": "LOW",
+      "leak_1": "Chicago city-targeted domain; no contact found"
+    },
+    {
+      "n": 90,
+      "company": "Newyorkprivatejetco",
+      "domain": "newyorkprivatejetco.com",
+      "market": "Teterboro",
+      "phone": "(332) 895-1765",
+      "risk": "LOW",
+      "leak_1": "NYC city-targeted domain; no contact found"
+    },
+    {
       "n": 91,
       "company": "Aircharteradvisors",
       "domain": "aircharteradvisors.com",
@@ -459,6 +793,33 @@
       "phone": "1-888-987-5387",
       "risk": "LOW",
       "leak_1": "Wyvern Wingman Broker — strong trust signal; phone confirmed"
+    },
+    {
+      "n": 92,
+      "company": "Greatprivatejets",
+      "domain": "greatprivatejets.com",
+      "market": "National",
+      "phone": "(888) 365-5387",
+      "risk": "LOW",
+      "leak_1": "Domain exists; no contact info found"
+    },
+    {
+      "n": 93,
+      "company": "Aviationcharters",
+      "domain": "aviationcharters.com",
+      "market": "National",
+      "phone": "(877) 988-6868",
+      "risk": "LOW",
+      "leak_1": "Domain exists; no contact info found"
+    },
+    {
+      "n": 94,
+      "company": "Vjetsaviation",
+      "domain": "vjetsaviation.com",
+      "market": "National",
+      "phone": "(800) 647-0677",
+      "risk": "LOW",
+      "leak_1": "Domain exists; no contact info found"
     },
     {
       "n": 96,
@@ -506,6 +867,15 @@
       "leak_1": "DUPLICATE of Row 78 (amalfijets.com)"
     },
     {
+      "n": 102,
+      "company": "Prismjet",
+      "domain": "prismjet.net",
+      "market": "National",
+      "phone": "(480) 426-8180",
+      "risk": "LOW",
+      "leak_1": "Domain exists; no contact info found"
+    },
+    {
       "n": 104,
       "company": "Usprivatejets",
       "domain": "usprivatejets.com",
@@ -515,6 +885,15 @@
       "leak_1": "NYC-based; two phone options — good for call conversions"
     },
     {
+      "n": 108,
+      "company": "Flynda",
+      "domain": "flynda.com",
+      "market": "National",
+      "phone": "(972) 233-3334",
+      "risk": "LOW",
+      "leak_1": "Domain exists; no contact info found"
+    },
+    {
       "n": 109,
       "company": "Boltjets",
       "domain": "boltjets.com",
@@ -522,18 +901,18 @@
       "phone": "1-833-265-8538",
       "risk": "LOW",
       "leak_1": "24/7 agents confirmed; jet card product; 1,200 jet network"
+    },
+    {
+      "n": 111,
+      "company": "Atlanticaviation",
+      "domain": "atlanticaviation.com",
+      "market": "National",
+      "phone": "(972) 905-2500",
+      "risk": "LOW",
+      "leak_1": "Atlantic Aviation is a major FBO chain (now Signature Aviation) — not a charter broker"
     }
   ],
   "no_phone_skip": [
-    {
-      "n": 1,
-      "company": "Privatejetclub",
-      "domain": "privatejetclub.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "HIGH",
-      "leak_1": "No phone on scored page — kills impulse call conversions"
-    },
     {
       "n": 11,
       "company": "Avalonairllc",
@@ -551,87 +930,6 @@
       "phone": "Not published",
       "risk": "LOW",
       "leak_1": "FBO/airport services page — not a charter conversion page; wrong audience fit"
-    },
-    {
-      "n": 27,
-      "company": "Fxair",
-      "domain": "fxair.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "HIGH",
-      "leak_1": "Premium charter page with likely high purchase intent but no public phone"
-    },
-    {
-      "n": 30,
-      "company": "Element Aviation",
-      "domain": "element-aviation.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Charter services page with no visible phone number in search results"
-    },
-    {
-      "n": 31,
-      "company": "Exquisiteaircharter",
-      "domain": "exquisiteaircharter.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "LOW",
-      "leak_1": "Pricing page scored — good intent but no public phone found"
-    },
-    {
-      "n": 34,
-      "company": "Cieljets",
-      "domain": "cieljets.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "LOW",
-      "leak_1": "'Jet card alternative' framing is a smart differentiator but no phone to close"
-    },
-    {
-      "n": 36,
-      "company": "Swartzaviationgroup",
-      "domain": "swartzaviationgroup.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "'/buy/' URL is unconventional for luxury aviation — trust concern"
-    },
-    {
-      "n": 37,
-      "company": "Flytangojets",
-      "domain": "flytangojets.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "No contact info found for this domain"
-    },
-    {
-      "n": 38,
-      "company": "Outlierjets",
-      "domain": "outlierjets.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Scored page is a PPC landing page on a subdomain — standard for ad campaigns"
-    },
-    {
-      "n": 41,
-      "company": "Dynamicjetcharter",
-      "domain": "dynamicjetcharter.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Luxury charter page with no public contact info found"
-    },
-    {
-      "n": 42,
-      "company": "Sunairjets",
-      "domain": "sunairjets.com",
-      "market": "Van Nuys",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Los Angeles city page scored — high-value market but no contact found"
     },
     {
       "n": 43,
@@ -652,112 +950,13 @@
       "leak_1": "Aircraft listings page — marketplace model, not direct charter operator"
     },
     {
-      "n": 45,
-      "company": "Jetoneaviation",
-      "domain": "jetoneaviation.net",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Homepage scored but no contact info found"
-    },
-    {
       "n": 47,
       "company": "Jet Bay",
       "domain": "jet-bay.com",
       "market": "National",
       "phone": "Not published",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": "Homepage scored; no contact info found"
-    },
-    {
-      "n": 50,
-      "company": "Justlandedjets",
-      "domain": "justlandedjets.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Homepage scored; no contact info found"
-    },
-    {
-      "n": 51,
-      "company": "Businessjet",
-      "domain": "businessjet.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "LOW",
-      "leak_1": "Aircraft management page scored — not a charter conversion page"
-    },
-    {
-      "n": 52,
-      "company": "Charterjetone",
-      "domain": "charterjetone.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Homepage scored; no contact info confirmed"
-    },
-    {
-      "n": 54,
-      "company": "Charterflightsflorida",
-      "domain": "charterflightsflorida.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Florida charter flights page scored; no contact info found"
-    },
-    {
-      "n": 55,
-      "company": "Theearlyairway",
-      "domain": "theearlyairway.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Homepage scored; no contact info found"
-    },
-    {
-      "n": 56,
-      "company": "Flystraightline",
-      "domain": "flystraightline.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Scored page is a join/signup subdomain — likely a membership funnel page"
-    },
-    {
-      "n": 57,
-      "company": "Epcvipair",
-      "domain": "epcvipair.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Homepage scored; no contact info found"
-    },
-    {
-      "n": 59,
-      "company": "Jetdirect",
-      "domain": "jetdirect.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Charter page scored; no contact info found"
-    },
-    {
-      "n": 60,
-      "company": "Rairaviation",
-      "domain": "rairaviation.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Private charter page scored; no contact info found"
-    },
-    {
-      "n": 61,
-      "company": "Hautejets",
-      "domain": "hautejets.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Routes page scored — audience is browsing not converting on this page"
     },
     {
       "n": 62,
@@ -765,98 +964,8 @@
       "domain": "flytradewind.com",
       "market": "National",
       "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Charter page scored; no contact info found"
-    },
-    {
-      "n": 63,
-      "company": "Truairadvisors",
-      "domain": "truairadvisors.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Homepage scored; no contact info found"
-    },
-    {
-      "n": 64,
-      "company": "Jetout",
-      "domain": "jetout.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Regions page scored — geographic browsing, not high-intent conversion"
-    },
-    {
-      "n": 65,
-      "company": "Flyairshare",
-      "domain": "flyairshare.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Private charter page scored; no contact info found"
-    },
-    {
-      "n": 66,
-      "company": "Jetaxess",
-      "domain": "jetaxess.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Homepage scored; no contact info found"
-    },
-    {
-      "n": 69,
-      "company": "Flymore",
-      "domain": "flymore.app",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "App-first brand with .app domain — unusual for traditional private jet buyers"
-    },
-    {
-      "n": 70,
-      "company": "Austinprivatejetco",
-      "domain": "austinprivatejetco.com",
-      "market": "Austin",
-      "phone": "Not published",
       "risk": "HIGH",
-      "leak_1": "Domain exists but no scored URL in spreadsheet — needs lookup"
-    },
-    {
-      "n": 71,
-      "company": "Flyjetoptions",
-      "domain": "flyjetoptions.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Domain exists but no scored URL provided"
-    },
-    {
-      "n": 72,
-      "company": "Saturnaviation",
-      "domain": "saturnaviation.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Domain exists but no scored URL provided"
-    },
-    {
-      "n": 74,
-      "company": "Jetaviation",
-      "domain": "jetaviation.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "LOW",
-      "leak_1": "Jet Aviation is a global FBO/MRO brand — not primarily a charter broker"
-    },
-    {
-      "n": 76,
-      "company": "Houstonprivatejetco",
-      "domain": "houstonprivatejetco.com",
-      "market": "Houston",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Houston Private Jet Co. — domain exists; no contact found"
+      "leak_1": "Charter page scored; no contact info found"
     },
     {
       "n": 81,
@@ -864,26 +973,8 @@
       "domain": "flyvade.com",
       "market": "National",
       "phone": "Not published",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": "Domain exists; no contact info or scored URL found"
-    },
-    {
-      "n": 83,
-      "company": "Chicagoprivatejetco",
-      "domain": "chicagoprivatejetco.com",
-      "market": "Chicago",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Domain exists; no contact info found"
-    },
-    {
-      "n": 87,
-      "company": "Charterjetairlines",
-      "domain": "charterjetairlines.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Domain exists; no contact info found"
     },
     {
       "n": 88,
@@ -891,52 +982,7 @@
       "domain": "merlin1.com",
       "market": "National",
       "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Domain exists; no contact info found"
-    },
-    {
-      "n": 89,
-      "company": "Jetcharterflightschicago",
-      "domain": "jetcharterflightschicago.com",
-      "market": "Chicago",
-      "phone": "Not published",
-      "risk": "MEDIUM",
-      "leak_1": "Chicago city-targeted domain; no contact found"
-    },
-    {
-      "n": 90,
-      "company": "Newyorkprivatejetco",
-      "domain": "newyorkprivatejetco.com",
-      "market": "Teterboro",
-      "phone": "Not published",
-      "risk": "LOW",
-      "leak_1": "NYC city-targeted domain; no contact found"
-    },
-    {
-      "n": 92,
-      "company": "Greatprivatejets",
-      "domain": "greatprivatejets.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "LOW",
-      "leak_1": "Domain exists; no contact info found"
-    },
-    {
-      "n": 93,
-      "company": "Aviationcharters",
-      "domain": "aviationcharters.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "LOW",
-      "leak_1": "Domain exists; no contact info found"
-    },
-    {
-      "n": 94,
-      "company": "Vjetsaviation",
-      "domain": "vjetsaviation.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "LOW",
+      "risk": "HIGH",
       "leak_1": "Domain exists; no contact info found"
     },
     {
@@ -945,7 +991,7 @@
       "domain": "Los Angeles Private Jet Charter",
       "market": "Van Nuys",
       "phone": "Not published",
-      "risk": "LOW",
+      "risk": "HIGH",
       "leak_1": "Company name in Col A with no domain — need manual lookup"
     },
     {
@@ -958,31 +1004,13 @@
       "leak_1": "Wix.com generic domain — this is a website builder URL, not a company"
     },
     {
-      "n": 102,
-      "company": "Prismjet",
-      "domain": "prismjet.net",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "LOW",
-      "leak_1": "Domain exists; no contact info found"
-    },
-    {
       "n": 105,
       "company": "Midlantic jet charters inc",
       "domain": "Midlantic Jet Charters Inc",
       "market": "National",
       "phone": "Not published",
-      "risk": "LOW",
+      "risk": "MEDIUM",
       "leak_1": "Company name in Col A; no URL or contact found"
-    },
-    {
-      "n": 106,
-      "company": "2jetset",
-      "domain": "2jetset.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "HIGH",
-      "leak_1": "Domain exists; no contact info found"
     },
     {
       "n": 107,
@@ -990,35 +1018,8 @@
       "domain": "Sun Jet International",
       "market": "National",
       "phone": "Not published",
-      "risk": "LOW",
+      "risk": "MEDIUM",
       "leak_1": "Company name in Col A; no URL confirmed"
-    },
-    {
-      "n": 108,
-      "company": "Flynda",
-      "domain": "flynda.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "LOW",
-      "leak_1": "Domain exists; no contact info found"
-    },
-    {
-      "n": 110,
-      "company": "Americanflightsupport",
-      "domain": "americanflightsupport.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "HIGH",
-      "leak_1": "Domain exists; no contact info found"
-    },
-    {
-      "n": 111,
-      "company": "Atlanticaviation",
-      "domain": "atlanticaviation.com",
-      "market": "National",
-      "phone": "Not published",
-      "risk": "LOW",
-      "leak_1": "Atlantic Aviation is a major FBO chain (now Signature Aviation) — not a charter broker"
     }
   ]
 }

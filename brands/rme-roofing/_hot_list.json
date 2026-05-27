@@ -2,7 +2,7 @@
   "_meta": {
     "brand": "rme-roofing",
     "audit_value": 3000,
-    "generated_at": "2026-05-27T22:25:08.677802+00:00",
+    "generated_at": "2026-05-27T22:45:07.738494+00:00",
     "generated_from": "multi_reaudit.py (heuristic re-score, moderate threshold)",
     "total_prospects": 299,
     "tier_definitions": {
@@ -78,6 +78,15 @@
       "leak_1": "Generic brand name lacks specialized roofing identity"
     },
     {
+      "n": "rme-037",
+      "company": "Qwchicagoroof",
+      "domain": "qwchicagoroof.com",
+      "market": "Chicago IL",
+      "phone": "(312) 809-5100",
+      "risk": "HIGH",
+      "leak_1": "No contact information found — total conversion failure"
+    },
+    {
       "n": "rme-040",
       "company": "Guyroofing",
       "domain": "guyroofing.com",
@@ -114,6 +123,15 @@
       "leak_1": "Franchise model creates inconsistent local experience across 15+ markets"
     },
     {
+      "n": "rme-056",
+      "company": "Srctn",
+      "domain": "srctn.com",
+      "market": "Unknown",
+      "phone": "(615) 320-1045",
+      "risk": "HIGH",
+      "leak_1": "Cryptic acronym domain (SRCTN) has zero brand recall or trust signals"
+    },
+    {
       "n": "rme-059",
       "company": "Veritasroofingtx",
       "domain": "veritasroofingtx.com",
@@ -121,6 +139,33 @@
       "phone": "(817) 455-0117",
       "risk": "HIGH",
       "leak_1": "Three-market presence with three phone numbers creates routing complexity"
+    },
+    {
+      "n": "rme-061",
+      "company": "Sanfranciscoroofspecialists",
+      "domain": "sanfranciscoroofspecialists.homes",
+      "market": "San Francisco CA",
+      "phone": "(628) 209-0999",
+      "risk": "HIGH",
+      "leak_1": ".homes TLD creates immediate trust barrier — SF buyers will question legitimacy"
+    },
+    {
+      "n": "rme-072",
+      "company": "Loonstynroofing1976",
+      "domain": "loonstynroofing1976.com",
+      "market": "Unknown",
+      "phone": "(215) 235-7000",
+      "risk": "HIGH",
+      "leak_1": "'1976' in domain signals heritage but no verifiable contact found"
+    },
+    {
+      "n": "rme-076",
+      "company": "Ascentroofingsd",
+      "domain": "ascentroofingsd.com",
+      "market": "San Diego CA",
+      "phone": "(858) 462-7753",
+      "risk": "HIGH",
+      "leak_1": "No contact information — San Diego market with no conversion path"
     },
     {
       "n": "rme-095",
@@ -132,53 +177,7 @@
       "leak_1": "Restoration brand (fire/water primary) — roofing is secondary; buyers seeking roofing specialist may bounce"
     }
   ],
-  "tier_2_call_with_caution": [
-    {
-      "n": "rme-031",
-      "company": "Riveraroofingco",
-      "domain": "riveraroofingco.xyz",
-      "market": "Dallas-Fort Worth TX",
-      "phone": "(469) 936-4001",
-      "risk": "HIGH",
-      "leak_1": ".xyz TLD instantly triggers spam/scam perception — major trust barrier"
-    },
-    {
-      "n": "rme-147",
-      "company": "Action Roofservice",
-      "domain": "action-roofservice.com",
-      "market": "Unknown",
-      "phone": "(786) 738-9601",
-      "risk": "HIGH",
-      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
-    },
-    {
-      "n": "rme-155",
-      "company": "Lucidroofing",
-      "domain": "lucidroofing.com",
-      "market": "San Jose CA",
-      "phone": "(408) 761-9700",
-      "risk": "HIGH",
-      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
-    },
-    {
-      "n": "rme-197",
-      "company": "Roofingrepairguy",
-      "domain": "roofingrepairguy.com",
-      "market": "Seattle WA",
-      "phone": "(913) 285-8807",
-      "risk": "HIGH",
-      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
-    },
-    {
-      "n": "rme-278",
-      "company": "Expertroofing Pros",
-      "domain": "expertroofing-pros.com",
-      "market": "Nashville TN",
-      "phone": "(615) 314-2670",
-      "risk": "HIGH",
-      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
-    }
-  ],
+  "tier_2_call_with_caution": [],
   "tier_3_solid_calls": [
     {
       "n": "rme-004",
@@ -314,6 +313,420 @@
       "phone": "(720) 545-5557",
       "risk": "MEDIUM",
       "leak_1": ".net TLD is non-standard — minor trust concern vs. .com competitors"
+    },
+    {
+      "n": "rme-026",
+      "company": "Fortworthroofing",
+      "domain": "fortworthroofing.net",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(817) 306-4567",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion failure for any inbound buyer"
+    },
+    {
+      "n": "rme-033",
+      "company": "Ecosmartroofer",
+      "domain": "ecosmartroofer.com",
+      "market": "Unknown",
+      "phone": "(415) 240-9840",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path despite 72 ad frequency"
+    },
+    {
+      "n": "rme-039",
+      "company": "Americanqualityroofing",
+      "domain": "americanqualityroofing.biz",
+      "market": "Unknown",
+      "phone": "(408) 726-9796",
+      "risk": "MEDIUM",
+      "leak_1": ".biz TLD signals low credibility — roofing buyers associate with spam"
+    },
+    {
+      "n": "rme-042",
+      "company": "Rmroofinginc",
+      "domain": "rmroofinginc.com",
+      "market": "Unknown",
+      "phone": "(619) 636-5562",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-043",
+      "company": "Rodroofingsa",
+      "domain": "rodroofingsa.com",
+      "market": "San Antonio TX",
+      "phone": "(210) 734-8444",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information despite targeting San Antonio market"
+    },
+    {
+      "n": "rme-047",
+      "company": "Terrywoodallroofing",
+      "domain": "terrywoodallroofing.com",
+      "market": "Unknown",
+      "phone": "(615) 300-6005",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — complete conversion failure"
+    },
+    {
+      "n": "rme-048",
+      "company": "Finishedworkroofing",
+      "domain": "finishedworkroofing.com",
+      "market": "Unknown",
+      "phone": "(817) 266-7323",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-053",
+      "company": "Blakeroofing",
+      "domain": "blakeroofing.homes",
+      "market": "Unknown",
+      "phone": "(628) 500-9304",
+      "risk": "MEDIUM",
+      "leak_1": ".homes TLD is non-standard — most buyers will doubt legitimacy"
+    },
+    {
+      "n": "rme-054",
+      "company": "Myroofhub",
+      "domain": "myroofhub.com",
+      "market": "Unknown",
+      "phone": "(857) 237-7648",
+      "risk": "MEDIUM",
+      "leak_1": "Hub/marketplace brand strongly implies lead-gen aggregator, not a contractor"
+    },
+    {
+      "n": "rme-057",
+      "company": "Cjroofingdc",
+      "domain": "cjroofingdc.com",
+      "market": "Washington DC",
+      "phone": "(202) 770-4971",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — DC market with no conversion path"
+    },
+    {
+      "n": "rme-058",
+      "company": "Roofreplacementphoenixaz",
+      "domain": "roofreplacementphoenixaz.com",
+      "market": "Phoenix AZ",
+      "phone": "(602) 497-0225",
+      "risk": "MEDIUM",
+      "leak_1": "Exact-match keyword domain with no brand identity or contact"
+    },
+    {
+      "n": "rme-060",
+      "company": "Roofwhiterock",
+      "domain": "roofwhiterock.com",
+      "market": "Dallas TX (White Rock Lake area)",
+      "phone": "(972) 362-9647",
+      "risk": "MEDIUM",
+      "leak_1": "Hyper-local White Rock Lake branding limits perceived Dallas service area"
+    },
+    {
+      "n": "rme-062",
+      "company": "Elmroofingcontractor",
+      "domain": "elmroofingcontractor.com",
+      "market": "Unknown",
+      "phone": "(415) 534-4396",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-063",
+      "company": "Traditionsroofing",
+      "domain": "traditionsroofing.com",
+      "market": "Unknown",
+      "phone": "(615) 939-4660",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-064",
+      "company": "Pacificperfectionroofing",
+      "domain": "pacificperfectionroofing.homes",
+      "market": "Pacific coast",
+      "phone": "(858) 533-1112",
+      "risk": "MEDIUM",
+      "leak_1": ".homes TLD creates immediate trust barrier — third .homes domain in this dataset"
+    },
+    {
+      "n": "rme-065",
+      "company": "Advantageok",
+      "domain": "advantageok.net",
+      "market": "OK",
+      "phone": "(405) 873-7369",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-066",
+      "company": "Statewideroofing",
+      "domain": "statewideroofing.com",
+      "market": "Unknown — multi-state implied",
+      "phone": "(405) 790-0109",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-067",
+      "company": "Improveitmd",
+      "domain": "improveitmd.com",
+      "market": "MD",
+      "phone": "(301) 769-6909",
+      "risk": "MEDIUM",
+      "leak_1": "Home improvement generalist — roofing as secondary service, not specialist"
+    },
+    {
+      "n": "rme-068",
+      "company": "Unitedroofingdc",
+      "domain": "unitedroofingdc.com",
+      "market": "Washington DC",
+      "phone": "(202) 710-9160",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — DC market with no conversion path"
+    },
+    {
+      "n": "rme-069",
+      "company": "Indytrojanroofing",
+      "domain": "indytrojanroofing.com",
+      "market": "Indianapolis IN",
+      "phone": "(317) 442-9480",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-070",
+      "company": "Stateroofing",
+      "domain": "stateroofing.com",
+      "market": "Unknown",
+      "phone": "(253) 480-6962",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-071",
+      "company": "Sterlingroofingrepair",
+      "domain": "sterlingroofingrepair.site",
+      "market": "Unknown",
+      "phone": "(669) 345-5491",
+      "risk": "MEDIUM",
+      "leak_1": ".site TLD is non-standard — major trust barrier for roofing buyers"
+    },
+    {
+      "n": "rme-073",
+      "company": "Therooferbros",
+      "domain": "therooferbros.com",
+      "market": "Unknown",
+      "phone": "(747) 237-4350",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-074",
+      "company": "Southerncoastroofing",
+      "domain": "southerncoastroofing.us",
+      "market": "Southern US coast",
+      "phone": "(904) 356-7663",
+      "risk": "MEDIUM",
+      "leak_1": ".us TLD is non-standard for roofing — credibility concern"
+    },
+    {
+      "n": "rme-077",
+      "company": "Southernrnr",
+      "domain": "southernrnr.com",
+      "market": "Southern US",
+      "phone": "(615) 234-6664",
+      "risk": "MEDIUM",
+      "leak_1": "RNR abbreviation (Roofing and Restoration) unclear to first-time buyers"
+    },
+    {
+      "n": "rme-078",
+      "company": "Indyroofandrestoration",
+      "domain": "indyroofandrestoration.com",
+      "market": "Indianapolis IN",
+      "phone": "(317) 886-7436",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Indy market with no conversion path"
+    },
+    {
+      "n": "rme-079",
+      "company": "Costarroofinginc",
+      "domain": "costarroofinginc.com",
+      "market": "Unknown",
+      "phone": "(818) 337-1212",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-080",
+      "company": "Streamlineroof",
+      "domain": "streamlineroof.com",
+      "market": "Unknown",
+      "phone": "(619) 938-5882",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-081",
+      "company": "Loaconstruction",
+      "domain": "loaconstruction.com",
+      "market": "Unknown",
+      "phone": "(855) 661-3431",
+      "risk": "MEDIUM",
+      "leak_1": "Construction generalist — roofing is one of many services, not specialist"
+    },
+    {
+      "n": "rme-082",
+      "company": "Pacificroofers",
+      "domain": "pacificroofers.com",
+      "market": "Pacific Coast",
+      "phone": "(866) 314-3528",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — broad Pacific coast geo with no conversion path"
+    },
+    {
+      "n": "rme-083",
+      "company": "Newhausroofing",
+      "domain": "newhausroofing.com",
+      "market": "Unknown",
+      "phone": "(747) 335-5704",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-084",
+      "company": "Supremeexterior",
+      "domain": "supremeexterior.com",
+      "market": "Unknown",
+      "phone": "(614) 698-1963",
+      "risk": "MEDIUM",
+      "leak_1": "Exterior generalist — roofing competes with siding/windows for site focus"
+    },
+    {
+      "n": "rme-085",
+      "company": "Charlotteroofing",
+      "domain": "charlotteroofing.com",
+      "market": "Charlotte NC",
+      "phone": "(704) 364-3464",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Charlotte market with no conversion path"
+    },
+    {
+      "n": "rme-086",
+      "company": "Southernexteriors",
+      "domain": "southernexteriors.co",
+      "market": "Southern US",
+      "phone": "(877) 976-8843",
+      "risk": "MEDIUM",
+      "leak_1": ".co TLD creates trust friction — buyers may distrust as non-.com domain"
+    },
+    {
+      "n": "rme-087",
+      "company": "Theroofingcompanyfl",
+      "domain": "theroofingcompanyfl.com",
+      "market": "FL",
+      "phone": "(904) 800-3751",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Florida market with no conversion path"
+    },
+    {
+      "n": "rme-088",
+      "company": "Okcroofers",
+      "domain": "okcroofers.com",
+      "market": "Oklahoma City OK",
+      "phone": "(405) 796-8858",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — OKC market with no conversion path"
+    },
+    {
+      "n": "rme-089",
+      "company": "Rileysroofing",
+      "domain": "rileysroofing.com",
+      "market": "Unknown",
+      "phone": "(720) 910-1470",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-090",
+      "company": "Horizonrr",
+      "domain": "horizonrr.com",
+      "market": "Unknown",
+      "phone": "(980) 275-1085",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-091",
+      "company": "Standardroofingok",
+      "domain": "standardroofingok.com",
+      "market": "OK",
+      "phone": "(405) 236-8401",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Oklahoma market with no conversion path"
+    },
+    {
+      "n": "rme-092",
+      "company": "Westshoreroofing",
+      "domain": "westshoreroofing.com",
+      "market": "Unknown — West Shore region",
+      "phone": "(408) 456-0200",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-093",
+      "company": "Calihomesimprovements",
+      "domain": "calihomesimprovements.com",
+      "market": "CA",
+      "phone": "(415) 955-7953",
+      "risk": "MEDIUM",
+      "leak_1": "Home improvement generalist — roofing is one service among many"
+    },
+    {
+      "n": "rme-094",
+      "company": "Innovativeroofingsystemsoh",
+      "domain": "innovativeroofingsystemsoh.com",
+      "market": "OH",
+      "phone": "(614) 324-9797",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Ohio market with no conversion path"
+    },
+    {
+      "n": "rme-096",
+      "company": "Qualityroofingspecialists",
+      "domain": "qualityroofingspecialists.com",
+      "market": "Unknown",
+      "phone": "(310) 340-1643",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — zero conversion path"
+    },
+    {
+      "n": "rme-097",
+      "company": "Buildwithabsolute",
+      "domain": "buildwithabsolute.com",
+      "market": "Unknown",
+      "phone": "(617) 481-1725",
+      "risk": "MEDIUM",
+      "leak_1": "Construction generalist — no roofing-specific identity"
+    },
+    {
+      "n": "rme-099",
+      "company": "Roofdoctorphilly",
+      "domain": "roofdoctorphilly.com",
+      "market": "Philadelphia PA",
+      "phone": "(215) 533-3333",
+      "risk": "MEDIUM",
+      "leak_1": "No contact information — Philadelphia market with no conversion path"
+    },
+    {
+      "n": "rme-100",
+      "company": "Elpasoroofings",
+      "domain": "elpasoroofings.com",
+      "market": "El Paso TX",
+      "phone": "(915) 691-0532",
+      "risk": "MEDIUM",
+      "leak_1": "Keyword domain competes in same market as metaep.com and pioneerroofingep.com — loses on trust"
     }
   ],
   "tier_4_warm_calls": [
@@ -379,6 +792,15 @@
       "phone": "(512) 259-5265",
       "risk": "LOW",
       "leak_1": "No email listed — form-only limits B2B and insurance adjuster trust"
+    },
+    {
+      "n": "rme-031",
+      "company": "Riveraroofingco",
+      "domain": "riveraroofingco.xyz",
+      "market": "Dallas-Fort Worth TX",
+      "phone": "(469) 936-4001",
+      "risk": "MEDIUM",
+      "leak_1": ".xyz TLD instantly triggers spam/scam perception — major trust barrier"
     },
     {
       "n": "rme-034",
@@ -516,6 +938,15 @@
       "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
     },
     {
+      "n": "rme-107",
+      "company": "Frtroof",
+      "domain": "frtroof.com",
+      "market": "Unknown",
+      "phone": "(305) 363-6760",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-108",
       "company": "Guardianroofs",
       "domain": "guardianroofs.com",
@@ -534,6 +965,15 @@
       "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
     },
     {
+      "n": "rme-110",
+      "company": "Lynchroofingaz",
+      "domain": "lynchroofingaz.com",
+      "market": "Phoenix AZ",
+      "phone": "(602) 600-6317",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-111",
       "company": "Roofitforward",
       "domain": "roofitforward.com",
@@ -541,6 +981,24 @@
       "phone": "(888) 411-9310",
       "risk": "LOW",
       "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-112",
+      "company": "Wilsonroofing",
+      "domain": "wilsonroofing.com",
+      "market": "Austin TX",
+      "phone": "(512) 263-3157",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
+      "n": "rme-113",
+      "company": "Charlottesbestroofing",
+      "domain": "charlottesbestroofing.com",
+      "market": "Charlotte NC",
+      "phone": "(704) 345-9446",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
       "n": "rme-114",
@@ -613,6 +1071,15 @@
       "phone": "(425) 249-3730",
       "risk": "LOW",
       "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-123",
+      "company": "Valorhome",
+      "domain": "valorhome.com",
+      "market": "Washington DC",
+      "phone": "(443) 960-7314",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
       "n": "rme-124",
@@ -714,6 +1181,15 @@
       "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
     },
     {
+      "n": "rme-135",
+      "company": "Premierroofersnh",
+      "domain": "premierroofersnh.com",
+      "market": "Boston MA",
+      "phone": "(603) 684-2202",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-136",
       "company": "Roofmedic",
       "domain": "roofmedic.com",
@@ -804,6 +1280,24 @@
       "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
     },
     {
+      "n": "rme-147",
+      "company": "Action Roofservice",
+      "domain": "action-roofservice.com",
+      "market": "Unknown",
+      "phone": "(786) 738-9601",
+      "risk": "MEDIUM",
+      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
+    },
+    {
+      "n": "rme-148",
+      "company": "Atombuildersinc",
+      "domain": "atombuildersinc.com",
+      "market": "Los Angeles CA",
+      "phone": "(818) 284-4989",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-149",
       "company": "Blackroofing",
       "domain": "blackroofing.com",
@@ -856,6 +1350,15 @@
       "phone": "(617) 299-0291",
       "risk": "LOW",
       "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
+    },
+    {
+      "n": "rme-155",
+      "company": "Lucidroofing",
+      "domain": "lucidroofing.com",
+      "market": "San Jose CA",
+      "phone": "(408) 761-9700",
+      "risk": "MEDIUM",
+      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
     },
     {
       "n": "rme-156",
@@ -1065,6 +1568,15 @@
       "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
     },
     {
+      "n": "rme-180",
+      "company": "Idealprecisionroofing",
+      "domain": "idealprecisionroofing.com",
+      "market": "San Antonio TX",
+      "phone": "(210) 485-1553",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-181",
       "company": "Infinityroofing Nc",
       "domain": "infinityroofing-nc.com",
@@ -1137,6 +1649,15 @@
       "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
     },
     {
+      "n": "rme-190",
+      "company": "Pinnacleext",
+      "domain": "pinnacleext.com",
+      "market": "Nashville TN",
+      "phone": "(931) 226-9762",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-191",
       "company": "Precisionroofcrafters",
       "domain": "precisionroofcrafters.com",
@@ -1153,6 +1674,15 @@
       "phone": "(210) 867-5051",
       "risk": "LOW",
       "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-193",
+      "company": "Resultsroofing",
+      "domain": "resultsroofing.com",
+      "market": "Houston TX",
+      "phone": "(214) 505-1442",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
       "n": "rme-194",
@@ -1182,6 +1712,24 @@
       "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
     },
     {
+      "n": "rme-197",
+      "company": "Roofingrepairguy",
+      "domain": "roofingrepairguy.com",
+      "market": "Seattle WA",
+      "phone": "(913) 285-8807",
+      "risk": "MEDIUM",
+      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
+    },
+    {
+      "n": "rme-198",
+      "company": "Roofjoker",
+      "domain": "roofjoker.com",
+      "market": "Austin TX",
+      "phone": "(512) 910-3610",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-199",
       "company": "Roofworxca",
       "domain": "roofworxca.com",
@@ -1200,6 +1748,15 @@
       "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
     },
     {
+      "n": "rme-201",
+      "company": "Socalroof",
+      "domain": "socalroof.com",
+      "market": "Los Angeles CA",
+      "phone": "(213) 545-1016",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-202",
       "company": "Solvistaroofingdenver",
       "domain": "solvistaroofingdenver.com",
@@ -1216,6 +1773,15 @@
       "phone": "(317) 308-7773",
       "risk": "LOW",
       "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-204",
+      "company": "Summitbuildingroofing",
+      "domain": "summitbuildingroofing.com",
+      "market": "Columbus OH",
+      "phone": "(614) 665-7045",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
       "n": "rme-205",
@@ -1344,6 +1910,15 @@
       "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
     },
     {
+      "n": "rme-221",
+      "company": "Greaterbostonroofing",
+      "domain": "greaterbostonroofing.com",
+      "market": "Boston MA",
+      "phone": "(617) 744-9690",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-222",
       "company": "Henryroofrepair",
       "domain": "henryroofrepair.homes",
@@ -1434,6 +2009,15 @@
       "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
     },
     {
+      "n": "rme-233",
+      "company": "Monragaroofing",
+      "domain": "monragaroofing.com",
+      "market": "Charlotte NC",
+      "phone": "(843) 618-4944",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-234",
       "company": "Mountaintopmetalroofing",
       "domain": "mountaintopmetalroofing.com",
@@ -1459,6 +2043,15 @@
       "phone": "(628) 300-3022",
       "risk": "LOW",
       "leak_1": "CTAs present but lack urgency framing — generic 'Contact Us' instead of action-led 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-237",
+      "company": "Newroofingpro",
+      "domain": "newroofingpro.com",
+      "market": "Charlotte NC + 2 more",
+      "phone": "(214) 748-3647",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
       "n": "rme-238",
@@ -1504,6 +2097,15 @@
       "phone": "(737) 308-2035",
       "risk": "LOW",
       "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-243",
+      "company": "Raganroofingnashville",
+      "domain": "raganroofingnashville.com",
+      "market": "Nashville TN",
+      "phone": "(681) 210-9060",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
       "n": "rme-244",
@@ -1596,6 +2198,15 @@
       "leak_1": "Above-fold CTA fires but mid-page lacks a repeat CTA after objections — visitors must scroll back to convert"
     },
     {
+      "n": "rme-256",
+      "company": "Topsideroofingokc",
+      "domain": "topsideroofingokc.com",
+      "market": "Oklahoma City OK",
+      "phone": "(405) 446-5364",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-257",
       "company": "Valentineroof",
       "domain": "valentineroof.com",
@@ -1612,6 +2223,15 @@
       "phone": "(405) 768-2626",
       "risk": "LOW",
       "leak_1": "Single primary CTA repeated — no secondary low-commitment option (text/SMS/chat) for hesitant visitors"
+    },
+    {
+      "n": "rme-259",
+      "company": "314Roofing",
+      "domain": "314roofing.com",
+      "market": "Houston TX",
+      "phone": "(832) 688-8363",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
       "n": "rme-260",
@@ -1639,6 +2259,15 @@
       "phone": "(281) 961-7567",
       "risk": "LOW",
       "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
+    },
+    {
+      "n": "rme-263",
+      "company": "Allstar Roofing",
+      "domain": "allstar-roofing.com",
+      "market": "El Paso TX",
+      "phone": "(915) 503-5543",
+      "risk": "MEDIUM",
+      "leak_1": "Landing page returned 403/blocked or no HTML response — bot protection prevents CRO audit"
     },
     {
       "n": "rme-264",
@@ -1767,6 +2396,15 @@
       "leak_1": "CTA visible but value-prop pairing is weak — needs benefit micro-copy under the button (e.g. '60-second quote')"
     },
     {
+      "n": "rme-278",
+      "company": "Expertroofing Pros",
+      "domain": "expertroofing-pros.com",
+      "market": "Nashville TN",
+      "phone": "(615) 314-2670",
+      "risk": "MEDIUM",
+      "leak_1": "Weak CTA hierarchy — no prominent 'Call Now' or 'Get Free Estimate' button above the fold"
+    },
+    {
       "n": "rme-279",
       "company": "Firstqualityroof",
       "domain": "firstqualityroof.com",
@@ -1801,6 +2439,15 @@
       "phone": "(610) 877-7663",
       "risk": "LOW",
       "leak_1": "Phone CTA strong but form CTA generic — 'Submit' button kills conversion vs 'Get My Free Inspection'"
+    },
+    {
+      "n": "rme-285",
+      "company": "Greaterchicagoroofing",
+      "domain": "greaterchicagoroofing.com",
+      "market": "Chicago IL",
+      "phone": "(773) 270-9910",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
       "n": "rme-287",
@@ -1875,6 +2522,15 @@
       "leak_1": "CTA contrast and prominence OK, but no urgency anchor (limited slots, this-week-only, storm-season cutoff)"
     },
     {
+      "n": "rme-295",
+      "company": "Oklahoma Roofing",
+      "domain": "oklahoma-roofing.co",
+      "market": "Oklahoma City OK",
+      "phone": "(530) 836-1181",
+      "risk": "MEDIUM",
+      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
+    },
+    {
       "n": "rme-296",
       "company": "Paragonroofingusa",
       "domain": "paragonroofingusa.com",
@@ -1922,265 +2578,13 @@
   ],
   "no_phone_email_path": [
     {
-      "n": "rme-026",
-      "company": "Fortworthroofing",
-      "domain": "fortworthroofing.net",
-      "market": "Dallas-Fort Worth TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion failure for any inbound buyer"
-    },
-    {
-      "n": "rme-033",
-      "company": "Ecosmartroofer",
-      "domain": "ecosmartroofer.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path despite 72 ad frequency"
-    },
-    {
-      "n": "rme-037",
-      "company": "Qwchicagoroof",
-      "domain": "qwchicagoroof.com",
-      "market": "Chicago IL",
-      "phone": "",
-      "risk": "HIGH",
-      "leak_1": "No contact information found — total conversion failure"
-    },
-    {
-      "n": "rme-039",
-      "company": "Americanqualityroofing",
-      "domain": "americanqualityroofing.biz",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": ".biz TLD signals low credibility — roofing buyers associate with spam"
-    },
-    {
-      "n": "rme-042",
-      "company": "Rmroofinginc",
-      "domain": "rmroofinginc.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-043",
-      "company": "Rodroofingsa",
-      "domain": "rodroofingsa.com",
-      "market": "San Antonio TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information despite targeting San Antonio market"
-    },
-    {
-      "n": "rme-047",
-      "company": "Terrywoodallroofing",
-      "domain": "terrywoodallroofing.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — complete conversion failure"
-    },
-    {
-      "n": "rme-048",
-      "company": "Finishedworkroofing",
-      "domain": "finishedworkroofing.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
       "n": "rme-051",
       "company": "Franciscosroofinginc",
       "domain": "franciscosroofinginc.co",
       "market": "Unknown",
       "phone": "",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": ".co TLD (not .com) creates trust friction — buyers may distrust legitimacy"
-    },
-    {
-      "n": "rme-053",
-      "company": "Blakeroofing",
-      "domain": "blakeroofing.homes",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": ".homes TLD is non-standard — most buyers will doubt legitimacy"
-    },
-    {
-      "n": "rme-054",
-      "company": "Myroofhub",
-      "domain": "myroofhub.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Hub/marketplace brand strongly implies lead-gen aggregator, not a contractor"
-    },
-    {
-      "n": "rme-056",
-      "company": "Srctn",
-      "domain": "srctn.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "HIGH",
-      "leak_1": "Cryptic acronym domain (SRCTN) has zero brand recall or trust signals"
-    },
-    {
-      "n": "rme-057",
-      "company": "Cjroofingdc",
-      "domain": "cjroofingdc.com",
-      "market": "Washington DC",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — DC market with no conversion path"
-    },
-    {
-      "n": "rme-058",
-      "company": "Roofreplacementphoenixaz",
-      "domain": "roofreplacementphoenixaz.com",
-      "market": "Phoenix AZ",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Exact-match keyword domain with no brand identity or contact"
-    },
-    {
-      "n": "rme-060",
-      "company": "Roofwhiterock",
-      "domain": "roofwhiterock.com",
-      "market": "Dallas TX (White Rock Lake area)",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Hyper-local White Rock Lake branding limits perceived Dallas service area"
-    },
-    {
-      "n": "rme-061",
-      "company": "Sanfranciscoroofspecialists",
-      "domain": "sanfranciscoroofspecialists.homes",
-      "market": "San Francisco CA",
-      "phone": "",
-      "risk": "HIGH",
-      "leak_1": ".homes TLD creates immediate trust barrier — SF buyers will question legitimacy"
-    },
-    {
-      "n": "rme-062",
-      "company": "Elmroofingcontractor",
-      "domain": "elmroofingcontractor.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-063",
-      "company": "Traditionsroofing",
-      "domain": "traditionsroofing.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-064",
-      "company": "Pacificperfectionroofing",
-      "domain": "pacificperfectionroofing.homes",
-      "market": "Pacific coast",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": ".homes TLD creates immediate trust barrier — third .homes domain in this dataset"
-    },
-    {
-      "n": "rme-065",
-      "company": "Advantageok",
-      "domain": "advantageok.net",
-      "market": "OK",
-      "phone": "",
-      "risk": "HIGH",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-066",
-      "company": "Statewideroofing",
-      "domain": "statewideroofing.com",
-      "market": "Unknown — multi-state implied",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-067",
-      "company": "Improveitmd",
-      "domain": "improveitmd.com",
-      "market": "MD",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Home improvement generalist — roofing as secondary service, not specialist"
-    },
-    {
-      "n": "rme-068",
-      "company": "Unitedroofingdc",
-      "domain": "unitedroofingdc.com",
-      "market": "Washington DC",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — DC market with no conversion path"
-    },
-    {
-      "n": "rme-069",
-      "company": "Indytrojanroofing",
-      "domain": "indytrojanroofing.com",
-      "market": "Indianapolis IN",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-070",
-      "company": "Stateroofing",
-      "domain": "stateroofing.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-071",
-      "company": "Sterlingroofingrepair",
-      "domain": "sterlingroofingrepair.site",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": ".site TLD is non-standard — major trust barrier for roofing buyers"
-    },
-    {
-      "n": "rme-072",
-      "company": "Loonstynroofing1976",
-      "domain": "loonstynroofing1976.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "HIGH",
-      "leak_1": "'1976' in domain signals heritage but no verifiable contact found"
-    },
-    {
-      "n": "rme-073",
-      "company": "Therooferbros",
-      "domain": "therooferbros.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-074",
-      "company": "Southerncoastroofing",
-      "domain": "southerncoastroofing.us",
-      "market": "Southern US coast",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": ".us TLD is non-standard for roofing — credibility concern"
     },
     {
       "n": "rme-075",
@@ -2192,195 +2596,6 @@
       "leak_1": "Home improvements generalist — roofing is one of many services, not specialist"
     },
     {
-      "n": "rme-076",
-      "company": "Ascentroofingsd",
-      "domain": "ascentroofingsd.com",
-      "market": "San Diego CA",
-      "phone": "",
-      "risk": "HIGH",
-      "leak_1": "No contact information — San Diego market with no conversion path"
-    },
-    {
-      "n": "rme-077",
-      "company": "Southernrnr",
-      "domain": "southernrnr.com",
-      "market": "Southern US",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "RNR abbreviation (Roofing and Restoration) unclear to first-time buyers"
-    },
-    {
-      "n": "rme-078",
-      "company": "Indyroofandrestoration",
-      "domain": "indyroofandrestoration.com",
-      "market": "Indianapolis IN",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — Indy market with no conversion path"
-    },
-    {
-      "n": "rme-079",
-      "company": "Costarroofinginc",
-      "domain": "costarroofinginc.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-080",
-      "company": "Streamlineroof",
-      "domain": "streamlineroof.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-081",
-      "company": "Loaconstruction",
-      "domain": "loaconstruction.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Construction generalist — roofing is one of many services, not specialist"
-    },
-    {
-      "n": "rme-082",
-      "company": "Pacificroofers",
-      "domain": "pacificroofers.com",
-      "market": "Pacific Coast",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — broad Pacific coast geo with no conversion path"
-    },
-    {
-      "n": "rme-083",
-      "company": "Newhausroofing",
-      "domain": "newhausroofing.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-084",
-      "company": "Supremeexterior",
-      "domain": "supremeexterior.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Exterior generalist — roofing competes with siding/windows for site focus"
-    },
-    {
-      "n": "rme-085",
-      "company": "Charlotteroofing",
-      "domain": "charlotteroofing.com",
-      "market": "Charlotte NC",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — Charlotte market with no conversion path"
-    },
-    {
-      "n": "rme-086",
-      "company": "Southernexteriors",
-      "domain": "southernexteriors.co",
-      "market": "Southern US",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": ".co TLD creates trust friction — buyers may distrust as non-.com domain"
-    },
-    {
-      "n": "rme-087",
-      "company": "Theroofingcompanyfl",
-      "domain": "theroofingcompanyfl.com",
-      "market": "FL",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — Florida market with no conversion path"
-    },
-    {
-      "n": "rme-088",
-      "company": "Okcroofers",
-      "domain": "okcroofers.com",
-      "market": "Oklahoma City OK",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — OKC market with no conversion path"
-    },
-    {
-      "n": "rme-089",
-      "company": "Rileysroofing",
-      "domain": "rileysroofing.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-090",
-      "company": "Horizonrr",
-      "domain": "horizonrr.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-091",
-      "company": "Standardroofingok",
-      "domain": "standardroofingok.com",
-      "market": "OK",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — Oklahoma market with no conversion path"
-    },
-    {
-      "n": "rme-092",
-      "company": "Westshoreroofing",
-      "domain": "westshoreroofing.com",
-      "market": "Unknown — West Shore region",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-093",
-      "company": "Calihomesimprovements",
-      "domain": "calihomesimprovements.com",
-      "market": "CA",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Home improvement generalist — roofing is one service among many"
-    },
-    {
-      "n": "rme-094",
-      "company": "Innovativeroofingsystemsoh",
-      "domain": "innovativeroofingsystemsoh.com",
-      "market": "OH",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — Ohio market with no conversion path"
-    },
-    {
-      "n": "rme-096",
-      "company": "Qualityroofingspecialists",
-      "domain": "qualityroofingspecialists.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-097",
-      "company": "Buildwithabsolute",
-      "domain": "buildwithabsolute.com",
-      "market": "Unknown",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Construction generalist — no roofing-specific identity"
-    },
-    {
       "n": "rme-098",
       "company": "Solvistaroofing",
       "domain": "solvistaroofing.com",
@@ -2388,60 +2603,6 @@
       "phone": "",
       "risk": "MEDIUM",
       "leak_1": "No contact information — zero conversion path"
-    },
-    {
-      "n": "rme-099",
-      "company": "Roofdoctorphilly",
-      "domain": "roofdoctorphilly.com",
-      "market": "Philadelphia PA",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No contact information — Philadelphia market with no conversion path"
-    },
-    {
-      "n": "rme-100",
-      "company": "Elpasoroofings",
-      "domain": "elpasoroofings.com",
-      "market": "El Paso TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Keyword domain competes in same market as metaep.com and pioneerroofingep.com — loses on trust"
-    },
-    {
-      "n": "rme-107",
-      "company": "Frtroof",
-      "domain": "frtroof.com",
-      "market": "Unknown",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-110",
-      "company": "Lynchroofingaz",
-      "domain": "lynchroofingaz.com",
-      "market": "Phoenix AZ",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-112",
-      "company": "Wilsonroofing",
-      "domain": "wilsonroofing.com",
-      "market": "Austin TX",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-113",
-      "company": "Charlottesbestroofing",
-      "domain": "charlottesbestroofing.com",
-      "market": "Charlotte NC",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
       "n": "rme-122",
@@ -2453,37 +2614,10 @@
       "leak_1": "Landing page returned 403/blocked or no HTML response — bot protection prevents CRO audit"
     },
     {
-      "n": "rme-123",
-      "company": "Valorhome",
-      "domain": "valorhome.com",
-      "market": "Washington DC",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-135",
-      "company": "Premierroofersnh",
-      "domain": "premierroofersnh.com",
-      "market": "Boston MA",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
       "n": "rme-141",
       "company": "Toproofing",
       "domain": "toproofing.pro",
       "market": "San Jose CA | San Francisco CA",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-148",
-      "company": "Atombuildersinc",
-      "domain": "atombuildersinc.com",
-      "market": "Los Angeles CA",
       "phone": "Not found on page",
       "risk": "MEDIUM",
       "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
@@ -2494,16 +2628,7 @@
       "domain": "allroofscommercialroofing.com",
       "market": "Chicago IL",
       "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-180",
-      "company": "Idealprecisionroofing",
-      "domain": "idealprecisionroofing.com",
-      "market": "San Antonio TX",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
@@ -2516,57 +2641,12 @@
       "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
-      "n": "rme-190",
-      "company": "Pinnacleext",
-      "domain": "pinnacleext.com",
-      "market": "Nashville TN",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-193",
-      "company": "Resultsroofing",
-      "domain": "resultsroofing.com",
-      "market": "Houston TX",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-198",
-      "company": "Roofjoker",
-      "domain": "roofjoker.com",
-      "market": "Austin TX",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-201",
-      "company": "Socalroof",
-      "domain": "socalroof.com",
-      "market": "Los Angeles CA",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-204",
-      "company": "Summitbuildingroofing",
-      "domain": "summitbuildingroofing.com",
-      "market": "Columbus OH",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
       "n": "rme-208",
       "company": "Allroofsemergencyroofing",
       "domain": "allroofsemergencyroofing.com",
       "market": "Chicago IL",
       "phone": "Not found on page",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
@@ -2575,16 +2655,7 @@
       "domain": "blacklineroofingaz.com",
       "market": "Phoenix AZ",
       "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-221",
-      "company": "Greaterbostonroofing",
-      "domain": "greaterbostonroofing.com",
-      "market": "Boston MA",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
@@ -2592,33 +2663,6 @@
       "company": "Matthewlorandroofing",
       "domain": "matthewlorandroofing.com",
       "market": "Austin TX",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-233",
-      "company": "Monragaroofing",
-      "domain": "monragaroofing.com",
-      "market": "Charlotte NC",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-237",
-      "company": "Newroofingpro",
-      "domain": "newroofingpro.com",
-      "market": "Charlotte NC + 2 more",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-243",
-      "company": "Raganroofingnashville",
-      "domain": "raganroofingnashville.com",
-      "market": "Nashville TN",
       "phone": "Not found on page",
       "risk": "MEDIUM",
       "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
@@ -2642,39 +2686,12 @@
       "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
-      "n": "rme-256",
-      "company": "Topsideroofingokc",
-      "domain": "topsideroofingokc.com",
-      "market": "Oklahoma City OK",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-259",
-      "company": "314Roofing",
-      "domain": "314roofing.com",
-      "market": "Houston TX",
-      "phone": "Not found on page",
-      "risk": "HIGH",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-263",
-      "company": "Allstar Roofing",
-      "domain": "allstar-roofing.com",
-      "market": "El Paso TX",
-      "phone": "Not accessible — site blocked",
-      "risk": "MEDIUM",
-      "leak_1": "Landing page returned 403/blocked or no HTML response — bot protection prevents CRO audit"
-    },
-    {
       "n": "rme-282",
       "company": "Fortworthroofing",
       "domain": "fortworthroofing.com",
       "market": "Dallas-Fort Worth TX",
       "phone": "Not found on page",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
@@ -2683,16 +2700,7 @@
       "domain": "ghostroofing.com",
       "market": "Phoenix AZ",
       "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
-    },
-    {
-      "n": "rme-285",
-      "company": "Greaterchicagoroofing",
-      "domain": "greaterchicagoroofing.com",
-      "market": "Chicago IL",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     },
     {
@@ -2701,17 +2709,8 @@
       "domain": "greatroofingofhouston.com",
       "market": "Houston TX",
       "phone": "Not accessible — site blocked",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": "Landing page returned 403/blocked or no HTML response — bot protection prevents CRO audit"
-    },
-    {
-      "n": "rme-295",
-      "company": "Oklahoma Roofing",
-      "domain": "oklahoma-roofing.co",
-      "market": "Oklahoma City OK",
-      "phone": "Not found on page",
-      "risk": "MEDIUM",
-      "leak_1": "No clickable tel: phone link found on landing page — mobile callers must hunt for contact info"
     }
   ]
 }

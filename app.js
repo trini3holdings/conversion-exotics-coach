@@ -2171,6 +2171,60 @@ async function init() {
   }
   document.getElementById('backendSyncNow').addEventListener('click', () => drainSyncQueue());
 
+  // v3.9.1 — Push EVERY prospect across all 4 brands to the master sheet (upsert by domain).
+  // Used after a phone-research drop — floods the new phones into the Sheet.
+  const pushAllBtn = document.getElementById('backendPushAll');
+  if (pushAllBtn) {
+    pushAllBtn.addEventListener('click', async () => {
+      const statusEl = document.getElementById('backendStatus');
+      if (!state.backendUrl) {
+        statusEl.textContent = 'Connect the backend first.';
+        statusEl.className = 'backend-status err';
+        return;
+      }
+      if (!confirm('Push every prospect (all 4 brands) to the master sheet?\n\nUpserts by domain — safe to re-run. Will queue ~500 rows.')) return;
+      statusEl.textContent = 'Loading all brands…';
+      statusEl.className = 'backend-status';
+
+      let queued = 0;
+      for (const brandSlug of Object.keys(BRANDS)) {
+        if (!BRANDS[brandSlug].active) continue;
+        try {
+          const r = await fetch(`brands/${brandSlug}/prospects.json?cb=${Date.now()}`);
+          if (!r.ok) continue;
+          const data = await r.json();
+          const arr = Array.isArray(data) ? data : (data.prospects || data.items || []);
+          arr.forEach(p => {
+            if (!p || !p.domain) return;
+            state.syncQueue.push({
+              action: 'addProspect',
+              brand: brandSlug,
+              prospect: {
+                n: p.n || '',
+                domain: p.domain || '',
+                company: p.company || p.domain || '',
+                phone: p.phone || '',
+                email: p.email || '',
+                market: p.market || '',
+                risk: p.risk || '',
+                notes: p.notes || (p.phone_source ? `Phone source: ${p.phone_source}` : '')
+              }
+            });
+            queued++;
+          });
+        } catch (e) {
+          console.warn('Failed to load brand', brandSlug, e);
+        }
+      }
+      saveState();
+      statusEl.textContent = `Queued ${queued} prospects. Draining to master sheet…`;
+      await drainSyncQueue();
+      statusEl.innerHTML = `✓ Pushed <strong>${queued}</strong> prospects to master sheet. <a href="${state.masterSheetUrl || '#'}" target="_blank">Open</a>`;
+      statusEl.className = 'backend-status ok';
+      showToast(`Synced ${queued} prospects to master sheet`);
+    });
+  }
+
   // ============== BULK IMPORT PHONES (v3.9.0) ==============
   const bulkCsvEl = document.getElementById('bulkPhonesCsv');
   const bulkStatusEl = document.getElementById('bulkPhonesStatus');

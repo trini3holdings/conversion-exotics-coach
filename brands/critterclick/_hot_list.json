@@ -2,7 +2,7 @@
   "_meta": {
     "brand": "critterclick",
     "audit_value": 3000,
-    "generated_at": "2026-05-27T22:25:08.629913+00:00",
+    "generated_at": "2026-05-27T22:45:07.689069+00:00",
     "generated_from": "multi_reaudit.py (heuristic re-score, moderate threshold)",
     "total_prospects": 102,
     "tier_definitions": {
@@ -60,6 +60,15 @@
       "leak_1": "Gmail email on a professional wildlife service — trust red flag"
     },
     {
+      "n": 14,
+      "company": "Atticrawl",
+      "domain": "atticrawl.com",
+      "market": "TX",
+      "phone": "(800) 682-1602",
+      "risk": "HIGH",
+      "leak_1": "No phone or email — critical conversion blocker for multi-city TX operator"
+    },
+    {
       "n": 18,
       "company": "Elitewildlifeservices",
       "domain": "elitewildlifeservices.com",
@@ -67,15 +76,6 @@
       "phone": "(832) 727-9181",
       "risk": "HIGH",
       "leak_1": "Gmail email on a BBB-accredited company — undercuts brand image"
-    },
-    {
-      "n": 21,
-      "company": "Omegaanimalremovaldfw",
-      "domain": "omegaanimalremovaldfw.com",
-      "market": "Dallas TX",
-      "phone": "(214) 998-2350",
-      "risk": "HIGH",
-      "leak_1": "Likely sub-brand of omegaanimalremoval.com — duplicate domain strategy"
     },
     {
       "n": 22,
@@ -105,15 +105,6 @@
       "leak_1": "Wildlife removal is a minor sub-service; general home services primary"
     },
     {
-      "n": 47,
-      "company": "Dfwwildlife",
-      "domain": "dfwwildlife.com",
-      "market": "Dallas TX",
-      "phone": "(817) 606-7607",
-      "risk": "HIGH",
-      "leak_1": "SMS-only contact — low frequency site with limited visibility"
-    },
-    {
       "n": 53,
       "company": "Xceptionalwildlife",
       "domain": "xceptionalwildlife.com",
@@ -130,6 +121,15 @@
       "phone": "(888) 479-4298",
       "risk": "HIGH",
       "leak_1": "National chain pest brand — rodent removal is a commodity service"
+    },
+    {
+      "n": 79,
+      "company": "86Pest",
+      "domain": "86pest.com",
+      "market": "Philadelphia PA",
+      "phone": "(609) 350-3158",
+      "risk": "HIGH",
+      "leak_1": "Brand name '86 Pest' — unusual branding for wildlife buyer trust"
     },
     {
       "n": 103,
@@ -151,17 +151,261 @@
     }
   ],
   "tier_2_medium_risk_callable": [],
-  "tier_3_low_risk_callable": [],
-  "tier_4_warm_callable": [
+  "tier_3_low_risk_callable": [
     {
       "n": 3,
       "company": "Crittercontrol",
       "domain": "crittercontrol.com",
       "market": "National",
       "phone": "(800) 274-8837",
-      "risk": "LOW",
+      "risk": "MEDIUM",
       "leak_1": "Franchise model — brand consistency varies by local office quality"
     },
+    {
+      "n": 17,
+      "company": "Omegaanimalremoval",
+      "domain": "omegaanimalremoval.com",
+      "market": "Dallas / Houston / Austin TX",
+      "phone": "(214) 998-2350",
+      "risk": "MEDIUM",
+      "leak_1": "Services page scored — browse intent, not conversion intent"
+    },
+    {
+      "n": 21,
+      "company": "Omegaanimalremovaldfw",
+      "domain": "omegaanimalremovaldfw.com",
+      "market": "Dallas TX",
+      "phone": "(214) 998-2350",
+      "risk": "MEDIUM",
+      "leak_1": "Likely sub-brand of omegaanimalremoval.com — duplicate domain strategy"
+    },
+    {
+      "n": 23,
+      "company": "Allcityanimaltrapping",
+      "domain": "allcityanimaltrapping.com",
+      "market": "Los Angeles CA",
+      "phone": "(877) 724-5314",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email — critical conversion blocker for LA market"
+    },
+    {
+      "n": 27,
+      "company": "Cantupestservices",
+      "domain": "cantupestservices.com",
+      "market": "Dallas / Houston TX",
+      "phone": "(281) 519-6707",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email on contact page — critical conversion blocker"
+    },
+    {
+      "n": 28,
+      "company": "Anytimepestelimination",
+      "domain": "anytimepestelimination.com",
+      "market": "Austin / San Antonio TX",
+      "phone": "(832) 514-2400",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 29,
+      "company": "Trapperjohnanimalcontrol",
+      "domain": "trapperjohnanimalcontrol.com",
+      "market": "South FL",
+      "phone": "(561) 844-4866",
+      "risk": "MEDIUM",
+      "leak_1": "Personal brand name not featured on homepage — missed trust opportunity"
+    },
+    {
+      "n": 31,
+      "company": "Landmarkpest",
+      "domain": "landmarkpest.com",
+      "market": "Chicago IL",
+      "phone": "(847) 350-7378",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 32,
+      "company": "Allstaranimaltrapping",
+      "domain": "allstaranimaltrapping.com",
+      "market": "Los Angeles CA",
+      "phone": "(323) 540-2011",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker for LA market"
+    },
+    {
+      "n": 37,
+      "company": "Aprowildlife",
+      "domain": "aprowildlife.com",
+      "market": "Austin TX",
+      "phone": "(512) 277-5273",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 38,
+      "company": "Topperswildliferemoval",
+      "domain": "topperswildliferemoval.com",
+      "market": "Dallas TX",
+      "phone": "(917) 393-0506",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker for DFW"
+    },
+    {
+      "n": 40,
+      "company": "Quickcaptureanimal",
+      "domain": "quickcaptureanimal.com",
+      "market": "Dallas TX",
+      "phone": "(972) 369-6499",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 41,
+      "company": "Houstontexasrodentremoval",
+      "domain": "houstontexasrodentremoval.com",
+      "market": "Houston TX",
+      "phone": "(281) 734-6387",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 42,
+      "company": "Houstonbatremoval",
+      "domain": "houstonbatremoval.com",
+      "market": "Houston TX",
+      "phone": "(832) 217-9470",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 43,
+      "company": "Parkerwildlifecontrol",
+      "domain": "parkerwildlifecontrol.com",
+      "market": "New Orleans LA",
+      "phone": "(504) 338-7517",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found from public sources"
+    },
+    {
+      "n": 45,
+      "company": "Cageycritter",
+      "domain": "cageycritter.com",
+      "market": "San Antonio TX",
+      "phone": "(210) 846-2694",
+      "risk": "MEDIUM",
+      "leak_1": "SMS-only contact — desktop buyers excluded"
+    },
+    {
+      "n": 46,
+      "company": "Xrawc",
+      "domain": "xrawc.com",
+      "market": "Dallas TX",
+      "phone": "(469) 228-4055",
+      "risk": "MEDIUM",
+      "leak_1": "Cryptic domain name (xrawc) has zero brand recall or trust signal"
+    },
+    {
+      "n": 47,
+      "company": "Dfwwildlife",
+      "domain": "dfwwildlife.com",
+      "market": "Dallas TX",
+      "phone": "(817) 606-7607",
+      "risk": "MEDIUM",
+      "leak_1": "SMS-only contact — low frequency site with limited visibility"
+    },
+    {
+      "n": 48,
+      "company": "Wing8Pest",
+      "domain": "wing8pest.com",
+      "market": "Forney TX (DFW suburb)",
+      "phone": "(833) 888-9464",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 50,
+      "company": "Jessescrittercontrol",
+      "domain": "jessescrittercontrol.com",
+      "market": "Austin TX",
+      "phone": "(512) 230-7799",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 51,
+      "company": "Austinswildliferemoval",
+      "domain": "austinswildliferemoval.com",
+      "market": "Austin TX",
+      "phone": "(512) 278-0278",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found despite high frequency (25) in Austin"
+    },
+    {
+      "n": 52,
+      "company": "Homelandwildlife",
+      "domain": "homelandwildlife.com",
+      "market": "San Antonio TX",
+      "phone": "(210) 776-6100",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 54,
+      "company": "Allamericanpestandwildlife",
+      "domain": "allamericanpestandwildlife.com",
+      "market": "New Orleans LA",
+      "phone": "(985) 707-7585",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 59,
+      "company": "Aaacwildliferemoval",
+      "domain": "aaacwildliferemoval.com",
+      "market": "National",
+      "phone": "(832) 793-6737",
+      "risk": "MEDIUM",
+      "leak_1": "CEO email as primary contact — unusual access expectation for customers"
+    },
+    {
+      "n": 60,
+      "company": "Wildlifeinfantry",
+      "domain": "wildlifeinfantry.com",
+      "market": "Philadelphia PA",
+      "phone": "(484) 716-2177",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 61,
+      "company": "Adrianbatremovalanimalcontrol",
+      "domain": "adrianbatremovalanimalcontrol.com",
+      "market": "New York City NY",
+      "phone": "(855) 858-7378",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — long confusing domain name"
+    },
+    {
+      "n": 62,
+      "company": "Mountvernonwildliferemoval",
+      "domain": "mountvernonwildliferemoval.com",
+      "market": "Westchester NY (Mount Vernon)",
+      "phone": "(914) 502-3155",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 93,
+      "company": "Abearpestcontrol",
+      "domain": "abearpestcontrol.com",
+      "market": "San Antonio TX",
+      "phone": "(210) 650-3200",
+      "risk": "MEDIUM",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    }
+  ],
+  "tier_4_warm_callable": [
     {
       "n": 8,
       "company": "Critterstop",
@@ -226,15 +470,6 @@
       "leak_1": "Hyper-niche: iguana only — zero relevance outside South Florida"
     },
     {
-      "n": 17,
-      "company": "Omegaanimalremoval",
-      "domain": "omegaanimalremoval.com",
-      "market": "Dallas / Houston / Austin TX",
-      "phone": "(214) 998-2350",
-      "risk": "LOW",
-      "leak_1": "Services page scored — browse intent, not conversion intent"
-    },
-    {
       "n": 20,
       "company": "Wildliferemovalexpertsllc",
       "domain": "wildliferemovalexpertsllc.com",
@@ -280,15 +515,6 @@
       "leak_1": "SMS-only contact — desktop buyers excluded"
     },
     {
-      "n": 45,
-      "company": "Cageycritter",
-      "domain": "cageycritter.com",
-      "market": "San Antonio TX",
-      "phone": "(210) 846-2694",
-      "risk": "LOW",
-      "leak_1": "SMS-only contact — desktop buyers excluded"
-    },
-    {
       "n": 58,
       "company": "Thecritterguys",
       "domain": "thecritterguys.com",
@@ -298,13 +524,40 @@
       "leak_1": "'Info@' email capitalization error — signals copy quality gaps"
     },
     {
-      "n": 59,
-      "company": "Aaacwildliferemoval",
-      "domain": "aaacwildliferemoval.com",
-      "market": "National",
-      "phone": "(832) 793-6737",
+      "n": 63,
+      "company": "Vancewildlife",
+      "domain": "vancewildlife.com",
+      "market": "Philadelphia PA",
+      "phone": "(302) 824-4231",
       "risk": "LOW",
-      "leak_1": "CEO email as primary contact — unusual access expectation for customers"
+      "leak_1": "No phone or email found from public sources"
+    },
+    {
+      "n": 64,
+      "company": "Apexanimalcontrol",
+      "domain": "apexanimalcontrol.com",
+      "market": "Phoenix AZ",
+      "phone": "(480) 318-0457",
+      "risk": "LOW",
+      "leak_1": "No phone or email found — critical conversion blocker for Phoenix market"
+    },
+    {
+      "n": 65,
+      "company": "Snakeguru",
+      "domain": "snakeguru.com",
+      "market": "Phoenix AZ",
+      "phone": "(928) 533-6276",
+      "risk": "LOW",
+      "leak_1": "Snake-only niche limits cross-sell to other wildlife services"
+    },
+    {
+      "n": 68,
+      "company": "Simplygreenpest",
+      "domain": "simplygreenpest.com",
+      "market": "Phoenix AZ",
+      "phone": "(480) 550-9220",
+      "risk": "LOW",
+      "leak_1": "General green pest control — no wildlife specialty"
     },
     {
       "n": 69,
@@ -361,6 +614,33 @@
       "leak_1": "Midwest regional pest chain — squirrel/raccoon keywords are secondary"
     },
     {
+      "n": 78,
+      "company": "Landmarkpest",
+      "domain": "landmarkpest.com",
+      "market": "Chicago IL",
+      "phone": "(847) 350-7378",
+      "risk": "LOW",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 81,
+      "company": "Dynamitepestcontrol",
+      "domain": "dynamitepestcontrol.com",
+      "market": "Philadelphia PA",
+      "phone": "(215) 474-2700",
+      "risk": "LOW",
+      "leak_1": "Brand name 'Dynamite' implies chemical extermination — not critter removal"
+    },
+    {
+      "n": 82,
+      "company": "Expertexterminatingphiladelphia",
+      "domain": "expertexterminatingphiladelphia.com",
+      "market": "Philadelphia PA",
+      "phone": "(215) 261-7007",
+      "risk": "LOW",
+      "leak_1": "Long domain name with 'exterminating' reduces wildlife removal credibility"
+    },
+    {
       "n": 83,
       "company": "Ecotechpestcontrol",
       "domain": "ecotechpestcontrol.com",
@@ -368,6 +648,96 @@
       "phone": "(312) 546-8778",
       "risk": "LOW",
       "leak_1": "General eco-friendly pest control — rodent/squirrel keywords are secondary"
+    },
+    {
+      "n": 84,
+      "company": "Drdeathinc",
+      "domain": "drdeathinc.com",
+      "market": "Miami",
+      "phone": "(786) 468-2847",
+      "risk": "LOW",
+      "leak_1": "Brand name 'Dr. Death Inc.' — alarming name for humane wildlife buyers"
+    },
+    {
+      "n": 85,
+      "company": "Dadepestsolutions",
+      "domain": "dadepestsolutions.com",
+      "market": "Miami",
+      "phone": "(305) 330-5565",
+      "risk": "LOW",
+      "leak_1": "General pest solutions — rodent removal is one of many services"
+    },
+    {
+      "n": 86,
+      "company": "Flapest",
+      "domain": "flapest.com",
+      "market": "Miami",
+      "phone": "(833) 977-1623",
+      "risk": "LOW",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 87,
+      "company": "Ngpest",
+      "domain": "ngpest.com",
+      "market": "Palm Beach FL",
+      "phone": "(470) 375-0496",
+      "risk": "LOW",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 88,
+      "company": "Ondemandpestcontrol",
+      "domain": "ondemandpestcontrol.com",
+      "market": "Broward FL",
+      "phone": "(954) 947-0805",
+      "risk": "LOW",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 89,
+      "company": "Davespestcontrol",
+      "domain": "davespestcontrol.com",
+      "market": "Broward FL",
+      "phone": "(214) 748-3630",
+      "risk": "LOW",
+      "leak_1": "No phone or email found"
+    },
+    {
+      "n": 90,
+      "company": "Purcorpest",
+      "domain": "purcorpest.com",
+      "market": "Broward FL",
+      "phone": "(855) 615-0828",
+      "risk": "LOW",
+      "leak_1": "No phone or email found"
+    },
+    {
+      "n": 91,
+      "company": "Allbeesremoval",
+      "domain": "allbeesremoval.com",
+      "market": "Broward FL",
+      "phone": "(954) 547-9951",
+      "risk": "LOW",
+      "leak_1": "Bee removal specialist — rodent keyword is opportunistic"
+    },
+    {
+      "n": 92,
+      "company": "Ecovalleypestaz",
+      "domain": "ecovalleypestaz.com",
+      "market": "Phoenix AZ",
+      "phone": "(602) 567-0797",
+      "risk": "LOW",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 94,
+      "company": "Xoutpest",
+      "domain": "xoutpest.com",
+      "market": "San Antonio TX",
+      "phone": "(512) 271-5656",
+      "risk": "LOW",
+      "leak_1": "No phone or email found — critical conversion blocker"
     },
     {
       "n": 95,
@@ -388,6 +758,42 @@
       "leak_1": "No email publicly listed — limits digital inquiry for NYC market"
     },
     {
+      "n": 97,
+      "company": "Newerapestcontrol",
+      "domain": "newerapestcontrol.com",
+      "market": "Miami",
+      "phone": "(786) 462-5912",
+      "risk": "LOW",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 98,
+      "company": "Napervillepestremoval",
+      "domain": "napervillepestremoval.com",
+      "market": "Chicago IL (Naperville suburb)",
+      "phone": "(630) 348-7463",
+      "risk": "LOW",
+      "leak_1": "Naperville sub-market is a small Chicago suburb — limited reach"
+    },
+    {
+      "n": 100,
+      "company": "Frommspestcontrol",
+      "domain": "frommspestcontrol.com",
+      "market": "Phoenix AZ",
+      "phone": "(602) 334-1513",
+      "risk": "LOW",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
+      "n": 101,
+      "company": "Humanechoicewildlifecontrol",
+      "domain": "humanechoicewildlifecontrol.com",
+      "market": "Houston TX",
+      "phone": "(713) 258-0411",
+      "risk": "LOW",
+      "leak_1": "No phone or email found — critical conversion blocker"
+    },
+    {
       "n": 105,
       "company": "Phoenixanimalexterminator",
       "domain": "phoenixanimalexterminator.com",
@@ -404,17 +810,8 @@
       "domain": "wildlife-pros-now.com",
       "market": "AZ Multi",
       "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email anywhere — critical conversion killer"
-    },
-    {
-      "n": 14,
-      "company": "Atticrawl",
-      "domain": "atticrawl.com",
-      "market": "TX",
-      "phone": "",
       "risk": "HIGH",
-      "leak_1": "No phone or email — critical conversion blocker for multi-city TX operator"
+      "leak_1": "No phone or email anywhere — critical conversion killer"
     },
     {
       "n": 19,
@@ -422,17 +819,8 @@
       "domain": "pestprosnow.com",
       "market": "Unknown market",
       "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email — critical conversion blocker"
-    },
-    {
-      "n": 23,
-      "company": "Allcityanimaltrapping",
-      "domain": "allcityanimaltrapping.com",
-      "market": "Los Angeles CA",
-      "phone": "",
       "risk": "HIGH",
-      "leak_1": "No phone or email — critical conversion blocker for LA market"
+      "leak_1": "No phone or email — critical conversion blocker"
     },
     {
       "n": 26,
@@ -440,53 +828,8 @@
       "domain": "miamiwildlife.com",
       "market": "Miami FL",
       "phone": "",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": "No phone or email — premium domain with no conversion pathway"
-    },
-    {
-      "n": 27,
-      "company": "Cantupestservices",
-      "domain": "cantupestservices.com",
-      "market": "Dallas / Houston TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email on contact page — critical conversion blocker"
-    },
-    {
-      "n": 28,
-      "company": "Anytimepestelimination",
-      "domain": "anytimepestelimination.com",
-      "market": "Austin / San Antonio TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 29,
-      "company": "Trapperjohnanimalcontrol",
-      "domain": "trapperjohnanimalcontrol.com",
-      "market": "South FL",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Personal brand name not featured on homepage — missed trust opportunity"
-    },
-    {
-      "n": 31,
-      "company": "Landmarkpest",
-      "domain": "landmarkpest.com",
-      "market": "Chicago IL",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 32,
-      "company": "Allstaranimaltrapping",
-      "domain": "allstaranimaltrapping.com",
-      "market": "Los Angeles CA",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker for LA market"
     },
     {
       "n": 33,
@@ -512,80 +855,8 @@
       "domain": "hunterswildliferemoval.com",
       "market": "New York City NY",
       "phone": "",
-      "risk": "MEDIUM",
+      "risk": "HIGH",
       "leak_1": "No phone or email found — critical conversion blocker for NYC market"
-    },
-    {
-      "n": 37,
-      "company": "Aprowildlife",
-      "domain": "aprowildlife.com",
-      "market": "Austin TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 38,
-      "company": "Topperswildliferemoval",
-      "domain": "topperswildliferemoval.com",
-      "market": "Dallas TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker for DFW"
-    },
-    {
-      "n": 40,
-      "company": "Quickcaptureanimal",
-      "domain": "quickcaptureanimal.com",
-      "market": "Dallas TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 41,
-      "company": "Houstontexasrodentremoval",
-      "domain": "houstontexasrodentremoval.com",
-      "market": "Houston TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 42,
-      "company": "Houstonbatremoval",
-      "domain": "houstonbatremoval.com",
-      "market": "Houston TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 43,
-      "company": "Parkerwildlifecontrol",
-      "domain": "parkerwildlifecontrol.com",
-      "market": "New Orleans LA",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found from public sources"
-    },
-    {
-      "n": 46,
-      "company": "Xrawc",
-      "domain": "xrawc.com",
-      "market": "Dallas TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Cryptic domain name (xrawc) has zero brand recall or trust signal"
-    },
-    {
-      "n": 48,
-      "company": "Wing8Pest",
-      "domain": "wing8pest.com",
-      "market": "Forney TX (DFW suburb)",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
     },
     {
       "n": 49,
@@ -595,42 +866,6 @@
       "phone": "",
       "risk": "HIGH",
       "leak_1": "No phone or email found — wildlife removal appears secondary"
-    },
-    {
-      "n": 50,
-      "company": "Jessescrittercontrol",
-      "domain": "jessescrittercontrol.com",
-      "market": "Austin TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 51,
-      "company": "Austinswildliferemoval",
-      "domain": "austinswildliferemoval.com",
-      "market": "Austin TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found despite high frequency (25) in Austin"
-    },
-    {
-      "n": 52,
-      "company": "Homelandwildlife",
-      "domain": "homelandwildlife.com",
-      "market": "San Antonio TX",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 54,
-      "company": "Allamericanpestandwildlife",
-      "domain": "allamericanpestandwildlife.com",
-      "market": "New Orleans LA",
-      "phone": "",
-      "risk": "HIGH",
-      "leak_1": "No phone or email found — critical conversion blocker"
     },
     {
       "n": 56,
@@ -651,60 +886,6 @@
       "leak_1": "Generic brand name with no owner name or differentiator"
     },
     {
-      "n": 60,
-      "company": "Wildlifeinfantry",
-      "domain": "wildlifeinfantry.com",
-      "market": "Philadelphia PA",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 61,
-      "company": "Adrianbatremovalanimalcontrol",
-      "domain": "adrianbatremovalanimalcontrol.com",
-      "market": "New York City NY",
-      "phone": "",
-      "risk": "HIGH",
-      "leak_1": "No phone or email found — long confusing domain name"
-    },
-    {
-      "n": 62,
-      "company": "Mountvernonwildliferemoval",
-      "domain": "mountvernonwildliferemoval.com",
-      "market": "Westchester NY (Mount Vernon)",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 63,
-      "company": "Vancewildlife",
-      "domain": "vancewildlife.com",
-      "market": "Philadelphia PA",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found from public sources"
-    },
-    {
-      "n": 64,
-      "company": "Apexanimalcontrol",
-      "domain": "apexanimalcontrol.com",
-      "market": "Phoenix AZ",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker for Phoenix market"
-    },
-    {
-      "n": 65,
-      "company": "Snakeguru",
-      "domain": "snakeguru.com",
-      "market": "Phoenix AZ",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Snake-only niche limits cross-sell to other wildlife services"
-    },
-    {
       "n": 66,
       "company": "Wildlife Removal San Antonio",
       "domain": "wildlife removal san antonio",
@@ -723,15 +904,6 @@
       "leak_1": "No domain found — GBP-only competitor"
     },
     {
-      "n": 68,
-      "company": "Simplygreenpest",
-      "domain": "simplygreenpest.com",
-      "market": "Phoenix AZ",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "General green pest control — no wildlife specialty"
-    },
-    {
       "n": 74,
       "company": "Skilled Pros",
       "domain": "skilled-pros.com",
@@ -741,166 +913,13 @@
       "leak_1": "Lead-gen/directory site — not a direct service provider"
     },
     {
-      "n": 78,
-      "company": "Landmarkpest",
-      "domain": "landmarkpest.com",
-      "market": "Chicago IL",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 79,
-      "company": "86Pest",
-      "domain": "86pest.com",
-      "market": "Philadelphia PA",
-      "phone": "",
-      "risk": "HIGH",
-      "leak_1": "Brand name '86 Pest' — unusual branding for wildlife buyer trust"
-    },
-    {
       "n": 80,
       "company": "Baxterpestcontrol",
       "domain": "baxterpestcontrol.com",
       "market": "Philadelphia PA",
       "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 81,
-      "company": "Dynamitepestcontrol",
-      "domain": "dynamitepestcontrol.com",
-      "market": "Philadelphia PA",
-      "phone": "",
-      "risk": "MEDIUM",
-      "leak_1": "Brand name 'Dynamite' implies chemical extermination — not critter removal"
-    },
-    {
-      "n": 82,
-      "company": "Expertexterminatingphiladelphia",
-      "domain": "expertexterminatingphiladelphia.com",
-      "market": "Philadelphia PA",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "Long domain name with 'exterminating' reduces wildlife removal credibility"
-    },
-    {
-      "n": 84,
-      "company": "Drdeathinc",
-      "domain": "drdeathinc.com",
-      "market": "Miami",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "Brand name 'Dr. Death Inc.' — alarming name for humane wildlife buyers"
-    },
-    {
-      "n": 85,
-      "company": "Dadepestsolutions",
-      "domain": "dadepestsolutions.com",
-      "market": "Miami",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "General pest solutions — rodent removal is one of many services"
-    },
-    {
-      "n": 86,
-      "company": "Flapest",
-      "domain": "flapest.com",
-      "market": "Miami",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 87,
-      "company": "Ngpest",
-      "domain": "ngpest.com",
-      "market": "Palm Beach FL",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 88,
-      "company": "Ondemandpestcontrol",
-      "domain": "ondemandpestcontrol.com",
-      "market": "Broward FL",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 89,
-      "company": "Davespestcontrol",
-      "domain": "davespestcontrol.com",
-      "market": "Broward FL",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "No phone or email found"
-    },
-    {
-      "n": 90,
-      "company": "Purcorpest",
-      "domain": "purcorpest.com",
-      "market": "Broward FL",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "No phone or email found"
-    },
-    {
-      "n": 91,
-      "company": "Allbeesremoval",
-      "domain": "allbeesremoval.com",
-      "market": "Broward FL",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "Bee removal specialist — rodent keyword is opportunistic"
-    },
-    {
-      "n": 92,
-      "company": "Ecovalleypestaz",
-      "domain": "ecovalleypestaz.com",
-      "market": "Phoenix AZ",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 93,
-      "company": "Abearpestcontrol",
-      "domain": "abearpestcontrol.com",
-      "market": "San Antonio TX",
-      "phone": "",
       "risk": "HIGH",
       "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 94,
-      "company": "Xoutpest",
-      "domain": "xoutpest.com",
-      "market": "San Antonio TX",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 97,
-      "company": "Newerapestcontrol",
-      "domain": "newerapestcontrol.com",
-      "market": "Miami",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 98,
-      "company": "Napervillepestremoval",
-      "domain": "napervillepestremoval.com",
-      "market": "Chicago IL (Naperville suburb)",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "Naperville sub-market is a small Chicago suburb — limited reach"
     },
     {
       "n": 99,
@@ -912,30 +931,12 @@
       "leak_1": "Brand name 'Get Rid of Those Bugs' — implies insect-only focus"
     },
     {
-      "n": 100,
-      "company": "Frommspestcontrol",
-      "domain": "frommspestcontrol.com",
-      "market": "Phoenix AZ",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
-      "n": 101,
-      "company": "Humanechoicewildlifecontrol",
-      "domain": "humanechoicewildlifecontrol.com",
-      "market": "Houston TX",
-      "phone": "",
-      "risk": "LOW",
-      "leak_1": "No phone or email found — critical conversion blocker"
-    },
-    {
       "n": 102,
       "company": "Trapperjohnschmidt",
       "domain": "trapperjohnschmidt.com",
       "market": "New Orleans LA",
       "phone": "",
-      "risk": "LOW",
+      "risk": "HIGH",
       "leak_1": "No phone or email found — very low frequency"
     }
   ]
