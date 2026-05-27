@@ -1,176 +1,159 @@
 {
   "brand": "ConversionJet",
   "audit_value": 4500,
-  "target_length_sec": 180,
+  "target_length_sec": 150,
   "register": "Private aviation operators — plain English, no insider jargon. NEVER use: 'Part 135', 'ARGUS', 'Wyvern', 'fractional ownership', 'jet card', 'empty-leg', 'flight department KPI'. Replace with: 'private jet charter company', 'people who fly private', 'private flight shopper', 'inquiry form', 'quote request'. Tone: discreet, surgical, neutral. No hype, no emoji, no high-pressure. Jeremy Miner NEPQ + PAS structure.",
   "variants": {
     "A": {
       "name": "Pattern Interrupt + Soft Disarm",
-      "desc": "NEPQ + PAS. Best for never-engaged private jet charter operators with verified phone. Permission-based open, surgical problem reveal, two leaks + withheld third. ~205s.",
+      "desc": "NEPQ + PAS. Best for never-engaged private jet charter operators with verified phone. Permission-based open, surgical reveal, two leaks + withheld third. ~150s.",
       "beats": [
         {
-          "t": 22,
+          "t": 18,
           "phase": "OPEN",
           "title": "Disarm + Permission",
-          "line": "I know this is out of the blue — feel free to hang up if I caught you wrong. I'm not even sure I'm reaching the right person — you're with {company}, correct? I pulled up your website this morning. We do a quiet review every quarter on the websites of private aviation operators — looking at the page somebody actually sees after they click an ad or land from a Google search.",
-          "responses": [
-            "Yeah, that's us",
-            "Who is this?",
-            "What's this regarding?"
-          ],
-          "followup": "Totally fair — I'll be quick. Do you have 90 seconds, or did I catch you mid-something?",
-          "note": "Miner low-status open. 'Not even sure I'm reaching the right person' lowers defenses. Pause after 'every quarter.' Don't fill silence. HNW operators reward composure."
-        },
-        {
-          "t": 38,
-          "phase": "PROBLEM",
-          "title": "Surface the Buyer's Reality",
-          "line": "Quick context on what we actually look at — when somebody who flies private lands on your website to request a quote, there's a small window — maybe 6 to 8 seconds — where their brain decides 'these people are serious' or 'these people aren't quite there yet.' Most operators we review lose them in that window. Not because of price. Not because of the aircraft. Because of three structural things on the page that have nothing to do with the airplanes themselves.",
-          "responses": ["Okay…", "Go on", "We're already optimized"],
-          "followup": "Most operators say that — and they're usually right that the page looks fine. The leak is rarely visual. It's structural.",
-          "note": "PAS — Problem. Plain English replacement for the 'flight-shopper' jargon. The 8-second window is universally true in luxury commerce. Don't sell hard yet."
-        },
-        {
-          "t": 52,
-          "phase": "AGITATE",
-          "title": "Reveal Two of Three Leaks",
-          "line": "On {company} specifically, two things jumped out. First — {leak_1}. Second — {leak_2}. Neither one is fatal on its own. But on a charter that books at $25,000 to $80,000 a flight, even a small drop in the inquiry-to-booking rate is real money walking off the page every week. There's a third leak that's actually the most costly of the three — I'd rather walk you through that one on a 15-minute screen share than burn your time on the phone.",
-          "responses": [
-            "We've heard that before",
-            "What would you change?",
-            "Show me the third one"
-          ],
-          "followup": "I promise the third one's worth the 15 minutes. It's the one almost every operator misses, and it's the easiest of the three to fix.",
-          "note": "DO NOT reveal leak 3 on the phone. The third leak IS the meeting. If they push: 'I respect that — I'd rather earn the 15 minutes than spoil the value of the review. Thursday or Friday?'"
-        },
-        {
-          "t": 32,
-          "phase": "AGITATE",
-          "title": "Soft Diagnostic Question",
-          "line": "Out of curiosity — and you don't have to answer this — do you know roughly what percentage of the people who fill out your quote form actually end up on a flight? Most operators we ask have a feel for it, but they're not tracking it specifically. The leaks I just mentioned affect that number directly.",
-          "responses": ["No idea", "Maybe 20%?", "We don't really track that"],
-          "followup": "Yeah, most operators don't track it precisely — it's hard to attribute. But it's the number that moves when the leaks get fixed.",
-          "note": "Miner awareness question. If they don't know the number, you've surfaced a gap they can't unsee. If they DO know it, that's an even better signal — they care about the math."
-        },
-        {
-          "t": 32,
-          "phase": "SOLUTION",
-          "title": "Why Us + Discretion",
-          "line": "We work only with private aviation operators — private jet charter companies, jet card programs, and shared-ownership operators. We don't touch leisure travel, we don't touch commercial. And we're discreet — nothing gets posted on LinkedIn, no case studies, no name-drops. The work stays between us and the principal. That matters to the kind of clients you fly.",
-          "responses": ["What's your background?", "Who else have you worked with?"],
-          "followup": "Happy to share references after the review call if it ends up being the right fit on both sides.",
-          "note": "Plain English only — NEVER say industry jargon (regulatory tier codes, safety-audit brand names, ownership-model terms). Use: 'private jet charter companies, jet card programs, shared-ownership operators.' NEVER name-drop specific operators — discretion IS the product."
+          "line": "I know this is out of the blue. You're with {company}, correct? Every quarter we do a quiet review of private aviation websites — looking at what a quote shopper actually sees. Got 60 seconds, or did I catch you bad?",
+          "responses": ["Yeah, that's us", "Who is this?", "What's this regarding?"],
+          "followup": "Fair enough — I'll be quick. 60 seconds and you decide if it's worth more.",
+          "note": "Miner low-status open. Pause after 'quote shopper actually sees.' Don't fill silence. HNW operators reward composure."
         },
         {
           "t": 28,
+          "phase": "PROBLEM",
+          "title": "Surface the Buyer's Reality",
+          "line": "When someone who flies private lands on your site, there's about an 8-second window where they decide you're serious — or you're not quite there yet. Most operators lose them in that window. Not price, not the aircraft. Three structural things on the page.",
+          "responses": ["Okay…", "Go on", "We're already optimized"],
+          "followup": "Most operators say that — and the page usually looks fine. The leak is rarely visual. It's structural.",
+          "note": "PAS — Problem. The 8-second window is universally true in luxury commerce. Don't sell hard yet."
+        },
+        {
+          "t": 38,
+          "phase": "AGITATE",
+          "title": "Two Leaks Revealed, Third Withheld",
+          "line": "On {company} specifically, two things jumped out. First — {leak_1}. Second — {leak_2}. Neither is fatal alone. But on flights booking at $25K to $80K, even a small drop in inquiry-to-booking is real money walking off the page weekly. There's a third leak that costs more than both — I'd rather walk you through it on a 15-minute screen share than rush it on the phone.",
+          "responses": ["We've heard that before", "What would you change?", "Show me the third one"],
+          "followup": "The third one's the easiest to fix and the most expensive to ignore. Worth 15 minutes.",
+          "note": "DO NOT reveal leak 3 on the phone. The third leak IS the meeting. If they push: 'I'd rather earn the 15 minutes than spoil it. Thursday or Friday?'"
+        },
+        {
+          "t": 28,
+          "phase": "SOLUTION",
+          "title": "Why Us + Discretion",
+          "line": "Quick on us — we work only with private aviation. Charter companies, jet card programs, shared-ownership. No leisure, no commercial. And we're discreet — no LinkedIn posts, no case studies, no name-drops. Same discretion you'd want for your own clients.",
+          "responses": ["What's your background?", "Who else have you worked with?"],
+          "followup": "References after the review call if it's the right fit on both sides.",
+          "note": "Plain English only. NEVER name-drop specific operators — discretion IS the product."
+        },
+        {
+          "t": 22,
           "phase": "CLOSE",
           "title": "Book the Time",
-          "line": "Two ways to do this. Either I send the written review — about 8 pages with screenshots, normally a $4,500 deliverable, yours to keep — or we jump on a 15-minute screen share with whoever owns the website on your side, and {strategist} walks you through it live. Most operators prefer the screen share because it's easier to ask questions in real time. Thursday at 10 Eastern or Friday at 2 Eastern?",
+          "line": "Two options. Either I send the written review — 8 pages with screenshots, normally $4,500, yours to keep — or 15 minutes with {strategist} on screen share. Thursday at 10 Eastern or Friday at 2 Eastern?",
           "responses": ["Send the document", "Thursday works", "Friday is better"],
-          "followup": "Perfect — what's the best email for the calendar invite? Let me read it back to make sure I get it right.",
-          "note": "Some HNW operators take the document and come back 2-3 weeks later. Log them as 'doc-only follow-up' in notes — they convert at ~22% on the second touch. Always read email back verbatim — wrong email is the #1 no-show cause."
+          "followup": "Perfect — best email for the calendar invite? Let me read it back to make sure I have it right.",
+          "note": "Doc-only operators convert ~22% on second touch — log as 'doc-only follow-up.' Always read email back verbatim — wrong email is the #1 no-show cause."
         }
       ]
     },
     "B": {
       "name": "Curiosity Hook + Sandler Negative Reverse",
-      "desc": "NEPQ Belief-Building + Sandler. Best for re-engagement, referrals, or operators who ghosted on a prior touch. Lowers the bar by telling them you're easy to say no to. Pure layman's English. ~180s.",
+      "desc": "NEPQ Belief-Building + Sandler. Best for re-engagement, referrals, or operators who ghosted on a prior touch. Lowers the bar by telling them you're easy to say no to. ~135s.",
       "beats": [
         {
-          "t": 22,
+          "t": 18,
           "phase": "OPEN",
           "title": "Curiosity Hook",
-          "line": "Hi — I work with private jet charter operators on something most of them don't realize is quietly costing them somewhere around 30% of the inquiries they're paying to generate. Got 90 seconds for me to tell you what it is? If it doesn't apply to {company}, I'll let you go.",
+          "line": "Hi — I work with private jet charter operators on something that quietly costs most of them about 30% of the inquiries they're paying to generate. 60 seconds to tell you what it is? If it doesn't apply to {company}, I'll let you go.",
           "responses": ["What is it?", "Go ahead", "Who is this?"],
-          "followup": "Quick context — I'm not selling anything on this call. I'm telling you what I see on your website, and you decide if it's worth a follow-up.",
-          "note": "If they say 'what is it?' — you've already won the open. Slow down. Don't rush the reveal. Composure signals you're not a typical agency cold-caller."
-        },
-        {
-          "t": 42,
-          "phase": "PROBLEM",
-          "title": "Build the Belief",
-          "line": "Without going into the weeds — when somebody with the means to fly private lands on a charter website, there's roughly an 8-second window where they decide 'these people are serious' or 'these people aren't quite there yet.' Most operators lose them around the 6-second mark. Not because of price. Not because of the airplanes. Because of three structural things on the page that have nothing to do with the fleet.",
-          "responses": ["Like what?", "What three things?", "Interesting"],
-          "followup": "I'll show you specifically what's happening on your page in a minute. Quick question first — does anyone on your team track how many people who land on the page actually fill out the quote form?",
-          "note": "Miner: 'Does anyone on your team track' is softer than 'do you track' — invites a 'no, my marketing person does' which gives you the next call. If they say nobody tracks it, that's diagnostic gold."
+          "followup": "Not selling anything on this call. Just telling you what I see on your site — you decide if it's worth more.",
+          "note": "If they say 'what is it?' — you've won the open. Slow down. Composure signals you're not a typical agency cold-caller."
         },
         {
           "t": 32,
+          "phase": "PROBLEM",
+          "title": "Build the Belief",
+          "line": "When someone with the means to fly private lands on a charter site, there's an 8-second window where they decide you're serious — or not. Most operators lose them around the 6-second mark. Not price, not the airplanes. Three structural things on the page.",
+          "responses": ["Like what?", "What three things?", "Interesting"],
+          "followup": "I'll show you exactly what's happening on your page in a minute.",
+          "note": "Belief-building. Plain English replaces all aviation jargon."
+        },
+        {
+          "t": 28,
           "phase": "AGITATE",
           "title": "Two Leaks Revealed, Third Withheld",
-          "line": "I reviewed {company}'s website this morning. {leak_1} is one. {leak_2} is the second. The third I'd rather show you on a screen share — it's the one that costs the most of the three, and it's actually the easiest to fix. It's the one almost every operator misses.",
+          "line": "I pulled up {company} this morning. {leak_1} is one. {leak_2} is the second. The third one costs more than both, and it's the easiest to fix — but I'd rather show it to you on a screen share than rush it now.",
           "responses": ["Show me the third", "Send it over", "What's the third one?"],
-          "followup": "I'll show you Thursday or Friday — I promise it's worth the 15 minutes. If it isn't, you've still got two free fixes from this call.",
-          "note": "Hold the third leak. The third leak IS the meeting. If they push to know: 'I respect that — I'd rather earn the 15 minutes than spoil what we put together. Thursday or Friday?'"
+          "followup": "Thursday or Friday — I promise it's worth 15 minutes. Worst case, you've still got two free fixes from this call.",
+          "note": "Hold the third leak. If they push: 'I'd rather earn the time than spoil it. Thursday or Friday?'"
         },
         {
-          "t": 40,
+          "t": 32,
           "phase": "SOLUTION",
           "title": "Lower the Stakes (Sandler Negative Reverse)",
-          "line": "Look — it's not a sales call. We don't sell anything on the review call itself. {strategist} walks you through what we'd change, in what order, and then you either do it yourself, hand it to your in-house team, or — if it ends up being the right fit on both sides — we do it for you. Most operators take the document and run. That's fine.",
+          "line": "Look — not a sales call. {strategist} walks you through what we'd change and in what order. Then you either do it yourself, hand it to your in-house team, or — if it's the right fit on both sides — we do it for you. Most operators take the document and run. That's fine.",
           "responses": ["Okay, fair", "Sounds reasonable", "What's the catch?"],
-          "followup": "No catch. {strategist} is running a handful personally this quarter — that's the only ask. And we don't publish names, so it's truly anonymous.",
-          "note": "Sandler Negative Reverse: telling them you're EASY to say no to lowers resistance. Counterintuitive — but it works on HNW. They hate being sold to. NEVER use 'case-study purposes' here — too transactional."
+          "followup": "No catch. {strategist} is running a handful personally this quarter. And we don't publish names — truly anonymous.",
+          "note": "Sandler Negative Reverse: telling them you're EASY to say no to lowers resistance. HNW operators hate being sold to."
         },
         {
-          "t": 18,
+          "t": 16,
           "phase": "CLOSE",
           "title": "Close on Time",
-          "line": "Thursday at 10 Eastern or Friday at 2 Eastern — which works better? {strategist} blocks the time himself, so whichever you pick is locked.",
+          "line": "Thursday at 10 Eastern or Friday at 2 Eastern — which works better? {strategist} blocks it himself, so whichever you pick is locked.",
           "responses": ["Thursday works", "Friday is better", "Neither this week"],
-          "followup": "Perfect — calendar invite incoming. Best email for that? Let me read it back to make sure I have it right.",
-          "note": "Don't offer 'whenever works' — give two specific slots. HNW prospects respect bounded calendars and distrust open ones. Read email back."
+          "followup": "Perfect — best email for the invite? Let me read it back.",
+          "note": "Two specific slots, not 'whenever works.' HNW prospects respect bounded calendars. Read email back."
         }
       ]
     },
     "C": {
       "name": "Paid-Search Leak + The Math",
-      "desc": "PAS + Specificity Cluster + Loss-Frame. Best for operators visibly running paid search (verify on Google before dialing). Math-led — anchors on what they're paying per click. Plain English only. ~180s.",
+      "desc": "PAS + Specificity Cluster + Loss-Frame. Best for operators visibly running paid search (verify on Google before dialing). Math-led — anchors on what they're paying per click. ~135s.",
       "beats": [
         {
-          "t": 20,
+          "t": 18,
           "phase": "OPEN",
           "title": "Paid-Search Anchor",
-          "line": "I know this is out of the blue — quick reason for the call. I see {company} is running paid search on terms like '{primary_kw}'. Clicks in your category are running roughly ${cpc_low} to ${cpc_high} each right now. Got 60 seconds?",
+          "line": "Quick reason for the call — I see {company} is running paid search on '{primary_kw}'. Clicks in your category are running ${cpc_low} to ${cpc_high} each. Got 60 seconds?",
           "responses": ["What's the call about?", "Yeah we run ads", "Why are you asking?"],
-          "followup": "Quick — it's not about the ads themselves. The ads are doing their job. The leak is on what happens after the click — on the page itself.",
-          "note": "PRE-CALL: verify they actually run ads by Googling their primary keyword from {market}. If you don't see them on the SERP, switch to Variant A or B. This open burns credibility if they're not on paid search."
-        },
-        {
-          "t": 48,
-          "phase": "PROBLEM",
-          "title": "The Numbers in Plain English",
-          "line": "Here's the math in plain English. Say your average click is around ${cpc_high}. If 1.5 out of every 100 clicks fills out the quote form — which is typical for the charter websites we review — you're paying for 100 clicks to get about 1 or 2 real inquiries. That's somewhere in the low thousands of ad-dollars per qualified quote. If we move that page from 1.5% up to 3% — well inside normal range for a properly built private aviation site — you cut your cost-per-quote roughly in half. Same ad spend, double the quotes. Or same quotes, half the spend.",
-          "responses": ["That's interesting", "What's it take?", "We're higher than 1.5%"],
-          "followup": "If you're higher — is that higher than 3%, or higher than 1.5%? Big difference. Most operators we review run somewhere between 0.8% and 2.2%.",
-          "note": "Don't argue numbers. Anchor on the LIFT, not the current state. If they claim 5%+, ask: 'Out of curiosity — is that measured at quote-submit, or at booked-flight? Different metric.'"
-        },
-        {
-          "t": 50,
-          "phase": "AGITATE",
-          "title": "Where the Spend Is Leaking",
-          "line": "I looked at where the ad spend is landing on your end. Two things jumped out. {leak_1}, and {leak_2}. Neither of those would be hard to fix — they're literally things a developer can change in an afternoon. There's a third leak that's actually the most expensive of the three — that one I'd rather walk you through on a 15-minute screen share with the page open in front of us.",
-          "responses": ["Specifics?", "How much would that cost?", "We've tried that"],
-          "followup": "If you're asking 'how much' — the review itself is free. The fix depends on what we find. Some operators do it in-house once they see the diagnosis.",
-          "note": "The phrase 'fix in an afternoon' is intentional — makes the win feel close. The third-leak withhold creates the same pull as Variants A and B."
+          "followup": "Not about the ads — the ads are doing their job. The leak is on what happens after the click.",
+          "note": "PRE-CALL: verify they actually run ads by Googling their primary keyword from {market}. If you don't see them on the SERP, switch to Variant A or B."
         },
         {
           "t": 32,
-          "phase": "SOLUTION",
-          "title": "Why Us + Discretion",
-          "line": "Quick on us — we work only with private aviation operators. Private jet charter companies, jet card programs, shared-ownership operators. We don't touch leisure travel or commercial airlines. And we're discreet — names stay between us and the principal. Same discretion you'd want for your own clients.",
-          "responses": ["Who have you worked with?", "What's your track record?"],
-          "followup": "Happy to share references after the review call if it's the right fit on both sides. The discretion you'd want for your clients is the same discretion we apply to ours.",
-          "note": "Plain English only — no industry jargon. Use: 'private jet charter companies, jet card programs, shared-ownership operators.' NEVER name-drop on a cold call."
+          "phase": "PROBLEM",
+          "title": "The Math, Fast",
+          "line": "Fast math — if your click costs ${cpc_high} and 1.5 out of 100 clicks fills out a quote form, you're paying low thousands per real inquiry. Move that page from 1.5% to 3% — well inside normal range for a properly built private aviation site — and you cut cost-per-quote in half. Same spend, double the quotes.",
+          "responses": ["That's interesting", "What's it take?", "We're higher than 1.5%"],
+          "followup": "Higher than 3% or higher than 1.5%? Big difference. Most operators we review land between 0.8% and 2.2%.",
+          "note": "Don't argue numbers. Anchor on the LIFT, not the current state. If they claim 5%+, ask: 'Measured at quote-submit, or at booked-flight?'"
         },
         {
-          "t": 30,
+          "t": 32,
+          "phase": "AGITATE",
+          "title": "Where the Spend Is Leaking",
+          "line": "I pulled up where your ad spend is landing. Two things jumped out — {leak_1}, and {leak_2}. Both are afternoon fixes for a developer. The third leak is the most expensive of the three — that one I'd rather walk you through on a screen share with the page open.",
+          "responses": ["Specifics?", "How much would that cost?", "We've tried that"],
+          "followup": "The review itself is free. The fix depends on what we find — some operators do it in-house once they see the diagnosis.",
+          "note": "'Afternoon fix' makes the win feel close. Third-leak withhold creates the meeting pull."
+        },
+        {
+          "t": 26,
+          "phase": "SOLUTION",
+          "title": "Why Us + Discretion",
+          "line": "Quick on us — we work only with private aviation. Charter, jet card, shared-ownership. No leisure, no commercial. We're discreet — names stay between us and the principal. Same discretion you'd want for your own clients.",
+          "responses": ["Who have you worked with?", "What's your track record?"],
+          "followup": "References after the review call if it's the right fit on both sides.",
+          "note": "Plain English only. NEVER name-drop on a cold call."
+        },
+        {
+          "t": 22,
           "phase": "CLOSE",
           "title": "Close the Time",
-          "line": "Two options. Either I send you the full written review — about 8 pages with screenshots, normally a $4,500 deliverable, yours to keep — or 15 minutes Thursday at 10 Eastern or Friday at 2 Eastern on a screen share with {strategist} and whoever owns the website on your side. Which works better?",
+          "line": "Two options. Either I send the written review — 8 pages with screenshots, normally $4,500, yours to keep — or 15 minutes with {strategist} on screen share. Thursday at 10 Eastern or Friday at 2 Eastern?",
           "responses": ["Send the document", "Thursday works", "Friday is better"],
-          "followup": "Great — what's your best email? And anyone else from your side who should be on the call? Operations director or whoever owns the website usually.",
-          "note": "Read email back verbatim. Operators routinely give the wrong email and it kills the show-up rate. Always confirm second person."
+          "followup": "Great — best email? And anyone else from your side who should be on it — usually whoever owns the website.",
+          "note": "Read email back verbatim. Wrong email kills show-up rate. Confirm second attendee."
         }
       ]
     }
