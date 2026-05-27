@@ -719,3 +719,181 @@ kbd {
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .form-row-pair { grid-template-columns: 1fr; }
 }
+
+/* ============ BIG TIMER BANNER (sticky) ============ */
+.big-timer {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--ink); color: #fff;
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 18px; align-items: center;
+  padding: 10px 20px;
+  border-bottom: 2px solid var(--gold);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+}
+.bt-left { display: flex; align-items: baseline; gap: 6px; font-family: var(--font-display); }
+.bt-elapsed { font-size: 30px; font-weight: 700; color: var(--gold); letter-spacing: 0.5px; font-variant-numeric: tabular-nums; }
+.bt-sep { font-size: 22px; color: #555; }
+.bt-target { font-size: 18px; color: #B8B0A0; font-variant-numeric: tabular-nums; }
+.bt-center { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.bt-bar { height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+.bt-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), #E8C885); transition: width 0.4s ease; }
+.bt-bar-fill.over { background: linear-gradient(90deg, #C0392B, #E74C3C); }
+.bt-phase { font-size: 11px; color: #C8C0B0; text-transform: uppercase; letter-spacing: 1px; }
+.bt-right { display: flex; gap: 6px; }
+.bt-btn {
+  background: var(--gold); color: var(--ink);
+  border: none; border-radius: 4px;
+  padding: 8px 14px; font-weight: 700; cursor: pointer;
+  font-size: 13px; letter-spacing: 0.3px;
+}
+.bt-btn:hover { filter: brightness(1.06); }
+.bt-btn-ghost { background: transparent; color: #fff; border: 1px solid #444; }
+.bt-btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ============ STICKY RECON RAIL ============ */
+.recon-rail {
+  position: sticky;
+  top: 62px; /* sits directly under big-timer banner */
+  z-index: 45;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.recon-rail.collapsed .recon-rail-body { display: none; }
+.recon-rail.collapsed .rr-chevron { transform: rotate(-90deg); }
+.recon-rail-toggle {
+  width: 100%; background: transparent; border: none;
+  padding: 8px 24px; display: flex; align-items: center; gap: 10px;
+  cursor: pointer; font-family: inherit; font-size: 13px;
+  color: var(--text); text-align: left;
+}
+.recon-rail-toggle:hover { background: var(--highlight); }
+.rr-chevron { display: inline-block; transition: transform 0.15s; color: var(--gold); font-size: 16px; }
+.rr-summary { font-weight: 600; color: var(--ink); }
+.rr-summary .rr-dim { color: #888; font-weight: 400; margin-left: 8px; font-size: 12px; }
+.rr-summary .rr-pill {
+  display: inline-block; background: var(--ink); color: var(--gold);
+  padding: 1px 7px; border-radius: 3px; font-size: 10.5px;
+  font-weight: 700; letter-spacing: 0.5px; margin-left: 8px;
+  text-transform: uppercase;
+}
+.recon-rail-body {
+  padding: 10px 24px 14px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  background: var(--cream);
+}
+.rr-stat { display: flex; flex-direction: column; gap: 2px; }
+.rr-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: #888; font-weight: 600; }
+.rr-stat-val { font-size: 13px; color: var(--ink); font-weight: 600; }
+.rr-stat-val a { color: var(--ink); border-bottom: 1px dashed var(--gold); text-decoration: none; }
+
+/* ============ BEAT — NEXT-UP PREVIEW + CHECKMARK + AUTO-SCROLL TARGET ============ */
+.beat { position: relative; scroll-margin-top: 200px; /* clear sticky timer + rail */ }
+.beat-checkbox {
+  position: absolute; top: 10px; right: 12px;
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--line); border-radius: 50%;
+  background: var(--paper); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: transparent; transition: all 0.15s;
+}
+.beat-checkbox:hover { border-color: var(--gold); }
+.beat-checkbox.said { background: #1F8A4C; border-color: #1F8A4C; color: #fff; }
+.beat-checkbox.said::after { content: "\2713"; color: #fff; font-weight: 700; }
+.beat.said-beat { opacity: 0.62; }
+.beat.said-beat .beat-title { text-decoration: line-through; text-decoration-color: rgba(0,0,0,0.25); }
+.beat-next-preview {
+  font-size: 11px; color: #999; font-style: italic;
+  margin-bottom: 4px; padding-left: 8px;
+  border-left: 2px dotted var(--line);
+}
+.beat-next-preview strong { color: #777; font-weight: 600; font-style: normal; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; }
+
+/* ============ QUICK OBJECTION HOTKEY BAR ============ */
+.quick-obj-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--ink); border-top: 2px solid var(--gold);
+  z-index: 40; padding: 8px 12px;
+  box-shadow: 0 -4px 14px rgba(0,0,0,0.18);
+}
+.quick-obj-inner {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  justify-content: center; align-items: center;
+  max-width: 1680px; margin: 0 auto;
+}
+.qo-hotkey {
+  background: rgba(255,255,255,0.06); color: #fff;
+  border: 1px solid #444; border-radius: 4px;
+  padding: 6px 11px; font-size: 12px; font-weight: 600;
+  cursor: pointer; letter-spacing: 0.4px;
+  transition: all 0.1s;
+}
+.qo-hotkey:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.qo-hotkey-label { font-size: 10px; color: #C8C0B0; margin-right: 6px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; }
+
+/* ============ FAB · LOG CALL ============ */
+.fab-log {
+  position: fixed; right: 20px; bottom: 70px; z-index: 41;
+  width: auto; min-width: 64px; height: 56px;
+  border-radius: 28px;
+  background: var(--gold); color: var(--ink);
+  border: none; box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+  cursor: pointer; padding: 0 18px;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 16px; font-weight: 700;
+}
+.fab-log:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,0.32); }
+.fab-icon { font-size: 18px; }
+.fab-arrow { color: var(--ink); opacity: 0.7; font-size: 14px; }
+
+/* ============ QUICK OUTCOME MODAL ============ */
+.quick-outcome-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-top: 10px;
+}
+.qo-btn {
+  padding: 18px 12px; border: 2px solid var(--line);
+  border-radius: 8px; background: var(--paper);
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: all 0.12s; font-family: inherit;
+}
+.qo-btn:hover { transform: translateY(-1px); }
+.qo-booked { border-color: #1F8A4C; color: #1F8A4C; }
+.qo-booked:hover { background: #1F8A4C; color: #fff; }
+.qo-callback { border-color: #B8893A; color: #B8893A; }
+.qo-callback:hover { background: #B8893A; color: #fff; }
+.qo-noanswer { border-color: #6E7480; color: #6E7480; }
+.qo-noanswer:hover { background: #6E7480; color: #fff; }
+.qo-dead { border-color: #C0392B; color: #C0392B; }
+.qo-dead:hover { background: #C0392B; color: #fff; }
+.qo-secondary {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid var(--line);
+  justify-content: center;
+}
+.qo-link {
+  background: transparent; border: 1px solid var(--line);
+  border-radius: 4px; padding: 5px 10px;
+  font-size: 11.5px; color: var(--text-dim); cursor: pointer;
+  font-family: inherit;
+}
+.qo-link:hover { border-color: var(--gold); color: var(--ink); }
+
+/* ============ PROSPECT PICKER COLOR DOTS ============ */
+#prospectSelect option[data-status="never"]::before { content: "\1F534  "; }
+#prospectSelect option[data-status="attempted"]::before { content: "\1F7E1  "; }
+#prospectSelect option[data-status="stale"]::before { content: "\26AB  "; }
+#prospectSelect option[data-status="booked"]::before { content: "\1F7E2  "; }
+/* Browsers strip option styling — we render text dots inline instead via JS */
+
+/* ============ Make room for fixed-bottom quick-obj-bar ============ */
+body { padding-bottom: 64px; }
+@media (max-width: 900px) {
+  .big-timer { grid-template-columns: 1fr; gap: 6px; padding: 8px 12px; }
+  .bt-left { justify-content: center; }
+  .bt-right { justify-content: center; }
+  .fab-log { right: 12px; bottom: 78px; }
+}

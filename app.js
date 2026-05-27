@@ -65,7 +65,11 @@ let state = {
   backendUrl: '',
   syncQueue: [],
   lastSyncTs: 0,
-  sheetUrlByBrand: {}         // brand → master sheet URL
+  sheetUrlByBrand: {},        // brand → master sheet URL
+  // v3.3 UX
+  saidBeats: {},              // {variantKey: [beatIdx,...]} per-call tracking
+  reconRailOpen: false,
+  lastActiveBeatIdx: -1
 };
 
 // ============== STORAGE ==============
@@ -85,6 +89,8 @@ function loadState() {
     if (s.lastSyncTs) state.lastSyncTs = s.lastSyncTs;
     if (s.sheetUrlByBrand) state.sheetUrlByBrand = s.sheetUrlByBrand;
     if (s.cloudProspects && Array.isArray(s.cloudProspects)) state.cloudProspects = s.cloudProspects;
+    if (s.saidBeats && typeof s.saidBeats === 'object') state.saidBeats = s.saidBeats;
+    if (typeof s.reconRailOpen === 'boolean') state.reconRailOpen = s.reconRailOpen;
   } catch (e) { /* fresh */ }
 }
 function saveState() {
@@ -102,7 +108,9 @@ function saveState() {
       backendUrl: state.backendUrl,
       syncQueue: state.syncQueue,
       lastSyncTs: state.lastSyncTs,
-      sheetUrlByBrand: state.sheetUrlByBrand
+      sheetUrlByBrand: state.sheetUrlByBrand,
+      saidBeats: state.saidBeats,
+      reconRailOpen: state.reconRailOpen
     }));
   } catch (e) { /* quota */ }
 }
@@ -250,6 +258,7 @@ async function loadBrandData(brandSlug) {
     try { CSV_SCHEMA = schemaRes && schemaRes.ok ? await schemaRes.json() : null; }
     catch (e) { CSV_SCHEMA = null; }
     SCRIPTS = scriptsData.variants;
+    SCRIPTS._meta = { target_length_sec: scriptsData.target_length_sec || 220, audit_value: scriptsData.audit_value || 0 };
     OBJECTIONS = objData.objections;
     mergeProspects();
     return true;
@@ -373,18 +382,28 @@ function renderBeats() {
   const variant = SCRIPTS[state.variant];
   if (!variant) {
     container.innerHTML = '<div style="padding:20px;text-align:center;color:#888;">No script loaded for this brand yet.</div>';
+    updateBeatsProgress(0, 0);
     return;
   }
   const ctx = getProspectContext();
   const elapsed = currentElapsedSec();
+  const variantKey = state.variant;
+  const said = state.saidBeats[variantKey] || [];
   let cumulative = 0;
-  container.innerHTML = variant.beats.map(b => {
+  let activeIdx = -1;
+  const beats = variant.beats;
+  container.innerHTML = beats.map((b, i) => {
     const start = cumulative;
     cumulative += b.t;
     const isActive = elapsed >= start && elapsed < cumulative;
+    if (isActive) activeIdx = i;
+    const isSaid = said.includes(i);
     const respHtml = (b.responses || []).map(r => `<span class="resp">"${r}"</span>`).join(' / ');
+    const next = beats[i + 1];
+    const nextPreview = next ? `<div class="beat-next-preview"><strong>Next:</strong> ${escapeHTML(next.title)} (${next.t}s)</div>` : '';
     return `
-      <div class="beat ${isActive ? 'active' : ''}">
+      <div class="beat ${isActive ? 'active' : ''} ${isSaid ? 'said-beat' : ''}" data-beat-idx="${i}">
+        <div class="beat-checkbox ${isSaid ? 'said' : ''}" data-toggle-said="${i}" title="Mark this beat as said"></div>
         <div class="beat-head">
           <span class="beat-phase">${b.phase || ''}</span>
           <span class="beat-time">@ ${start}s · ${b.t}s</span>
@@ -394,9 +413,125 @@ function renderBeats() {
         ${b.responses && b.responses.length ? `<div class="beat-responses"><span class="speaker-prospect">↳ PROSPECT likely:</span> ${respHtml}</div>` : ''}
         ${b.followup ? `<div class="beat-followup"><span class="speaker-you-recover">YOU (if they push back):</span> <em>"${fillTokens(b.followup, ctx)}"</em></div>` : ''}
         ${b.note ? `<div class="beat-note"><span class="speaker-coach">🎯 COACH:</span> ${fillTokens(b.note, ctx)}</div>` : ''}
+        ${nextPreview}
       </div>
     `;
   }).join('');
+  // Wire checkmarks
+  container.querySelectorAll('[data-toggle-said]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(el.getAttribute('data-toggle-said'), 10);
+      toggleBeatSaid(state.variant, idx);
+    });
+  });
+  updateBeatsProgress(said.length, beats.length);
+  // Auto-scroll active beat into view when it changes
+  if (activeIdx >= 0 && activeIdx !== state.lastActiveBeatIdx) {
+    state.lastActiveBeatIdx = activeIdx;
+    const activeEl = container.querySelector(`[data-beat-idx="${activeIdx}"]`);
+    if (activeEl) activeEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  // Update phase chip on big timer
+  if (activeIdx >= 0) {
+    const ph = beats[activeIdx];
+    const el = document.getElementById('btPhase');
+    if (el) el.textContent = `${ph.phase || 'BEAT'} · ${ph.title}`;
+  }
+}
+
+function toggleBeatSaid(variantKey, idx) {
+  if (!state.saidBeats[variantKey]) state.saidBeats[variantKey] = [];
+  const arr = state.saidBeats[variantKey];
+  const pos = arr.indexOf(idx);
+  if (pos === -1) arr.push(idx); else arr.splice(pos, 1);
+  saveState();
+  renderBeats();
+}
+
+function updateBeatsProgress(said, total) {
+  const el = document.getElementById('beatsProgress');
+  if (el) el.textContent = total ? `${said} of ${total} beats said` : '';
+}
+
+function resetSaidBeats() {
+  state.saidBeats = {};
+  saveState();
+}
+
+// ============== STICKY RECON RAIL ==============
+function renderReconRail() {
+  const rail = document.getElementById('reconRail');
+  const summary = document.getElementById('rrSummary');
+  const body = document.getElementById('reconRailBody');
+  if (!rail || !summary || !body) return;
+  const p = state.selectedProspectN ? PROSPECTS.find(x => x.n === state.selectedProspectN) : null;
+  if (!p) {
+    summary.innerHTML = 'No prospect selected <span class="rr-dim">— pick one from the side panel</span>';
+    body.innerHTML = '';
+    return;
+  }
+  const company = p.company || p.domain || `#${p.n}`;
+  const risk = (p.risk || 'MED').toUpperCase();
+  const market = p.market || 'Unknown';
+  const cpc = lookupMarketCPC(market);
+  const av = (SCRIPTS && SCRIPTS._meta && SCRIPTS._meta.audit_value) || 0;
+  summary.innerHTML = `${escapeHTML(company)} <span class="rr-dim">· ${escapeHTML(market)}</span> <span class="rr-pill">${risk}</span>`;
+  const url = p.domain ? (p.domain.startsWith('http') ? p.domain : `https://${p.domain}`) : '';
+  const cells = [];
+  if (url) cells.push(railStat('Site', `<a href="${url}" target="_blank" rel="noopener">${escapeHTML(p.domain)} ↗</a>`));
+  cells.push(railStat('Market', escapeHTML(market)));
+  cells.push(railStat('CPC', `$${cpc.cpc_low.toFixed(2)}–$${cpc.cpc_high.toFixed(2)}`));
+  cells.push(railStat('Keyword', escapeHTML(cpc.primary_kw || '—')));
+  if (av) cells.push(railStat('Audit value', `$${av.toLocaleString()}`));
+  if (p.phone) cells.push(railStat('Phone', escapeHTML(p.phone)));
+  if (p.speed !== undefined && p.speed !== '') cells.push(railStat('Speed', String(p.speed)));
+  if (p.trust !== undefined && p.trust !== '') cells.push(railStat('Trust', String(p.trust)));
+  if (p.cta !== undefined && p.cta !== '') cells.push(railStat('CTA', String(p.cta)));
+  body.innerHTML = cells.join('');
+}
+function railStat(label, val) {
+  return `<div class="rr-stat"><div class="rr-stat-label">${escapeHTML(label)}</div><div class="rr-stat-val">${val}</div></div>`;
+}
+function toggleReconRail() {
+  const rail = document.getElementById('reconRail');
+  if (!rail) return;
+  rail.classList.toggle('collapsed');
+  state.reconRailOpen = !rail.classList.contains('collapsed');
+  saveState();
+}
+
+// ============== QUICK-OBJECTION HOTKEY BAR ==============
+function renderQuickObjectionBar() {
+  const bar = document.getElementById('quickObjInner');
+  if (!bar) return;
+  if (!OBJECTIONS.length) { bar.innerHTML = ''; return; }
+  // Unique categories from current brand objections
+  const cats = [...new Set(OBJECTIONS.map(o => o.cat))];
+  bar.innerHTML = `<span class="qo-hotkey-label">QUICK COMEBACK →</span>` +
+    cats.map(c => `<button type="button" class="qo-hotkey" data-cat="${escapeHTML(c)}">${escapeHTML(c)}</button>`).join('');
+  bar.querySelectorAll('[data-cat]').forEach(b => {
+    b.addEventListener('click', () => openObjection(b.getAttribute('data-cat')));
+  });
+}
+function openObjection(cat) {
+  // Pause timer so you can read calmly
+  if (state.timer.running) pauseTimer();
+  // Find first matching objection card, scroll + open it
+  const idx = OBJECTIONS.findIndex(o => o.cat === cat);
+  if (idx < 0) return;
+  const card = document.querySelector(`.objection-card[data-idx="${idx}"]`);
+  if (!card) return;
+  document.querySelectorAll('.objection-card.open').forEach(c => { if (c !== card) c.classList.remove('open'); });
+  card.classList.add('open');
+  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // Brief highlight pulse
+  card.style.transition = 'box-shadow 0.3s';
+  card.style.boxShadow = '0 0 0 3px var(--gold)';
+  setTimeout(() => { card.style.boxShadow = ''; }, 900);
+  // Auto-set the objection-raised dropdown
+  const sel = document.getElementById('objectionRaised');
+  if (sel) sel.value = cat;
 }
 
 // ============== RENDER · OBJECTIONS ==============
@@ -444,9 +579,33 @@ function fmtTime(sec) {
   return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
 function tickTimer() {
+  const sec = currentElapsedSec();
   const el = document.getElementById('timerDisplay');
-  if (el) el.textContent = fmtTime(currentElapsedSec());
+  if (el) el.textContent = fmtTime(sec);
+  // Big timer banner
+  const btE = document.getElementById('btElapsed');
+  if (btE) btE.textContent = fmtTime(sec);
+  const variant = SCRIPTS[state.variant];
+  const target = (SCRIPTS && variant) ? scriptTargetLength() : 0;
+  const btT = document.getElementById('btTarget');
+  if (btT) btT.textContent = fmtTime(target);
+  const fill = document.getElementById('btBarFill');
+  if (fill && target > 0) {
+    const pct = Math.min(100, Math.round((sec / target) * 100));
+    fill.style.width = pct + '%';
+    fill.classList.toggle('over', sec > target);
+  }
   renderBeats();
+}
+function scriptTargetLength() {
+  // Sum beat times, fallback to scripts file's target_length_sec, fallback 220
+  const variant = SCRIPTS[state.variant];
+  if (variant && variant.beats) {
+    const total = variant.beats.reduce((s, b) => s + (b.t || 0), 0);
+    if (total) return total;
+  }
+  if (SCRIPTS && SCRIPTS._meta && SCRIPTS._meta.target_length_sec) return SCRIPTS._meta.target_length_sec;
+  return 220;
 }
 function startTimer() {
   if (state.timer.running) return;
@@ -455,6 +614,7 @@ function startTimer() {
   state.timer.intervalId = setInterval(tickTimer, 1000);
   document.getElementById('timerStart').textContent = 'Pause';
   document.getElementById('timerHint').textContent = 'Recording…';
+  const btS = document.getElementById('btStart'); if (btS) btS.textContent = '⎉ Pause';
   tickTimer();
 }
 function pauseTimer() {
@@ -464,15 +624,22 @@ function pauseTimer() {
   clearInterval(state.timer.intervalId);
   document.getElementById('timerStart').textContent = 'Resume';
   document.getElementById('timerHint').textContent = 'Paused';
+  const btS = document.getElementById('btStart'); if (btS) btS.textContent = '▶ Resume';
 }
 function toggleTimer() { state.timer.running ? pauseTimer() : startTimer(); }
 function resetTimer() {
   pauseTimer();
   state.timer.accumulated = 0;
   state.timer.startedAt = 0;
+  state.lastActiveBeatIdx = -1;
+  resetSaidBeats();
   document.getElementById('timerDisplay').textContent = '00:00';
   document.getElementById('timerStart').textContent = 'Start';
   document.getElementById('timerHint').textContent = 'Press Ctrl+S to start';
+  const btE = document.getElementById('btElapsed'); if (btE) btE.textContent = '00:00';
+  const btS = document.getElementById('btStart'); if (btS) btS.textContent = '▶ Start';
+  const fill = document.getElementById('btBarFill'); if (fill) { fill.style.width = '0%'; fill.classList.remove('over'); }
+  const phEl = document.getElementById('btPhase'); if (phEl) phEl.textContent = 'Press Start · Ctrl+S';
   renderBeats();
 }
 
@@ -706,6 +873,7 @@ function logCall() {
   renderStats();
   renderCallLog();
   renderReconCard(); // refresh history
+  renderProspectPicker(); // refresh status dots for this prospect
 
   // Sync to backend
   if (state.backendUrl) {
@@ -737,6 +905,7 @@ function clearForm() {
   document.getElementById('liveScore').classList.add('hidden');
   state.selectedProspectN = null;
   renderReconCard();
+  renderReconRail();
   renderBeats();
 }
 
@@ -754,12 +923,30 @@ function renderProspectPicker() {
   Object.keys(byMarket).sort().forEach(m => {
     html += `<optgroup label="${escapeHTML(m)}">`;
     byMarket[m].forEach(p => {
-      const label = `#${p.n} · ${p.domain || p.company || 'unnamed'}`;
-      html += `<option value="${p.n}">${escapeHTML(label)}</option>`;
+      const status = prospectStatus(p);
+      const dot = STATUS_DOT[status] || '';
+      const label = `${dot} #${p.n} · ${p.domain || p.company || 'unnamed'}`;
+      html += `<option value="${p.n}" data-status="${status}">${escapeHTML(label)}</option>`;
     });
     html += '</optgroup>';
   });
   sel.innerHTML = html;
+}
+
+const STATUS_DOT = {
+  never: '🔴',
+  attempted: '🟡',
+  stale: '⚫',
+  booked: '🟢'
+};
+function prospectStatus(p) {
+  const myCalls = state.calls.filter(c => c.prospectN === p.n);
+  if (!myCalls.length) return 'never';
+  if (myCalls.some(c => ['BK', 'SH', 'CL'].includes(c.outcome))) return 'booked';
+  // Count no-contacts (NA, VM, HU)
+  const noContact = myCalls.filter(c => ['NA', 'VM', 'HU'].includes(c.outcome)).length;
+  if (noContact >= 3) return 'stale';
+  return 'attempted';
 }
 
 function selectProspect(n) {
@@ -775,6 +962,7 @@ function selectProspect(n) {
   document.getElementById('phone').value = p.phone || '';
   document.getElementById('prospectEmail').value = p.email || '';
   renderReconCard();
+  renderReconRail();
   renderBeats();
 }
 
@@ -906,8 +1094,10 @@ async function switchBrand(slug) {
   await loadBrandData(slug);
   renderProspectPicker();
   renderReconCard();
+  renderReconRail();
   renderBeats();
   renderObjections();
+  renderQuickObjectionBar();
   renderStats();
   renderCallLog();
   clearForm();
@@ -1314,6 +1504,46 @@ async function init() {
       setFollowupDays(days);
     });
   });
+
+  // Big timer banner buttons
+  document.getElementById('btStart').addEventListener('click', toggleTimer);
+  document.getElementById('btReset').addEventListener('click', resetTimer);
+
+  // Sticky recon rail toggle
+  document.getElementById('reconRailToggle').addEventListener('click', toggleReconRail);
+
+  // Quick-objection hotkey bar
+  renderQuickObjectionBar();
+
+  // FAB → quick outcome modal
+  document.getElementById('fabLog').addEventListener('click', () => {
+    openModal('quickOutcomeModal');
+  });
+  document.querySelectorAll('#quickOutcomeModal [data-outcome]').forEach(b => {
+    b.addEventListener('click', () => {
+      const oc = b.getAttribute('data-outcome');
+      document.getElementById('outcome').value = oc;
+      closeModal('quickOutcomeModal');
+      // If booked/callback, auto-enable follow-up section to nudge scheduling
+      if (['BK', 'PP'].includes(oc)) {
+        document.getElementById('fpEnable').checked = true;
+        document.getElementById('fpFields').classList.remove('hidden');
+        if (!document.getElementById('fpDate').value) setFollowupDays(oc === 'BK' ? 1 : 3);
+      }
+      logCall();
+    });
+  });
+
+  // Restore recon rail expanded state
+  if (state.reconRailOpen) {
+    document.getElementById('reconRail').classList.remove('collapsed');
+  }
+
+  // Set initial big-timer target on load
+  setTimeout(() => {
+    const btT = document.getElementById('btTarget');
+    if (btT) btT.textContent = fmtTime(scriptTargetLength());
+  }, 200);
 
   bindKeyboard();
 

@@ -17,6 +17,23 @@
   <div class="progress-label" id="progressLabel">0 of 0 prospects called today · 0% done</div>
 </div>
 
+<!-- ============ BIG TIMER BANNER (sticky under topbar) ============ -->
+<div id="bigTimer" class="big-timer">
+  <div class="bt-left">
+    <span class="bt-elapsed" id="btElapsed">00:00</span>
+    <span class="bt-sep">/</span>
+    <span class="bt-target" id="btTarget">00:00</span>
+  </div>
+  <div class="bt-center">
+    <div class="bt-bar"><div class="bt-bar-fill" id="btBarFill"></div></div>
+    <div class="bt-phase" id="btPhase">Press Start · Ctrl+S</div>
+  </div>
+  <div class="bt-right">
+    <button id="btStart" class="bt-btn" type="button">▶ Start</button>
+    <button id="btReset" class="bt-btn bt-btn-ghost" type="button">Reset</button>
+  </div>
+</div>
+
 <!-- ============ TOPBAR ============ -->
 <header class="topbar">
   <div class="topbar-left">
@@ -139,6 +156,15 @@
   <span id="samplingMsg">Need 10+ calls per variant. Auto-rotates A→B→C every 10 calls.</span>
 </div>
 
+<!-- ============ STICKY RECON RAIL (under big timer) ============ -->
+<div id="reconRail" class="recon-rail collapsed">
+  <button id="reconRailToggle" class="recon-rail-toggle" type="button" title="Expand recon">
+    <span class="rr-chevron">▾</span>
+    <span class="rr-summary" id="rrSummary">No prospect selected</span>
+  </button>
+  <div class="recon-rail-body" id="reconRailBody"></div>
+</div>
+
 <!-- ============ MAIN 3-COLUMN GRID ============ -->
 <main class="grid">
 
@@ -156,14 +182,14 @@
       </div>
     </div>
 
-    <h2 class="col-title">Active Script</h2>
+    <h2 class="col-title">Active Script <span class="col-sub" id="beatsProgress">0 of 0 beats said</span></h2>
     <div class="variant-tabs" id="variantTabs">
       <button data-v="A" class="variant-tab active">A · Pattern Interrupt</button>
       <button data-v="B" class="variant-tab">B · Curiosity Hook</button>
       <button data-v="C" class="variant-tab">C · Paid-Ads Leak</button>
     </div>
 
-    <div class="timer-card">
+    <div class="timer-card hidden">
       <div class="timer-display" id="timerDisplay">00:00</div>
       <div class="timer-hint" id="timerHint">Press Ctrl+S to start</div>
       <div class="timer-controls">
@@ -348,6 +374,44 @@
   </section>
 
 </main>
+
+<!-- Floating Quick Objection Hotkey Row -->
+<div id="quickObjBar" class="quick-obj-bar">
+  <div class="quick-obj-inner" id="quickObjInner"></div>
+</div>
+
+<!-- Floating Save-Call FAB -->
+<button id="fabLog" class="fab-log" type="button" title="Save call outcome">
+  <span class="fab-icon">📞</span>
+  <span class="fab-arrow">→</span>
+  <span class="fab-icon">💾</span>
+</button>
+
+<!-- Quick-Outcome Modal (one-tap save) -->
+<div id="quickOutcomeModal" class="modal hidden">
+  <div class="modal-box" style="max-width:480px;">
+    <div class="modal-head">
+      <h3>Call Outcome</h3>
+      <button class="modal-close" data-close="quickOutcomeModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-help">Tap the result — the rest auto-fills from your script + recon.</p>
+      <div class="quick-outcome-grid">
+        <button class="qo-btn qo-booked" data-outcome="BK">✅ Booked</button>
+        <button class="qo-btn qo-callback" data-outcome="PP">📅 Callback</button>
+        <button class="qo-btn qo-noanswer" data-outcome="NA">📞 No Answer</button>
+        <button class="qo-btn qo-dead" data-outcome="NI">❌ Dead / Not Interested</button>
+      </div>
+      <div class="qo-secondary">
+        <button class="qo-link" data-outcome="VM">Voicemail</button>
+        <button class="qo-link" data-outcome="HU">Hung Up</button>
+        <button class="qo-link" data-outcome="OBJ">Objection (no book)</button>
+        <button class="qo-link" data-outcome="SH">Audit Showed</button>
+        <button class="qo-link" data-outcome="CL">Closed</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Winner banner & toasts -->
 <div id="winnerBanner" class="winner-banner hidden"></div>
