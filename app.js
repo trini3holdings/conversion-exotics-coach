@@ -90,7 +90,8 @@ let state = {
   backendUrl: '',
   syncQueue: [],
   lastSyncTs: 0,
-  sheetUrlByBrand: {},        // brand → master sheet URL
+  sheetUrlByBrand: {},        // brand → master sheet URL (LEGACY — kept for back-compat)
+  masterSheetUrl: '',         // v3.8: single master sheet (all brands)
   // v3.3 UX
   saidBeats: {},              // {variantKey: [beatIdx,...]} per-call tracking
   reconCardCollapsed: false,  // v3.7 sticky recon card collapse state
@@ -115,6 +116,7 @@ function loadState() {
     if (s.syncQueue && Array.isArray(s.syncQueue)) state.syncQueue = s.syncQueue;
     if (s.lastSyncTs) state.lastSyncTs = s.lastSyncTs;
     if (s.sheetUrlByBrand) state.sheetUrlByBrand = s.sheetUrlByBrand;
+    if (s.masterSheetUrl) state.masterSheetUrl = s.masterSheetUrl;
     if (s.cloudProspects && Array.isArray(s.cloudProspects)) state.cloudProspects = s.cloudProspects;
     if (s.cloudCalls && typeof s.cloudCalls === 'object') state.cloudCalls = s.cloudCalls;
     if (typeof s.tzGateMode === 'string') state.tzGateMode = s.tzGateMode;
@@ -142,6 +144,7 @@ function saveState() {
       syncQueue: state.syncQueue,
       lastSyncTs: state.lastSyncTs,
       sheetUrlByBrand: state.sheetUrlByBrand,
+      masterSheetUrl: state.masterSheetUrl,
       saidBeats: state.saidBeats,
       reconCardCollapsed: state.reconCardCollapsed
     }));
@@ -213,7 +216,10 @@ async function drainSyncQueue() {
     try {
       if (job.kind === 'logCall') {
         const r = await backendCall({ action: 'logCall', brand: job.brand, call: job.call });
-        if (r.sheetUrl) state.sheetUrlByBrand[job.brand] = r.sheetUrl;
+        if (r.sheetUrl) {
+          state.masterSheetUrl = r.sheetUrl;
+          state.sheetUrlByBrand[job.brand] = r.sheetUrl;  // back-compat
+        }
         successCount++;
       }
     } catch (e) {
@@ -239,7 +245,10 @@ async function loadCloudProspects() {
     const r = await backendCall({ action: 'listProspects', brand: state.brand });
     if (r.prospects && Array.isArray(r.prospects)) {
       state.cloudProspects = r.prospects;
-      if (r.sheetUrl) state.sheetUrlByBrand[state.brand] = r.sheetUrl;
+      if (r.sheetUrl) {
+        state.masterSheetUrl = r.sheetUrl;
+        state.sheetUrlByBrand[state.brand] = r.sheetUrl;  // back-compat
+      }
       saveState();
       // Merge into PROSPECTS for picker
       mergeProspects();
@@ -1458,9 +1467,9 @@ async function switchBrand(slug) {
   renderStats();
   renderCallLog();
   clearForm();
-  // Refresh manual sheet URL input for this brand
+  // v3.8: master sheet is shared across brands
   const msEl = document.getElementById('manualSheetUrl');
-  if (msEl) msEl.value = (state.sheetUrlByBrand && state.sheetUrlByBrand[slug]) || '';
+  if (msEl) msEl.value = state.masterSheetUrl || (state.sheetUrlByBrand && state.sheetUrlByBrand[slug]) || '';
   // Pull cloud prospects + cross-caller call history for this brand (v3.7.2)
   if (state.backendUrl) {
     loadCloudProspects();
@@ -1553,7 +1562,10 @@ async function saveNewProspect() {
   if (state.backendUrl) {
     try {
       const r = await backendCall({ action: 'addProspect', brand: state.brand, prospect });
-      if (r.sheetUrl) state.sheetUrlByBrand[state.brand] = r.sheetUrl;
+      if (r.sheetUrl) {
+        state.masterSheetUrl = r.sheetUrl;
+        state.sheetUrlByBrand[state.brand] = r.sheetUrl;  // back-compat
+      }
       cloudOk = true;
       showToast(`Saved to master sheet (${r.action || 'created'})`);
       // Refresh cloud prospects
@@ -1720,11 +1732,9 @@ async function init() {
   } else {
     setSyncBadge('offline');
   }
-  // Restore manual sheet URL for current brand (if set)
-  if (state.sheetUrlByBrand[state.brand]) {
-    const m = document.getElementById('manualSheetUrl');
-    if (m) m.value = state.sheetUrlByBrand[state.brand];
-  }
+  // v3.8: master sheet URL is one-per-account, no longer per-brand
+  const _msEl = document.getElementById('manualSheetUrl');
+  if (_msEl) _msEl.value = state.masterSheetUrl || state.sheetUrlByBrand[state.brand] || '';
 
   // ============== EVENT BINDINGS ==============
   brandSel.addEventListener('change', e => switchBrand(e.target.value));
@@ -1734,11 +1744,11 @@ async function init() {
 
   // Topbar "📊 Sheet" button — opens the master sheet for the current brand
   document.getElementById('openSheetBtn').addEventListener('click', () => {
-    const url = state.sheetUrlByBrand[state.brand];
+    const url = state.masterSheetUrl || state.sheetUrlByBrand[state.brand];
     if (url) {
       window.open(url, '_blank');
     } else {
-      showToast('No sheet URL yet — paste one in ⚙ Backend → "Master Sheet URL" or log a call to auto-set.');
+      showToast('No master sheet URL yet — connect backend ⚙ or log a call to auto-create.');
       openModal('backendModal');
     }
   });
@@ -1878,13 +1888,49 @@ async function init() {
     }
   });
   document.getElementById('backendOpenSheet').addEventListener('click', () => {
-    const url = state.sheetUrlByBrand[state.brand];
+    const url = state.masterSheetUrl || state.sheetUrlByBrand[state.brand];
     if (url) {
       window.open(url, '_blank');
     } else {
       showToast('No master sheet URL yet — log a call or save a prospect first.');
     }
   });
+
+  // v3.8: Migrate legacy per-brand sheets into single master
+  const migrateBtn = document.getElementById('backendMigrate');
+  if (migrateBtn) {
+    migrateBtn.addEventListener('click', async () => {
+      const statusEl = document.getElementById('backendStatus');
+      if (!state.backendUrl) {
+        statusEl.textContent = 'Connect the backend first.';
+        statusEl.className = 'backend-status err';
+        return;
+      }
+      if (!confirm('Merge all 4 legacy brand sheets into the new ALL BRANDS master sheet?\n\nSafe to re-run — will not duplicate rows. Old sheets stay intact as archive.')) return;
+      statusEl.textContent = 'Migrating… (this can take up to 60 seconds)';
+      statusEl.className = 'backend-status';
+      try {
+        const r = await backendCall({ action: 'migrateFromLegacy' });
+        if (r.ok) {
+          if (r.masterSheetUrl) {
+            state.masterSheetUrl = r.masterSheetUrl;
+            saveState();
+          }
+          const t = r.report?.totals || { prospects: 0, calls: 0 };
+          statusEl.innerHTML = `✓ Migrated <strong>${t.prospects}</strong> prospects + <strong>${t.calls}</strong> calls into master sheet. <a href="${r.masterSheetUrl}" target="_blank">Open master</a>`;
+          statusEl.className = 'backend-status ok';
+          loadCloudProspects();
+          loadCloudCalls();
+        } else {
+          statusEl.textContent = '✗ Migration failed: ' + (r.error || 'unknown');
+          statusEl.className = 'backend-status err';
+        }
+      } catch (e) {
+        statusEl.textContent = '✗ Migration error: ' + e.message;
+        statusEl.className = 'backend-status err';
+      }
+    });
+  }
   document.getElementById('backendSyncNow').addEventListener('click', () => drainSyncQueue());
   document.querySelectorAll('.modal-close, [data-close]').forEach(btn => {
     btn.addEventListener('click', () => {

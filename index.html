@@ -98,8 +98,9 @@
     </div>
     <div class="modal-body">
       <p class="modal-help">
-        Paste your Google Apps Script Web App URL. This connects the app to your
-        Google Sheets (master prospect log) and Gmail (follow-up reminders).
+        Paste your Google Apps Script Web App URL. <strong>v3.8</strong>: all 4 brands
+        now flow into ONE master sheet with a Brand column. Each row gets an “X · date”
+        in the <strong>Called?</strong> column when a call is logged — no more tab-hopping.
       </p>
       <p class="modal-help">
         Need to set up the backend? See <a href="SETUP_GOOGLE_BACKEND.md" target="_blank">SETUP_GOOGLE_BACKEND.md</a> in this repo (60 seconds).
@@ -109,14 +110,15 @@
         <input type="text" id="backendUrl" placeholder="https://script.google.com/macros/s/.../exec" />
       </label>
       <label class="form-row">
-        <span>Master Sheet URL <em style="font-weight:400;opacity:.7">(optional — auto-set after first sync)</em></span>
-        <input type="text" id="manualSheetUrl" placeholder="https://docs.google.com/spreadsheets/d/.../edit" />
+        <span>Master Sheet URL <em style="font-weight:400;opacity:.7">(auto-set after first sync — read only)</em></span>
+        <input type="text" id="manualSheetUrl" placeholder="Auto-populates after first call logged" readonly style="opacity:.7" />
       </label>
       <div id="backendStatus" class="backend-status"></div>
       <div class="form-actions">
         <button id="backendTest" class="btn btn-gold">Save & Test</button>
         <button id="backendOpenSheet" class="btn btn-ghost">Open Master Sheet</button>
         <button id="backendSyncNow" class="btn btn-ghost">Sync Queued Calls</button>
+        <button id="backendMigrate" class="btn btn-ghost" title="One-time: merge old per-brand sheets into the new single master">Migrate Legacy Sheets</button>
       </div>
       <div class="modal-help" style="margin-top:14px;">
         <strong>Sync queue:</strong> <span id="queueCount">0</span> calls waiting.
@@ -462,10 +464,10 @@
   </div>
 </div>
 
-<script src="validators.js?v=3.7.2"></script>
-<script src="market_timezones.js?v=3.7.2"></script>
-<script src="acronyms.js?v=3.7.1"></script>
-<script src="dashboard.js?v=3.7.2"></script>
-<script src="app.js?v=3.7.2"></script>
+<script src="validators.js?v=3.8"></script>
+<script src="market_timezones.js?v=3.8"></script>
+<script src="acronyms.js?v=3.8"></script>
+<script src="dashboard.js?v=3.8"></script>
+<script src="app.js?v=3.8"></script>
 </body>
 </html>
