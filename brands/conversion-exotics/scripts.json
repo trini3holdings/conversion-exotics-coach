@@ -124,62 +124,62 @@
       ]
     },
     "C": {
-      "name": "Paid-Search Leak",
-      "desc": "CPC anchor → window-shopper frame → DM-trap agitation → audit offer. Uses live keyword cost data.",
+      "name": "3-Issue Reveal",
+      "desc": "Names two of three issues outright in plain English (top of page + form), teases the third for the audit. $5K-$15K/week anchor. Dual-path close.",
       "beats": [
         {
-          "t": 15,
+          "t": 10,
           "phase": "OPEN",
-          "title": "Spend Frame Disarm",
-          "line": "Hey — I'll be quick. I'm guessing you guys are running Google Ads for the Lambo and Ferrari side out of {market}, right?",
-          "responses": ["Yeah, we run ads", "Who is this?", "Why are you asking"],
-          "followup": "Totally fair — I'll be quick. Got 30 seconds?",
-          "note": "If \"we don't run ads\" → \"Got it — then this is even more interesting. Quick reason for the call…\""
+          "title": "Three Issues Frame",
+          "line": "Hi, my name is {caller} with Conversion Exotics — I review exotic and luxury car rental sites for a living. I pulled up your site and I'm seeing <em>three specific issues on your booking process</em> that together are costing you roughly <em>$5,000 to $15,000 a week in booked rentals</em>. Do you know who I can talk to about this?",
+          "responses": ["That'd be me", "What three issues?", "Who is this again?"],
+          "followup": "Got it — quick run-through of what I'm seeing, then I'll show you exactly where the money's going.",
+          "note": "Calling the business, not a person. Three-issues hook sets up the reveal."
+        },
+        {
+          "t": 22,
+          "phase": "PROBLEM",
+          "title": "Three Stuck Spots",
+          "line": "Here's the deal — every exotic rental site I look at has <em>three spots where renters get stuck</em> between tapping the ad and actually booking the car: <em>the top of the page</em>, <em>the part where they fill out their info</em>, and <em>one more spot most owners never notice</em>. On your site, all three are losing you money. <em>For every extra second your site takes to load, you lose about a third of your bookings</em> — and that's just the first one.",
+          "responses": ["What's the third one?", "How would you know?", "We just redid the site"],
+          "followup": "Yeah — that's the most common reaction. The reveal is in the audit.",
+          "note": "Plain-English version of CRO failure stack. No jargon. Tee up the reveal in Beat 3."
+        },
+        {
+          "t": 38,
+          "phase": "AGITATION",
+          "title": "Walk Through Two Of Three",
+          "line": "So here's what's actually happening. <em>The top of your page</em> doesn't show a price and doesn't show the car they came for — so they back out and tap the next shop. The ones who scroll down hit your <em>booking form</em> — you're asking them to fill out their info before they've even decided to book. That's a wall. They open two more tabs and forget you. That's the <em>$5,000 to $15,000 a week</em>. Those two are <em>week-one quick wins</em>. But there's a <em>third spot on your booking process that costs more than both of those combined</em>. I'd rather show you that one with your page open.",
+          "responses": ["What's the third one?", "Show me", "How much would this cost to fix?"],
+          "followup": "Fair — and that's exactly what the audit answers. Pricing comes after.",
+          "note": "Reveal two issues plain. Tease third. Do NOT name the third on the call — the reveal is the audit."
+        },
+        {
+          "t": 18,
+          "phase": "SOLUTION",
+          "title": "100+ Sites Audited",
+          "line": "I've audited <em>over 100 exotic and luxury car rental sites</em> — same 10-point checklist, same booking process, same three leaks every time. The shops that fix the top two see bookings climb in the first week. The ones that fix all three usually <em>double their weekend bookings inside 30 days</em>.",
+          "responses": ["Okay…", "How long does the fix take?", "Sounds like a sales pitch"],
+          "followup": "Fair — and that's exactly why I lead with the audit, not the pitch.",
+          "note": "Credibility frame. 100+ sites. Same checklist. Pattern recognition."
+        },
+        {
+          "t": 33,
+          "phase": "AUDIT OFFER",
+          "title": "Free $3,000 Audit",
+          "line": "Here's what I want to do. I run a <em>$3,000 conversion audit</em> — and I'd like to do yours free. <em>Thirty minutes. Your live site on screen.</em> Every leak named in plain English no agency would dare use, with <em>dollar-anchored estimates per leak</em>. You walk away with a <em>sequenced one-week plan — every fix shipped at once</em>, ranked by booking impact. <em>Yours to keep whether you hire me to ship it or not.</em> Not vibes — math.",
+          "responses": ["Yeah I'd look at that", "Send it over first", "What's the catch?"],
+          "followup": "No catch — I'm running a handful of these personally this quarter for case studies. That's the only ask.",
+          "note": "Verbatim site language. $3K free. One-week plan. All fixes shipped at once."
         },
         {
           "t": 30,
-          "phase": "PROBLEM",
-          "title": "CPC Anchor",
-          "line": "Cool — {caller} with Conversion Exotics. I pulled the keyword data before I called. <em>{primary_kw}</em> is running about <em>${cpc_low}–${cpc_high} per click</em> right now. \"Exotic car rental near me\" tops <em>$14.49 a click</em>. Quick question — when's the last time you actually clicked your own ad on a phone and tried to book?",
-          "responses": ["Honestly never", "We get bookings", "It works fine"],
-          "followup": "Yeah — that's the part most owners miss. The ad's not the problem.",
-          "note": "Real CPCs. Pulled from Google Ads Keyword Planner. Say them with confidence."
-        },
-        {
-          "t": 35,
-          "phase": "AGITATION",
-          "title": "The DM Trap + Window Shoppers",
-          "line": "Here's what's happening — you're paying <em>$5–$10 a click</em> to land people on a page where the only way to actually book is to <em>DM you on Instagram or call the number</em>. So the real buyers, the ones ready to drop $3,500 today, they bounce — they go to the next ad or the shop across town that lets them book in 60 seconds. What's left in your DMs? <em>Window shoppers</em>, tire kickers, midnight messages from kids who can't afford the deposit. Would you be opposed to seeing exactly where that ad spend is leaking?",
-          "responses": ["Sure", "How much does this cost", "We've heard this before"],
-          "followup": "Got it — and the leak is almost never where the analytics says it is.",
-          "note": "This is the killer beat. Slow down on \"window shoppers\". Verbatim VoC."
-        },
-        {
-          "t": 25,
-          "phase": "SOLUTION",
-          "title": "Convert the Click",
-          "line": "What I do at Conversion Exotics is turn the page your ads land on into a <em>digital showroom</em> — live pricing, fleet that sells itself, deposit clarity up front, and a <em>sub-60-second mobile booking</em>. So the click you're already paying for actually closes instead of bouncing into a DM you'll answer at midnight.",
-          "responses": ["Okay…", "Sounds expensive", "We're not changing the site right now"],
-          "followup": "Totally fair — pricing's the easy part later. Audit first.",
-          "note": "Don't pitch the build. Pitch the audit."
-        },
-        {
-          "t": 35,
-          "phase": "AUDIT OFFER",
-          "title": "Free $3,000 Audit",
-          "line": "Whether we work together or not — I'll run a <em>free conversion audit</em>. Normally <em>$3,000</em>, yours to keep. Would it be unreasonable to spend 30 minutes walking you through exactly where the ad spend is leaking, what each click is actually worth, and the <em>3–5 fixes that close more renters from the traffic you're already paying for</em>?",
-          "responses": ["Yeah I'd look at that", "What's the catch", "Send it over first"],
-          "followup": "No catch — running a handful personally this quarter for case studies. That's the trade.",
-          "note": "Free audit is the door, not the close."
-        },
-        {
-          "t": 15,
           "phase": "CLOSE",
-          "title": "Lock the Time",
-          "line": "Shoot me your best email so I can send the calendar link — and let's block 30 minutes tomorrow or the day after. I'll have the audit pulled up live, screen-share, the whole thing. Cool?",
-          "responses": ["Yep", "Send the link", "I'll see if I can move some things"],
-          "followup": "Done. Calendar link hits your inbox in 60 seconds. Pick whichever slot works.",
-          "note": "Open calendar embed for them right then if they're still on the line."
+          "title": "Calendar or Sample",
+          "line": "Two ways we can do this. I've got <em>Thursday at 10</em> or <em>Friday at 2</em> open — pick one and I'll send the calendar invite. Or, if you'd rather see what this looks like first, give me your email and I'll send over a <em>sample audit I did for another exotic rental shop</em> — full plan, dollar numbers, the whole thing. Which one would you prefer?",
+          "responses": ["Thursday at 10", "Friday at 2", "Send me the sample first"],
+          "followup": "Done — calendar invite or sample audit hits your inbox in 60 seconds.",
+          "note": "Dual-path close. Booked call OR sample audit. Either is a win."
         }
       ]
     }
