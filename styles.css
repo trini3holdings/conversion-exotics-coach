@@ -29,9 +29,11 @@ body {
   line-height: 1.5;
 }
 
-/* ============ PROGRESS BAR ============ */
+/* ============ PROGRESS BAR (sticky, sits at very top) ============ */
 .progress-bar {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 60;
   height: 24px;
   background: var(--ink);
   cursor: pointer;
@@ -720,9 +722,9 @@ kbd {
   .form-row-pair { grid-template-columns: 1fr; }
 }
 
-/* ============ BIG TIMER BANNER (sticky) ============ */
+/* ============ BIG TIMER BANNER (sticky, sits under progress bar) ============ */
 .big-timer {
-  position: sticky; top: 0; z-index: 50;
+  position: sticky; top: 24px; z-index: 50;
   background: var(--ink); color: #fff;
   display: grid; grid-template-columns: auto 1fr auto;
   gap: 18px; align-items: center;
@@ -750,47 +752,43 @@ kbd {
 .bt-btn-ghost { background: transparent; color: #fff; border: 1px solid #444; }
 .bt-btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-/* ============ STICKY RECON RAIL ============ */
-.recon-rail {
+/* ============ STICKY RECON CARD (sits directly under big-timer) ============ */
+.recon-card-sticky {
   position: sticky;
-  top: 62px; /* sits directly under big-timer banner */
+  top: 88px; /* 24px (progress bar) + ~64px (big timer height) */
   z-index: 45;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  margin: 0 0 0 0;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  padding: 10px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
-.recon-rail.collapsed .recon-rail-body { display: none; }
-.recon-rail.collapsed .rr-chevron { transform: rotate(-90deg); }
-.recon-rail-toggle {
-  width: 100%; background: transparent; border: none;
-  padding: 8px 24px; display: flex; align-items: center; gap: 10px;
-  cursor: pointer; font-family: inherit; font-size: 13px;
-  color: var(--text); text-align: left;
+.recon-card-sticky.empty { display: none !important; } /* hide entirely until a prospect is picked */
+.recon-card-sticky .recon-head { margin-bottom: 8px; align-items: center; gap: 8px; }
+.recon-card-sticky.collapsed .recon-grid,
+.recon-card-sticky.collapsed .recon-leaks-title,
+.recon-card-sticky.collapsed .recon-leaks,
+.recon-card-sticky.collapsed .recon-notes,
+.recon-card-sticky.collapsed .recon-history,
+.recon-card-sticky.collapsed .recon-meta { display: none; }
+.recon-card-sticky.collapsed .recon-title { margin-bottom: 0; }
+.recon-collapse-btn {
+  margin-left: auto;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid #555;
+  border-radius: 4px;
+  width: 26px; height: 26px;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 16px; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
 }
-.recon-rail-toggle:hover { background: var(--highlight); }
-.rr-chevron { display: inline-block; transition: transform 0.15s; color: var(--gold); font-size: 16px; }
-.rr-summary { font-weight: 600; color: var(--ink); }
-.rr-summary .rr-dim { color: #888; font-weight: 400; margin-left: 8px; font-size: 12px; }
-.rr-summary .rr-pill {
-  display: inline-block; background: var(--ink); color: var(--gold);
-  padding: 1px 7px; border-radius: 3px; font-size: 10.5px;
-  font-weight: 700; letter-spacing: 0.5px; margin-left: 8px;
-  text-transform: uppercase;
-}
-.recon-rail-body {
-  padding: 10px 24px 14px;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 12px;
-  border-top: 1px solid var(--line);
-  background: var(--cream);
-}
-.rr-stat { display: flex; flex-direction: column; gap: 2px; }
-.rr-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: #888; font-weight: 600; }
-.rr-stat-val { font-size: 13px; color: var(--ink); font-weight: 600; }
-.rr-stat-val a { color: var(--ink); border-bottom: 1px dashed var(--gold); text-decoration: none; }
+.recon-collapse-btn:hover { border-color: var(--gold); }
 
 /* ============ BEAT — NEXT-UP PREVIEW + CHECKMARK + AUTO-SCROLL TARGET ============ */
-.beat { position: relative; scroll-margin-top: 200px; /* clear sticky timer + rail */ }
+.beat { position: relative; scroll-margin-top: 280px; /* clear sticky topbar+progress+timer+recon stack */ }
 .beat-checkbox {
   position: absolute; top: 10px; right: 12px;
   width: 22px; height: 22px;
@@ -1287,16 +1285,17 @@ body { padding-bottom: 64px; }
 /* ============== v3.5.1: Hide call-coach chrome on dashboard view ============== */
 body.view-dashboard #progressBar,
 body.view-dashboard #bigTimer,
-body.view-dashboard .topbar,
 body.view-dashboard #legendBar,
 body.view-dashboard #samplingBanner,
-body.view-dashboard #reconRail,
+body.view-dashboard #reconCard,
 body.view-dashboard #quickObjBar,
 body.view-dashboard #qoPop,
 body.view-dashboard #undoToast,
 body.view-dashboard #winnerBanner {
   display: none !important;
 }
+/* On dashboard view, topbar stays visible (so brand-pick / caller / sheet still reachable)
+   but lose its sticky/fixed-feel since nothing else is sticky in dashboard mode */
 body.view-dashboard .dashboard-view {
   margin-top: 0;
   padding-top: 32px;

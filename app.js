@@ -88,7 +88,7 @@ let state = {
   sheetUrlByBrand: {},        // brand → master sheet URL
   // v3.3 UX
   saidBeats: {},              // {variantKey: [beatIdx,...]} per-call tracking
-  reconRailOpen: false,
+  reconCardCollapsed: false,  // v3.7 sticky recon card collapse state
   lastActiveBeatIdx: -1,
   // v3.6 validation
   brandValidation: { ok: true, errors: [], warnings: [] }
@@ -112,7 +112,7 @@ function loadState() {
     if (s.sheetUrlByBrand) state.sheetUrlByBrand = s.sheetUrlByBrand;
     if (s.cloudProspects && Array.isArray(s.cloudProspects)) state.cloudProspects = s.cloudProspects;
     if (s.saidBeats && typeof s.saidBeats === 'object') state.saidBeats = s.saidBeats;
-    if (typeof s.reconRailOpen === 'boolean') state.reconRailOpen = s.reconRailOpen;
+    if (typeof s.reconCardCollapsed === 'boolean') state.reconCardCollapsed = s.reconCardCollapsed;
   } catch (e) { /* fresh */ }
 }
 function saveState() {
@@ -132,7 +132,7 @@ function saveState() {
       lastSyncTs: state.lastSyncTs,
       sheetUrlByBrand: state.sheetUrlByBrand,
       saidBeats: state.saidBeats,
-      reconRailOpen: state.reconRailOpen
+      reconCardCollapsed: state.reconCardCollapsed
     }));
   } catch (e) { /* quota */ }
 }
@@ -407,7 +407,7 @@ function renderReconCard() {
   const statHTML = [];
   if (p.speed !== undefined && p.speed !== '') statHTML.push(statBox('Speed', p.speed + (typeof p.speed === 'number' || /^\d+$/.test(p.speed) ? '/100' : '')));
   if (p.trust !== undefined && p.trust !== '') statHTML.push(statBox('Trust', p.trust + (typeof p.trust === 'number' || /^\d+$/.test(p.trust) ? '/100' : '')));
-  if (p.cta !== undefined && p.cta !== '') statHTML.push(statBox('CTA', p.cta + (typeof p.cta === 'number' || /^\d+$/.test(p.cta) ? '/100' : '')));
+  if (p.cta !== undefined && p.cta !== '') statHTML.push(statBox('Action button', p.cta + (typeof p.cta === 'number' || /^\d+$/.test(p.cta) ? '/100' : '')));
   if (p.monthly_traffic) statHTML.push(statBox('Traffic / mo', p.monthly_traffic));
   if (p.ad_spend_est) statHTML.push(statBox('Est. Ad Spend', p.ad_spend_est));
   if (p.last_called_date) statHTML.push(statBox('Last Called', p.last_called_date));
@@ -415,7 +415,7 @@ function renderReconCard() {
 
   const leaks = (p.issues || []).slice(0, 5);
   const leaksHTML = leaks.length
-    ? `<div class="recon-leaks-title">Audited Leaks</div><ol class="recon-leaks">${leaks.map(l => `<li>${escapeHTML(l)}</li>`).join('')}</ol>`
+    ? `<div class="recon-leaks-title">Audited Leaks</div><ol class="recon-leaks">${leaks.map(l => `<li>${expEscape(l)}</li>`).join('')}</ol>`
     : '';
 
   const contactBits = [];
@@ -423,7 +423,7 @@ function renderReconCard() {
   if (p.email) contactBits.push(`✉ ${escapeHTML(p.email)}`);
   if (p.instagram) contactBits.push(`📷 ${escapeHTML(p.instagram)}`);
 
-  const notesHTML = p.notes ? `<div class="recon-notes">Note: ${escapeHTML(p.notes)}</div>` : '';
+  const notesHTML = p.notes ? `<div class="recon-notes">Note: ${expEscape(p.notes)}</div>` : '';
 
   // History: prior calls for this prospect
   const priorCalls = state.calls.filter(c => c.prospectN === p.n).slice(-3).reverse();
@@ -439,7 +439,7 @@ function renderReconCard() {
     : '';
 
   body.innerHTML = `
-    <div class="recon-title">${escapeHTML(company)} · ${escapeHTML(p.market || 'Unknown market')}</div>
+    <div class="recon-title">${expEscape(company)} · ${expEscape(p.market || 'Unknown market')}</div>
     <div class="recon-meta">
       ${url ? `<a href="${url}" target="_blank" rel="noopener">${escapeHTML(domain)} ↗</a>` : ''}
       ${contactBits.length ? ' · ' + contactBits.join(' · ') : ''}
@@ -455,6 +455,27 @@ function statBox(label, val) {
 }
 function escapeHTML(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+// v3.7 — Acronym expansion helpers (resolve at call time so we tolerate load order).
+function expandAcr(text) {
+  if (!text) return text;
+  if (window.CCAcronyms && typeof window.CCAcronyms.expandAcronyms === 'function') {
+    return window.CCAcronyms.expandAcronyms(text);
+  }
+  return text;
+}
+function expandLabel(text) {
+  if (!text) return text;
+  if (window.CCAcronyms && typeof window.CCAcronyms.expandLabel === 'function') {
+    return window.CCAcronyms.expandLabel(text);
+  }
+  return text;
+}
+// Convenience: expand acronyms in plain text, then HTML-escape. Use anywhere
+// you'd previously have done `escapeHTML(text)` on user-facing prose.
+function expEscape(text) {
+  return escapeHTML(expandAcr(text == null ? '' : String(text)));
 }
 
 // ============== RENDER · BEATS ==============
@@ -480,9 +501,9 @@ function renderBeats() {
     const isActive = elapsed >= start && elapsed < cumulative;
     if (isActive) activeIdx = i;
     const isSaid = said.includes(i);
-    const respHtml = (b.responses || []).map(r => `<span class="resp">"${r}"</span>`).join(' / ');
+    const respHtml = (b.responses || []).map(r => `<span class="resp">"${expandAcr(r)}"</span>`).join(' / ');
     const next = beats[i + 1];
-    const nextPreview = next ? `<div class="beat-next-preview"><strong>Next:</strong> ${escapeHTML(next.title)} (${next.t}s)</div>` : '';
+    const nextPreview = next ? `<div class="beat-next-preview"><strong>Next:</strong> ${expEscape(next.title)} (${next.t}s)</div>` : '';
     return `
       <div class="beat ${isActive ? 'active' : ''} ${isSaid ? 'said-beat' : ''}" data-beat-idx="${i}">
         <div class="beat-checkbox ${isSaid ? 'said' : ''}" data-toggle-said="${i}" title="Mark this beat as said"></div>
@@ -490,11 +511,11 @@ function renderBeats() {
           <span class="beat-phase">${b.phase || ''}</span>
           <span class="beat-time">@ ${start}s · ${b.t}s</span>
         </div>
-        <div class="beat-title">${b.title}</div>
-        <div class="beat-line"><span class="speaker-you">YOU (${state.caller}):</span> "${fillTokens(b.line, ctx)}"</div>
+        <div class="beat-title">${expandAcr(b.title || '')}</div>
+        <div class="beat-line"><span class="speaker-you">YOU (${state.caller}):</span> "${expandAcr(fillTokens(b.line, ctx))}"</div>
         ${b.responses && b.responses.length ? `<div class="beat-responses"><span class="speaker-prospect">↳ PROSPECT likely:</span> ${respHtml}</div>` : ''}
-        ${b.followup ? `<div class="beat-followup"><span class="speaker-you-recover">YOU (if they push back):</span> <em>"${fillTokens(b.followup, ctx)}"</em></div>` : ''}
-        ${b.note ? `<div class="beat-note"><span class="speaker-coach">🎯 COACH:</span> ${fillTokens(b.note, ctx)}</div>` : ''}
+        ${b.followup ? `<div class="beat-followup"><span class="speaker-you-recover">YOU (if they push back):</span> <em>"${expandAcr(fillTokens(b.followup, ctx))}"</em></div>` : ''}
+        ${b.note ? `<div class="beat-note"><span class="speaker-coach">🎯 COACH:</span> ${expandAcr(fillTokens(b.note, ctx))}</div>` : ''}
         ${nextPreview}
       </div>
     `;
@@ -543,45 +564,14 @@ function resetSaidBeats() {
   saveState();
 }
 
-// ============== STICKY RECON RAIL ==============
-function renderReconRail() {
-  const rail = document.getElementById('reconRail');
-  const summary = document.getElementById('rrSummary');
-  const body = document.getElementById('reconRailBody');
-  if (!rail || !summary || !body) return;
-  const p = state.selectedProspectN ? PROSPECTS.find(x => x.n === state.selectedProspectN) : null;
-  if (!p) {
-    summary.innerHTML = 'No prospect selected <span class="rr-dim">— pick one from the side panel</span>';
-    body.innerHTML = '';
-    return;
-  }
-  const company = p.company || p.domain || `#${p.n}`;
-  const risk = (p.risk || 'MED').toUpperCase();
-  const market = p.market || 'Unknown';
-  const cpc = lookupMarketCPC(market);
-  const av = (SCRIPTS && SCRIPTS._meta && SCRIPTS._meta.audit_value) || 0;
-  summary.innerHTML = `${escapeHTML(company)} <span class="rr-dim">· ${escapeHTML(market)}</span> <span class="rr-pill">${risk}</span>`;
-  const url = p.domain ? (p.domain.startsWith('http') ? p.domain : `https://${p.domain}`) : '';
-  const cells = [];
-  if (url) cells.push(railStat('Site', `<a href="${url}" target="_blank" rel="noopener">${escapeHTML(p.domain)} ↗</a>`));
-  cells.push(railStat('Market', escapeHTML(market)));
-  cells.push(railStat('CPC', `$${cpc.cpc_low.toFixed(2)}–$${cpc.cpc_high.toFixed(2)}`));
-  cells.push(railStat('Keyword', escapeHTML(cpc.primary_kw || '—')));
-  if (av) cells.push(railStat('Audit value', `$${av.toLocaleString()}`));
-  if (p.phone) cells.push(railStat('Phone', escapeHTML(p.phone)));
-  if (p.speed !== undefined && p.speed !== '') cells.push(railStat('Speed', String(p.speed)));
-  if (p.trust !== undefined && p.trust !== '') cells.push(railStat('Trust', String(p.trust)));
-  if (p.cta !== undefined && p.cta !== '') cells.push(railStat('CTA', String(p.cta)));
-  body.innerHTML = cells.join('');
-}
-function railStat(label, val) {
-  return `<div class="rr-stat"><div class="rr-stat-label">${escapeHTML(label)}</div><div class="rr-stat-val">${val}</div></div>`;
-}
-function toggleReconRail() {
-  const rail = document.getElementById('reconRail');
-  if (!rail) return;
-  rail.classList.toggle('collapsed');
-  state.reconRailOpen = !rail.classList.contains('collapsed');
+// ============== STICKY RECON CARD COLLAPSE TOGGLE (v3.7) ==============
+function toggleReconCardCollapse() {
+  const card = document.getElementById('reconCard');
+  if (!card) return;
+  card.classList.toggle('collapsed');
+  state.reconCardCollapsed = card.classList.contains('collapsed');
+  const btn = document.getElementById('reconCollapseBtn');
+  if (btn) btn.textContent = state.reconCardCollapsed ? '+' : '−';
   saveState();
 }
 
@@ -650,9 +640,9 @@ function openObjection(cat) {
     pop.innerHTML = `
       <div class="qo-pop-head">
         <div class="qo-pop-cat">${escapeHTML(obj.cat)}</div>
-        <div class="qo-pop-q">${obj.q}</div>
+        <div class="qo-pop-q">${expandAcr(obj.q || '')}</div>
       </div>
-      <div class="qo-pop-a">${obj.a}</div>
+      <div class="qo-pop-a">${expandAcr(obj.a || '')}</div>
     `;
     pop.classList.remove('hidden');
   }
@@ -1060,7 +1050,6 @@ function clearForm() {
   document.getElementById('liveScore').classList.add('hidden');
   state.selectedProspectN = null;
   renderReconCard();
-  renderReconRail();
   renderBeats();
 }
 
@@ -1117,7 +1106,6 @@ function selectProspect(n) {
   document.getElementById('phone').value = p.phone || '';
   document.getElementById('prospectEmail').value = p.email || '';
   renderReconCard();
-  renderReconRail();
   renderBeats();
 }
 
@@ -1239,8 +1227,10 @@ window.showDashboard = showDashboard;
 window.enterBrand = async function(slug, prospectId) {
   const cc = document.getElementById('callCoachView');
   const dv = document.getElementById('dashboardView');
+  const rc = document.getElementById('reconCard');
   if (dv) dv.classList.add('hidden');
   if (cc) cc.classList.remove('hidden');
+  if (rc) rc.classList.remove('hidden'); // v3.7: reveal sticky recon card when we leave dashboard
   document.body.classList.remove('view-dashboard');
   document.body.classList.add('view-coach');
   const sel = document.getElementById('brandSelect');
@@ -1252,7 +1242,6 @@ window.enterBrand = async function(slug, prospectId) {
     try { saveState(); } catch (e) {}
     if (typeof renderProspectPicker === 'function') renderProspectPicker();
     if (typeof renderReconCard === 'function') renderReconCard();
-    if (typeof renderReconRail === 'function') renderReconRail();
   }
 };
 
@@ -1281,7 +1270,6 @@ async function switchBrand(slug) {
   await loadBrandData(slug);
   renderProspectPicker();
   renderReconCard();
-  renderReconRail();
   renderBeats();
   renderObjections();
   renderQuickObjectionBar();
@@ -1712,8 +1700,9 @@ async function init() {
   document.getElementById('btStart').addEventListener('click', toggleTimer);
   document.getElementById('btReset').addEventListener('click', resetTimer);
 
-  // Sticky recon rail toggle
-  document.getElementById('reconRailToggle').addEventListener('click', toggleReconRail);
+  // Sticky recon-card collapse toggle (v3.7)
+  const reconCollapseBtn = document.getElementById('reconCollapseBtn');
+  if (reconCollapseBtn) reconCollapseBtn.addEventListener('click', toggleReconCardCollapse);
 
   // Quick-objection hotkey bar
   renderQuickObjectionBar();
@@ -1741,9 +1730,12 @@ async function init() {
   const undoBtn = document.getElementById('undoToastBtn');
   if (undoBtn) undoBtn.addEventListener('click', undoLastCall);
 
-  // Restore recon rail expanded state
-  if (state.reconRailOpen) {
-    document.getElementById('reconRail').classList.remove('collapsed');
+  // Restore recon-card collapse state (v3.7)
+  if (state.reconCardCollapsed) {
+    const card = document.getElementById('reconCard');
+    if (card) card.classList.add('collapsed');
+    const btn = document.getElementById('reconCollapseBtn');
+    if (btn) btn.textContent = '+';
   }
 
   // Set initial big-timer target on load

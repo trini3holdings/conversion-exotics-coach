@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Call Coach v3.4</title>
+<title>Call Coach v3.7</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
@@ -11,36 +11,13 @@
 </head>
 <body>
 
-<!-- ============ PROGRESS BAR (TOP) ============ -->
-<div id="progressBar" class="progress-bar" title="Click to open prospect picker">
-  <div class="progress-fill" id="progressFill" style="width:0%"></div>
-  <div class="progress-label" id="progressLabel">0 of 0 prospects called today · 0% done</div>
-</div>
-
-<!-- ============ BIG TIMER BANNER (sticky under topbar) ============ -->
-<div id="bigTimer" class="big-timer">
-  <div class="bt-left">
-    <span class="bt-elapsed" id="btElapsed">00:00</span>
-    <span class="bt-sep">/</span>
-    <span class="bt-target" id="btTarget">00:00</span>
-  </div>
-  <div class="bt-center">
-    <div class="bt-bar"><div class="bt-bar-fill" id="btBarFill"></div></div>
-    <div class="bt-phase" id="btPhase">Press Start · Ctrl+S</div>
-  </div>
-  <div class="bt-right">
-    <button id="btStart" class="bt-btn" type="button">▶ Start</button>
-    <button id="btReset" class="bt-btn bt-btn-ghost" type="button">Reset</button>
-  </div>
-</div>
-
-<!-- ============ TOPBAR ============ -->
+<!-- ============ TOPBAR (top of page flow, NOT sticky) ============ -->
 <header class="topbar">
   <div class="topbar-left">
     <div class="logo-mark" id="logoMark">CE</div>
     <div class="brand-meta">
       <div class="brand-name" id="brandName">Call Coach</div>
-      <div class="brand-sub">Multi-brand cold-call cockpit · v3.4</div>
+      <div class="brand-sub">Multi-brand cold-call cockpit · v3.7</div>
     </div>
   </div>
   <div class="topbar-right">
@@ -63,6 +40,41 @@
     <div class="topbar-date" id="topbarDate"></div>
   </div>
 </header>
+
+<!-- ============ PROGRESS BAR (sticky) ============ -->
+<div id="progressBar" class="progress-bar" title="Click to open prospect picker">
+  <div class="progress-fill" id="progressFill" style="width:0%"></div>
+  <div class="progress-label" id="progressLabel">0 of 0 prospects called today · 0% done</div>
+</div>
+
+<!-- ============ BIG TIMER BANNER (sticky under progress bar) ============ -->
+<div id="bigTimer" class="big-timer">
+  <div class="bt-left">
+    <span class="bt-elapsed" id="btElapsed">00:00</span>
+    <span class="bt-sep">/</span>
+    <span class="bt-target" id="btTarget">00:00</span>
+  </div>
+  <div class="bt-center">
+    <div class="bt-bar"><div class="bt-bar-fill" id="btBarFill"></div></div>
+    <div class="bt-phase" id="btPhase">Press Start · Ctrl+S</div>
+  </div>
+  <div class="bt-right">
+    <button id="btStart" class="bt-btn" type="button">▶ Start</button>
+    <button id="btReset" class="bt-btn bt-btn-ghost" type="button">Reset</button>
+  </div>
+</div>
+
+<!-- ============ STICKY RECON CARD (sticky under big timer, only on call-coach view) ============ -->
+<div id="reconCard" class="recon-card recon-card-sticky empty hidden">
+  <div class="recon-head">
+    <span class="recon-tag">RECON · pre-call</span>
+    <span id="reconRisk" class="risk-badge"></span>
+    <button id="reconCollapseBtn" type="button" class="recon-collapse-btn" title="Collapse / expand recon">−</button>
+  </div>
+  <div id="reconBody">
+    <div class="recon-empty">Pick a prospect from the side panel to see their audit.</div>
+  </div>
+</div>
 
 <!-- ============ KEYBOARD LEGEND ============ -->
 <div id="legendBar" class="legend-bar hidden">
@@ -134,7 +146,7 @@
         <label class="form-row"><span>Instagram</span><input id="np_instagram" type="text" placeholder="@handle"/></label>
         <label class="form-row"><span>Speed Score</span><input id="np_speed" type="text" placeholder="e.g. 62"/></label>
         <label class="form-row"><span>Trust Score</span><input id="np_trust" type="text" /></label>
-        <label class="form-row"><span>CTA Score</span><input id="np_cta" type="text" /></label>
+        <label class="form-row"><span>Action Button Score</span><input id="np_cta" type="text" /></label>
         <label class="form-row"><span>Risk</span>
           <select id="np_risk"><option value="MED">MED</option><option value="HIGH">HIGH</option><option value="LOW">LOW</option></select>
         </label>
@@ -157,15 +169,6 @@
   <span id="samplingMsg">Need 10+ calls per variant. Auto-rotates A→B→C every 10 calls.</span>
 </div>
 
-<!-- ============ STICKY RECON RAIL (under big timer) ============ -->
-<div id="reconRail" class="recon-rail collapsed">
-  <button id="reconRailToggle" class="recon-rail-toggle" type="button" title="Expand recon">
-    <span class="rr-chevron">▾</span>
-    <span class="rr-summary" id="rrSummary">No prospect selected</span>
-  </button>
-  <div class="recon-rail-body" id="reconRailBody"></div>
-</div>
-
 <!-- ============ MAIN 3-COLUMN GRID ============ -->
 <!-- ============ DASHBOARD VIEW (default) ============ -->
 <main id="dashboardView" class="dashboard-view">
@@ -179,17 +182,6 @@
 
   <!-- COL 1 · SCRIPT -->
   <section class="col col-script">
-
-    <!-- AUDITED URL / RECON CARD -->
-    <div id="reconCard" class="recon-card empty">
-      <div class="recon-head">
-        <span class="recon-tag">RECON · pre-call</span>
-        <span id="reconRisk" class="risk-badge"></span>
-      </div>
-      <div id="reconBody">
-        <div class="recon-empty">Pick a prospect from the side panel to see their audit.</div>
-      </div>
-    </div>
 
     <h2 class="col-title">Active Script <span class="col-sub" id="beatsProgress">0 of 0 beats said</span></h2>
     <div class="variant-tabs" id="variantTabs">
@@ -444,9 +436,10 @@
   </div>
 </div>
 
-<script src="validators.js?v=3.6"></script>
+<script src="validators.js?v=3.7"></script>
 <script src="market_timezones.js"></script>
-<script src="dashboard.js?v=3.6"></script>
-<script src="app.js?v=3.6"></script>
+<script src="acronyms.js?v=3.7"></script>
+<script src="dashboard.js?v=3.7"></script>
+<script src="app.js?v=3.7"></script>
 </body>
 </html>
