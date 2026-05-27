@@ -754,43 +754,8 @@ kbd {
 .bt-btn-ghost { background: transparent; color: #fff; border: 1px solid #444; }
 .bt-btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-/* ============ STICKY RECON CARD (sits directly under big-timer) ============ */
-.recon-card-sticky {
-  position: sticky;
-  top: 88px; /* 24px (progress bar) + ~64px (big timer height) */
-  z-index: 45;
-  margin: 0 0 0 0;
-  border-radius: 0;
-  border-left: none;
-  border-right: none;
-  padding: 10px 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-}
-.recon-card-sticky.empty { display: none !important; } /* hide entirely until a prospect is picked */
-.recon-card-sticky .recon-head { margin-bottom: 8px; align-items: center; gap: 8px; }
-.recon-card-sticky.collapsed .recon-grid,
-.recon-card-sticky.collapsed .recon-leaks-title,
-.recon-card-sticky.collapsed .recon-leaks,
-.recon-card-sticky.collapsed .recon-notes,
-.recon-card-sticky.collapsed .recon-history,
-.recon-card-sticky.collapsed .recon-meta { display: none; }
-.recon-card-sticky.collapsed .recon-title { margin-bottom: 0; }
-.recon-collapse-btn {
-  margin-left: auto;
-  background: transparent;
-  color: var(--gold);
-  border: 1px solid #555;
-  border-radius: 4px;
-  width: 26px; height: 26px;
-  font-family: var(--font-display); font-weight: 700;
-  font-size: 16px; line-height: 1;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-}
-.recon-collapse-btn:hover { border-color: var(--gold); }
-
 /* ============ BEAT — NEXT-UP PREVIEW + CHECKMARK + AUTO-SCROLL TARGET ============ */
-.beat { position: relative; scroll-margin-top: 280px; /* clear sticky topbar+progress+timer+recon stack */ }
+.beat { position: relative; scroll-margin-top: 180px; /* clear sticky topbar + big timer */ }
 .beat-checkbox {
   position: absolute; top: 10px; right: 12px;
   width: 22px; height: 22px;

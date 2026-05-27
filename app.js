@@ -2030,13 +2030,8 @@ async function init() {
   const undoBtn = document.getElementById('undoToastBtn');
   if (undoBtn) undoBtn.addEventListener('click', undoLastCall);
 
-  // Restore recon-card collapse state (v3.7)
-  if (state.reconCardCollapsed) {
-    const card = document.getElementById('reconCard');
-    if (card) card.classList.add('collapsed');
-    const btn = document.getElementById('reconCollapseBtn');
-    if (btn) btn.textContent = '+';
-  }
+  // v3.8.3: recon card returned to inline column layout — clear stale sticky-collapse state
+  state.reconCardCollapsed = false;
 
   // Set initial big-timer target on load
   setTimeout(() => {

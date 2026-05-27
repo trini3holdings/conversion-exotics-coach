@@ -30,7 +30,7 @@
           "t": 38,
           "phase": "AGITATE",
           "title": "Two Leaks Revealed, Third Withheld",
-          "line": "On {company} specifically, two things jumped out. First — {leak_1}. Second — {leak_2}. Neither is fatal alone. But on flights booking at $25K to $80K, even a small drop in inquiry-to-booking is real money walking off the page weekly. There's a third leak that costs more than both — I'd rather walk you through it on a 15-minute screen share than rush it on the phone.",
+          "line": "On {company} specifically, two things jumped out. First — {leak_1}. Second — {leak_2}. Neither is fatal alone. But on flights booking at $25,000 to $80,000, even a small drop in inquiry-to-booking is real money walking off the page weekly. There's a third leak that costs more than both — I'd rather walk you through it on a 15-minute screen share than rush it on the phone.",
           "responses": ["We've heard that before", "What would you change?", "Show me the third one"],
           "followup": "The third one's the easiest to fix and the most expensive to ignore. Worth 15 minutes.",
           "note": "DO NOT reveal leak 3 on the phone. The third leak IS the meeting. If they push: 'I'd rather earn the 15 minutes than spoil it. Thursday or Friday?'"

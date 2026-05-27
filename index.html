@@ -64,18 +64,6 @@
   </div>
 </div>
 
-<!-- ============ STICKY RECON CARD (sticky under big timer, only on call-coach view) ============ -->
-<div id="reconCard" class="recon-card recon-card-sticky empty hidden">
-  <div class="recon-head">
-    <span class="recon-tag">RECON · pre-call</span>
-    <span id="reconRisk" class="risk-badge"></span>
-    <button id="reconCollapseBtn" type="button" class="recon-collapse-btn" title="Collapse / expand recon">−</button>
-  </div>
-  <div id="reconBody">
-    <div class="recon-empty">Pick a prospect from the side panel to see their audit.</div>
-  </div>
-</div>
-
 <!-- ============ KEYBOARD LEGEND ============ -->
 <div id="legendBar" class="legend-bar hidden">
   <div class="kbd-row"><kbd>Ctrl</kbd>+<kbd>S</kbd><span>Start / pause timer</span></div>
@@ -185,11 +173,22 @@
   <!-- COL 1 · SCRIPT -->
   <section class="col col-script">
 
+    <!-- AUDITED URL / RECON CARD (inline at top of script column) -->
+    <div id="reconCard" class="recon-card empty">
+      <div class="recon-head">
+        <span class="recon-tag">RECON · pre-call</span>
+        <span id="reconRisk" class="risk-badge"></span>
+      </div>
+      <div id="reconBody">
+        <div class="recon-empty">Pick a prospect from the side panel to see their audit.</div>
+      </div>
+    </div>
+
     <h2 class="col-title">Active Script <span class="col-sub" id="beatsProgress">0 of 0 beats said</span></h2>
     <div class="variant-tabs" id="variantTabs">
       <button data-v="A" class="variant-tab active">A · Pattern Interrupt</button>
       <button data-v="B" class="variant-tab">B · Curiosity Hook</button>
-      <button data-v="C" class="variant-tab">C · Paid-Ads Leak</button>
+      <button data-v="C" class="variant-tab">C · Paid-Search Leak</button>
     </div>
 
     <!-- v3.5.1: duplicate timer-card removed — sticky #btStart above is the single source of truth -->
@@ -457,10 +456,10 @@
   </div>
 </div>
 
-<script src="validators.js?v=3.8.2"></script>
-<script src="market_timezones.js?v=3.8.2"></script>
-<script src="acronyms.js?v=3.8.2"></script>
-<script src="dashboard.js?v=3.8.2"></script>
-<script src="app.js?v=3.8.2"></script>
+<script src="validators.js?v=3.8.3"></script>
+<script src="market_timezones.js?v=3.8.3"></script>
+<script src="acronyms.js?v=3.8.3"></script>
+<script src="dashboard.js?v=3.8.3"></script>
+<script src="app.js?v=3.8.3"></script>
 </body>
 </html>
