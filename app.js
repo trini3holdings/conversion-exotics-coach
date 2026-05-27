@@ -1201,23 +1201,38 @@ function renderProspectPicker() {
     return true;
   });
 
-  // Sort by callability rank, then by recency (cold first), then by prospect.n for stability
+  // v3.8.1: NEVER-CALLED ALWAYS PULLS FIRST. Sort hierarchy:
+  //   1. uncalled (no recent call) before called
+  //   2. within uncalled or called: callability rank (Prime > Soon > OK > Avoid > Off)
+  //   3. within same TZ bucket: oldest call first (or stable by p.n for uncalled)
   visible.sort((a, b) => {
+    const aUncalled = a.recent ? 0 : 1;  // 0 if uncalled wait, flip: we want uncalled FIRST
+    const bUncalled = b.recent ? 0 : 1;
+    // Actually: uncalled = no recent = should come first → assign 0 to uncalled, 1 to called
+    const aFresh = a.recent ? 1 : 0;
+    const bFresh = b.recent ? 1 : 0;
+    if (aFresh !== bFresh) return aFresh - bFresh;
+    // Tie-break on TZ rank
     const rA = (TZ_GATE_STATUSES[a.call.status] || TZ_GATE_STATUSES.off).rank;
     const rB = (TZ_GATE_STATUSES[b.call.status] || TZ_GATE_STATUSES.off).rank;
     if (rA !== rB) return rA - rB;
-    // Within same callability bucket: never-called first, then oldest-called
+    // Tie-break: oldest call first (higher daysAgo wins) — uncalled all have daysAgo=undef so stays stable
     const aDays = a.recent ? a.recent.daysAgo : 999999;
     const bDays = b.recent ? b.recent.daysAgo : 999999;
-    if (aDays !== bDays) return bDays - aDays;  // older = higher first
+    if (aDays !== bDays) return bDays - aDays;
     return (a.p.n || 0) - (b.p.n || 0);
   });
 
-  // Group by callability bucket so the user sees the natural order
-  const groups = { prime: [], soon: [], ok: [], avoid: [], off: [] };
+  // v3.8.1: Group into TWO tiers: 🆕 Never Called (top) and 📞 Called (bottom),
+  // each subdivided by TZ bucket. Uncalled in Prime → very top. Called in Prime → middle of list.
+  const groups = {
+    fresh: { prime: [], soon: [], ok: [], avoid: [], off: [] },
+    called: { prime: [], soon: [], ok: [], avoid: [], off: [] }
+  };
   visible.forEach(item => {
-    const bucket = groups[item.call.status] ? item.call.status : 'off';
-    groups[bucket].push(item);
+    const tier = item.recent ? 'called' : 'fresh';
+    const bucket = groups[tier][item.call.status] ? item.call.status : 'off';
+    groups[tier][bucket].push(item);
   });
 
   const hiddenCount = enriched.length - visible.length;
@@ -1233,37 +1248,45 @@ function renderProspectPicker() {
     html += `<option value="" disabled>· ${bits.join(' · ')} ·</option>`;
   }
 
-  ['prime', 'soon', 'ok', 'avoid', 'off'].forEach(bucket => {
-    const items = groups[bucket];
-    if (!items.length) return;
-    const meta = TZ_GATE_STATUSES[bucket];
-    html += `<optgroup label="${meta.dot} ${meta.label} (${items.length})">`;
-    items.forEach(({ p, call, recent }) => {
-      const statusKey = prospectStatus(p);
-      const localDot = STATUS_DOT[statusKey] || '';
-      let label = `${meta.dot} #${p.n} · ${p.domain || p.company || 'unnamed'}`;
-      if (call.localTime) label += ` · ${call.localTime}`;
-      if (recent) {
-        const flag = recent.isBooked ? '★' : (recent.byMe ? '↻' : '⚠');
-        label += ` ${flag}${recent.daysAgo}d`;
-        if (!recent.byMe && !recent.isBooked) label += ` by ${recent.caller}`;
-      } else {
-        label += ` · ${localDot}`;
-      }
-      const dataAttrs = `data-status="${statusKey}" data-tz="${call.status}" data-recent="${recent ? recent.daysAgo : ''}"`;
-      html += `<option value="${p.n}" ${dataAttrs}>${escapeHTML(label)}</option>`;
+  // v3.8.1: render FRESH (never called) tier first, then CALLED tier
+  const renderTier = (tierKey, tierLabel) => {
+    ['prime', 'soon', 'ok', 'avoid', 'off'].forEach(bucket => {
+      const items = groups[tierKey][bucket];
+      if (!items.length) return;
+      const meta = TZ_GATE_STATUSES[bucket];
+      html += `<optgroup label="${tierLabel} · ${meta.dot} ${meta.label} (${items.length})">`;
+      items.forEach(({ p, call, recent }) => {
+        const statusKey = prospectStatus(p);
+        const localDot = STATUS_DOT[statusKey] || '';
+        let label = `${meta.dot} #${p.n} · ${p.domain || p.company || 'unnamed'}`;
+        if (call.localTime) label += ` · ${call.localTime}`;
+        if (recent) {
+          const flag = recent.isBooked ? '★' : (recent.byMe ? '↻' : '⚠');
+          label += ` ${flag}${recent.daysAgo}d`;
+          if (!recent.byMe && !recent.isBooked) label += ` by ${recent.caller}`;
+        } else {
+          label += ` · ${localDot}`;
+        }
+        const dataAttrs = `data-status="${statusKey}" data-tz="${call.status}" data-recent="${recent ? recent.daysAgo : ''}" data-fresh="${recent ? '0' : '1'}"`;
+        html += `<option value="${p.n}" ${dataAttrs}>${escapeHTML(label)}</option>`;
+      });
+      html += '</optgroup>';
     });
-    html += '</optgroup>';
-  });
+  };
+
+  renderTier('fresh', '🆕 NEW');
+  renderTier('called', '📞 Called');
 
   sel.innerHTML = html;
 
-  // Update the live counter badge if present
+  // v3.8.1: counter now shows fresh+callable, called+callable, hidden
   const counter = document.getElementById('pickerStatusCounter');
   if (counter) {
-    const callableNow = groups.prime.length + groups.soon.length;
+    const freshCallable = groups.fresh.prime.length + groups.fresh.soon.length;
+    const calledCallable = groups.called.prime.length + groups.called.soon.length;
     counter.innerHTML = `
-      <span title="In prime window or opens within 2h">🟢 ${callableNow}</span>
+      <span title="Never called · in prime window or opens within 2h" style="color:#0a7">🆕 ${freshCallable}</span>
+      <span title="Already called · in prime window or opens within 2h" style="color:#888">📞 ${calledCallable}</span>
       <span title="Hidden by TZ gate or recency rule" style="color:#999">· ${hiddenCount} hidden</span>`;
   }
 }
