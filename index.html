@@ -38,6 +38,7 @@
         <option value="Tony">Tony</option>
       </select>
     </label>
+    <button id="openSheetBtn" class="topbar-btn" type="button" title="Open this brand's master Google Sheet">📊 Sheet</button>
     <button id="backendBtn" class="topbar-btn" type="button">⚙ Backend</button>
     <button id="legendToggle" class="topbar-btn" type="button">⌨ Shortcuts</button>
     <span id="syncBadge" class="sync-badge offline" title="Backend sync status">● offline</span>
@@ -76,6 +77,10 @@
       <label class="form-row">
         <span>Web App URL</span>
         <input type="text" id="backendUrl" placeholder="https://script.google.com/macros/s/.../exec" />
+      </label>
+      <label class="form-row">
+        <span>Master Sheet URL <em style="font-weight:400;opacity:.7">(optional — auto-set after first sync)</em></span>
+        <input type="text" id="manualSheetUrl" placeholder="https://docs.google.com/spreadsheets/d/.../edit" />
       </label>
       <div id="backendStatus" class="backend-status"></div>
       <div class="form-actions">

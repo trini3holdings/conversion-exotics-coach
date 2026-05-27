@@ -831,6 +831,9 @@ async function switchBrand(slug) {
   renderStats();
   renderCallLog();
   clearForm();
+  // Refresh manual sheet URL input for this brand
+  const msEl = document.getElementById('manualSheetUrl');
+  if (msEl) msEl.value = (state.sheetUrlByBrand && state.sheetUrlByBrand[slug]) || '';
   // Pull cloud prospects for this brand
   if (state.backendUrl) loadCloudProspects();
 }
@@ -1064,9 +1067,36 @@ async function init() {
   } else {
     setSyncBadge('offline');
   }
+  // Restore manual sheet URL for current brand (if set)
+  if (state.sheetUrlByBrand[state.brand]) {
+    const m = document.getElementById('manualSheetUrl');
+    if (m) m.value = state.sheetUrlByBrand[state.brand];
+  }
 
   // ============== EVENT BINDINGS ==============
   brandSel.addEventListener('change', e => switchBrand(e.target.value));
+  // Topbar "📊 Sheet" button — opens the master sheet for the current brand
+  document.getElementById('openSheetBtn').addEventListener('click', () => {
+    const url = state.sheetUrlByBrand[state.brand];
+    if (url) {
+      window.open(url, '_blank');
+    } else {
+      showToast('No sheet URL yet — paste one in ⚙ Backend → "Master Sheet URL" or log a call to auto-set.');
+      openModal('backendModal');
+    }
+  });
+  // Manual sheet URL field — save on blur
+  const manualSheetEl = document.getElementById('manualSheetUrl');
+  if (manualSheetEl) {
+    manualSheetEl.addEventListener('blur', () => {
+      const v = manualSheetEl.value.trim();
+      if (v) {
+        state.sheetUrlByBrand[state.brand] = v;
+        saveState();
+        showToast('Master sheet URL saved for ' + (BRANDS[state.brand]?.name || state.brand));
+      }
+    });
+  }
   document.getElementById('callerSelect').addEventListener('change', e => switchCaller(e.target.value));
   document.querySelectorAll('.variant-tab').forEach(t => {
     t.addEventListener('click', () => manualSwitchVariant(t.dataset.v));
