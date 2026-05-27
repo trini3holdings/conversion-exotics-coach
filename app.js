@@ -79,6 +79,11 @@ let state = {
   selectedProspectN: null,
   customProspects: [],
   cloudProspects: [],         // pulled from Apps Script backend
+  cloudCalls: {},             // {brandSlug: [{ts, prospect_id, domain, caller, outcome}]} cross-caller dedup
+  // v3.7.2 — TZ gating
+  tzGateEnabled: true,        // block prospects outside their callable window
+  tzGateMode: 'block',        // 'block' (hide) | 'warn' (show w/ warning) | 'off'
+  dedupDays: 30,              // skip prospects called by anyone in last N days
   lockedVariant: null,
   manualVariant: false,
   // v3.2 backend
@@ -111,6 +116,9 @@ function loadState() {
     if (s.lastSyncTs) state.lastSyncTs = s.lastSyncTs;
     if (s.sheetUrlByBrand) state.sheetUrlByBrand = s.sheetUrlByBrand;
     if (s.cloudProspects && Array.isArray(s.cloudProspects)) state.cloudProspects = s.cloudProspects;
+    if (s.cloudCalls && typeof s.cloudCalls === 'object') state.cloudCalls = s.cloudCalls;
+    if (typeof s.tzGateMode === 'string') state.tzGateMode = s.tzGateMode;
+    if (typeof s.dedupDays === 'number') state.dedupDays = s.dedupDays;
     if (s.saidBeats && typeof s.saidBeats === 'object') state.saidBeats = s.saidBeats;
     if (typeof s.reconCardCollapsed === 'boolean') state.reconCardCollapsed = s.reconCardCollapsed;
   } catch (e) { /* fresh */ }
@@ -125,6 +133,9 @@ function saveState() {
       sidePane: state.sidePane,
       customProspects: state.customProspects,
       cloudProspects: state.cloudProspects,
+      cloudCalls: state.cloudCalls,
+      tzGateMode: state.tzGateMode,
+      dedupDays: state.dedupDays,
       lockedVariant: state.lockedVariant,
       manualVariant: state.manualVariant,
       backendUrl: state.backendUrl,
@@ -239,6 +250,48 @@ async function loadCloudProspects() {
   }
 }
 
+// v3.7.2 — pull cross-caller call history from the brand's central Sheet so
+// the picker can dedupe prospects that ANY caller already dialed recently.
+async function loadCloudCalls() {
+  if (!state.backendUrl) return;
+  try {
+    // Only pull calls from the last 90 days to keep payload light.
+    const sinceTs = Date.now() - 90 * 24 * 60 * 60 * 1000;
+    const r = await backendCall({ action: 'listCalls', brand: state.brand, sinceTs });
+    if (r.calls && Array.isArray(r.calls)) {
+      state.cloudCalls[state.brand] = r.calls;
+      saveState();
+      renderProspectPicker();
+    }
+  } catch (e) {
+    console.warn('listCalls failed:', e);
+  }
+}
+
+// v3.7.2 — most-recent call (by ANYONE) to a prospect.
+// Looks at local state.calls + state.cloudCalls[brand]. Match by prospect_id
+// then by domain (cloud rows may have a different `n`).
+function lastCallForProspect(p) {
+  const cloudList = (state.cloudCalls && state.cloudCalls[state.brand]) || [];
+  const localList = state.calls || [];
+  const matchesP = (row) => {
+    if (row.prospect_id && String(row.prospect_id) === String(p.n)) return true;
+    if (row.prospectN && String(row.prospectN) === String(p.n)) return true;
+    if (p.domain && row.domain && String(row.domain).toLowerCase() === String(p.domain).toLowerCase()) return true;
+    return false;
+  };
+  let latest = null;
+  for (const r of cloudList) {
+    if (!matchesP(r)) continue;
+    if (!latest || (Number(r.ts) || 0) > latest.ts) latest = { ts: Number(r.ts) || 0, caller: r.caller, outcome: r.outcome, source: 'cloud' };
+  }
+  for (const r of localList) {
+    if (!matchesP(r)) continue;
+    if (!latest || (Number(r.ts) || 0) > latest.ts) latest = { ts: Number(r.ts) || 0, caller: r.caller, outcome: r.outcome, source: 'local' };
+  }
+  return latest;
+}
+
 function mergeProspects() {
   // Combines base JSON prospects + customProspects + cloudProspects, dedup by domain
   const merged = [];
@@ -269,13 +322,15 @@ async function loadBrandData(brandSlug) {
     .then(r => r.ok ? r.json() : fallback)
     .catch(() => fallback);
   try {
-    const [scriptsRaw, objRaw, prospRaw, cpcRaw, schemaRes] = await Promise.all([
+    const [scriptsRaw, objRaw, prospRaw, cpcRaw, callIntelRaw, schemaRes] = await Promise.all([
       safeFetch('scripts.json', {}),
       safeFetch('objections.json', {}),
       safeFetch('prospects.json', []),
       safeFetch('market_cpc.json', {}),
+      safeFetch('call_intel.json', null),  // v3.7.2 — needed for TZ gate
       fetch(`${base}/csv_schema.json`).catch(() => null)
     ]);
+    window.CALL_INTEL = callIntelRaw;  // v3.7.2 — expose to picker
     try { CSV_SCHEMA = schemaRes && schemaRes.ok ? await schemaRes.json() : null; }
     catch (e) { CSV_SCHEMA = null; }
 
@@ -296,7 +351,7 @@ async function loadBrandData(brandSlug) {
       prospects: prospRaw,
       scripts: scriptsRaw,
       objections: objRaw,
-      callIntel: null,
+      callIntel: callIntelRaw,
       marketCpc: cpcRaw,
       hotList: null
     });
@@ -976,6 +1031,17 @@ function logCall() {
 
   call.score = scoreCall(call, duration);
   state.calls.push(call);
+  // v3.7.2 — mirror into cloudCalls[brand] immediately so the picker
+  // reflects the new dial even before sync completes.
+  if (!state.cloudCalls[state.brand]) state.cloudCalls[state.brand] = [];
+  state.cloudCalls[state.brand].push({
+    ts: call.ts,
+    prospect_id: call.prospectN,
+    domain: call.domain || (PROSPECTS.find(x => x.n === call.prospectN) || {}).domain || '',
+    caller: call.caller,
+    outcome: call.outcome,
+    market: call.market
+  });
   state.lastSavedCallIdx = state.calls.length - 1;
   state.manualVariant = false;
   saveState();
@@ -1053,28 +1119,144 @@ function clearForm() {
   renderBeats();
 }
 
-// ============== PROSPECT PICKER ==============
+// ============== PROSPECT PICKER (v3.7.2: TZ-gated + recency-deduped) ==============
+//
+// v3.7.2 logic:
+//   1. Resolve each prospect's TZ from its market.
+//   2. Bucket by callability status (prime / soon / ok / avoid / off).
+//   3. Check cross-caller recency: if ANY caller dialed in last `state.dedupDays`,
+//      mark as 'recent' and push down (or hide depending on outcome).
+//      Booked/Showed/Closed are always preserved as 'booked' (never re-cold-call).
+//   4. Sort by tier: prime/never > prime/recent > soon > ok > avoid > off.
+//   5. TZ gate modes:
+//        'block' — hide non-callable prospects entirely (default)
+//        'warn'  — show them dimmed with a warning emoji
+//        'off'   — show everything normally
+//
+function prospectCallability(p) {
+  if (!window.callabilityStatus || !p.market) return { status: 'off', label: 'No market' };
+  const ci = (window.SCRIPTS && SCRIPTS._call_intel) || (window.CALL_INTEL) || null;
+  if (!ci) return { status: 'off', label: 'No call intel' };
+  return window.callabilityStatus(ci, p.market, new Date(), 120);
+}
+
+function prospectRecencyTag(p) {
+  // Returns null OR { daysAgo, byMe, caller, outcome, isBooked }
+  const last = lastCallForProspect(p);
+  if (!last) return null;
+  const daysAgo = Math.floor((Date.now() - last.ts) / (24 * 60 * 60 * 1000));
+  const isBooked = ['BK', 'SH', 'CL'].includes(last.outcome);
+  return {
+    daysAgo,
+    byMe: last.caller === state.caller,
+    caller: last.caller || '?',
+    outcome: last.outcome,
+    isBooked
+  };
+}
+
+const TZ_GATE_STATUSES = {
+  prime:  { dot: '🟢', rank: 0, label: 'Prime' },
+  soon:   { dot: '🟡', rank: 1, label: 'Opens soon' },
+  ok:     { dot: '⚪',  rank: 2, label: 'OK' },
+  avoid:  { dot: '🔴', rank: 3, label: 'Avoid window' },
+  off:    { dot: '⚫',  rank: 4, label: 'No TZ' },
+};
+
 function renderProspectPicker() {
   const sel = document.getElementById('prospectSelect');
   if (!sel) return;
-  const byMarket = {};
-  PROSPECTS.forEach(p => {
-    const m = p.market || 'Unknown';
-    if (!byMarket[m]) byMarket[m] = [];
-    byMarket[m].push(p);
+
+  const gateMode = state.tzGateMode || 'block';
+  const dedupDays = Math.max(0, state.dedupDays || 0);
+  const now = Date.now();
+
+  // Classify every prospect
+  const enriched = PROSPECTS.map(p => {
+    const call = prospectCallability(p);
+    const recent = prospectRecencyTag(p);
+    return { p, call, recent };
   });
+
+  // Filter
+  let visible = enriched.filter(({ p, call, recent }) => {
+    // TZ gate (only blocks in 'block' mode)
+    if (gateMode === 'block') {
+      if (call.status === 'avoid' || call.status === 'off') return false;
+    }
+    // Recency dedup — hide if dialed by ANYONE in last N days,
+    // UNLESS the most recent call is a booked/shown/closed (caller may want to follow up)
+    if (dedupDays > 0 && recent && !recent.isBooked && recent.daysAgo < dedupDays) {
+      return false;
+    }
+    return true;
+  });
+
+  // Sort by callability rank, then by recency (cold first), then by prospect.n for stability
+  visible.sort((a, b) => {
+    const rA = (TZ_GATE_STATUSES[a.call.status] || TZ_GATE_STATUSES.off).rank;
+    const rB = (TZ_GATE_STATUSES[b.call.status] || TZ_GATE_STATUSES.off).rank;
+    if (rA !== rB) return rA - rB;
+    // Within same callability bucket: never-called first, then oldest-called
+    const aDays = a.recent ? a.recent.daysAgo : 999999;
+    const bDays = b.recent ? b.recent.daysAgo : 999999;
+    if (aDays !== bDays) return bDays - aDays;  // older = higher first
+    return (a.p.n || 0) - (b.p.n || 0);
+  });
+
+  // Group by callability bucket so the user sees the natural order
+  const groups = { prime: [], soon: [], ok: [], avoid: [], off: [] };
+  visible.forEach(item => {
+    const bucket = groups[item.call.status] ? item.call.status : 'off';
+    groups[bucket].push(item);
+  });
+
+  const hiddenCount = enriched.length - visible.length;
+
   let html = '<option value="">— Select prospect or type below —</option>';
-  Object.keys(byMarket).sort().forEach(m => {
-    html += `<optgroup label="${escapeHTML(m)}">`;
-    byMarket[m].forEach(p => {
-      const status = prospectStatus(p);
-      const dot = STATUS_DOT[status] || '';
-      const label = `${dot} #${p.n} · ${p.domain || p.company || 'unnamed'}`;
-      html += `<option value="${p.n}" data-status="${status}">${escapeHTML(label)}</option>`;
+
+  // Header info option
+  if (gateMode !== 'off' || dedupDays > 0) {
+    const bits = [];
+    if (gateMode === 'block') bits.push(`TZ gate ON (${hiddenCount} hidden)`);
+    else if (gateMode === 'warn') bits.push('TZ gate: warn mode');
+    if (dedupDays > 0) bits.push(`Skip if dialed in last ${dedupDays}d`);
+    html += `<option value="" disabled>· ${bits.join(' · ')} ·</option>`;
+  }
+
+  ['prime', 'soon', 'ok', 'avoid', 'off'].forEach(bucket => {
+    const items = groups[bucket];
+    if (!items.length) return;
+    const meta = TZ_GATE_STATUSES[bucket];
+    html += `<optgroup label="${meta.dot} ${meta.label} (${items.length})">`;
+    items.forEach(({ p, call, recent }) => {
+      const statusKey = prospectStatus(p);
+      const localDot = STATUS_DOT[statusKey] || '';
+      let label = `${meta.dot} #${p.n} · ${p.domain || p.company || 'unnamed'}`;
+      if (call.localTime) label += ` · ${call.localTime}`;
+      if (recent) {
+        const flag = recent.isBooked ? '★' : (recent.byMe ? '↻' : '⚠');
+        label += ` ${flag}${recent.daysAgo}d`;
+        if (!recent.byMe && !recent.isBooked) label += ` by ${recent.caller}`;
+      } else {
+        label += ` · ${localDot}`;
+      }
+      const dataAttrs = `data-status="${statusKey}" data-tz="${call.status}" data-recent="${recent ? recent.daysAgo : ''}"`;
+      html += `<option value="${p.n}" ${dataAttrs}>${escapeHTML(label)}</option>`;
     });
     html += '</optgroup>';
   });
+
   sel.innerHTML = html;
+
+  // Update the live counter badge if present
+  const counter = document.getElementById('pickerStatusCounter');
+  if (counter) {
+    const callableNow = groups.prime.length + groups.soon.length;
+    counter.innerHTML = `
+      <span title="In prime window or opens within 2h">🟢 ${callableNow}</span>
+      <span title="Hidden by TZ gate or recency rule" style="color:#999">· ${hiddenCount} hidden</span>`;
+  }
 }
 
 const STATUS_DOT = {
@@ -1279,8 +1461,11 @@ async function switchBrand(slug) {
   // Refresh manual sheet URL input for this brand
   const msEl = document.getElementById('manualSheetUrl');
   if (msEl) msEl.value = (state.sheetUrlByBrand && state.sheetUrlByBrand[slug]) || '';
-  // Pull cloud prospects for this brand
-  if (state.backendUrl) loadCloudProspects();
+  // Pull cloud prospects + cross-caller call history for this brand (v3.7.2)
+  if (state.backendUrl) {
+    loadCloudProspects();
+    loadCloudCalls();
+  }
 }
 
 function switchCaller(name) {
@@ -1491,6 +1676,13 @@ async function init() {
   brandSel.value = state.brand;
 
   document.getElementById('callerSelect').value = state.caller;
+
+  // v3.7.2: restore TZ gate + dedup control values from state
+  const tzGateInit = document.getElementById('tzGateMode');
+  if (tzGateInit) tzGateInit.value = state.tzGateMode || 'block';
+  const dedupInit = document.getElementById('dedupDays');
+  if (dedupInit) dedupInit.value = String(state.dedupDays != null ? state.dedupDays : 30);
+
   document.getElementById('topbarDate').textContent =
     new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
@@ -1571,6 +1763,36 @@ async function init() {
   document.getElementById('logCall').addEventListener('click', logCall);
   document.getElementById('clearForm').addEventListener('click', clearForm);
   document.getElementById('prospectSelect').addEventListener('change', e => selectProspect(e.target.value));
+
+  // v3.7.2: TZ gate + dedup controls
+  const tzGateEl = document.getElementById('tzGateMode');
+  if (tzGateEl) {
+    tzGateEl.addEventListener('change', e => {
+      state.tzGateMode = e.target.value; saveState();
+      if (typeof renderProspectPicker === 'function') renderProspectPicker();
+    });
+  }
+  const dedupDaysEl = document.getElementById('dedupDays');
+  if (dedupDaysEl) {
+    dedupDaysEl.addEventListener('change', e => {
+      state.dedupDays = parseInt(e.target.value, 10) || 0; saveState();
+      if (typeof renderProspectPicker === 'function') renderProspectPicker();
+    });
+  }
+  const refreshPickerBtn = document.getElementById('refreshPickerBtn');
+  if (refreshPickerBtn) {
+    refreshPickerBtn.addEventListener('click', () => {
+      if (state.backendUrl && typeof loadCloudCalls === 'function') {
+        loadCloudCalls().then(() => {
+          if (typeof renderProspectPicker === 'function') renderProspectPicker();
+          showToast('Refreshed call history from sheet');
+        });
+      } else {
+        showToast('Connect backend first to refresh from sheet');
+      }
+    });
+  }
+
   document.getElementById('company').addEventListener('input', renderBeats);
   document.getElementById('market').addEventListener('input', renderBeats);
   document.getElementById('outcome').addEventListener('change', updateLiveScore);

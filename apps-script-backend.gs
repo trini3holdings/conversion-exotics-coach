@@ -21,7 +21,7 @@
  *      → immediate test email
  */
 
-const VERSION = "1.0";
+const VERSION = "1.1";  // v1.1: +listCalls action for cross-caller dedup
 
 // Headers for the Calls tab
 const CALL_HEADERS = [
@@ -62,6 +62,7 @@ function doPost(e) {
       case "logCall":        result = logCall(body); break;
       case "addProspect":    result = addProspect(body); break;
       case "listProspects":  result = listProspects(body); break;
+      case "listCalls":      result = listCalls(body); break;
       case "sendFollowupNow": result = sendFollowupNow(body); break;
       default: result = { ok: false, error: "Unknown action: " + action };
     }
@@ -327,6 +328,41 @@ function listProspects(body) {
     return obj;
   });
   return { ok: true, prospects: prospects, sheetUrl: ss.getUrl() };
+}
+
+// ============== LIST CALLS (v1.1 — cross-caller dedup) ==============
+// Returns lightweight call records from the Calls tab so the frontend can
+// gray out / sort down prospects that were already dialed by ANY caller.
+// body: { brand: <slug>, sinceTs?: <epoch ms> }
+// Returns: { ok: true, calls: [{ ts, prospect_id, company, domain, caller, outcome, market }] }
+function listCalls(body) {
+  const brand = body.brand;
+  const sinceTs = Number(body.sinceTs || 0);
+  const ss = getOrCreateSpreadsheet(brand);
+  const sh = ss.getSheetByName("Calls");
+  if (!sh) return { ok: true, calls: [] };
+  const data = sh.getDataRange().getValues();
+  if (data.length < 2) return { ok: true, calls: [] };
+  const headers = data[0];
+  const idx = {};
+  CALL_HEADERS.forEach(h => { idx[h] = headers.indexOf(h); });
+  const out = [];
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    const ts = Number(row[idx.ts] || 0);
+    if (sinceTs && ts < sinceTs) continue;
+    out.push({
+      ts: ts,
+      prospect_id: row[idx.prospect_id] || "",
+      company:     row[idx.company] || "",
+      domain:      row[idx.domain] || "",
+      market:      row[idx.market] || "",
+      caller:      row[idx.caller] || "",
+      outcome:     row[idx.outcome] || "",
+      score:       Number(row[idx.score] || 0)
+    });
+  }
+  return { ok: true, calls: out };
 }
 
 // ============== FOLLOW-UP SCHEDULING ==============

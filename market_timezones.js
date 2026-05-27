@@ -142,20 +142,90 @@ const MARKET_TZ = {
   'Honolulu HI': 'Pacific/Honolulu',
 };
 
+// v3.7.2 — bare-city → TZ fallback. Used when market is just "Austin" or "Dallas"
+// with no state suffix. Only common big cities — ambiguous names skipped.
+const CITY_DEFAULT_TZ = {
+  'Dallas': 'America/Chicago', 'Fort Worth': 'America/Chicago', 'DFW': 'America/Chicago',
+  'Houston': 'America/Chicago', 'Austin': 'America/Chicago', 'San Antonio': 'America/Chicago',
+  'Oklahoma City': 'America/Chicago', 'OKC': 'America/Chicago', 'Tulsa': 'America/Chicago',
+  'Chicago': 'America/Chicago', 'Nashville': 'America/Chicago', 'Memphis': 'America/Chicago',
+  'New Orleans': 'America/Chicago', 'Minneapolis': 'America/Chicago',
+  'Denver': 'America/Denver', 'Salt Lake City': 'America/Denver',
+  'Albuquerque': 'America/Denver', 'Phoenix': 'America/Phoenix',
+  'Scottsdale': 'America/Phoenix', 'Tucson': 'America/Phoenix',
+  'Los Angeles': 'America/Los_Angeles', 'LA': 'America/Los_Angeles',
+  'San Diego': 'America/Los_Angeles', 'San Francisco': 'America/Los_Angeles',
+  'SF': 'America/Los_Angeles', 'San Jose': 'America/Los_Angeles',
+  'Sacramento': 'America/Los_Angeles', 'Las Vegas': 'America/Los_Angeles',
+  'Seattle': 'America/Los_Angeles', 'Portland': 'America/Los_Angeles',
+  'Beverly Hills': 'America/Los_Angeles', 'Van Nuys': 'America/Los_Angeles',
+  'New York': 'America/New_York', 'NYC': 'America/New_York', 'Manhattan': 'America/New_York',
+  'Brooklyn': 'America/New_York', 'Boston': 'America/New_York',
+  'Philadelphia': 'America/New_York', 'Washington': 'America/New_York',
+  'Atlanta': 'America/New_York', 'Miami': 'America/New_York',
+  'Fort Lauderdale': 'America/New_York', 'Tampa': 'America/New_York',
+  'Orlando': 'America/New_York', 'Jacksonville': 'America/New_York',
+  'Charlotte': 'America/New_York', 'Raleigh': 'America/New_York',
+  'Teterboro': 'America/New_York',
+};
+
+// v3.7.2 — region → TZ fallback.
+const REGION_DEFAULT_TZ = {
+  'Pacific Coast': 'America/Los_Angeles', 'Pacific coast': 'America/Los_Angeles',
+  'Pacific NW': 'America/Los_Angeles', 'Pacific Northwest': 'America/Los_Angeles',
+  'Southern CA': 'America/Los_Angeles', 'SoCal': 'America/Los_Angeles',
+  'Northern CA': 'America/Los_Angeles', 'NorCal': 'America/Los_Angeles',
+  'Bay Area': 'America/Los_Angeles',
+  'Southern US': null,  // genuinely ambiguous — fall through to null
+  'Southeast': 'America/New_York', 'South FL': 'America/New_York',
+  'South Florida': 'America/New_York', 'Palm Beach': 'America/New_York',
+  'Broward': 'America/New_York', 'Broward County FL': 'America/New_York',
+  'Tri-State': 'America/New_York', 'Tristate': 'America/New_York',
+  'New England': 'America/New_York', 'Mid-Atlantic': 'America/New_York',
+  'Midwest': 'America/Chicago', 'Texas': 'America/Chicago',
+  'Mountain West': 'America/Denver', 'Rockies': 'America/Denver',
+};
+
 // Fuzzy lookup — handles compound markets like "Boston MA | Springfield MA",
 // "Austin TX — Central TX", "Seattle/Tacoma WA", etc.
+// v3.7.2 — also handles "(suffix)", "+ N more", bare city names, regions, and HQ extraction.
 function resolveMarketTZ(marketRaw) {
   if (!marketRaw || typeof marketRaw !== 'string') return null;
-  const m = marketRaw.trim();
-  if (!m || m === 'Unknown' || m === 'NOT FOUND') return null;
+  let m = marketRaw.trim();
+  if (!m || /^unknown/i.test(m) || m === 'NOT FOUND' || /^national$/i.test(m)) return null;
+
+  // v3.7.2 — "National (HQ Overland Park KS)" → extract HQ
+  const hqMatch = m.match(/HQ\s+([A-Za-z .'-]+?\s+[A-Z]{2})\b/);
+  if (hqMatch && MARKET_TZ[hqMatch[1].trim()]) return MARKET_TZ[hqMatch[1].trim()];
 
   // Direct hit
   if (MARKET_TZ[m]) return MARKET_TZ[m];
 
+  // v3.7.2 — strip trailing parenthetical: "Austin TX (listed)" → "Austin TX"
+  const noParen = m.replace(/\s*\([^)]*\)\s*$/g, '').trim();
+  if (noParen !== m && MARKET_TZ[noParen]) return MARKET_TZ[noParen];
+
+  // v3.7.2 — strip " + N more" / " + N suffix" / " + 15+ markets"
+  const stripped = noParen.replace(/\s*\+\s*\d+\+?\s*(more|markets|cities|locations|states?)?.*$/i, '').trim();
+  if (stripped && MARKET_TZ[stripped]) return MARKET_TZ[stripped];
+
+  // v3.7.2 — region match
+  for (const region of Object.keys(REGION_DEFAULT_TZ)) {
+    if (m.includes(region)) return REGION_DEFAULT_TZ[region];
+  }
+
   // Try the first segment of a compound market
-  const segments = m.split(/[\|\/]| — | - /).map(s => s.trim()).filter(Boolean);
+  const segments = stripped.split(/[\|\/]| — | - /).map(s => s.trim()).filter(Boolean);
   for (const seg of segments) {
     if (MARKET_TZ[seg]) return MARKET_TZ[seg];
+    const segNoParen = seg.replace(/\s*\([^)]*\)\s*$/g, '').trim();
+    if (segNoParen !== seg && MARKET_TZ[segNoParen]) return MARKET_TZ[segNoParen];
+  }
+
+  // v3.7.2 — bare-city lookup (no state)
+  for (const seg of segments.concat([m, stripped, noParen])) {
+    const bare = seg.replace(/\s*\([^)]*\)\s*$/, '').trim();
+    if (CITY_DEFAULT_TZ[bare]) return CITY_DEFAULT_TZ[bare];
   }
 
   // Try matching by state code fallback (last 2-3 chars)
