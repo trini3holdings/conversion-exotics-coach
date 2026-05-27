@@ -12,7 +12,7 @@
           "t": 9,
           "phase": "OPEN",
           "title": "Dollar-Anchored Leak",
-          "line": "Hi, my name is {caller} with ConversionJet — I review private charter sites for a living. I pulled up your site, and there's <em>a problem</em> on your quote page costing you roughly <em>$25,000 to $75,000 a week in booked charters</em>. Do you know who I can talk to about this?",
+          "line": "Hi, my name is {caller} calling from ConversionJet — I review private charter sites for a living. I pulled up your site, and there's <em>a problem</em> on your quote page costing you roughly <em>$25,000 to $75,000 a week in booked charters</em>. Do you know who I can talk to about this?",
           "responses": [
             "That's me / I handle the site",
             "Let me transfer you",
@@ -96,7 +96,7 @@
           "t": 9,
           "phase": "OPEN",
           "title": "Peer Comparison",
-          "line": "Hi, my name is {caller} with ConversionJet — I review private charter sites for a living. I just finished comparing your site against three other operators in your market, and you're losing to all three on the one thing that decides who gets the booking. Do you know who I can talk to about this?",
+          "line": "Hi, my name is {caller} calling from ConversionJet — I review private charter sites for a living. I just finished comparing your site against three other operators in your market, and you're losing to all three on the one thing that decides who gets the booking. Do you know who I can talk to about this?",
           "responses": [
             "That's me / I handle marketing",
             "Let me transfer you",
@@ -180,7 +180,7 @@
           "t": 11,
           "phase": "OPEN",
           "title": "Hidden Quote-Flow Issue",
-          "line": "Hi, my name is {caller} with ConversionJet — I review private charter sites for a living. I saw your company is running ads for <em>private charter flights</em>, I pulled up your site this morning, and noticed <em>an issue on your quote request flow</em> — it's costing you <em>more than every other problem on the page combined</em>. Do you know who I can talk to about this?",
+          "line": "Hi, my name is {caller} calling from ConversionJet — I review private charter sites for a living. I saw your company is running ads for <em>private charter flights</em>, I pulled up your site this morning, and noticed <em>an issue on your quote request flow</em> — it's costing you <em>more than every other problem on the page combined</em>. Do you know who I can talk to about this?",
           "responses": [
             "That's me / I handle the site",
             "Let me transfer you",
