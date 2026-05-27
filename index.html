@@ -208,15 +208,7 @@
     <div id="beatsContainer" class="beats-container"></div>
   </section>
 
-  <!-- COL 2 · OBJECTIONS -->
-  <section class="col col-objections">
-    <div class="objections-sticky">
-      <h2 class="col-title">Objections <span class="col-sub">Tap a card to reveal the comeback</span></h2>
-      <div id="objectionsContainer" class="objections-container"></div>
-    </div>
-  </section>
-
-  <!-- COL 3 · SIDE -->
+  <!-- COL 2 · SIDE (v3.5: 2-column layout; objections moved to bottom popover) -->
   <section class="col-side-wrap">
 
     <div class="side-toggle">
@@ -383,16 +375,19 @@
 </main>
 
 <!-- Floating Quick Objection Hotkey Row -->
+<!-- v3.5: comeback popover sits above the hotkey bar -->
+<div id="qoPop" class="qo-pop hidden"></div>
 <div id="quickObjBar" class="quick-obj-bar">
   <div class="quick-obj-inner" id="quickObjInner"></div>
 </div>
 
-<!-- Floating Save-Call FAB -->
-<button id="fabLog" class="fab-log" type="button" title="Save call outcome">
-  <span class="fab-icon">📞</span>
-  <span class="fab-arrow">→</span>
-  <span class="fab-icon">💾</span>
-</button>
+<!-- v3.5: Undo-last-call toast -->
+<div id="undoToast" class="undo-toast hidden">
+  <span class="undo-toast-msg">Call saved.</span>
+  <button id="undoToastBtn" type="button" class="undo-toast-btn">↺ Undo</button>
+</div>
+
+<!-- v3.5: floating FAB removed — use the Log Call button in the form instead -->
 
 <!-- Quick-Outcome Modal (one-tap save) -->
 <div id="quickOutcomeModal" class="modal hidden">

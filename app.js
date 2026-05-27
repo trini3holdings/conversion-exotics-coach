@@ -551,112 +551,83 @@ const PHASE_TO_OBJECTION = {
 
 function autoFollowObjection(beat) {
   if (!beat || !OBJECTIONS.length) return;
-  const container = document.getElementById('objectionsContainer');
-  if (!container) return;
 
-  // 1. Beat may explicitly declare an objection category.
+  // Mark the most-likely comeback button so the caller's eye lands there,
+  // but DO NOT auto-pop the comeback over the screen — user pops it manually.
   let targetCat = beat.objection_likely || beat.expected_objection || null;
-
-  // 2. Otherwise map by phase, walking the candidate list and picking the
-  //    first one that actually exists in this brand's objections.
   if (!targetCat && beat.phase) {
     const cands = PHASE_TO_OBJECTION[String(beat.phase).toUpperCase()] || [];
     const available = new Set(OBJECTIONS.map(o => o.cat));
     targetCat = cands.find(c => available.has(c)) || null;
   }
+  if (!targetCat) return;
 
-  // 3. If we still don't have one, pick the first objection so something is in view.
-  if (!targetCat) targetCat = OBJECTIONS[0].cat;
-
-  const idx = OBJECTIONS.findIndex(o => o.cat === targetCat);
-  if (idx < 0) return;
-  const card = container.querySelector(`.objection-card[data-idx="${idx}"]`);
-  if (!card) return;
-
-  // Highlight: mark all others as not-following, this one as following.
-  container.querySelectorAll('.objection-card.auto-follow').forEach(c => {
-    c.classList.remove('auto-follow');
-    // Close anything we previously auto-opened, so the panel stays tidy.
-    if (c.dataset.autoOpened === '1') {
-      c.classList.remove('open');
-      delete c.dataset.autoOpened;
-    }
+  document.querySelectorAll('.qo-hotkey').forEach(b => {
+    b.classList.toggle('likely', b.getAttribute('data-cat') === targetCat);
   });
-  card.classList.add('auto-follow');
-  if (!card.classList.contains('open')) {
-    card.classList.add('open');
-    card.dataset.autoOpened = '1';
-  }
-
-  // Scroll into view inside the objections column only — never the whole page,
-  // so we don't fight the beats column auto-scroll.
-  const colRect = container.getBoundingClientRect();
-  const cardRect = card.getBoundingClientRect();
-  const offsetInside = cardRect.top - colRect.top + container.scrollTop;
-  const target = offsetInside - (container.clientHeight / 2) + (card.clientHeight / 2);
-  container.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
 }
 
-// ============== QUICK-OBJECTION HOTKEY BAR ==============
+// ============== QUICK-COMEBACK BAR (v3.5 — inline pop-up; no scroll) ==============
+// The bar at bottom now expands UPWARD with the comeback text in place.
+// Removed: middle objections column + objection-cards render.
+// Still populates the "Objection raised" dropdown in the call form.
 function renderQuickObjectionBar() {
   const bar = document.getElementById('quickObjInner');
   if (!bar) return;
   if (!OBJECTIONS.length) { bar.innerHTML = ''; return; }
-  // Unique categories from current brand objections
   const cats = [...new Set(OBJECTIONS.map(o => o.cat))];
-  bar.innerHTML = `<span class="qo-hotkey-label">QUICK COMEBACK →</span>` +
-    cats.map(c => `<button type="button" class="qo-hotkey" data-cat="${escapeHTML(c)}">${escapeHTML(c)}</button>`).join('');
+  bar.innerHTML =
+    `<span class="qo-hotkey-label">QUICK COMEBACK →</span>` +
+    cats.map(c => `<button type="button" class="qo-hotkey" data-cat="${escapeHTML(c)}">${escapeHTML(c)}</button>`).join('') +
+    `<button type="button" class="qo-close hidden" id="qoClose" title="Close comeback">✕</button>`;
   bar.querySelectorAll('[data-cat]').forEach(b => {
     b.addEventListener('click', () => openObjection(b.getAttribute('data-cat')));
   });
+  const closeBtn = document.getElementById('qoClose');
+  if (closeBtn) closeBtn.addEventListener('click', closeComebackPop);
 }
+
 function openObjection(cat) {
   // Pause timer so you can read calmly
   if (state.timer.running) pauseTimer();
-  // Find first matching objection card, scroll + open it
-  const idx = OBJECTIONS.findIndex(o => o.cat === cat);
-  if (idx < 0) return;
-  const card = document.querySelector(`.objection-card[data-idx="${idx}"]`);
-  if (!card) return;
-  document.querySelectorAll('.objection-card.open').forEach(c => { if (c !== card) c.classList.remove('open'); });
-  card.classList.add('open');
-  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  // Brief highlight pulse
-  card.style.transition = 'box-shadow 0.3s';
-  card.style.boxShadow = '0 0 0 3px var(--gold)';
-  setTimeout(() => { card.style.boxShadow = ''; }, 900);
-  // Auto-set the objection-raised dropdown
+  const obj = OBJECTIONS.find(o => o.cat === cat);
+  if (!obj) return;
+
+  // Render the comeback popover above the bar
+  const pop = document.getElementById('qoPop');
+  if (pop) {
+    pop.innerHTML = `
+      <div class="qo-pop-head">
+        <div class="qo-pop-cat">${escapeHTML(obj.cat)}</div>
+        <div class="qo-pop-q">${obj.q}</div>
+      </div>
+      <div class="qo-pop-a">${obj.a}</div>
+    `;
+    pop.classList.remove('hidden');
+  }
+  // Highlight the active comeback button
+  document.querySelectorAll('.qo-hotkey').forEach(b => b.classList.toggle('active', b.getAttribute('data-cat') === cat));
+  const closeBtn = document.getElementById('qoClose');
+  if (closeBtn) closeBtn.classList.remove('hidden');
+  // Auto-set the objection-raised dropdown for the call log
   const sel = document.getElementById('objectionRaised');
   if (sel) sel.value = cat;
 }
 
-// ============== RENDER · OBJECTIONS ==============
-function renderObjections() {
-  const container = document.getElementById('objectionsContainer');
-  if (!container) return;
-  if (!OBJECTIONS.length) {
-    container.innerHTML = '<div style="padding:20px;text-align:center;color:#888;">No objections loaded.</div>';
-    return;
-  }
-  container.innerHTML = OBJECTIONS.map((o, i) => `
-    <div class="objection-card" data-idx="${i}">
-      <div class="objection-cat-bar">${o.cat}</div>
-      <div class="objection-q">
-        <span class="objection-q-text">${o.q}</span>
-        <span class="objection-chevron">▸</span>
-      </div>
-      <div class="objection-a">${o.a}</div>
-    </div>
-  `).join('');
-  container.querySelectorAll('.objection-card').forEach(card => {
-    card.querySelector('.objection-q').addEventListener('click', () => {
-      card.classList.toggle('open');
-    });
-  });
+function closeComebackPop() {
+  const pop = document.getElementById('qoPop');
+  if (pop) pop.classList.add('hidden');
+  document.querySelectorAll('.qo-hotkey.active').forEach(b => b.classList.remove('active'));
+  const closeBtn = document.getElementById('qoClose');
+  if (closeBtn) closeBtn.classList.add('hidden');
+}
 
-  // Also populate the "Objection raised" dropdown
+// ============== RENDER · OBJECTIONS (v3.5 — dropdown only) ==============
+// Middle objections column is gone. We only repopulate the
+// "Objection raised" <select> in the call form for tagging.
+function renderObjections() {
   const sel = document.getElementById('objectionRaised');
-  if (sel) {
+  if (sel && OBJECTIONS.length) {
     const cats = [...new Set(OBJECTIONS.map(o => o.cat))];
     sel.innerHTML = '<option value="">— None / unclear —</option>' +
       cats.map(c => `<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join('');
@@ -964,6 +935,7 @@ function logCall() {
 
   call.score = scoreCall(call, duration);
   state.calls.push(call);
+  state.lastSavedCallIdx = state.calls.length - 1;
   state.manualVariant = false;
   saveState();
   renderStats();
@@ -976,11 +948,47 @@ function logCall() {
     enqueueCallSync(call);
   }
 
+  // Show undo toast (8s)
+  showUndoToast();
+
   setTimeout(() => {
     clearForm();
     resetTimer();
     maybeRotateVariant();
   }, 1000);
+}
+
+function showUndoToast() {
+  const t = document.getElementById('undoToast');
+  if (!t) return;
+  t.classList.remove('hidden');
+  if (state._undoTimer) clearTimeout(state._undoTimer);
+  state._undoTimer = setTimeout(() => {
+    t.classList.add('hidden');
+    state.lastSavedCallIdx = null;
+  }, 8000);
+}
+
+function undoLastCall() {
+  if (state.lastSavedCallIdx == null) return;
+  const idx = state.lastSavedCallIdx;
+  if (idx < 0 || idx >= state.calls.length) return;
+  const removed = state.calls.splice(idx, 1)[0];
+  state.lastSavedCallIdx = null;
+  if (state._undoTimer) { clearTimeout(state._undoTimer); state._undoTimer = null; }
+  saveState();
+  renderStats();
+  renderCallLog();
+  renderReconCard();
+  renderProspectPicker();
+  const t = document.getElementById('undoToast');
+  if (t) t.classList.add('hidden');
+  // Best-effort backend undo
+  if (state.backendUrl && removed) {
+    state.syncQueue.push({ kind: 'undoCall', brand: state.brand, ts: removed.ts, queuedAt: Date.now() });
+    saveState();
+    drainSyncQueue();
+  }
 }
 
 function clearForm() {
@@ -1654,24 +1662,28 @@ async function init() {
   // Quick-objection hotkey bar
   renderQuickObjectionBar();
 
-  // FAB → quick outcome modal
-  document.getElementById('fabLog').addEventListener('click', () => {
-    openModal('quickOutcomeModal');
-  });
-  document.querySelectorAll('#quickOutcomeModal [data-outcome]').forEach(b => {
-    b.addEventListener('click', () => {
-      const oc = b.getAttribute('data-outcome');
-      document.getElementById('outcome').value = oc;
-      closeModal('quickOutcomeModal');
-      // If booked/callback, auto-enable follow-up section to nudge scheduling
-      if (['BK', 'PP'].includes(oc)) {
-        document.getElementById('fpEnable').checked = true;
-        document.getElementById('fpFields').classList.remove('hidden');
-        if (!document.getElementById('fpDate').value) setFollowupDays(oc === 'BK' ? 1 : 3);
-      }
-      logCall();
+  // FAB removed in v3.5 — keep listeners null-safe in case of stale DOM
+  const fabEl = document.getElementById('fabLog');
+  if (fabEl) {
+    fabEl.addEventListener('click', () => openModal('quickOutcomeModal'));
+    document.querySelectorAll('#quickOutcomeModal [data-outcome]').forEach(b => {
+      b.addEventListener('click', () => {
+        const oc = b.getAttribute('data-outcome');
+        document.getElementById('outcome').value = oc;
+        closeModal('quickOutcomeModal');
+        if (['BK', 'PP'].includes(oc)) {
+          document.getElementById('fpEnable').checked = true;
+          document.getElementById('fpFields').classList.remove('hidden');
+          if (!document.getElementById('fpDate').value) setFollowupDays(oc === 'BK' ? 1 : 3);
+        }
+        logCall();
+      });
     });
-  });
+  }
+
+  // Undo-last-call toast button
+  const undoBtn = document.getElementById('undoToastBtn');
+  if (undoBtn) undoBtn.addEventListener('click', undoLastCall);
 
   // Restore recon rail expanded state
   if (state.reconRailOpen) {
