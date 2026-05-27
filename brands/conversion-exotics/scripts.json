@@ -29,7 +29,7 @@
           "t": 25,
           "phase": "AGITATION",
           "title": "Where the Booking Actually Goes",
-          "line": "Because every renter who bounces lands on the exotic shop across town or Turo within minutes. That's a <em>$1,500–$3,500 day</em> walking, sometimes a <em>$10K weekend</em> gone. A guy in Miami doing $125K a month — Jayden Bloom — literally said on camera <em>\"there's no good platform out there for exotic car rentals, everything is so outdated\"</em>. Would you be opposed to seeing exactly where that traffic's leaking on yours?",
+          "line": "Because every renter who bounces lands on the exotic shop across town or Turo within minutes. That's a <em>$1,500–$3,500 day</em> walking, sometimes a <em>$10,000 weekend</em> gone. A guy in Miami doing $125,000 a month — Jayden Bloom — literally said on camera <em>\"there's no good platform out there for exotic car rentals, everything is so outdated\"</em>. Would you be opposed to seeing exactly where that traffic's leaking on yours?",
           "responses": ["I mean, sure", "Depends what it costs", "We already track that"],
           "followup": "Got it — and what we find is rarely what the analytics shows.",
           "note": "Jayden Bloom quote is real (UpFlip YouTube). Use it. It does the agitation for you."
@@ -89,7 +89,7 @@
           "t": 25,
           "phase": "AGITATION",
           "title": "Window Shoppers vs Real Ones",
-          "line": "Because the renter who bounces isn't gone — they're on the exotic shop across town or Turo inside two minutes. That's a <em>$1,500–$3,500 day</em>, sometimes a <em>$10K weekend</em>, going to someone with a worse fleet and a faster site. And the ones left? <em>Window shoppers</em>, not real ones. The buyers who'd actually book today bounced on page one. Would you be opposed to seeing where yours is leaking?",
+          "line": "Because the renter who bounces isn't gone — they're on the exotic shop across town or Turo inside two minutes. That's a <em>$1,500–$3,500 day</em>, sometimes a <em>$10,000 weekend</em>, going to someone with a worse fleet and a faster site. And the ones left? <em>Window shoppers</em>, not real ones. The buyers who'd actually book today bounced on page one. Would you be opposed to seeing where yours is leaking?",
           "responses": ["Sure, show me", "We're doing fine on bookings", "How would you even know?"],
           "followup": "Totally fair — that's exactly what the audit answers.",
           "note": "\"Window shoppers vs real ones\" is verbatim operator language. They will recognize it."
@@ -124,7 +124,7 @@
       ]
     },
     "C": {
-      "name": "Paid-Ads Leak",
+      "name": "Paid-Search Leak",
       "desc": "CPC anchor → window-shopper frame → DM-trap agitation → audit offer. Uses live keyword cost data.",
       "beats": [
         {
@@ -149,7 +149,7 @@
           "t": 35,
           "phase": "AGITATION",
           "title": "The DM Trap + Window Shoppers",
-          "line": "Here's what's happening — you're paying <em>$5–$10 a click</em> to land people on a page where the only way to actually book is to <em>DM you on Instagram or call the number</em>. So the real buyers, the ones ready to drop $3,500 today, they bounce — they go to Turo or the shop across town that lets them book in 60 seconds. What's left in your DMs? <em>Window shoppers</em>, tire kickers, midnight messages from kids who can't afford the deposit. Jayden Bloom — $125K a month in Miami — said it himself: <em>\"there's no good platform out there for exotic car rentals, everything is so outdated.\"</em> Would you be opposed to seeing exactly where that ad spend is leaking?",
+          "line": "Here's what's happening — you're paying <em>$5–$10 a click</em> to land people on a page where the only way to actually book is to <em>DM you on Instagram or call the number</em>. So the real buyers, the ones ready to drop $3,500 today, they bounce — they go to Turo or the shop across town that lets them book in 60 seconds. What's left in your DMs? <em>Window shoppers</em>, tire kickers, midnight messages from kids who can't afford the deposit. Jayden Bloom — $125,000 a month in Miami — said it himself: <em>\"there's no good platform out there for exotic car rentals, everything is so outdated.\"</em> Would you be opposed to seeing exactly where that ad spend is leaking?",
           "responses": ["Sure", "How much does this cost", "We've heard this before"],
           "followup": "Got it — and the leak is almost never where the analytics says it is.",
           "note": "This is the killer beat. Slow down on \"window shoppers\" and on the Jayden Bloom quote. Both are verbatim VoC."

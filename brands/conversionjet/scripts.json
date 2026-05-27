@@ -15,7 +15,7 @@
           "line": "I know this is out of the blue. You're with {company}, correct? Every quarter we do a quiet review of private aviation websites — looking at what a quote shopper actually sees. Got 60 seconds, or did I catch you bad?",
           "responses": ["Yeah, that's us", "Who is this?", "What's this regarding?"],
           "followup": "Fair enough — I'll be quick. 60 seconds and you decide if it's worth more.",
-          "note": "Miner low-status open. Pause after 'quote shopper actually sees.' Don't fill silence. HNW operators reward composure."
+          "note": "Miner low-status open. Pause after 'quote shopper actually sees.' Don't fill silence. High-net-worth operators reward composure."
         },
         {
           "t": 28,
@@ -93,7 +93,7 @@
           "line": "Look — not a sales call. {strategist} walks you through what we'd change and in what order. Then you either do it yourself, hand it to your in-house team, or — if it's the right fit on both sides — we do it for you. Most operators take the document and run. That's fine.",
           "responses": ["Okay, fair", "Sounds reasonable", "What's the catch?"],
           "followup": "No catch. {strategist} is running a handful personally this quarter. And we don't publish names — truly anonymous.",
-          "note": "Sandler Negative Reverse: telling them you're EASY to say no to lowers resistance. HNW operators hate being sold to."
+          "note": "Sandler Negative Reverse: telling them you're EASY to say no to lowers resistance. High-net-worth operators hate being sold to."
         },
         {
           "t": 16,
@@ -102,7 +102,7 @@
           "line": "Thursday at 10 Eastern or Friday at 2 Eastern — which works better? {strategist} blocks it himself, so whichever you pick is locked.",
           "responses": ["Thursday works", "Friday is better", "Neither this week"],
           "followup": "Perfect — best email for the invite? Let me read it back.",
-          "note": "Two specific slots, not 'whenever works.' HNW prospects respect bounded calendars. Read email back."
+          "note": "Two specific slots, not 'whenever works.' High-net-worth prospects respect bounded calendars. Read email back."
         }
       ]
     },

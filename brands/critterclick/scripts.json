@@ -30,7 +30,7 @@
           "phase": "AGITATE",
           "title": "Drop Leak 1 + Math",
           "t": 32,
-          "line": "Reason I'm calling — we ran a free conversion review on {company} this morning. Specific thing we found: {leak_1}. That single thing kills about a third of the emergency callers who land on your page. They came ready to book a job, and they left. For your area, a Google click on '{primary_kw}' is running ${cpc_low} to ${cpc_high} right now. Whether you're paying for those clicks on Google Ads or earning them through SEO — losing them at the goal line is expensive.",
+          "line": "Reason I'm calling — we ran a free conversion review on {company} this morning. Specific thing we found: {leak_1}. That single thing kills about a third of the emergency callers who land on your page. They came ready to book a job, and they left. For your area, a Google click on '{primary_kw}' is running ${cpc_low} to ${cpc_high} right now. Whether you're paying for those clicks on Google Ads or earning them through search rankings — losing them at the goal line is expensive.",
           "responses": ["Really", "How do you know that", "Hm", "How much"],
           "followup": "Out of curiosity — when's the last time you actually watched somebody land on your site on their phone from a Google search and tried to call you? Most owners haven't done that in a year.",
           "note": "Miner-style soft probe: 'Out of curiosity'. Never accusatory. The CPC math is the proof — pause after the dollar figure."
@@ -150,7 +150,7 @@
           "phase": "AGITATE",
           "title": "The Math Beat",
           "t": 32,
-          "line": "Here's the math — '{primary_kw}' is running ${cpc_low} to ${cpc_high} per click for your area. The leak we found — {leak_1} — bounces roughly 30% of paid clicks before they ever pick up the phone. So if you're spending, say, $3,000 a month on Google Ads, you're effectively burning around $900 of that on clicks that land and leave. Every. Single. Month. And that's just leak number one. Same leak hits your organic SEO traffic too — so the real cost is roughly double.",
+          "line": "Here's the math — '{primary_kw}' is running ${cpc_low} to ${cpc_high} per click for your area. The leak we found — {leak_1} — bounces roughly 30% of paid clicks before they ever pick up the phone. So if you're spending, say, $3,000 a month on Google Ads, you're effectively burning around $900 of that on clicks that land and leave. Every. Single. Month. And that's just leak number one. Same leak hits your organic search traffic too — so the real cost is roughly double.",
           "responses": ["Wait what", "Are you serious", "How much again"],
           "followup": "And by the way — none of that math counts the calls you lose because of trust signals. Like if your reviews look thin or your email's a Gmail account. That's a separate conversation.",
           "note": "Slow down on the dollar math — let it land. Pause after 'every single month.' Then tease the trust angle so they're hungry for leak 2."

@@ -21,7 +21,7 @@ const BRANDS = {
     slug: 'conversion-exotics',
     name: 'Conversion Exotics',
     short: 'CE',
-    sub: 'Cold call → free Website Conversion Audit · v3.2',
+    sub: 'Cold call → free Website Conversion Audit',
     strategist: 'Tony',
     caller_default: 'Zack',
     active: true,
@@ -31,7 +31,7 @@ const BRANDS = {
     slug: 'conversionjet',
     name: 'ConversionJet',
     short: 'CJ',
-    sub: 'Cold call → free Charter Page Conversion Audit · HNW aviation · v3.2',
+    sub: 'Cold call → free Charter Page Conversion Audit · private aviation',
     strategist: 'Tony',
     caller_default: 'Tony',
     active: true,
@@ -41,7 +41,7 @@ const BRANDS = {
     slug: 'critterclick',
     name: 'CritterClick',
     short: 'CC',
-    sub: 'Cold call → free Wildlife Site Conversion Audit · v3.3',
+    sub: 'Cold call → free Wildlife Site Conversion Audit',
     strategist: 'Tony',
     caller_default: 'Zack',
     active: true,
@@ -51,7 +51,7 @@ const BRANDS = {
     slug: 'rme-roofing',
     name: 'RME Roofing',
     short: 'RME',
-    sub: 'Cold call → free Roofing Site Conversion Audit · v3.3',
+    sub: 'Cold call → free Roofing Site Conversion Audit',
     strategist: 'Tony',
     caller_default: 'Zack',
     active: true,
@@ -689,8 +689,8 @@ function renderQuickObjectionBar() {
   if (!OBJECTIONS.length) { bar.innerHTML = ''; return; }
   const cats = [...new Set(OBJECTIONS.map(o => o.cat))];
   bar.innerHTML =
-    `<span class="qo-hotkey-label">QUICK COMEBACK →</span>` +
-    cats.map(c => `<button type="button" class="qo-hotkey" data-cat="${escapeHTML(c)}">${escapeHTML(c)}</button>`).join('') +
+    `<span class="qo-hotkey-label">Quick comeback →</span>` +
+    cats.map(c => `<button type="button" class="qo-hotkey" data-cat="${escapeHTML(c)}" title="${escapeHTML(c)}">${escapeHTML(expandLabel(c))}</button>`).join('') +
     `<button type="button" class="qo-close hidden" id="qoClose" title="Close comeback">✕</button>`;
   bar.querySelectorAll('[data-cat]').forEach(b => {
     b.addEventListener('click', () => openObjection(b.getAttribute('data-cat')));
@@ -710,7 +710,7 @@ function openObjection(cat) {
   if (pop) {
     pop.innerHTML = `
       <div class="qo-pop-head">
-        <div class="qo-pop-cat">${escapeHTML(obj.cat)}</div>
+        <div class="qo-pop-cat">${escapeHTML(expandLabel(obj.cat))}</div>
         <div class="qo-pop-q">${expandAcr(obj.q || '')}</div>
       </div>
       <div class="qo-pop-a">${expandAcr(obj.a || '')}</div>
@@ -1177,7 +1177,7 @@ const TZ_GATE_STATUSES = {
   soon:   { dot: '🟡', rank: 1, label: 'Opens soon' },
   ok:     { dot: '⚪',  rank: 2, label: 'OK' },
   avoid:  { dot: '🔴', rank: 3, label: 'Avoid window' },
-  off:    { dot: '⚫',  rank: 4, label: 'No TZ' },
+  off:    { dot: '⚫',  rank: 4, label: 'No timezone' },
 };
 
 function renderProspectPicker() {
@@ -1250,8 +1250,8 @@ function renderProspectPicker() {
   // Header info option
   if (gateMode !== 'off' || dedupDays > 0) {
     const bits = [];
-    if (gateMode === 'block') bits.push(`TZ gate ON (${hiddenCount} hidden)`);
-    else if (gateMode === 'warn') bits.push('TZ gate: warn mode');
+    if (gateMode === 'block') bits.push(`Timezone gate ON (${hiddenCount} hidden)`);
+    else if (gateMode === 'warn') bits.push('Timezone gate: warn mode');
     if (dedupDays > 0) bits.push(`Skip if dialed in last ${dedupDays}d`);
     html += `<option value="" disabled>· ${bits.join(' · ')} ·</option>`;
   }
@@ -1295,7 +1295,7 @@ function renderProspectPicker() {
     counter.innerHTML = `
       <span title="Never called · in prime window or opens within 2h" style="color:#0a7">🆕 ${freshCallable}</span>
       <span title="Already called · in prime window or opens within 2h" style="color:#888">📞 ${calledCallable}</span>
-      <span title="Hidden by TZ gate or recency rule" style="color:#999">· ${hiddenCount} hidden</span>`;
+      <span title="Hidden by timezone gate or recency rule" style="color:#999">· ${hiddenCount} hidden</span>`;
   }
 }
 
