@@ -1,0 +1,25 @@
+{
+  "brand": "critterclick",
+  "industry": "wildlife_removal",
+  "_note": "Smart column aliases for wildlife/pest control CSVs. Maps common header variants to canonical app fields.",
+  "required": ["domain", "company"],
+  "aliases": {
+    "domain": ["domain", "website", "url", "site", "web"],
+    "company": ["company", "business", "name", "operator", "service"],
+    "phone": ["phone", "tel", "telephone", "phone (verified)", "phone verified", "contact"],
+    "email": ["email", "e-mail", "contact email"],
+    "market": ["market", "city", "metro", "market / city", "market/city", "service area", "location", "geography"],
+    "type": ["type", "service type", "category", "vertical"],
+    "freq": ["freq", "frequency", "search frequency", "monthly searches"],
+    "risk": ["risk", "cro risk", "conversion risk"],
+    "speed": ["speed", "page speed", "site speed", "performance"],
+    "trust": ["trust", "trust gap", "trust signals"],
+    "cta": ["cta", "cta strength", "call to action"],
+    "leak_1": ["leak_1", "leak 1", "top cro issue #1", "issue #1", "top issue 1", "primary issue"],
+    "leak_2": ["leak_2", "leak 2", "top cro issue #2", "issue #2", "top issue 2", "secondary issue"],
+    "leak_3": ["leak_3", "leak 3", "top cro issue #3", "issue #3", "top issue 3", "third issue"],
+    "notes": ["notes", "comments", "remarks", "verification notes"]
+  },
+  "default_market": "Unknown",
+  "infer_market_from": "phone"
+}

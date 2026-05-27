@@ -37,7 +37,16 @@ const BRANDS = {
     active: true,
     theme: { ink: '#0B1426', gold: '#C5A572', cream: '#F5F2EC', highlight: '#FAF6EE' }
   },
-  'brand-3': { slug: 'brand-3', name: 'Brand 3 (slot)', short: 'B3', sub: 'Coming soon', strategist: 'Tony', active: false, theme: null },
+  'critterclick': {
+    slug: 'critterclick',
+    name: 'CritterClick',
+    short: 'CC',
+    sub: 'Cold call → free Wildlife Site Conversion Audit · v3.3',
+    strategist: 'Tony',
+    caller_default: 'Zack',
+    active: true,
+    theme: { ink: '#1B3A2E', gold: '#D4A04C', cream: '#F4EFE5', highlight: '#FBF6E8' }
+  },
   'brand-4': { slug: 'brand-4', name: 'Brand 4 (slot)', short: 'B4', sub: 'Coming soon', strategist: 'Tony', active: false, theme: null }
 };
 

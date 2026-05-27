@@ -1,0 +1,53 @@
+{
+  "brand": "critterclick",
+  "objections": [
+    {
+      "cat": "NOT_INTERESTED",
+      "trigger": "Not interested / We're good / We don't need it",
+      "comeback": "Totally fair, and I'm not asking you to buy anything. I'm a wildlife marketing nerd — we did a free conversion audit on {company} and I just want 15 minutes to show you the 3 things costing you raccoon and bat calls right now. You take whatever's useful, throw out the rest. Worst case you get a free $3,000 audit. Fair?",
+      "framework": "Reframe + DECOY offer"
+    },
+    {
+      "cat": "REBUILT",
+      "trigger": "We just rebuilt our site / It's brand new",
+      "comeback": "That's actually why I called. I see the new site — and I bet the company who built it didn't audit it for conversion specifically. They built it pretty. We measure 9 things on every wildlife page that determine whether a 2am raccoon call becomes a $650 job or a voicemail. Want to see what we found on yours?",
+      "framework": "Pattern Interrupt + Specificity"
+    },
+    {
+      "cat": "EMAIL_INSTEAD",
+      "trigger": "Send me an email / Send info first",
+      "comeback": "Happy to. The audit is a 4-page PDF with screenshots of the 3 biggest leaks on {company} — but here's the thing, when I send it cold it sits in inbox jail. If I walk you through it for 15 minutes Tuesday or Thursday, you'll actually know what to do with it. Which works?",
+      "framework": "Loss Aversion + Easy Yes"
+    },
+    {
+      "cat": "PRICE",
+      "trigger": "How much? / What does this cost?",
+      "comeback": "The audit is free — that's the whole point of the call. Walk you through what we found, you do whatever you want with it. If you want us to fix anything after, we'll talk pricing then. Most operators in {market} are paying ${cpc_low}-${cpc_high} per click on Google right now — we just make sure those clicks don't bounce. Want to see the audit Tuesday or Thursday?",
+      "framework": "Reframe Price + Anchor"
+    },
+    {
+      "cat": "PARTNER",
+      "trigger": "I need to talk to my partner / wife / business partner",
+      "comeback": "Smart. Invite them on the call — Tuesday at 2 or Thursday at 10, 15 minutes. The audit is more powerful with both of you on because one of you owns the trucks and one owns the phone. Which works better for both?",
+      "framework": "Include + Easy Yes"
+    },
+    {
+      "cat": "BROKERS",
+      "trigger": "We work with Angi / HomeAdvisor / Thumbtack / lead brokers already",
+      "comeback": "Got it — and that's the exact reason we should talk. You're paying those guys $40-$80 per shared lead that goes to 4 of your competitors at the same time. Your own site, ranked right, gives you exclusive calls at half the cost. The audit shows you exactly which 3 fixes get you off the broker treadmill. Tuesday or Thursday?",
+      "framework": "Loss Frame + Cost-of-Inaction"
+    },
+    {
+      "cat": "ADS_WORK",
+      "trigger": "Our ads are working fine / We get plenty of calls",
+      "comeback": "Great — that's actually the best time to look. Your ads getting clicks means the top of the funnel works. The audit looks at what happens AFTER the click — 9 things on the page that decide whether a call comes in or doesn't. Operators getting calls are leaving 30-50% of clicks on the table. 15 minutes, we'll show you which ones. Fair?",
+      "framework": "Belief Building + Hidden Leak"
+    },
+    {
+      "cat": "AGENCY",
+      "trigger": "We have a marketing agency / SEO guy already",
+      "comeback": "Perfect — keep them. We don't replace them. We hand them the conversion audit so they know what to fix. They'll thank you. Most agencies build traffic; almost none audit the page for conversion specifically. Tuesday or Thursday, 15 minutes — I'll send the PDF to you and your agency person at the same time. Who else should I add?",
+      "framework": "Disarm + Complement"
+    }
+  ]
+}

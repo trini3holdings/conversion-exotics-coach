@@ -1,0 +1,188 @@
+{
+  "brand": "critterclick",
+  "audit_value": 3000,
+  "target_length_sec": 220,
+  "_doc": "3 A/B/C cold-call variants for CritterClick (wildlife removal). Tone: direct, blue-collar, problem-aware. Caller {caller} is Zack or Tony. Industry: emergency-service buyer paying $8-$22 CPC, baseline form-completion 2%. Tokens used: {caller} {strategist} {company} {market} {primary_kw} {cpc_low} {cpc_high} {leak_1} {leak_2}.",
+  "variants": {
+    "A": {
+      "name": "Pattern Interrupt",
+      "desc": "Hard pattern break opener. Best for high-volume operators with strong ads but bad site.",
+      "beats": [
+        {
+          "phase": "OPEN",
+          "title": "Pattern Interrupt",
+          "t": 18,
+          "line": "Hey is this {company}? Cool — my name's {caller}, I'm a wildlife marketing nerd over at CritterClick. I know I'm a cold call so I'll be quick — got 45 seconds?",
+          "responses": ["What's this about", "Make it quick", "Sure"],
+          "followup": "Appreciate it. Promise I won't pitch you anything on this call.",
+          "note": "Tone: even, confident, NOT bubbly. 'Wildlife marketing nerd' disarms and sets you apart from every other agency cold-caller."
+        },
+        {
+          "phase": "HOOK",
+          "title": "Specificity Hook",
+          "t": 28,
+          "line": "Reason I'm calling — we ran a free conversion audit on your site {company} this morning. Found 3 specific things costing you raccoon and bat calls every week. {strategist} runs the agency, told me to call the operators in {market} we audited and offer them the report free. No pitch, no funnel — just the audit.",
+          "responses": ["What audit", "Free?", "What kind of things"],
+          "followup": "Yeah completely free — we use it to show what we do. You take whatever's useful.",
+          "note": "Name the {strategist} ({strategist}) — adds authority and warmth. Don't oversell — let them be curious."
+        },
+        {
+          "phase": "LEAK 1",
+          "title": "Drop Leak 1",
+          "t": 30,
+          "line": "First thing — {leak_1}. That's the one costing you the most. In {market} you're paying somewhere between ${cpc_low} and ${cpc_high} per click on Google for terms like \"{primary_kw}\" — and that leak alone bounces about 30-40% of those clicks before they ever call you.",
+          "responses": ["Really", "Hm", "I didn't know that", "How bad"],
+          "followup": "Yeah — if you're spending even $2K/mo on Google or your SEO is bringing in 200 visits a week, that's 60-80 calls a month you're not getting.",
+          "note": "Pause after the CPC numbers. Let it land. Math is the proof — don't skip it."
+        },
+        {
+          "phase": "LEAK 2",
+          "title": "Drop Leak 2",
+          "t": 24,
+          "line": "Second thing — {leak_2}. That one's smaller but it stacks with the first one. Together they're probably costing you 3-5 jobs a month at $400-$800 a job. That's $1,500 to $3,500 a month in raccoon and bat work walking past your site.",
+          "responses": ["That much?", "Damn", "OK"],
+          "followup": "Yeah and that's conservative. Real number's probably double if you're running ads.",
+          "note": "$650 avg job for residential wildlife. 3-5 jobs/mo lost = $2K-$3K monthly. Conservative anchoring builds credibility."
+        },
+        {
+          "phase": "CLOSE",
+          "title": "Pivot to Audit Walkthrough",
+          "t": 24,
+          "line": "Look — I don't want to walk you through all 9 leaks over the phone, you'd hate me. The whole audit is 4 pages with screenshots. {strategist} jumps on a 15-minute Zoom Tuesday or Thursday and walks you through it. You take what's useful, ignore the rest. Worst case you get a free $3,000 audit.",
+          "responses": ["OK fine", "Tuesday", "Thursday works"],
+          "followup": "Perfect. 15 minutes — not 30 — promise.",
+          "note": "Tuesday/Thursday default. Two choices = easier yes. Mention the $3,000 audit value as anchor."
+        },
+        {
+          "phase": "CLOSE",
+          "title": "Book the Time",
+          "t": 24,
+          "line": "What's your best email for the calendar invite? And is there anyone else on your end who should be on the call — partner, office manager, whoever owns the phone?",
+          "responses": ["Just me", "Send the invite", "Here's my email"],
+          "followup": "Perfect — invite goes out in 60 seconds. I'll cc anyone you add. Anything else before we hop off?",
+          "note": "Always confirm second person — wildlife shops often have the truck-owner and the phone-owner as different people. Both should be on the audit call."
+        }
+      ]
+    },
+    "B": {
+      "name": "Curiosity Hook",
+      "desc": "Open with a specific local question. Best for operators that get prickly with hard pitches.",
+      "beats": [
+        {
+          "phase": "OPEN",
+          "title": "Curious Opener",
+          "t": 16,
+          "line": "Hey — {caller} over at CritterClick, I'm hoping to talk to whoever owns the marketing at {company}. That you?",
+          "responses": ["That's me", "Who?", "What is this"],
+          "followup": "Cool — quick reason for the call, won't take long.",
+          "note": "Soft open. Posture: helper, not salesperson."
+        },
+        {
+          "phase": "HOOK",
+          "title": "Local Question Hook",
+          "t": 30,
+          "line": "Quick question — when someone in {market} types \"{primary_kw}\" into Google at 11pm with a raccoon in the attic, and they land on your site… do you know what percent of those visits actually pick up the phone? Most operators have no idea. We measured it on {company} this week.",
+          "responses": ["How would you know", "What's the number", "No idea"],
+          "followup": "Industry baseline is 2-3% of visits become calls. The good ones hit 5-6%. We found yours sits at about half what it should be.",
+          "note": "Asking 'do you know' is the trap. They don't. Now they HAVE to know."
+        },
+        {
+          "phase": "LEAK 1",
+          "title": "Reveal Leak 1",
+          "t": 26,
+          "line": "The biggest reason — {leak_1}. That single thing kills about a third of the wildlife buyers who land on your page. They came ready to book a raccoon job and they bounced. At ${cpc_low}-${cpc_high} per click in {market}, that's expensive to lose them at the goal line.",
+          "responses": ["Hm", "Yeah", "Tell me more"],
+          "followup": "And this isn't theoretical — we screenshot the exact spot on your site where it happens. It's in the audit.",
+          "note": "Screenshots in the audit are the secret weapon. Mention them — proves real work."
+        },
+        {
+          "phase": "LEAK 2",
+          "title": "Reveal Leak 2",
+          "t": 22,
+          "line": "Second thing — {leak_2}. It's a smaller leak but it stacks. Together, conservatively, you're losing 3-5 wildlife jobs a month. At $400-$800 a job that's $2K-$3K monthly walking past your phones.",
+          "responses": ["That's a lot", "Damn", "OK"],
+          "followup": "And every other operator in {market} who advertises has the same leaks. We just measure them.",
+          "note": "Land the dollar math. Then normalize — 'every other operator has them too' lowers shame, raises curiosity."
+        },
+        {
+          "phase": "CLOSE",
+          "title": "Pivot to Audit",
+          "t": 26,
+          "line": "I've got the whole audit written up — 4 pages, screenshots of every leak, exact fixes ranked by impact. {strategist} who runs the agency walks you through it on a 15-minute Zoom. Tuesday or Thursday works for him. No pitch — just the audit. You can take it to your current web guy if you want.",
+          "responses": ["OK Tuesday", "Thursday", "Send it"],
+          "followup": "Tuesday works — what time, mornings or afternoons better for you?",
+          "note": "'Take it to your current web guy' = disarms the agency objection before they raise it."
+        },
+        {
+          "phase": "CLOSE",
+          "title": "Book the Time",
+          "t": 22,
+          "line": "Cool — Tuesday at 2pm or Thursday at 10am? And what's the best email for the calendar invite?",
+          "responses": ["2pm Tuesday", "Send to my email", "10am Thursday"],
+          "followup": "Done. Invite hits your inbox in 60 seconds. Anyone else on your team who should be on the call?",
+          "note": "Two specific times. ALWAYS ask who else — second decision-maker is the #1 reason wildlife shops no-show."
+        }
+      ]
+    },
+    "C": {
+      "name": "Paid-Ads Leak",
+      "desc": "Best when you can see they're running Google Ads. Hits the wallet hardest. Highest book rate but hardest to pull off.",
+      "beats": [
+        {
+          "phase": "OPEN",
+          "title": "Direct Open",
+          "t": 14,
+          "line": "Hey {company}? It's {caller} at CritterClick. Quick reason for the call — got 45 seconds?",
+          "responses": ["Sure", "Quick", "Go"],
+          "followup": "Appreciate it.",
+          "note": "Cleaner the better. Don't waste time."
+        },
+        {
+          "phase": "HOOK",
+          "title": "The Ad Spend Hook",
+          "t": 26,
+          "line": "I noticed {company} is running Google Ads in {market} on terms like \"{primary_kw}\". Smart move — that's where the emergency raccoon and bat buyers live. But — your landing page is leaking a chunk of that spend before the calls come in. We measured it this morning.",
+          "responses": ["How do you know", "What spend", "What leak"],
+          "followup": "Public data — we don't need access to anything. Just looked at where your ads land and we measure 9 things.",
+          "note": "If you're not 100% sure they run ads, switch to variant B. This open requires confidence."
+        },
+        {
+          "phase": "LEAK 1",
+          "title": "The Math Beat",
+          "t": 32,
+          "line": "Here's the math — in {market}, \"{primary_kw}\" runs ${cpc_low}-${cpc_high} per click. The leak we found — {leak_1} — bounces roughly 30% of paid clicks before they convert. So if you're spending say $3,000/mo on Google, you're effectively burning $900 of that on clicks that land and leave. Every. Single. Month.",
+          "responses": ["Wait what", "Are you serious", "How much"],
+          "followup": "And that's just leak number one. Plus organic traffic — same leak hits them too.",
+          "note": "Slow down on the math. Numbers are the punch — let them hit. Pause after 'every single month.'"
+        },
+        {
+          "phase": "LEAK 2",
+          "title": "Drop Leak 2",
+          "t": 22,
+          "line": "Second leak — {leak_2}. Smaller, but it stacks. Together those two leaks alone probably cost you $1,500-$3,500/month in wildlife jobs that should be coming through your phone and don't.",
+          "responses": ["Show me", "OK", "How do you fix it"],
+          "followup": "That's the whole audit conversation — we walk you through exactly what to do.",
+          "note": "Don't fix it on the call. The fix IS the next call."
+        },
+        {
+          "phase": "CLOSE",
+          "title": "Hard Close to Audit",
+          "t": 24,
+          "line": "Here's the deal — {strategist} who runs the agency does a 15-minute audit walkthrough for operators we like. Free. 4-page PDF with screenshots of every leak, fixes ranked by dollar impact. You can hand it to your current web guy or have us do it. Tuesday or Thursday — which works?",
+          "responses": ["Tuesday", "Thursday", "Send me the PDF first"],
+          "followup": "PDF makes more sense once you've seen the walkthrough — context matters. Tuesday 2 or Thursday 10?",
+          "note": "Don't email the PDF cold. Walkthrough first. The PDF without context is useless and they'll never read it."
+        },
+        {
+          "phase": "CLOSE",
+          "title": "Lock the Invite",
+          "t": 22,
+          "line": "Locked. What's the best email for the calendar invite — and who else from your team should be on the call?",
+          "responses": ["My email is...", "Just me", "Add my partner"],
+          "followup": "Perfect — invite is hitting your inbox in 60 seconds. I'll cc anyone you want added.",
+          "note": "Confirm email back verbatim. Wrong email = #1 no-show cause."
+        }
+      ]
+    }
+  }
+}
