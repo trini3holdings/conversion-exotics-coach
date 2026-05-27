@@ -1,0 +1,158 @@
+{
+  "brand": "RME Roofing",
+  "version": "1.0",
+  "locked_date": "2026-05-28",
+  "source_url": "https://rme-roofing.com",
+  "source_note": "rme-roofing.com DNS failed at time of writing — site phrases mirrored from Conversion Exotics universal voice per brief instructions.",
+  "slots": {
+    "1_brand_name": "RME Roofing",
+    "2_caller_identity": "I review roofing company sites for a living",
+    "3_target_buyer": "Roofing company owner-operator (B2B — calling roofing company owners to offer CRO services)",
+    "4_who_answers": "Owner-operator (small shops answer direct), office manager, or crew dispatcher (larger shops)",
+    "5_dollar_anchor": "$15,000 to $30,000 a week in lost roofing jobs",
+    "5_anchor_math": "1-3 missed jobs/wk × $10,000-$18,000 avg residential replacement ticket = $10K-$54K/wk. Conservative anchor $15K-$30K lands credibly without seeming absurd. Sources: ridge-top-exteriors.com (avg $10K-$11K national 2025), green-attic-roofing.com ($6K-$40K range). DFW insurance jobs skew $12K-$18K with hail-belt premium.",
+    "5_anchor_upper": "$50,000 (1-3 missed hail-belt insurance jobs at $15K-$18K each — use in storm-season calls only)",
+    "6_cpc_range": "$38 to $75 per click (DFW market — top hail-belt market). Denver CO peaks at $42-$80.",
+    "6_cpc_source": "market_cpc.json — Google Ads benchmark anchors for residential roofing markets, 2026-05",
+    "7_issues_hierarchy": [
+      {
+        "rank": 1,
+        "issue": "Trust/reviews/proof not above fold",
+        "frequency": "277/299 non-client prospects (93%)",
+        "plain_english": "The top of your page"
+      },
+      {
+        "rank": 2,
+        "issue": "Form/CTA friction (buried, too many steps, competing CTAs)",
+        "frequency": "252/299 (84%)",
+        "plain_english": "How they reach you"
+      },
+      {
+        "rank": 3,
+        "issue": "Phone buried or missing on mobile",
+        "frequency": "105/299 (35%)",
+        "plain_english": "The number they tap on mobile"
+      },
+      {
+        "rank": 4,
+        "issue": "No storm/hail/insurance claim messaging",
+        "frequency": "65/299 (22%)",
+        "plain_english": "No hook for the insurance-claim buyer"
+      },
+      {
+        "rank": 5,
+        "issue": "Weak/generic brand — no differentiator",
+        "frequency": "69/299 (23%)",
+        "plain_english": "Nothing that makes you the obvious pick"
+      }
+    ],
+    "7_cta_breakdown": {
+      "STRONG": "178/299 (60%) — prospects with strong CTAs still have trust/form issues",
+      "MODERATE": "96/299 (32%) — moderate CTA = leads leaking at the form step",
+      "WEAK": "25/299 (8%) — full contact failure"
+    },
+    "8_audit_value": 5000,
+    "8_audit_value_rationale": "B2B vertical with $10K-$18K per-job ticket size. $5,000 audit value is proportional to anchor and serious enough to command respect from a roofing owner-operator. Mirrors Conversion Exotics at $3,000 (B2C) scaled for B2B stakes.",
+    "9_banned_terms": [
+      "{first_name} or {prospect_name} — no name tokens",
+      "Miner-style apology hedges: 'appreciate you picking up', 'out of the blue', 'I know I'm calling cold'",
+      "Slang permission: 'got 90 seconds', 'Quick on me', 'cool?'",
+      "{company} in beat copy — use 'your site' instead",
+      "CTA — use 'how they reach you' / 'the button to call' / 'the phone number they tap'",
+      "Hero / hero copy — use 'top of your page' / 'first thing they see'",
+      "Above the fold — use 'top of the page'",
+      "Conversion rate — use 'how many actually call' / 'how many leads turn into jobs'",
+      "Funnel — use 'lead flow' / 'the steps between the ad and the call'",
+      "Page speed / TTI / LCP / Core Web Vitals — use 'how fast it loads'",
+      "Developer / dev work / dev — frame fixes as 'quick wins' / 'I'd handle that'",
+      "Competitor by name — use 'the next contractor' / 'the next shop'",
+      "Quick context — BANNED — use 'Here's the deal' / 'Here's what I did' / 'Here's what's going on'",
+      "Homeowner language in agent beats — use 'your leads', 'your jobs', 'your close rate', not 'renter taps'",
+      "CRO jargon: conversion optimization, A/B test, above-fold, hero section",
+      "Agency language: strategy, deliverables, engagement, retainer"
+    ],
+    "10_three_pillars": [
+      "Top of your page (trust, proof, urgency)",
+      "How they reach you (phone tap, form friction)",
+      "The third issue (revealed in audit)"
+    ],
+    "10_roofing_owner_vocabulary": [
+      "jobs",
+      "leads",
+      "close rate",
+      "ticket size",
+      "insurance claim",
+      "hail damage",
+      "inspection",
+      "storm season",
+      "paid traffic",
+      "per click"
+    ]
+  },
+  "universal_voice_locks": [
+    "No name tokens",
+    "No Miner apologies",
+    "No slang permission",
+    "I not we",
+    "Plain English — no acronyms",
+    "No {company} in beat copy — use 'your site'",
+    "Dual-path close (booked call OR email sample)",
+    "B2B register — calling roofing owners, not homeowners",
+    "No 'Quick context' — use 'Here's the deal'"
+  ],
+  "verbatim_site_language": {
+    "audit_format": "Thirty minutes. Your live site on screen.",
+    "differentiator": "Every leak named in plain English, with dollar-anchored estimates per leak.",
+    "dollar_anchored": "Dollar-anchored estimates per leak — in jobs per week, not percentages.",
+    "yours_to_keep": "Yours to keep whether you hire me to ship it or not.",
+    "one_week_plan": "Sequenced one-week plan — every fix shipped at once, ranked by lead impact.",
+    "tone_setter": "Not vibes — math.",
+    "steal_frame": "Flip the steal — so the next homeowner with hail damage calls you, not the next contractor.",
+    "cpc_anchor": "You're paying $40 to $75 per click — and for a big chunk of those clicks, the lead never turns into a call."
+  },
+  "variant_angle_map": {
+    "A": {
+      "name": "The Lead Leak",
+      "hook": "Paying $40-$75/click, but lead form is broken or phone is buried — traffic that never becomes a job",
+      "data_backing": "84% of audited prospects have form/CTA friction; 35% have phone buried on mobile",
+      "lever": "Dollar anchor on wasted ad spend per click",
+      "best_for": "Owners currently running Google Ads — the click spend makes the leak visceral"
+    },
+    "B": {
+      "name": "Next Contractor Steals It",
+      "hook": "Homeowner has hail damage, taps your ad, slow load or buried phone, taps next contractor, next guy gets the $15K insurance job",
+      "data_backing": "93% trust/proof issues above fold + 35% phone buried = steal is happening constantly",
+      "lever": "Status loss + FOMO + competitor frame without naming names",
+      "best_for": "Owners in hail-belt markets (DFW, Denver, OKC) where insurance jobs are the high-ticket prize"
+    },
+    "C": {
+      "name": "3-Issue Reveal",
+      "hook": "I pulled up your site and found three issues — name two, tease the third",
+      "data_backing": "Top of page (93%) + how they reach you (84%) + third issue held for audit",
+      "lever": "Curiosity gap + loss aversion — hold the worst issue for the audit",
+      "best_for": "Owners with 'we just redesigned' or 'we get leads fine' objection-prone responses"
+    }
+  },
+  "beat_skeleton": {
+    "1_OPEN": "9-11s — earned-attention hook + dollar anchor + routing question",
+    "2_PROBLEM": "17-24s — industry context with CPC anchor, ends with question they can't answer well",
+    "3_AGITATION": "32-40s — concrete walk-through + dollar anchor + tease third issue",
+    "4_SOLUTION": "15-20s — credibility (100+ sites diagnosed, 10-point checklist, same three leaks)",
+    "5_AUDIT_OFFER": "33s — $5K audit, free, 30 min shared screen, dollar per leak, one-week plan, yours to keep",
+    "6_CLOSE": "30s — Thursday 10 or Friday 2, OR sample audit by email"
+  },
+  "dollar_anchor_math": {
+    "avg_residential_ticket_low": 10000,
+    "avg_residential_ticket_high": 18000,
+    "hail_belt_insurance_job_typical": 15000,
+    "missed_jobs_per_week_low": 1,
+    "missed_jobs_per_week_high": 3,
+    "weekly_revenue_leak_low": 15000,
+    "weekly_revenue_leak_high": 30000,
+    "weekly_revenue_leak_upper": 50000,
+    "anchor_used_in_scripts": "$15,000 to $30,000 a week in lost roofing jobs",
+    "source_ticket_size": "ridgetopexteriors.com 2025 — avg $10K-$11K national; green-attic-roofing.com $6K-$40K range; hail-belt DFW/CO skew $12K-$18K",
+    "source_cpl": "searchlightdigital.io Q1 2026 — avg roofing non-branded CPL $124; localiq.com 2025 — roofing & gutters $228 CPL",
+    "cpc_source": "market_cpc.json — DFW $38-$75/click, Denver $42-$80/click"
+  }
+}

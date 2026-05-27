@@ -1,319 +1,187 @@
 {
-  "_meta": {
-    "brand": "rme-roofing",
-    "brand_name": "RME Roofing",
-    "audit_value": 3000,
-    "target_length_sec": 150,
-    "industry": "roofing",
-    "register": "B2B owner-operator — direct, plain English, contractor-to-contractor respect. Layman's terms. No agency jargon. Speak to the roofing-company owner like a peer who studied their site, not a pitch deck.",
-    "frameworks": ["Jeremy Miner NEPQ (Neutral → Engaged → Discovery)", "PAS (Problem → Agitate → Solve)"],
-    "form_completion_rate": 0.03,
-    "math_style": "narrative — '100 clicks gets you 2-3 inquiries on a roofing site, low-thousands per real quote' — NEVER token-concatenation",
-    "banned_terms": ["funnel", "growth hack", "crush it", "scale you up", "10x", "ROAS-positive", "agency", "performance marketing", "Part 135", "ARGUS", "Wyvern", "fractional ownership", "jet card", "empty-leg"],
-    "leak_anchor_rule": "Always reference a real leak from {leak_1} or {leak_2}. Never invent issues."
-  },
-  "A": {
-    "variant_id": "A",
-    "label": "Heritage / BBB / Trust-Underused",
-    "thesis": "The roofer's biggest trust asset (years in business, BBB, GAF cert) is buried — and paid traffic is leaking. Direct hook on the specific underused trust asset.",
-    "beats": [
-      {
-        "phase": "OPEN",
-        "title": "Permission-Based Open",
-        "t": 12,
-        "line": "Hey, this is {caller} — I know I'm calling out of the blue, mind if I take 30 seconds and you can tell me to hang up after?",
-        "responses": [
-          {"label": "OK go", "next": 1},
-          {"label": "No / Busy", "next": "OBJ:NOT_INTERESTED"}
-        ],
-        "followup": "30 seconds, then you decide.",
-        "note": "Permission-based open beats every cold-call gimmick. Tone: calm peer, not eager seller. Smile through the phone."
-      },
-      {
-        "phase": "PROBLEM",
-        "title": "Name The Specific Leak",
-        "t": 18,
-        "line": "I run conversion audits on roofing company websites — and I pulled up {company} this morning. Real quick: {leak_1}. Did I read that right?",
-        "responses": [
-          {"label": "Yes / kind of", "next": 2},
-          {"label": "Wrong / push back", "next": "OBJ:REBUILT"},
-          {"label": "Who are you?", "next": "FOLLOWUP_WHO"}
-        ],
-        "followup": "Quick — I'm Zack with RME, we work with roofing contractors on what's leaking before they spend another dime on Google Ads.",
-        "note": "Read the real leak from {leak_1}. Don't paraphrase. The specificity is the credibility."
-      },
-      {
-        "phase": "AGITATE",
-        "title": "Roofing Money Math (Narrative)",
-        "t": 24,
-        "line": "Here's why that matters in {market} — roofing clicks run about ${cpc_low} to ${cpc_high} a click on Google. About 100 clicks gets you maybe 2 or 3 real inquiries on a good roofing page. So every weak homepage piece is costing you in the low thousands per actual quote — not pennies.",
-        "responses": [
-          {"label": "Makes sense", "next": 3},
-          {"label": "Don't run Google Ads", "next": "FOLLOWUP_NO_ADS"},
-          {"label": "Sounds high", "next": "FOLLOWUP_MATH"}
-        ],
-        "followup": "Even if you only do LSAs or referrals — every page-view that doesn't call is still a lost shot.",
-        "note": "Narrative math only. No decimal-precise dollar quotes. Use 'low-thousands per real quote' or 'a few thousand per booked job'."
-      },
-      {
-        "phase": "AGITATE",
-        "title": "Second Leak Punch",
-        "t": 18,
-        "line": "And I saw another piece too — {leak_2}. You add that on top of the first one and most of your homepage visitors are bouncing before they even see your phone number.",
-        "responses": [
-          {"label": "Hmm OK", "next": 4},
-          {"label": "Phone's right there", "next": "FOLLOWUP_PHONE_DEFENSE"}
-        ],
-        "followup": "I'm talking about above-the-fold, mobile, in the first 3 seconds — that's where most homeowners decide.",
-        "note": "Stack two real leaks before the offer. Two specific facts beat one big claim every time."
-      },
-      {
-        "phase": "SOLUTION",
-        "title": "The Free Audit Offer",
-        "t": 22,
-        "line": "Here's why I'm calling — I built a free Roofing Site Conversion Audit. It's about a $3,000 piece of work, real numbers from your homepage, your competitors in {market}, and the 3 to 5 specific things to fix first to turn more visits into booked inspections. No pitch on the call — you get the audit, you do what you want with it.",
-        "responses": [
-          {"label": "What's the catch", "next": "FOLLOWUP_CATCH"},
-          {"label": "OK send it", "next": 5},
-          {"label": "Already have an agency", "next": "OBJ:AGENCY"}
-        ],
-        "followup": "No catch — I do 5 a week, free, because they turn into clients about 1 in 5 times. Worth my time even if not yours yet.",
-        "note": "Audit framed as a peer giving you a teardown — not an agency pitch. Be matter-of-fact about why it's free."
-      },
-      {
-        "phase": "CLOSE",
-        "title": "Soft Booking",
-        "t": 18,
-        "line": "I can have it on your desk in 48 hours — what's the best email to send it to, and is there a 20-minute window this week or next we can walk it together if you have questions?",
-        "responses": [
-          {"label": "Sure — here's email", "next": 6},
-          {"label": "Just send it", "next": 7},
-          {"label": "Not now", "next": "OBJ:NOT_INTERESTED"}
-        ],
-        "followup": "Totally — even no walk-through, I'll send the PDF and you can read it solo.",
-        "note": "Always offer the optional walk-through but accept email-only. Don't push the meeting if they push back."
-      },
-      {
-        "phase": "CLOSE",
-        "title": "Confirm + Set Expectation",
-        "t": 16,
-        "line": "Got it — {company} audit going to that email. I'll text you when it lands so you know to look for it. Anything specific you want me to look at first?",
-        "responses": [
-          {"label": "Yes — X", "next": "DONE"},
-          {"label": "No just send it", "next": "DONE"}
-        ],
-        "followup": "Cool — I'll dig into that piece too.",
-        "note": "Confirm the email back to them out loud. Catches typos and signals you actually care."
-      },
-      {
-        "phase": "CLOSE",
-        "title": "Email-Only Path",
-        "t": 12,
-        "line": "Cool — what email is best? I'll send the PDF, and if anything in it sparks a question just reply.",
-        "responses": [
-          {"label": "Here's email", "next": "DONE"},
-          {"label": "Just my website", "next": "FOLLOWUP_WEBSITE"}
-        ],
-        "followup": "Totally fine — I'll grab the contact from your contact page.",
-        "note": "Some owners hate meetings. Honor it. The audit does the selling."
-      }
-    ]
-  },
-  "B": {
-    "variant_id": "B",
-    "label": "Storm / Hail / Insurance-Claim Frame",
-    "thesis": "In hail-belt markets, the biggest leak is no storm or insurance language above the fold. Hits hardest in TX, OK, CO, KS. Lead with the seasonal money window.",
-    "beats": [
-      {
-        "phase": "OPEN",
-        "title": "Storm-Frame Open",
-        "t": 14,
-        "line": "Hey, this is {caller} — quick one. You guys roof in {market} right? Cool. I run conversion audits for roofing companies and I noticed something on {company} that's costing you during hail season — got 60 seconds?",
-        "responses": [
-          {"label": "Sure go", "next": 1},
-          {"label": "Not interested", "next": "OBJ:NOT_INTERESTED"},
-          {"label": "Who?", "next": "FOLLOWUP_WHO"}
-        ],
-        "followup": "60 seconds, then you tell me to keep going or hang up.",
-        "note": "Storm hook only works in hail-belt markets — check {market} before delivering. If it's CA or PNW, route to variant A or C."
-      },
-      {
-        "phase": "PROBLEM",
-        "title": "The Insurance Buyer Gap",
-        "t": 20,
-        "line": "When a homeowner gets a hail event they're searching things like 'insurance roof claim' and 'storm damage repair {market}'. I pulled your site this morning and the issue I saw is — {leak_2}. So your paid clicks during storm season are landing on a page that doesn't speak to that buyer at all.",
-        "responses": [
-          {"label": "Hmm OK", "next": 2},
-          {"label": "We do mention it", "next": "FOLLOWUP_PHONE_DEFENSE"},
-          {"label": "We don't chase storms", "next": "FOLLOWUP_NO_STORM"}
-        ],
-        "followup": "Even if you don't chase storms — the storm buyer is the buyer with the deductible already approved. Big check.",
-        "note": "Insurance-claim buyer has a 5-figure check waiting. Make sure the rep hears this — it's the highest LTV roofing buyer."
-      },
-      {
-        "phase": "AGITATE",
-        "title": "Storm Click Cost",
-        "t": 22,
-        "line": "Storm and hail-restoration keywords in {market} run about ${cpc_low} to ${cpc_high} a click — sometimes higher during active storm weeks. About 100 clicks gets you 2 or 3 inquiries on a clean page. So if your above-the-fold doesn't say 'we work your insurance claim,' you're losing a few thousand dollars in ad spend per insurance job that walks.",
-        "responses": [
-          {"label": "Yeah that's real", "next": 3},
-          {"label": "Don't do paid", "next": "FOLLOWUP_NO_ADS"}
-        ],
-        "followup": "Even on LSAs and referrals — the same buyer reads the same homepage.",
-        "note": "Roofing CPCs spike during active storm weeks. Use this fact, don't make it up. Narrative math only."
-      },
-      {
-        "phase": "AGITATE",
-        "title": "Stack The Trust Leak",
-        "t": 16,
-        "line": "And second piece — {leak_1}. Homeowner who's nervous about a hail claim wants to see GAF certified, BBB, photos of the crew, real years in business — fast. If that's not above the fold they bounce.",
-        "responses": [
-          {"label": "OK", "next": 4}
-        ],
-        "followup": "It's the homeowner gut-check moment.",
-        "note": "Reference the actual {leak_1} — usually heritage/BBB/cert is the trust asset that's buried."
-      },
-      {
-        "phase": "SOLUTION",
-        "title": "Audit Offer",
-        "t": 22,
-        "line": "Here's why I'm calling — I do a free Roofing Site Conversion Audit. About a $3,000 piece of work normally — your homepage, your competitors in {market}, your storm and insurance positioning, and the 3 to 5 fixes that move the needle first. No pitch on the call. You get the audit, you decide.",
-        "responses": [
-          {"label": "Sure", "next": 5},
-          {"label": "What's the catch", "next": "FOLLOWUP_CATCH"}
-        ],
-        "followup": "No catch. About 1 in 5 turn into clients later — that's enough for me to keep doing them.",
-        "note": "Be matter-of-fact. The audit IS the offer. The relationship is the side effect."
-      },
-      {
-        "phase": "CLOSE",
-        "title": "Email + Window",
-        "t": 16,
-        "line": "Best email to send it to? And if you want a 20-minute walk-through this week I can do that — totally optional.",
-        "responses": [
-          {"label": "Here's email", "next": 6},
-          {"label": "Just email", "next": 7},
-          {"label": "Not now", "next": "OBJ:NOT_INTERESTED"}
-        ],
-        "followup": "Either way. 48 hours.",
-        "note": "Optional walk-through. Don't push it."
-      },
-      {
-        "phase": "CLOSE",
-        "title": "Confirm",
-        "t": 14,
-        "line": "{company} audit, 48 hours, going to that email. Anything specific about storm season or insurance positioning you want me to focus on?",
-        "responses": [
-          {"label": "Yes — X", "next": "DONE"},
-          {"label": "Just send it", "next": "DONE"}
-        ],
-        "followup": "Got it — I'll bake it in.",
-        "note": "Echo email back. Catch typos."
-      },
-      {
-        "phase": "CLOSE",
-        "title": "Email Only",
-        "t": 12,
-        "line": "Cool — what email? Reply if anything sparks a question, totally optional.",
-        "responses": [
-          {"label": "Here's email", "next": "DONE"}
-        ],
-        "followup": "Easy.",
-        "note": "Honor the email-only path."
-      }
-    ]
-  },
-  "C": {
-    "variant_id": "C",
-    "label": "Competitor / Routing / CTA Direct",
-    "thesis": "For prospects with strong CTAs but specific leaks (mobile, routing, residential/commercial split, reviews not above fold). Direct peer-to-peer hook. Use for Tier 3 and Tier 4 conversations.",
-    "beats": [
-      {
-        "phase": "OPEN",
-        "title": "Peer Direct Open",
-        "t": 12,
-        "line": "Hey — this is {caller}, RME. Quick question, you have 30 seconds? I'm not selling anything, I want to tell you something I caught on {company}.",
-        "responses": [
-          {"label": "OK go", "next": 1},
-          {"label": "Busy", "next": "OBJ:NOT_INTERESTED"}
-        ],
-        "followup": "30 seconds — promise.",
-        "note": "Direct, no permission-loop padding. For prospects that already look strong — they'll respect directness."
-      },
-      {
-        "phase": "PROBLEM",
-        "title": "Specific Surgical Leak",
-        "t": 18,
-        "line": "Pulled your homepage this morning. Two things — {leak_1}. And then — {leak_2}. Real fixable, but they're costing you on every paid click and every referral that lands on your site.",
-        "responses": [
-          {"label": "OK", "next": 2},
-          {"label": "Wrong / push back", "next": "OBJ:REBUILT"},
-          {"label": "We know", "next": "FOLLOWUP_KNOW"}
-        ],
-        "followup": "Even if you know — most contractors haven't priced what it's costing them. That's the part most people miss.",
-        "note": "Lead with two stacked leaks. No fluff. These are stronger prospects so they'll dismiss generic claims fast."
-      },
-      {
-        "phase": "AGITATE",
-        "title": "Cost-Of-Inaction Math (Narrative)",
-        "t": 20,
-        "line": "Roofing clicks in {market} run about ${cpc_low} to ${cpc_high} on Google. About 100 clicks gets you 2 or 3 real inquiries on a clean page. So those two leaks together are quietly costing you a few thousand dollars per booked job — without you ever seeing where the money went.",
-        "responses": [
-          {"label": "Makes sense", "next": 3},
-          {"label": "We don't do paid", "next": "FOLLOWUP_NO_ADS"}
-        ],
-        "followup": "Same math holds on LSAs and referrals — the homepage either converts or it doesn't.",
-        "note": "Cost-of-inaction is the lever. Don't quote dollar-per-quote like an equation. Narrative."
-      },
-      {
-        "phase": "SOLUTION",
-        "title": "Free Audit Offer",
-        "t": 20,
-        "line": "Here's why I'm calling — I do a free Roofing Site Conversion Audit. About $3,000 of work normally. Your homepage, your top 3 competitors in {market}, the 3 to 5 specific things to fix first. No pitch on the call. You get the audit, you decide.",
-        "responses": [
-          {"label": "OK", "next": 4},
-          {"label": "Catch?", "next": "FOLLOWUP_CATCH"},
-          {"label": "Have an agency", "next": "OBJ:AGENCY"}
-        ],
-        "followup": "No catch — I do 5 a week, about 1 in 5 turn into clients. That's enough math for me.",
-        "note": "Repeat the offer cleanly. Don't sell, deliver."
-      },
-      {
-        "phase": "CLOSE",
-        "title": "Book Or Email",
-        "t": 18,
-        "line": "What's the best email to send it to? Audit's in 48 hours. If you want a 20-minute walk-through this week I can do that, totally optional.",
-        "responses": [
-          {"label": "Here's email", "next": 5},
-          {"label": "Just email", "next": 6},
-          {"label": "Not now", "next": "OBJ:NOT_INTERESTED"}
-        ],
-        "followup": "Either path works.",
-        "note": "Soft close, optional walk-through."
-      },
-      {
-        "phase": "CLOSE",
-        "title": "Confirm + Hook",
-        "t": 16,
-        "line": "Cool — {company} audit, 48 hours, going to that email. I'll text you when it lands. Anything in particular you want me to focus on?",
-        "responses": [
-          {"label": "Yes — X", "next": "DONE"},
-          {"label": "No", "next": "DONE"}
-        ],
-        "followup": "Got it.",
-        "note": "Echo email. Always. Catch typos."
-      },
-      {
-        "phase": "CLOSE",
-        "title": "Email Only",
-        "t": 12,
-        "line": "Cool — what email? Reply if anything sparks a question.",
-        "responses": [
-          {"label": "Here's email", "next": "DONE"}
-        ],
-        "followup": "Easy.",
-        "note": "Honor email-only path."
-      }
-    ]
+  "brand": "RME Roofing",
+  "audit_value": 5000,
+  "target_length_sec": 180,
+  "variants": {
+    "A": {
+      "name": "The Lead Leak",
+      "desc": "Plain-English lead-flow angle. Paying $40-$75/click in DFW, but the lead form is broken or the phone is buried. You're buying traffic that never becomes a job. Three issues, tease the third. Close with calendar or sample audit.",
+      "beats": [
+        {
+          "t": 10,
+          "phase": "OPEN",
+          "title": "Lead Flow Leak",
+          "line": "Hi, my name is {caller} with RME Roofing — I review roofing company sites for a living. I pulled up your site, and your <em>lead flow</em> is costing you roughly <em>$15,000 to $30,000 a week in roofing jobs</em>. Do you know who I can talk to about this?",
+          "responses": ["That'd be me", "What do you mean costing me?", "Who is this again?"],
+          "followup": "Got it — here's what I'm seeing, then I'll show you exactly where the jobs are going.",
+          "note": "Calling the roofing owner, not a homeowner. No name tokens. No apology hedges. Dollar anchor = 1-3 missed jobs/wk × $10-18K each."
+        },
+        {
+          "t": 22,
+          "phase": "PROBLEM",
+          "title": "Paying Per Click, Losing the Job",
+          "line": "Here's the deal — you're paying <em>$40 to $75 per click</em> in this market. That's real money for every homeowner who taps your ad. And right now, when they land on your site, a big chunk of them can't figure out how to reach you. <em>No sticky phone number on mobile, form that requires too many steps, or a number that goes to voicemail</em>. When did someone on your team last try to get a quote from your own site on a phone?",
+          "responses": ["Honestly, not recently", "We get leads fine", "We just updated the site"],
+          "followup": "Yeah — that's what most owners say. The lead flow issue is just the first one. The bigger ones come after.",
+          "note": "Plain English. $40-$75/click anchor from DFW market_cpc.json. Ends with a question they can't answer well."
+        },
+        {
+          "t": 36,
+          "phase": "AGITATION",
+          "title": "The Three Leaks",
+          "line": "Here's what's actually happening. <em>A homeowner with hail damage taps your ad, lands on your site, and can't find a clear way to call you</em> — so they go to the next ad. You paid $40 to $75 for that click and never got a shot at the job. The ones who do stay hit your contact form and it's four fields before they've even decided. By the time they figure it out, they've opened two other roofers in other tabs. That's the <em>$15,000 to $30,000 a week in lost jobs</em>. Cleaning up <em>the top of your page</em> and making <em>how they reach you</em> obvious — those are <em>week-one quick wins</em>. But there's a <em>third issue on your lead flow that costs more than both combined</em>. I'd rather show you that one with your site open.",
+          "responses": ["What's the third issue?", "Show me", "How much would this cost to fix?"],
+          "followup": "Fair — and that's exactly what the audit answers. Pricing comes after.",
+          "note": "Tease the third issue. Do NOT reveal it on the call. The reveal is the audit. B2B framing — 'jobs' not 'bookings'."
+        },
+        {
+          "t": 18,
+          "phase": "SOLUTION",
+          "title": "100+ Roofing Sites, Same 3 Leaks",
+          "line": "I've done this on <em>over 100 roofing sites</em> — same 10-point checklist, same lead flow, same three leaks every time. The shops that fix the top two see their lead-to-call rate climb in the first week. The ones that fix all three usually <em>double their close rate on paid traffic inside 30 days</em>.",
+          "responses": ["Okay…", "How long does the fix take?", "Sounds like a sales pitch"],
+          "followup": "Fair — and that's exactly why I lead with the audit, not the pitch.",
+          "note": "Credibility frame. 100+ sites. Same checklist. Pattern recognition. Roofing-owner language: lead-to-call rate, close rate."
+        },
+        {
+          "t": 33,
+          "phase": "AUDIT OFFER",
+          "title": "Free $5,000 Audit",
+          "line": "Here's what I want to do. I run a <em>$5,000 conversion audit</em> — and I'd like to do yours free. <em>Thirty minutes. Your live site on screen.</em> Every leak named in plain English, with <em>dollar-anchored estimates per leak</em> — what each one is costing you in jobs per week. You walk away with a <em>sequenced one-week plan — every fix shipped at once</em>, ranked by lead impact. <em>Yours to keep whether you hire me to ship it or not.</em> Not vibes — math.",
+          "responses": ["Yeah I'd look at that", "Send it over first", "What's the catch?"],
+          "followup": "No catch — I'm running a handful of these personally this quarter for case studies. That's the only ask.",
+          "note": "Verbatim voice from Conversion Exotics. $5K free (B2B premium vertical). One-week plan. All fixes shipped at once."
+        },
+        {
+          "t": 30,
+          "phase": "CLOSE",
+          "title": "Calendar or Sample",
+          "line": "Two ways we can do this. I've got <em>Thursday at 10</em> or <em>Friday at 2</em> open — pick one and I'll send the calendar invite. Or, if you'd rather see what this looks like first, give me your email and I'll send over a <em>sample audit I did for another roofing company</em> — full plan, dollar numbers, the whole thing. Which one would you prefer?",
+          "responses": ["Thursday at 10", "Friday at 2", "Send me the sample first"],
+          "followup": "Done — calendar invite or sample audit hits your inbox in 60 seconds.",
+          "note": "Dual-path close. Booked call OR sample audit. Either is a win. 'Roofing company' not 'rental shop'."
+        }
+      ]
+    },
+    "B": {
+      "name": "Next Contractor Steals It",
+      "desc": "Side-by-side competitor steal angle. Homeowner has hail damage, taps your ad first, slow load or buried phone, taps next contractor. That guy gets the $15K insurance job. Same $15K-$30K/week anchor. Flip-the-steal audit framing.",
+      "beats": [
+        {
+          "t": 10,
+          "phase": "OPEN",
+          "title": "Next Contractor Steal",
+          "line": "Hi, my name is {caller} with RME Roofing — I review roofing company sites for a living. Quick question — <em>do you know how many homeowners with hail damage tap your ad, count to three, and call the next contractor instead?</em> Because on your site right now, that's costing you <em>$15,000 to $30,000 a week in lost insurance jobs</em>. Who's the right person to talk to about this?",
+          "responses": ["That'd be me", "What do you mean costing me?", "Who is this again?"],
+          "followup": "Got it — here's what I'm seeing, then I'll show you exactly where those jobs are going.",
+          "note": "Question-first hook lands the steal frame immediately. Insurance jobs framing is specific to roofing-owner language."
+        },
+        {
+          "t": 22,
+          "phase": "PROBLEM",
+          "title": "Side-By-Side Speed Gap",
+          "line": "Here's what I did — I pulled up your site next to two other roofing shops in your market on my phone. <em>Theirs loaded in about 2 to 3 seconds. Yours took closer to 6.</em> That's the gap. Most homeowners give a site about <em>3 seconds</em> before they back out and tap the next contractor — <em>every extra second costs you roughly a third of your incoming leads</em>. When's the last time someone on your team opened your site on a phone next to a competitor's?",
+          "responses": ["Honestly, not recently", "We get leads fine", "We just updated the site"],
+          "followup": "Yeah — that's what most owners say. How fast it loads is just the first leak. The bigger ones come after.",
+          "note": "Side-by-side reframe makes the speed gap concrete. 'Leads' not 'bookings' — roofing-owner language."
+        },
+        {
+          "t": 34,
+          "phase": "AGITATION",
+          "title": "Next Contractor Gets The Job",
+          "line": "Here's what's actually happening. <em>The homeowner has fresh hail damage. They Google, tap your ad, count to three — and the next shop's site is already loading.</em> They tap it. They book the inspection. <em>That contractor gets the $15,000 insurance job — you never even got on their screen.</em> The ones who do stay land on a page that doesn't show proof of work, doesn't show a phone number they can tap, and asks them to fill out a form before they've decided anything. So they open two more tabs and forget you. That's the <em>$15,000 to $30,000 a week</em>. Fixing how fast it loads and making it obvious how to reach you — those are <em>week-one quick wins</em>. But there's a <em>third issue on your lead flow that costs more than both combined</em>. I'd rather show you that one with your site open.",
+          "responses": ["What's the third issue?", "Show me", "How much would this cost to fix?"],
+          "followup": "Fair — and that's exactly what the audit answers. Pricing comes after.",
+          "note": "Tease the third issue. Do NOT reveal it. Steal frame — 'next contractor' not 'next shop'. Insurance job framing."
+        },
+        {
+          "t": 18,
+          "phase": "SOLUTION",
+          "title": "100+ Roofing Sites Audited",
+          "line": "I've audited <em>over 100 roofing sites</em> — same 10-point checklist, same lead flow, same three leaks every time. The shops that fix the top two see their incoming leads climb in the first week. The ones that fix all three usually <em>double their close rate on paid traffic inside 30 days</em>.",
+          "responses": ["Okay…", "How long does the fix take?", "Sounds like a sales pitch"],
+          "followup": "Fair — and that's exactly why I lead with the audit, not the pitch.",
+          "note": "Credibility frame. 100+ sites. Same checklist. Pattern recognition."
+        },
+        {
+          "t": 33,
+          "phase": "AUDIT OFFER",
+          "title": "Flip The Steal — Free $5,000 Audit",
+          "line": "Here's what I want to do. I run a <em>$5,000 conversion audit</em> — and I'd like to do yours free. <em>Thirty minutes. Your live site on screen.</em> I show you every leak, attach a dollar number to each one in jobs per week, and hand you a <em>one-week plan to flip the steal</em> — so the next time a homeowner with hail damage loads your ad side-by-side with a competitor, <em>yours is the one they call</em>. <em>Yours to keep whether you hire me to ship it or not.</em> Not vibes — math.",
+          "responses": ["Yeah I'd look at that", "Send it over first", "What's the catch?"],
+          "followup": "No catch — I'm running a handful of these personally this quarter for case studies. That's the only ask.",
+          "note": "Steal-frame hook ties audit back to Beat 3. One-week plan. Roofing language: jobs per week, hail damage."
+        },
+        {
+          "t": 30,
+          "phase": "CLOSE",
+          "title": "Calendar or Sample",
+          "line": "Two ways we can do this. I've got <em>Thursday at 10</em> or <em>Friday at 2</em> open — pick one and I'll send the calendar invite, and we'll get your site flipped from <em>the one losing the click to the one closing the job</em>. Or, if you'd rather see what this looks like first, give me your email and I'll send over a <em>sample audit I did for another roofing company</em>.",
+          "responses": ["Thursday at 10", "Friday at 2", "Send me the sample first"],
+          "followup": "Done — calendar invite or sample audit hits your inbox in 60 seconds.",
+          "note": "Dual-path close. Steal-frame tilt on calendar path. 'Closing the job' — roofing-owner language."
+        }
+      ]
+    },
+    "C": {
+      "name": "3-Issue Reveal",
+      "desc": "Names two of three issues outright in plain English (top of page + how they reach you), teases the third for the audit. $15K-$30K/week anchor. Dual-path close.",
+      "beats": [
+        {
+          "t": 10,
+          "phase": "OPEN",
+          "title": "Three Issues Frame",
+          "line": "Hi, my name is {caller} with RME Roofing — I review roofing company sites for a living. I pulled up your site and I'm seeing <em>three specific issues on your lead flow</em> that together are costing you roughly <em>$15,000 to $30,000 a week in roofing jobs</em>. Do you know who I can talk to about this?",
+          "responses": ["That'd be me", "What three issues?", "Who is this again?"],
+          "followup": "Got it — quick run-through of what I'm seeing, then I'll show you exactly where the jobs are going.",
+          "note": "Calling the roofing owner. Three-issues hook sets up the reveal. 'Jobs' not 'bookings'."
+        },
+        {
+          "t": 22,
+          "phase": "PROBLEM",
+          "title": "Three Stuck Spots",
+          "line": "Here's the deal — every roofing site I look at has <em>three spots where leads get stuck</em> between tapping the ad and actually calling you: <em>the top of your page</em>, <em>the part where they figure out how to reach you</em>, and <em>one more spot most owners never notice</em>. On your site, all three are losing you jobs. <em>You're paying $40 to $75 per click in this market — and for a big chunk of those clicks, the lead never turns into a call</em>.",
+          "responses": ["What's the third one?", "How would you know?", "We just updated the site"],
+          "followup": "Yeah — that's the most common reaction. The reveal is in the audit.",
+          "note": "Plain-English version of CRO failure stack. No jargon. $40-$75 CPC anchor from DFW market_cpc.json. Tee up the reveal in Beat 3."
+        },
+        {
+          "t": 38,
+          "phase": "AGITATION",
+          "title": "Walk Through Two Of Three",
+          "line": "So here's what's actually happening. <em>The top of your page</em> doesn't show proof — no reviews, no jobs completed, no clear reason a homeowner with hail damage should pick you over the next contractor down the list. So they bounce. The ones who stay hit <em>how you want them to reach you</em> — and it's a form with four fields, or a phone number that's buried below the fold, or it goes straight to voicemail. That's a wall. They open two more tabs and forget you. That's the <em>$15,000 to $30,000 a week in lost jobs</em>. Those two are <em>week-one quick wins</em>. But there's a <em>third issue on your lead flow that costs more than both of those combined</em>. I'd rather show you that one with your site open.",
+          "responses": ["What's the third one?", "Show me", "How much would this cost to fix?"],
+          "followup": "Fair — and that's exactly what the audit answers. Pricing comes after.",
+          "note": "Reveal two issues in plain English. Tease third. Do NOT name the third on the call — the reveal is the audit. Roofing-owner language throughout."
+        },
+        {
+          "t": 18,
+          "phase": "SOLUTION",
+          "title": "100+ Roofing Sites Audited",
+          "line": "I've audited <em>over 100 roofing sites</em> — same 10-point checklist, same lead flow, same three leaks every time. The shops that fix the top two see their incoming leads climb in the first week. The ones that fix all three usually <em>double their close rate on paid traffic inside 30 days</em>.",
+          "responses": ["Okay…", "How long does the fix take?", "Sounds like a sales pitch"],
+          "followup": "Fair — and that's exactly why I lead with the audit, not the pitch.",
+          "note": "Credibility frame. 100+ sites. Same checklist. Pattern recognition."
+        },
+        {
+          "t": 33,
+          "phase": "AUDIT OFFER",
+          "title": "Free $5,000 Audit",
+          "line": "Here's what I want to do. I run a <em>$5,000 conversion audit</em> — and I'd like to do yours free. <em>Thirty minutes. Your live site on screen.</em> Every leak named in plain English, with <em>dollar-anchored estimates per leak</em> — in jobs per week, not percentages. You walk away with a <em>sequenced one-week plan — every fix shipped at once</em>, ranked by lead impact. <em>Yours to keep whether you hire me to ship it or not.</em> Not vibes — math.",
+          "responses": ["Yeah I'd look at that", "Send it over first", "What's the catch?"],
+          "followup": "No catch — I'm running a handful of these personally this quarter for case studies. That's the only ask.",
+          "note": "Verbatim voice from Conversion Exotics. $5K free. 'Jobs per week, not percentages' — roofing-owner language."
+        },
+        {
+          "t": 30,
+          "phase": "CLOSE",
+          "title": "Calendar or Sample",
+          "line": "Two ways we can do this. I've got <em>Thursday at 10</em> or <em>Friday at 2</em> open — pick one and I'll send the calendar invite. Or, if you'd rather see what this looks like first, give me your email and I'll send over a <em>sample audit I did for another roofing company</em> — full plan, dollar numbers, the whole thing. Which one would you prefer?",
+          "responses": ["Thursday at 10", "Friday at 2", "Send me the sample first"],
+          "followup": "Done — calendar invite or sample audit hits your inbox in 60 seconds.",
+          "note": "Dual-path close. Booked call OR sample audit. Either is a win."
+        }
+      ]
+    }
   }
 }
