@@ -1,18 +1,18 @@
 {
   "brand": "ConversionJet",
   "audit_value": 4500,
-  "target_length_sec": 240,
+  "target_length_sec": 180,
   "register": "Private aviation operators — plain English, no insider jargon. NEVER use: 'Part 135', 'ARGUS', 'Wyvern', 'fractional ownership', 'jet card', 'empty-leg', 'flight department KPI'. Replace with: 'private jet charter company', 'people who fly private', 'private flight shopper', 'inquiry form', 'quote request'. Tone: discreet, surgical, neutral. No hype, no emoji, no high-pressure. Jeremy Miner NEPQ + PAS structure.",
   "variants": {
     "A": {
       "name": "Pattern Interrupt + Soft Disarm",
-      "desc": "NEPQ + PAS. Best for never-engaged private jet charter operators with verified phone. Permission-based open, surgical problem reveal, two leaks + withheld third.",
+      "desc": "NEPQ + PAS. Best for never-engaged private jet charter operators with verified phone. Permission-based open, surgical problem reveal, two leaks + withheld third. ~205s.",
       "beats": [
         {
           "t": 22,
           "phase": "OPEN",
           "title": "Disarm + Permission",
-          "line": "I know this is out of the blue — feel free to hang up if I caught you wrong. I'm not even sure I'm reaching the right person — you all run the private jet charter operation out of {market}, correct? I pulled up {company}'s website this morning. We do a quiet review every quarter on the websites of private aviation operators — looking at the page somebody actually sees after they click an ad or land from a Google search.",
+          "line": "I know this is out of the blue — feel free to hang up if I caught you wrong. I'm not even sure I'm reaching the right person — you're with {company}, correct? I pulled up your website this morning. We do a quiet review every quarter on the websites of private aviation operators — looking at the page somebody actually sees after they click an ad or land from a Google search.",
           "responses": [
             "Yeah, that's us",
             "Who is this?",
@@ -59,7 +59,7 @@
           "line": "We work only with private aviation operators — private jet charter companies, jet card programs, and shared-ownership operators. We don't touch leisure travel, we don't touch commercial. And we're discreet — nothing gets posted on LinkedIn, no case studies, no name-drops. The work stays between us and the principal. That matters to the kind of clients you fly.",
           "responses": ["What's your background?", "Who else have you worked with?"],
           "followup": "Happy to share references after the review call if it ends up being the right fit on both sides.",
-          "note": "Replaced 'Part 135 / fractional / membership / ARGUS-platinum / Wyvern-rated' with plain English: 'private jet charter companies, jet card programs, shared-ownership operators.' Same meaning, no jargon. NEVER name-drop on a cold call — discretion is the product."
+          "note": "Plain English only — NEVER say industry jargon (regulatory tier codes, safety-audit brand names, ownership-model terms). Use: 'private jet charter companies, jet card programs, shared-ownership operators.' NEVER name-drop specific operators — discretion IS the product."
         },
         {
           "t": 28,
@@ -74,7 +74,7 @@
     },
     "B": {
       "name": "Curiosity Hook + Sandler Negative Reverse",
-      "desc": "NEPQ Belief-Building + Sandler. Best for re-engagement, referrals, or operators who ghosted on a prior touch. Lowers the bar by telling them you're easy to say no to. Pure layman's English.",
+      "desc": "NEPQ Belief-Building + Sandler. Best for re-engagement, referrals, or operators who ghosted on a prior touch. Lowers the bar by telling them you're easy to say no to. Pure layman's English. ~180s.",
       "beats": [
         {
           "t": 22,
@@ -95,7 +95,7 @@
           "note": "Miner: 'Does anyone on your team track' is softer than 'do you track' — invites a 'no, my marketing person does' which gives you the next call. If they say nobody tracks it, that's diagnostic gold."
         },
         {
-          "t": 50,
+          "t": 32,
           "phase": "AGITATE",
           "title": "Two Leaks Revealed, Third Withheld",
           "line": "I reviewed {company}'s website this morning. {leak_1} is one. {leak_2} is the second. The third I'd rather show you on a screen share — it's the one that costs the most of the three, and it's actually the easiest to fix. It's the one almost every operator misses.",
@@ -113,7 +113,7 @@
           "note": "Sandler Negative Reverse: telling them you're EASY to say no to lowers resistance. Counterintuitive — but it works on HNW. They hate being sold to. NEVER use 'case-study purposes' here — too transactional."
         },
         {
-          "t": 28,
+          "t": 18,
           "phase": "CLOSE",
           "title": "Close on Time",
           "line": "Thursday at 10 Eastern or Friday at 2 Eastern — which works better? {strategist} blocks the time himself, so whichever you pick is locked.",
@@ -125,7 +125,7 @@
     },
     "C": {
       "name": "Paid-Search Leak + The Math",
-      "desc": "PAS + Specificity Cluster + Loss-Frame. Best for operators visibly running paid search (verify on Google before dialing). Math-led — anchors on what they're paying per click. Plain English only.",
+      "desc": "PAS + Specificity Cluster + Loss-Frame. Best for operators visibly running paid search (verify on Google before dialing). Math-led — anchors on what they're paying per click. Plain English only. ~180s.",
       "beats": [
         {
           "t": 20,
@@ -161,7 +161,7 @@
           "line": "Quick on us — we work only with private aviation operators. Private jet charter companies, jet card programs, shared-ownership operators. We don't touch leisure travel or commercial airlines. And we're discreet — names stay between us and the principal. Same discretion you'd want for your own clients.",
           "responses": ["Who have you worked with?", "What's your track record?"],
           "followup": "Happy to share references after the review call if it's the right fit on both sides. The discretion you'd want for your clients is the same discretion we apply to ours.",
-          "note": "Replaced 'Part 135 / fractional / membership / ARGUS / Wyvern' with plain English. NEVER name-drop on a cold call."
+          "note": "Plain English only — no industry jargon. Use: 'private jet charter companies, jet card programs, shared-ownership operators.' NEVER name-drop on a cold call."
         },
         {
           "t": 30,

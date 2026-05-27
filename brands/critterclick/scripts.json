@@ -1,7 +1,7 @@
 {
   "brand": "critterclick",
   "audit_value": 3000,
-  "target_length_sec": 230,
+  "target_length_sec": 150,
   "_doc": "3 A/B/C cold-call variants for CritterClick (wildlife removal). Jeremy Miner NEPQ + PAS structure. Layman's terms only — no jargon. Tokens: {caller} {strategist} {company} {market} {primary_kw} {cpc_low} {cpc_high} {leak_1} {leak_2}. Audit pain patterns mined: 72 mentions of 'no phone or email', 21 'no email', Gmail-on-commercial-site (trust killer), national franchise dilution, scored-page mismatches, multi-area-code confusion, placeholder phone errors live in production, thin Yelp review bases on paid-ad sites.",
   "variants": {
     "A": {

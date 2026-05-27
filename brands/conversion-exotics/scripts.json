@@ -1,7 +1,7 @@
 {
   "brand": "Conversion Exotics",
   "audit_value": 3000,
-  "target_length_sec": 220,
+  "target_length_sec": 148,
   "variants": {
     "A": {
       "name": "Pattern Interrupt + City Anchor",
@@ -146,7 +146,7 @@
           "note": "Real CPCs. Pulled from Google Ads Keyword Planner. Say them with confidence."
         },
         {
-          "t": 25,
+          "t": 35,
           "phase": "AGITATION",
           "title": "The DM Trap + Window Shoppers",
           "line": "Here's what's happening — you're paying <em>$5–$10 a click</em> to land people on a page where the only way to actually book is to <em>DM you on Instagram or call the number</em>. So the real buyers, the ones ready to drop $3,500 today, they bounce — they go to Turo or the shop across town that lets them book in 60 seconds. What's left in your DMs? <em>Window shoppers</em>, tire kickers, midnight messages from kids who can't afford the deposit. Jayden Bloom — $125K a month in Miami — said it himself: <em>\"there's no good platform out there for exotic car rentals, everything is so outdated.\"</em> Would you be opposed to seeing exactly where that ad spend is leaking?",
