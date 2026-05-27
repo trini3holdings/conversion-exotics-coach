@@ -848,22 +848,5 @@
     "trust": "No trust signals found",
     "cta": "WEAK",
     "risk": "HIGH"
-  },
-  {
-    "n": "Sources: Official site contact pages, Yelp, Google Maps, ZoomInfo, AllBusiness.com, Birdeye, Yahoo Local, Prospeo, Facebook | Removed: 28 non-exotic/non-luxury competitors (see 'Removed' sheet) | Generated: 2026-05-26 21:38",
-    "domain": null,
-    "market": null,
-    "url": null,
-    "phone": null,
-    "email": null,
-    "issues": [
-      null,
-      null,
-      null
-    ],
-    "speed": null,
-    "trust": null,
-    "cta": null,
-    "risk": null
   }
 ]

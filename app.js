@@ -416,8 +416,9 @@ function renderBrandErrorBanner() {
 
 // ============== TOKEN REPLACEMENT ==============
 function getProspectContext() {
-  const company = document.getElementById('company').value.trim() || '[company]';
-  const market = document.getElementById('market').value.trim() || '[city]';
+  // v3.5.1: clearer placeholder — makes it obvious you need to pick/type a prospect before reading the script live
+  const company = document.getElementById('company').value.trim() || '⟨your prospect’s company⟩';
+  const market = document.getElementById('market').value.trim() || '⟨your prospect’s city⟩';
   const cpc = lookupMarketCPC(market);
   const prospect = state.selectedProspectN ? PROSPECTS.find(p => p.n === state.selectedProspectN) : null;
   const leak1 = prospect && prospect.issues && prospect.issues[0] ? prospect.issues[0] : 'the booking flow buries the deposit and price until checkout';
@@ -502,8 +503,14 @@ function renderReconCard() {
        </div>`
     : '';
 
+  // v3.5.1: warn if prospect is missing a city/market — script will read "out of ⟨your prospect’s city⟩" without it
+  const marketStr = (p.market || '').trim();
+  const marketDisplay = marketStr
+    ? expEscape(marketStr)
+    : `<span class="recon-market-warn" title="This prospect has no market set. Type the city in the Market field before reading the script live.">⚠ Add city before calling</span>`;
+
   body.innerHTML = `
-    <div class="recon-title">${expEscape(company)} · ${expEscape(p.market || 'Unknown market')}</div>
+    <div class="recon-title">${expEscape(company)} · ${marketDisplay}</div>
     <div class="recon-meta">
       ${url ? `<a href="${url}" target="_blank" rel="noopener">${escapeHTML(domain)} ↗</a>` : ''}
       ${contactBits.length ? ' · ' + contactBits.join(' · ') : ''}
@@ -784,9 +791,10 @@ function startTimer() {
   state.timer.startedAt = Date.now();
   state.timer.running = true;
   state.timer.intervalId = setInterval(tickTimer, 1000);
-  document.getElementById('timerStart').textContent = 'Pause';
-  document.getElementById('timerHint').textContent = 'Recording…';
-  const btS = document.getElementById('btStart'); if (btS) btS.textContent = '⎉ Pause';
+  // v3.5.1: timerStart removed from DOM — null-guard preserves logic if it ever returns
+  const tS1 = document.getElementById('timerStart'); if (tS1) tS1.textContent = 'Pause';
+  const tH1 = document.getElementById('timerHint'); if (tH1) tH1.textContent = 'Recording…';
+  const btS = document.getElementById('btStart'); if (btS) btS.textContent = '⏉ Pause';
   tickTimer();
 }
 function pauseTimer() {
@@ -794,8 +802,8 @@ function pauseTimer() {
   state.timer.accumulated += Math.floor((Date.now() - state.timer.startedAt) / 1000);
   state.timer.running = false;
   clearInterval(state.timer.intervalId);
-  document.getElementById('timerStart').textContent = 'Resume';
-  document.getElementById('timerHint').textContent = 'Paused';
+  const tS2 = document.getElementById('timerStart'); if (tS2) tS2.textContent = 'Resume';
+  const tH2 = document.getElementById('timerHint'); if (tH2) tH2.textContent = 'Paused';
   const btS = document.getElementById('btStart'); if (btS) btS.textContent = '▶ Resume';
 }
 function toggleTimer() { state.timer.running ? pauseTimer() : startTimer(); }
@@ -805,9 +813,9 @@ function resetTimer() {
   state.timer.startedAt = 0;
   state.lastActiveBeatIdx = -1;
   resetSaidBeats();
-  document.getElementById('timerDisplay').textContent = '00:00';
-  document.getElementById('timerStart').textContent = 'Start';
-  document.getElementById('timerHint').textContent = 'Press Ctrl+S to start';
+  const tD = document.getElementById('timerDisplay'); if (tD) tD.textContent = '00:00';
+  const tS3 = document.getElementById('timerStart'); if (tS3) tS3.textContent = 'Start';
+  const tH3 = document.getElementById('timerHint'); if (tH3) tH3.textContent = 'Press Ctrl+S to start';
   const btE = document.getElementById('btElapsed'); if (btE) btE.textContent = '00:00';
   const btS = document.getElementById('btStart'); if (btS) btS.textContent = '▶ Start';
   const fill = document.getElementById('btBarFill'); if (fill) { fill.style.width = '0%'; fill.classList.remove('over'); }
@@ -1791,8 +1799,9 @@ async function init() {
   document.querySelectorAll('.variant-tab').forEach(t => {
     t.addEventListener('click', () => manualSwitchVariant(t.dataset.v));
   });
-  document.getElementById('timerStart').addEventListener('click', toggleTimer);
-  document.getElementById('timerReset').addEventListener('click', resetTimer);
+  // v3.5.1: timer-card removed — guarded for forward-compat (sticky #btStart owns this now)
+  const tStart = document.getElementById('timerStart'); if (tStart) tStart.addEventListener('click', toggleTimer);
+  const tReset = document.getElementById('timerReset'); if (tReset) tReset.addEventListener('click', resetTimer);
   document.getElementById('logCall').addEventListener('click', logCall);
   document.getElementById('clearForm').addEventListener('click', clearForm);
   document.getElementById('prospectSelect').addEventListener('change', e => selectProspect(e.target.value));
