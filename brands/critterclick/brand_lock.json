@@ -1,0 +1,145 @@
+{
+  "brand": "CritterClick",
+  "version": "1.0",
+  "locked_date": "2026-05-28",
+  "source_url": "https://critterclick.com",
+  "slots": {
+    "1_brand_name": "CritterClick",
+    "2_caller_identity": "I review wildlife removal sites for a living",
+    "3_target_buyer": "Owner-operator or manager at residential wildlife removal company (raccoons, squirrels, bats, skunks, opossums, birds)",
+    "4_who_answers": "Owner (small shops), office manager, dispatcher",
+    "5_dollar_anchor": "$2,000 to $6,000 a week in missed jobs",
+    "5_anchor_math": "5-10 missed bookings/wk × $400-$600 avg wildlife removal job = $2K-$6K/wk for smaller operators (1-2 trucks). Avg job data: raccoon $200-$600, squirrel $300-$600, bat $250-$600, attic jobs $500-$1,500 (HomeGuide 2026, Angi 2026). Emergency wildlife = high-intent, caller hires first shop that picks up. At 50% form-completion rate from market_cpc.json baseline (2%), 5-10 missed jobs/wk is conservative for any operator running paid ads.",
+    "6_cpc_range": "$8.50 to $26.80 per click depending on metro",
+    "6_cpc_source": "market_cpc.json — Q2 2026 estimates. National avg $8.50-$16.00; NYC top $26.80; Austin bat removal $11.20-$22.00.",
+    "7_issues_hierarchy": [
+      {
+        "rank": 1,
+        "issue": "No/buried phone number",
+        "plain_english": "The top of your page — no clear phone number, no urgency",
+        "frequency": "53 occurrences across 102 prospects (top leak by count)",
+        "note": "Emergency-service buyer on mobile — if the number isn't right at the top, they're gone in 3 seconds"
+      },
+      {
+        "rank": 2,
+        "issue": "No email / form friction",
+        "plain_english": "How they actually reach you — form before they've decided anything, or no email at all",
+        "frequency": "21 no email + 4 weak booking / CTA = 25 occurrences",
+        "note": "Asking for info before the buyer commits creates a wall — they open two more tabs"
+      },
+      {
+        "rank": 3,
+        "issue": "Trust gap — no credentials, no reviews, no specialist signal",
+        "plain_english": "TEASED — revealed only in the audit",
+        "frequency": "Hidden trust signals + SMS-only (6) + Gmail/unprofessional email (3) + no specialist identity (5) = ~14 occurrences",
+        "note": "The invisible third issue — this is the audit reveal. Do not name it on the call."
+      },
+      {
+        "rank": 4,
+        "issue": "SMS-only contact",
+        "plain_english": "SMS-only contact — desktop buyers excluded",
+        "frequency": "6 occurrences",
+        "note": "Kills desktop and B2B/HOA buyer conversions"
+      },
+      {
+        "rank": 5,
+        "issue": "Wildlife is secondary service",
+        "plain_english": "Wildlife removal buried as a sub-service on a general pest site",
+        "frequency": "5 occurrences",
+        "note": "Homeowner searching wildlife removal doesn't trust a general pest brand as much as a specialist"
+      }
+    ],
+    "8_audit_value": 1500,
+    "9_banned_terms": [
+      "{first_name} or {prospect_name} — no name tokens",
+      "Miner-style apology hedges (appreciate you picking up, out of the blue, calling cold)",
+      "Slang permission (got a sec, cool?, Quick on me, 90 seconds)",
+      "{company} in beat copy — use 'your site'",
+      "CTA (use 'booking button' / 'how they book' / 'how they actually reach you')",
+      "hero / hero copy (use 'top of your page' / 'first thing they see')",
+      "above the fold (use 'top of the page')",
+      "conversion rate (use 'how many actually book' / 'how many actually call')",
+      "funnel (use 'booking process' / 'the steps to reach you')",
+      "TTI / LCP / Core Web Vitals / page speed (use 'how fast it loads')",
+      "developer / dev work / dev (frame fixes as quick wins, not dev tasks)",
+      "Quick context — BANNED (use 'Here's the deal' / 'Here's what's going on' / 'Here's what I did')",
+      "competitor names by name — use 'the next shop' / 'the next ad' / 'the next listing'",
+      "pest control (this is wildlife removal only — do not conflate)",
+      "we (use 'I')"
+    ],
+    "10_three_pillars": [
+      "Phone/contact visibility (top of page)",
+      "Booking friction (how they actually reach you)",
+      "Trust / specialist signal (TEASED — audit reveal)"
+    ],
+    "11_cta_breakdown": {
+      "WEAK": "22/102 (21.6%)",
+      "MODERATE": "28/102 (27.5%)",
+      "STRONG": "52/102 (51.0%)",
+      "note": "~50% of prospects have weak or moderate booking actions — significant opportunity across the board"
+    }
+  },
+  "universal_voice_locks": [
+    "No name tokens",
+    "No Miner apologies",
+    "No slang permission",
+    "I not we",
+    "Plain English — no acronyms, no CRO jargon, no dev language",
+    "No {company} in beat copy — use 'your site'",
+    "Dual-path close (booked call OR email sample)",
+    "'Quick context' BANNED — use 'Here's the deal' / 'Here's what's going on' / 'Here's what I did'",
+    "No competitor names — use 'the next shop' / 'the next ad'",
+    "Total under 180s per variant — target 150-160s"
+  ],
+  "verbatim_site_language": {
+    "audit_format": "Thirty minutes. Your live site on screen.",
+    "plain_english_differentiator": "Every leak named in plain English no agency would dare use.",
+    "dollar_anchored": "Dollar-anchored estimates per leak",
+    "just_numbers": "Just the numbers, in your numbers.",
+    "yours_to_keep": "Yours to keep whether you hire me to ship it or not.",
+    "sequenced_plan": "A sequenced fix-list ranked by conversion impact and effort to ship.",
+    "tiered_wins": "Quick wins first — quick wins, medium lifts, full rebuilds.",
+    "tone_setter": "Not vibes — math.",
+    "emergency_frame": "Emergency-service buying — caller hires the first shop that makes it easy.",
+    "midnight_hook": "Homeowner hears scratching at night, taps your ad, can't find your number, books the next shop."
+  },
+  "variant_angle_map": {
+    "A": {
+      "name": "The Missed-Call Leak",
+      "hook": "Your booking process is costing you $2K-$6K/week — homeowner panics, taps your ad, can't book fast enough, calls the next shop",
+      "data_backing": "53/102 prospects have no/buried phone — top CRO leak by count",
+      "lever": "Dollar anchor + urgency of emergency-service mindset",
+      "best_for": "Operators running paid ads where every click costs $8-$22"
+    },
+    "B": {
+      "name": "Midnight Emergency Steal",
+      "hook": "Homeowner hears scratching at 11pm. Taps your ad. Your phone isn't front and center. Taps the next shop. Next shop gets the $600 job by 9am.",
+      "data_backing": "Phone burial + no contact = 53 + 21 occurrences; emergency-service buyer behavior from call_intel.json",
+      "lever": "Status loss + FOMO + competitor steal frame (no names)",
+      "best_for": "Operators in competitive markets where response speed is the differentiator"
+    },
+    "C": {
+      "name": "3-Issue Reveal",
+      "hook": "I pulled up your site and saw three issues — the worst one is invisible to most operators",
+      "data_backing": "Top of page (53 phone leaks) + booking friction (25 form/email leaks) + trust gap (teased)",
+      "lever": "Curiosity gap + loss aversion — hold the worst issue back for the audit",
+      "best_for": "Operators with 'we just updated the site' objection-prone responses"
+    }
+  },
+  "beat_skeleton": {
+    "1_OPEN": "9-11s — earned-attention hook + routing question",
+    "2_PROBLEM": "17-24s — emergency-service context, ends with question they can't answer",
+    "3_AGITATION": "30-40s — concrete walk-through + dollar anchor + steal frame",
+    "4_SOLUTION": "15-20s — credibility (100+ sites, 10-point checklist)",
+    "5_AUDIT_OFFER": "33s — $1,500 audit, free, 30 min shared screen, dollar-anchored per leak",
+    "6_CLOSE": "30s — Thursday 10 or Friday 2, OR sample audit by email"
+  },
+  "industry_context": {
+    "vertical": "Residential wildlife removal — raccoons, squirrels, bats, skunks, opossums, birds, iguanas, rats",
+    "NOT": "General pest control — this is wildlife sub-vertical only",
+    "buyer_mindset": "Emergency service — homeowner is panicking, will hire first shop that picks up or makes it easy to book",
+    "avg_job_ticket": "$400-$600 typical (raccoon $200-$600, squirrel $300-$600, bat $250-$600, attic jobs $500-$1,500)",
+    "mobile_behavior": "Emergency searches happen at night on personal cell — 3-second decision window",
+    "source_avg_job": "HomeGuide 2026 (homeguide.com/costs/animal-and-wildlife-removal-costs), Angi 2026 (angi.com/articles/what-cost-animal-removal.htm)"
+  }
+}
