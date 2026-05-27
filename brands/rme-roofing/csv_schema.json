@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "brand": "rme-roofing",
+    "source_file": "RME_Roofing_Full_CRO_Audit_300.xlsx",
+    "header_row_offset": 6,
+    "data_row_start": 7,
+    "expected_sheet": "Full Competitor CRO Audit"
+  },
+  "column_aliases": {
+    "id": ["#", "Number", "Row"],
+    "domain": ["Domain"],
+    "type": ["Type"],
+    "market": ["Market / City", "Market", "City"],
+    "freq": ["Freq", "Frequency"],
+    "phone": ["Phone (Verified)", "Phone", "Phone Verified"],
+    "email": ["Email"],
+    "leak_1": ["Top CRO Issue #1", "Issue 1", "Leak 1"],
+    "leak_2": ["Top CRO Issue #2", "Issue 2", "Leak 2"],
+    "leak_3": ["Top CRO Issue #3", "Issue 3", "Leak 3"],
+    "speed": ["Page Speed"],
+    "trust": ["Trust Gap"],
+    "cta": ["CTA Strength"],
+    "risk": ["CRO Risk"],
+    "conf": ["Phone Conf.", "Phone Confidence"],
+    "notes": ["Notes"]
+  }
+}

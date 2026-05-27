@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "brand": "rme-roofing",
+    "register": "Roofing owner-operator B2B — plain English peer respect. No agency jargon. No emojis. No high-pressure.",
+    "framework": "Jeremy Miner NEPQ neutral-reverse + PAS soft-pivot. Acknowledge → reframe → leave them in control."
+  },
+  "NOT_INTERESTED": {
+    "label": "Not interested / busy / hang up",
+    "comebacks": [
+      "Totally fair — most calls like this don't earn the time. Two seconds though: I'm not asking for a meeting, I want to send you a free Roofing Site Conversion Audit on {company}. Email it, done. Worst case you read it in 5 minutes and trash it.",
+      "I get it. Real quick before you go — if I sent you a 1-page summary of the 3 specific things on {company}'s homepage that are quietly costing you bookings, would you read it? No call needed.",
+      "Understood. Last thing — one fix I'd send you in the audit is probably worth a job or two. If it doesn't read like that, ignore the rest. Best email?"
+    ]
+  },
+  "REBUILT": {
+    "label": "We just rebuilt the site / new site",
+    "comebacks": [
+      "Good — that means you've already invested. The audit is even more useful then, because I can tell you what your new site is still missing for conversion vs how it looks. Built sites usually look great but leak on the same 3 spots. Want me to send it?",
+      "Makes sense. Most rebuilds focus on look and not on what the homeowner does in the first 3 seconds. The audit covers that gap. Free, 48 hours, no pitch on the call.",
+      "Great — so you know the site cost real money. I can show you whether that money's converting. That's the whole audit."
+    ]
+  },
+  "EMAIL_INSTEAD": {
+    "label": "Send me an email / put it in writing",
+    "comebacks": [
+      "Yeah that's the plan — I'll email the audit. Two questions: best email for you, and is there 1 thing on {company} you want me to look at first?",
+      "Will do. Quick — confirm the best email and I'll have it to you in 48 hours. Reply if anything sparks a question.",
+      "Sending right now. What's the best email?"
+    ]
+  },
+  "PRICE": {
+    "label": "How much / what's it cost",
+    "comebacks": [
+      "Audit's free — about $3,000 of work but you get it because I do 5 a week and roughly 1 in 5 turn into clients. That's enough math for me. No pitch on the call.",
+      "Free. I make my money on the ones who hire me after, not on the audit. About 1 in 5 do.",
+      "Audit itself costs you nothing. If you decide to fix things and want help, separate conversation — we can talk numbers then."
+    ]
+  },
+  "PARTNER": {
+    "label": "Need to talk to my partner / wife / GM",
+    "comebacks": [
+      "Totally — most owners do. The audit's actually the perfect thing to share with them. I'll send the PDF, you read it together, no decision needed before then.",
+      "Smart move. The audit's a one-pager summary on top of the deep PDF — easy to show your partner. What's the best email?",
+      "Of course — that's why I'm sending a written audit. They can read it on their own time. Best email?"
+    ]
+  },
+  "BROKERS": {
+    "label": "We don't deal with lead-gen / brokers / agencies",
+    "comebacks": [
+      "Not what I do. I don't sell leads. I do a written conversion audit on your homepage so you can fix the leaks yourself or hand it to whoever you want. No leads, no commission, no ongoing fees.",
+      "Hear you. This isn't a lead-gen pitch — it's a 1-time written analysis of your homepage. Same way you'd inspect a roof before bidding it. Free.",
+      "Different thing. Lead-gen sells you a phone number. I'm sending you a teardown of what's wrong with your site. Then it's your call."
+    ]
+  },
+  "ADS_WORK": {
+    "label": "Our ads work / we get plenty of business",
+    "comebacks": [
+      "Good problem to have. The audit still helps — because it shows you how much MORE you'd be getting if the homepage didn't leak the way it does. Even busy contractors usually find a 10-20% lift hiding in 2 or 3 fixes.",
+      "Glad to hear it. Audit's free — worst case you read it, see your conversion's at industry-best already, and feel good about it. About 9 out of 10 contractors find at least one $5K-$10K leak.",
+      "That's great. Ask yourself though — if your homepage is leaking 20% of qualified clicks, you're paying for that ghost-traffic every month. The audit puts a number on it. Free, no pitch."
+    ]
+  },
+  "AGENCY": {
+    "label": "We already have an agency / marketing company",
+    "comebacks": [
+      "Cool — agencies usually run the ads and the SEO, but very few do a real conversion audit on the homepage itself. That's the gap I fill. You can share the audit with your agency — most appreciate a fresh outside read.",
+      "Good. The audit pairs well with what they do — it's the layer between ads and your homepage. Most agencies don't pay for that piece. Send it to your team after you read it.",
+      "Makes sense. This isn't to replace them. It's a free written second-opinion on what your homepage is doing with the traffic they're sending. Worth 5 minutes."
+    ]
+  }
+}

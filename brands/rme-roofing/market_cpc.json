@@ -1,0 +1,147 @@
+{
+  "_meta": {
+    "brand": "rme-roofing",
+    "currency": "USD",
+    "source": "Roofing Google Ads benchmark anchors — typical residential + storm/hail keyword set. Form-completion 3% baseline (insurance-claim buyer is deliberate).",
+    "note": "CPCs run higher during active storm weeks in hail-belt metros (TX, OK, CO, KS). Numbers below are dry-season anchors. Use these for narrative math — never compute decimal-precise dollars-per-quote.",
+    "primary_kw_default": "roof replacement"
+  },
+  "Dallas-Fort Worth TX": {
+    "cpc_low": 38,
+    "cpc_high": 75,
+    "search_volume_band": "very_high",
+    "notes": "Top-3 roofing market in US. Heavy storm activity April-June. Hail-belt premium."
+  },
+  "Houston TX": {
+    "cpc_low": 35,
+    "cpc_high": 70,
+    "search_volume_band": "very_high",
+    "notes": "Hurricane + hail. Insurance-claim buyer dominant."
+  },
+  "Austin TX": {
+    "cpc_low": 32,
+    "cpc_high": 65,
+    "search_volume_band": "high",
+    "notes": "Strong residential demand. Hail season similar to DFW."
+  },
+  "San Antonio TX": {
+    "cpc_low": 28,
+    "cpc_high": 58,
+    "search_volume_band": "high",
+    "notes": "Hail belt. Insurance-buyer prevalent."
+  },
+  "El Paso TX": {
+    "cpc_low": 22,
+    "cpc_high": 45,
+    "search_volume_band": "moderate",
+    "notes": "Lower CPC but lower competition."
+  },
+  "Phoenix AZ": {
+    "cpc_low": 30,
+    "cpc_high": 62,
+    "search_volume_band": "high",
+    "notes": "Monsoon + extreme heat damage. Less hail, more wind/UV."
+  },
+  "Denver CO": {
+    "cpc_low": 42,
+    "cpc_high": 80,
+    "search_volume_band": "very_high",
+    "notes": "Severe hail belt. Insurance-claim driven. Highest avg CPC nationally."
+  },
+  "Oklahoma City OK": {
+    "cpc_low": 35,
+    "cpc_high": 70,
+    "search_volume_band": "high",
+    "notes": "Tornado + hail. Insurance-restoration dominant."
+  },
+  "Nashville TN": {
+    "cpc_low": 30,
+    "cpc_high": 60,
+    "search_volume_band": "high",
+    "notes": "Growing storm market. Tornado activity. Tornado/wind buyer."
+  },
+  "Charlotte NC": {
+    "cpc_low": 28,
+    "cpc_high": 55,
+    "search_volume_band": "high",
+    "notes": "Hurricane + hail crossover."
+  },
+  "Indianapolis IN": {
+    "cpc_low": 26,
+    "cpc_high": 52,
+    "search_volume_band": "moderate",
+    "notes": "Tornado alley. Hail buyer growing."
+  },
+  "Columbus OH": {
+    "cpc_low": 25,
+    "cpc_high": 50,
+    "search_volume_band": "moderate",
+    "notes": "Wind + age-related replacement market."
+  },
+  "Chicago IL": {
+    "cpc_low": 32,
+    "cpc_high": 64,
+    "search_volume_band": "very_high",
+    "notes": "Wind + ice-damming. Older housing stock = replacement-driven."
+  },
+  "Seattle WA": {
+    "cpc_low": 28,
+    "cpc_high": 56,
+    "search_volume_band": "high",
+    "notes": "No hail. Moss + moisture damage. Lower replacement urgency."
+  },
+  "San Diego CA": {
+    "cpc_low": 35,
+    "cpc_high": 68,
+    "search_volume_band": "high",
+    "notes": "Flat/tile market. UV degradation. Premium pricing."
+  },
+  "Los Angeles CA": {
+    "cpc_low": 40,
+    "cpc_high": 78,
+    "search_volume_band": "very_high",
+    "notes": "Highest CPCs in CA. Premium re-roof market."
+  },
+  "San Francisco CA": {
+    "cpc_low": 38,
+    "cpc_high": 75,
+    "search_volume_band": "high",
+    "notes": "Old housing, premium pricing, fewer storms."
+  },
+  "San Jose CA": {
+    "cpc_low": 36,
+    "cpc_high": 70,
+    "search_volume_band": "high",
+    "notes": "Tech-corridor premium pricing."
+  },
+  "Boston MA": {
+    "cpc_low": 30,
+    "cpc_high": 60,
+    "search_volume_band": "high",
+    "notes": "Snow/ice damage. Aging housing stock."
+  },
+  "Philadelphia PA": {
+    "cpc_low": 28,
+    "cpc_high": 56,
+    "search_volume_band": "high",
+    "notes": "Wind + age-driven replacement."
+  },
+  "Washington DC": {
+    "cpc_low": 32,
+    "cpc_high": 64,
+    "search_volume_band": "high",
+    "notes": "Storm + wind. Premium DC-Metro pricing."
+  },
+  "Jacksonville FL": {
+    "cpc_low": 30,
+    "cpc_high": 60,
+    "search_volume_band": "high",
+    "notes": "Hurricane buyer. Insurance-claim driven."
+  },
+  "Las Vegas NV": {
+    "cpc_low": 28,
+    "cpc_high": 55,
+    "search_volume_band": "moderate",
+    "notes": "UV + monsoon. Less hail than TX/CO."
+  }
+}

@@ -47,7 +47,16 @@ const BRANDS = {
     active: true,
     theme: { ink: '#1B3A2E', gold: '#D4A04C', cream: '#F4EFE5', highlight: '#FBF6E8' }
   },
-  'brand-4': { slug: 'brand-4', name: 'Brand 4 (slot)', short: 'B4', sub: 'Coming soon', strategist: 'Tony', active: false, theme: null }
+  'rme-roofing': {
+    slug: 'rme-roofing',
+    name: 'RME Roofing',
+    short: 'RME',
+    sub: 'Cold call → free Roofing Site Conversion Audit · v3.3',
+    strategist: 'Tony',
+    caller_default: 'Zack',
+    active: true,
+    theme: { ink: '#2C3E50', gold: '#C84B31', cream: '#F2EDE6', highlight: '#FBF4EC' }
+  }
 };
 
 // Loaded per-brand at runtime
