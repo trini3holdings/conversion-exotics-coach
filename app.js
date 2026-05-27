@@ -23,6 +23,7 @@ const BRANDS = {
     short: 'CE',
     sub: 'Cold call → free Website Conversion Audit · v3.2',
     strategist: 'Tony',
+    caller_default: 'Zack',
     active: true,
     theme: { ink: '#1A1A1A', gold: '#B8893A', cream: '#F4F0E8', highlight: '#FFF8E8' }
   },
@@ -392,7 +393,7 @@ function renderBeats() {
         <div class="beat-line"><span class="speaker-you">YOU (${state.caller}):</span> "${fillTokens(b.line, ctx)}"</div>
         ${b.responses && b.responses.length ? `<div class="beat-responses"><span class="speaker-prospect">↳ PROSPECT likely:</span> ${respHtml}</div>` : ''}
         ${b.followup ? `<div class="beat-followup"><span class="speaker-you-recover">YOU (if they push back):</span> <em>"${fillTokens(b.followup, ctx)}"</em></div>` : ''}
-        ${b.note ? `<div class="beat-note"><span class="speaker-coach">🎯 COACH (not spoken):</span> ${fillTokens(b.note, ctx)}</div>` : ''}
+        ${b.note ? `<div class="beat-note"><span class="speaker-coach">🎯 COACH:</span> ${fillTokens(b.note, ctx)}</div>` : ''}
       </div>
     `;
   }).join('');
@@ -884,8 +885,14 @@ function splitCSVLine(line) {
 async function switchBrand(slug) {
   state.brand = slug;
   state.selectedProspectN = null;
-  saveState();
+  // Apply brand's default caller (Zack for Exotics, Tony for ConversionJet)
   const brand = BRANDS[slug];
+  if (brand && brand.caller_default) {
+    state.caller = brand.caller_default;
+    const callerSel = document.getElementById('callerSelect');
+    if (callerSel) callerSel.value = brand.caller_default;
+  }
+  saveState();
   document.getElementById('logoMark').textContent = brand.short;
   document.getElementById('brandName').textContent = `${brand.name} · Call Coach`;
   document.querySelector('.brand-sub').textContent = brand.sub;

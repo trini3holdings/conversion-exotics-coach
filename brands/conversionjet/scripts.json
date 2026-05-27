@@ -67,7 +67,7 @@
           "title": "Book the Time",
           "line": "What's your best email so I can send the calendar invite — and is there anyone else on your end who should be on the call? Operations director, the person who owns the website, sometimes the principal joins.",
           "responses": ["Here's my email", "Just me on the call", "Send the invite"],
-          "followup": "Perfect — invite hits your inbox in 60 seconds. I'll cc you and anyone you add. Let me read the email back to confirm: {email}?",
+          "followup": "Perfect — invite hits your inbox in 60 seconds. I'll cc you and anyone you add. What's the best email to send the calendar invite to?",
           "note": "Read the email back verbatim. Aviation operators routinely give the wrong email — it's the #1 reason audit calls no-show. Confirm slot in writing within 5 minutes of hang-up."
         }
       ]
