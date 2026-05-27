@@ -389,10 +389,10 @@ function renderBeats() {
           <span class="beat-time">@ ${start}s · ${b.t}s</span>
         </div>
         <div class="beat-title">${b.title}</div>
-        <div class="beat-line">${state.caller}: "${fillTokens(b.line, ctx)}"</div>
-        ${b.responses && b.responses.length ? `<div class="beat-responses"><span class="arrow">↳</span>Prospect likely: ${respHtml}</div>` : ''}
-        ${b.followup ? `<div class="beat-followup">${state.caller}: <em>"${fillTokens(b.followup, ctx)}"</em></div>` : ''}
-        ${b.note ? `<div class="beat-note">${fillTokens(b.note, ctx)}</div>` : ''}
+        <div class="beat-line"><span class="speaker-you">YOU (${state.caller}):</span> "${fillTokens(b.line, ctx)}"</div>
+        ${b.responses && b.responses.length ? `<div class="beat-responses"><span class="speaker-prospect">↳ PROSPECT likely:</span> ${respHtml}</div>` : ''}
+        ${b.followup ? `<div class="beat-followup"><span class="speaker-you-recover">YOU (if they push back):</span> <em>"${fillTokens(b.followup, ctx)}"</em></div>` : ''}
+        ${b.note ? `<div class="beat-note"><span class="speaker-coach">🎯 COACH (not spoken):</span> ${fillTokens(b.note, ctx)}</div>` : ''}
       </div>
     `;
   }).join('');
