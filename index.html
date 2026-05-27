@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Call Coach v3.1 · Conversion Exotics</title>
+<title>Call Coach v3.2 · Conversion Exotics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
@@ -23,7 +23,7 @@
     <div class="logo-mark" id="logoMark">CE</div>
     <div class="brand-meta">
       <div class="brand-name" id="brandName">Conversion Exotics · Call Coach</div>
-      <div class="brand-sub">Cold call → free CRO audit · v3.1</div>
+      <div class="brand-sub">Cold call → free Website Conversion Audit · v3.2</div>
     </div>
   </div>
   <div class="topbar-right">
@@ -38,7 +38,9 @@
         <option value="Tony">Tony</option>
       </select>
     </label>
+    <button id="backendBtn" class="topbar-btn" type="button">⚙ Backend</button>
     <button id="legendToggle" class="topbar-btn" type="button">⌨ Shortcuts</button>
+    <span id="syncBadge" class="sync-badge offline" title="Backend sync status">● offline</span>
     <div class="topbar-date" id="topbarDate"></div>
   </div>
 </header>
@@ -52,7 +54,78 @@
   <div class="kbd-row"><kbd>Ctrl</kbd>+<kbd>N</kbd><span>Next prospect in list</span></div>
   <div class="kbd-row"><kbd>Ctrl</kbd>+<kbd>P</kbd><span>Previous prospect in list</span></div>
   <div class="kbd-row"><kbd>Ctrl</kbd>+<kbd>K</kbd><span>Toggle calendar / stats</span></div>
-  <div class="kbd-row"><kbd>Esc</kbd><span>Close this legend</span></div>
+  <div class="kbd-row"><kbd>Ctrl</kbd>+<kbd>+</kbd><span>Add new prospect inline</span></div>
+  <div class="kbd-row"><kbd>Esc</kbd><span>Close any modal</span></div>
+</div>
+
+<!-- ============ BACKEND MODAL ============ -->
+<div id="backendModal" class="modal hidden">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Backend Connection</h3>
+      <button class="modal-close" data-close="backendModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-help">
+        Paste your Google Apps Script Web App URL. This connects the app to your
+        Google Sheets (master prospect log) and Gmail (follow-up reminders).
+      </p>
+      <p class="modal-help">
+        Need to set up the backend? See <a href="SETUP_GOOGLE_BACKEND.md" target="_blank">SETUP_GOOGLE_BACKEND.md</a> in this repo (60 seconds).
+      </p>
+      <label class="form-row">
+        <span>Web App URL</span>
+        <input type="text" id="backendUrl" placeholder="https://script.google.com/macros/s/.../exec" />
+      </label>
+      <div id="backendStatus" class="backend-status"></div>
+      <div class="form-actions">
+        <button id="backendTest" class="btn btn-gold">Save & Test</button>
+        <button id="backendOpenSheet" class="btn btn-ghost">Open Master Sheet</button>
+        <button id="backendSyncNow" class="btn btn-ghost">Sync Queued Calls</button>
+      </div>
+      <div class="modal-help" style="margin-top:14px;">
+        <strong>Sync queue:</strong> <span id="queueCount">0</span> calls waiting.
+        Calls are logged locally first and sync to Sheets automatically.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADD PROSPECT MODAL ============ -->
+<div id="prospectModal" class="modal hidden">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Add Prospect</h3>
+      <button class="modal-close" data-close="prospectModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-help">
+        Add one prospect to the master sheet. Updates if domain matches an existing one.
+      </p>
+      <div class="prospect-grid">
+        <label class="form-row"><span>Company</span><input id="np_company" type="text" placeholder="e.g. Apex Exotics"/></label>
+        <label class="form-row"><span>Domain</span><input id="np_domain" type="text" placeholder="apexexotics.com"/></label>
+        <label class="form-row"><span>Market</span><input id="np_market" type="text" placeholder="Dallas TX"/></label>
+        <label class="form-row"><span>Phone</span><input id="np_phone" type="text" /></label>
+        <label class="form-row"><span>Email</span><input id="np_email" type="email" /></label>
+        <label class="form-row"><span>Instagram</span><input id="np_instagram" type="text" placeholder="@handle"/></label>
+        <label class="form-row"><span>Speed Score</span><input id="np_speed" type="text" placeholder="e.g. 62"/></label>
+        <label class="form-row"><span>Trust Score</span><input id="np_trust" type="text" /></label>
+        <label class="form-row"><span>CTA Score</span><input id="np_cta" type="text" /></label>
+        <label class="form-row"><span>Risk</span>
+          <select id="np_risk"><option value="MED">MED</option><option value="HIGH">HIGH</option><option value="LOW">LOW</option></select>
+        </label>
+      </div>
+      <label class="form-row"><span>Issue 1</span><input id="np_issues_1" type="text" placeholder="No phone, only form"/></label>
+      <label class="form-row"><span>Issue 2</span><input id="np_issues_2" type="text" /></label>
+      <label class="form-row"><span>Issue 3</span><input id="np_issues_3" type="text" /></label>
+      <label class="form-row"><span>Notes</span><textarea id="np_notes" rows="2"></textarea></label>
+      <div class="form-actions">
+        <button id="np_save" class="btn btn-gold">Save to Master Sheet</button>
+        <button class="btn btn-ghost" data-close="prospectModal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ============ SAMPLING BANNER ============ -->
@@ -64,10 +137,10 @@
 <!-- ============ MAIN 3-COLUMN GRID ============ -->
 <main class="grid">
 
-  <!-- COL 1 · SCRIPT (reordered: Recon → Tabs → Timer → Beats) -->
+  <!-- COL 1 · SCRIPT -->
   <section class="col col-script">
 
-    <!-- AUDITED URL / RECON CARD (TOP) -->
+    <!-- AUDITED URL / RECON CARD -->
     <div id="reconCard" class="recon-card empty">
       <div class="recon-head">
         <span class="recon-tag">RECON · pre-call</span>
@@ -97,7 +170,7 @@
     <div id="beatsContainer" class="beats-container"></div>
   </section>
 
-  <!-- COL 2 · OBJECTIONS (sticky scroll) -->
+  <!-- COL 2 · OBJECTIONS -->
   <section class="col col-objections">
     <div class="objections-sticky">
       <h2 class="col-title">Objections <span class="col-sub">Tap a card to reveal the comeback</span></h2>
@@ -105,16 +178,14 @@
     </div>
   </section>
 
-  <!-- COL 3 · SIDE (Stats / Current Call / Cal / Log — separate cards) -->
+  <!-- COL 3 · SIDE -->
   <section class="col-side-wrap">
 
-    <!-- Stats <-> Cal toggle -->
     <div class="side-toggle">
       <button id="toggleStats" class="side-toggle-btn active">Stats</button>
       <button id="toggleCal" class="side-toggle-btn">📅 Calendar</button>
     </div>
 
-    <!-- STATS PANE -->
     <div id="statsPane" class="side-pane">
 
       <!-- Stats card -->
@@ -140,20 +211,29 @@
         <h3 class="side-title">Current Call</h3>
         <form id="callForm" class="call-form">
           <label class="form-row">
-            <span>Prospect (from list)</span>
-            <select id="prospectSelect"><option value="">— Select prospect or type below —</option></select>
+            <span>Prospect (from master list)</span>
+            <div class="row-with-btn">
+              <select id="prospectSelect"><option value="">— Select prospect or type below —</option></select>
+              <button type="button" id="addProspectBtn" class="btn btn-gold btn-icon" title="Add new prospect">+</button>
+            </div>
           </label>
           <label class="form-row">
             <span>Company</span>
             <input type="text" id="company" placeholder="Auto-fills from prospect" />
           </label>
+          <div class="form-row-pair">
+            <label class="form-row">
+              <span>Market</span>
+              <input type="text" id="market" placeholder="Miami FL" />
+            </label>
+            <label class="form-row">
+              <span>Phone</span>
+              <input type="text" id="phone" />
+            </label>
+          </div>
           <label class="form-row">
-            <span>Market</span>
-            <input type="text" id="market" placeholder="e.g. Miami FL" />
-          </label>
-          <label class="form-row">
-            <span>Phone</span>
-            <input type="text" id="phone" placeholder="Auto-fills" />
+            <span>Prospect Email</span>
+            <input type="email" id="prospectEmail" placeholder="for follow-up emails" />
           </label>
           <label class="form-row">
             <span>Outcome</span>
@@ -170,11 +250,69 @@
               <option value="CL">CL · Closed</option>
             </select>
           </label>
-          <label class="form-row">
-            <span>Notes</span>
-            <textarea id="notes" rows="2" placeholder="What did they say? (auto-scoring reads this)"></textarea>
-          </label>
-          <div id="liveScore" class="live-score hidden">Live score: <strong id="liveScoreNum">0</strong></div>
+
+          <!-- Structured notes section -->
+          <div class="notes-block">
+            <div class="notes-block-title">Structured Notes</div>
+            <label class="form-row">
+              <span>Objection raised</span>
+              <select id="objectionRaised">
+                <option value="">— None / unclear —</option>
+              </select>
+            </label>
+            <label class="form-row">
+              <span>What worked</span>
+              <input type="text" id="whatWorked" placeholder="e.g. Jayden Bloom quote landed" />
+            </label>
+            <label class="form-row">
+              <span>Next step</span>
+              <input type="text" id="nextStep" placeholder="e.g. Send Cal link + Loom" />
+            </label>
+            <label class="form-row">
+              <span>Freeform notes</span>
+              <textarea id="notes" rows="2" placeholder="What did they say verbatim? (auto-scoring reads this)"></textarea>
+            </label>
+            <div id="liveScore" class="live-score hidden">Live score: <strong id="liveScoreNum">0</strong></div>
+          </div>
+
+          <!-- Follow-up section -->
+          <div class="followup-block">
+            <div class="followup-head">
+              <span class="notes-block-title">Schedule Follow-Up</span>
+              <label class="followup-toggle"><input type="checkbox" id="fpEnable" /> Enable</label>
+            </div>
+            <div id="fpFields" class="fp-fields hidden">
+              <div class="form-row-pair">
+                <label class="form-row">
+                  <span>Date</span>
+                  <input type="date" id="fpDate" />
+                </label>
+                <label class="form-row">
+                  <span>Time</span>
+                  <input type="time" id="fpTime" value="10:00" />
+                </label>
+              </div>
+              <div class="fp-quick">
+                <button type="button" data-days="1" class="btn btn-ghost btn-tiny">+1 day</button>
+                <button type="button" data-days="3" class="btn btn-ghost btn-tiny">+3 days</button>
+                <button type="button" data-days="7" class="btn btn-ghost btn-tiny">+1 week</button>
+                <button type="button" data-days="14" class="btn btn-ghost btn-tiny">+2 weeks</button>
+              </div>
+              <label class="form-row">
+                <span>Channel</span>
+                <select id="fpChannel">
+                  <option value="email">Gmail reminder to me</option>
+                  <option value="calendar">Calendar event</option>
+                  <option value="both">Both (Gmail + Calendar)</option>
+                </select>
+              </label>
+              <label class="form-row">
+                <span>Draft message (optional)</span>
+                <textarea id="fpMessage" rows="2" placeholder="Hey {company}, circling back on the audit we talked about..."></textarea>
+              </label>
+            </div>
+          </div>
+
           <div class="form-actions">
             <button type="button" id="logCall" class="btn btn-gold">Log Call</button>
             <button type="button" id="clearForm" class="btn btn-ghost">Clear</button>

@@ -1,7 +1,7 @@
-/* Conversion Exotics — Call Coach v3.1
-   Multi-brand, multi-caller, Cal embed, collapsible objections,
-   auto-rotation (10 calls per variant, winner-lock), auto-scoring,
-   expanded CSV schema, recon card, progress bar.
+/* Conversion Exotics — Call Coach v3.2
+   v3.2 adds: Google Apps Script backend (Sheets + Gmail), sync queue,
+   structured notes, follow-up scheduling, inline add-prospect modal,
+   per-brand master sheet, cloud-prospect merge.
 */
 
 // ============== CONSTANTS ==============
@@ -10,6 +10,7 @@ const VARIANT_ROTATION_THRESHOLD = 10;  // switch every N calls
 const WINNER_THRESHOLD = 10;            // calls per variant before winner check
 const WINNER_LOCK_GAP = 0.15;           // 15pp ahead → lock
 const DEFAULT_CPC = { cpc_low: 1.20, cpc_high: 5.00, vol: 200, primary_kw: 'exotic car rental' };
+const SYNC_RETRY_MS = 30000;            // retry drain every 30s
 
 const POSITIVE_PHRASES = ['interested', 'send', 'tell me more', 'email me', 'tomorrow', 'calendar', 'audit', 'show me', 'sounds good', "let's do it", 'book', 'great idea'];
 const NEGATIVE_PHRASES = ['hung up', 'not interested', 'remove', 'stop calling', 'lawsuit', 'do not call', 'never call', 'fuck off'];
@@ -20,7 +21,7 @@ const BRANDS = {
     slug: 'conversion-exotics',
     name: 'Conversion Exotics',
     short: 'CE',
-    sub: 'Cold call → free CRO audit · v3.1',
+    sub: 'Cold call → free Website Conversion Audit · v3.2',
     strategist: 'Tony',
     active: true,
     theme: { ink: '#1A1A1A', gold: '#B8893A', cream: '#F4F0E8', highlight: '#FFF8E8' }
@@ -46,8 +47,14 @@ let state = {
   calls: [],
   selectedProspectN: null,
   customProspects: [],
-  lockedVariant: null,  // when winner declared, locks to that variant
-  manualVariant: false  // true if user manually picked variant (override auto-rotate)
+  cloudProspects: [],         // pulled from Apps Script backend
+  lockedVariant: null,
+  manualVariant: false,
+  // v3.2 backend
+  backendUrl: '',
+  syncQueue: [],
+  lastSyncTs: 0,
+  sheetUrlByBrand: {}         // brand → master sheet URL
 };
 
 // ============== STORAGE ==============
@@ -62,6 +69,11 @@ function loadState() {
     if (s.customProspects && Array.isArray(s.customProspects)) state.customProspects = s.customProspects;
     if (s.lockedVariant) state.lockedVariant = s.lockedVariant;
     if (s.manualVariant) state.manualVariant = s.manualVariant;
+    if (s.backendUrl) state.backendUrl = s.backendUrl;
+    if (s.syncQueue && Array.isArray(s.syncQueue)) state.syncQueue = s.syncQueue;
+    if (s.lastSyncTs) state.lastSyncTs = s.lastSyncTs;
+    if (s.sheetUrlByBrand) state.sheetUrlByBrand = s.sheetUrlByBrand;
+    if (s.cloudProspects && Array.isArray(s.cloudProspects)) state.cloudProspects = s.cloudProspects;
   } catch (e) { /* fresh */ }
 }
 function saveState() {
@@ -73,17 +85,141 @@ function saveState() {
       caller: state.caller,
       sidePane: state.sidePane,
       customProspects: state.customProspects,
+      cloudProspects: state.cloudProspects,
       lockedVariant: state.lockedVariant,
-      manualVariant: state.manualVariant
+      manualVariant: state.manualVariant,
+      backendUrl: state.backendUrl,
+      syncQueue: state.syncQueue,
+      lastSyncTs: state.lastSyncTs,
+      sheetUrlByBrand: state.sheetUrlByBrand
     }));
   } catch (e) { /* quota */ }
 }
+
+// ============== BACKEND (Google Apps Script Web App) ==============
+async function backendCall(payload) {
+  if (!state.backendUrl) throw new Error('No backend URL configured');
+  // Apps Script web apps don't return CORS headers when sent with custom headers,
+  // so we use text/plain to keep it as a simple request.
+  const res = await fetch(state.backendUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload),
+    redirect: 'follow'
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  if (!data.ok) throw new Error(data.error || 'Backend error');
+  return data;
+}
+
+function setSyncBadge(status) {
+  // status: 'offline' | 'online' | 'syncing' | 'error' | 'queued'
+  const el = document.getElementById('syncBadge');
+  if (!el) return;
+  el.className = 'sync-badge ' + status;
+  const label = {
+    offline: '● offline',
+    online: '● synced',
+    syncing: '● syncing…',
+    error: '● error',
+    queued: `● ${state.syncQueue.length} queued`
+  }[status] || ('● ' + status);
+  el.textContent = label;
+  const qc = document.getElementById('queueCount');
+  if (qc) qc.textContent = state.syncQueue.length;
+}
+
+async function pingBackend(silent) {
+  if (!state.backendUrl) { setSyncBadge('offline'); return false; }
+  try {
+    const r = await backendCall({ action: 'ping' });
+    if (!silent) showToast(`Backend connected · v${r.version || '?'}`);
+    setSyncBadge(state.syncQueue.length ? 'queued' : 'online');
+    return true;
+  } catch (e) {
+    setSyncBadge('error');
+    if (!silent) showToast(`Backend ping failed: ${e.message}`);
+    return false;
+  }
+}
+
+async function enqueueCallSync(call) {
+  state.syncQueue.push({ kind: 'logCall', brand: state.brand, call, queuedAt: Date.now() });
+  saveState();
+  setSyncBadge('queued');
+  drainSyncQueue();
+}
+
+async function drainSyncQueue() {
+  if (!state.backendUrl || !state.syncQueue.length) return;
+  setSyncBadge('syncing');
+  const queue = state.syncQueue.slice();
+  const remaining = [];
+  let successCount = 0;
+  for (const job of queue) {
+    try {
+      if (job.kind === 'logCall') {
+        const r = await backendCall({ action: 'logCall', brand: job.brand, call: job.call });
+        if (r.sheetUrl) state.sheetUrlByBrand[job.brand] = r.sheetUrl;
+        successCount++;
+      }
+    } catch (e) {
+      console.warn('Sync job failed, will retry:', e);
+      remaining.push(job);
+    }
+  }
+  state.syncQueue = remaining;
+  state.lastSyncTs = Date.now();
+  saveState();
+  if (remaining.length) {
+    setSyncBadge('error');
+    setTimeout(drainSyncQueue, SYNC_RETRY_MS);
+  } else {
+    setSyncBadge('online');
+    if (successCount > 0) showToast(`Synced ${successCount} call${successCount > 1 ? 's' : ''} to Sheets`);
+  }
+}
+
+async function loadCloudProspects() {
+  if (!state.backendUrl) return;
+  try {
+    const r = await backendCall({ action: 'listProspects', brand: state.brand });
+    if (r.prospects && Array.isArray(r.prospects)) {
+      state.cloudProspects = r.prospects;
+      if (r.sheetUrl) state.sheetUrlByBrand[state.brand] = r.sheetUrl;
+      saveState();
+      // Merge into PROSPECTS for picker
+      mergeProspects();
+      renderProspectPicker();
+    }
+  } catch (e) {
+    console.warn('listProspects failed:', e);
+  }
+}
+
+function mergeProspects() {
+  // Combines base JSON prospects + customProspects + cloudProspects, dedup by domain
+  const merged = [];
+  const seen = new Set();
+  const all = PROSPECTS_BASE.concat(state.customProspects || [], state.cloudProspects || []);
+  all.forEach(p => {
+    const key = (p.domain || p.company || ('id-' + p.n)).toLowerCase();
+    if (seen.has(key)) return;
+    seen.add(key);
+    merged.push(p);
+  });
+  PROSPECTS = merged;
+}
+
+// Holds the base (JSON file) prospects so merge can rebuild cleanly
+let PROSPECTS_BASE = [];
 
 // ============== BRAND DATA LOADING ==============
 async function loadBrandData(brandSlug) {
   const brand = BRANDS[brandSlug];
   if (!brand || !brand.active) {
-    SCRIPTS = {}; OBJECTIONS = []; PROSPECTS = []; MARKET_CPC = {};
+    SCRIPTS = {}; OBJECTIONS = []; PROSPECTS = []; PROSPECTS_BASE = []; MARKET_CPC = {};
     return false;
   }
   const base = `brands/${brandSlug}`;
@@ -96,11 +232,11 @@ async function loadBrandData(brandSlug) {
     ]);
     const scriptsData = await scriptsRes.json();
     const objData = await objRes.json();
-    PROSPECTS = await prospRes.json();
+    PROSPECTS_BASE = await prospRes.json();
     MARKET_CPC = await cpcRes.json();
     SCRIPTS = scriptsData.variants;
     OBJECTIONS = objData.objections;
-    PROSPECTS = PROSPECTS.concat(state.customProspects);
+    mergeProspects();
     return true;
   } catch (e) {
     console.error('Brand data load failed:', e);
@@ -140,7 +276,7 @@ function fillTokens(template, ctx) {
   return template.replace(/\{(\w+)\}/g, (_, key) => ctx[key] !== undefined ? ctx[key] : `{${key}}`);
 }
 
-// ============== RECON CARD (audited URL — pre-call) ==============
+// ============== RECON CARD ==============
 function renderReconCard() {
   const card = document.getElementById('reconCard');
   const body = document.getElementById('reconBody');
@@ -162,29 +298,39 @@ function renderReconCard() {
   const url = domain ? (domain.startsWith('http') ? domain : `https://${domain}`) : '';
   const company = p.company || domain || `Prospect #${p.n}`;
 
-  // Stats grid — pull any of the expanded fields if present
   const statHTML = [];
   if (p.speed !== undefined && p.speed !== '') statHTML.push(statBox('Speed', p.speed + (typeof p.speed === 'number' || /^\d+$/.test(p.speed) ? '/100' : '')));
   if (p.trust !== undefined && p.trust !== '') statHTML.push(statBox('Trust', p.trust + (typeof p.trust === 'number' || /^\d+$/.test(p.trust) ? '/100' : '')));
   if (p.cta !== undefined && p.cta !== '') statHTML.push(statBox('CTA', p.cta + (typeof p.cta === 'number' || /^\d+$/.test(p.cta) ? '/100' : '')));
   if (p.monthly_traffic) statHTML.push(statBox('Traffic / mo', p.monthly_traffic));
   if (p.ad_spend_est) statHTML.push(statBox('Est. Ad Spend', p.ad_spend_est));
+  if (p.last_called_date) statHTML.push(statBox('Last Called', p.last_called_date));
   if (p.last_audit_date) statHTML.push(statBox('Audited', p.last_audit_date));
 
-  // Leaks
   const leaks = (p.issues || []).slice(0, 5);
   const leaksHTML = leaks.length
     ? `<div class="recon-leaks-title">Audited Leaks</div><ol class="recon-leaks">${leaks.map(l => `<li>${escapeHTML(l)}</li>`).join('')}</ol>`
     : '';
 
-  // Contact line
   const contactBits = [];
   if (p.phone) contactBits.push(`📞 ${escapeHTML(p.phone)}`);
   if (p.email) contactBits.push(`✉ ${escapeHTML(p.email)}`);
   if (p.instagram) contactBits.push(`📷 ${escapeHTML(p.instagram)}`);
 
-  // Notes from CSV
   const notesHTML = p.notes ? `<div class="recon-notes">Note: ${escapeHTML(p.notes)}</div>` : '';
+
+  // History: prior calls for this prospect
+  const priorCalls = state.calls.filter(c => c.prospectN === p.n).slice(-3).reverse();
+  const historyHTML = priorCalls.length
+    ? `<div class="recon-history">
+         <div class="recon-leaks-title">Recent Touches</div>
+         ${priorCalls.map(c => `<div class="recon-history-row">
+            <span class="log-outcome ${c.outcome.toLowerCase()}">${c.outcome}</span>
+            <span>${new Date(c.ts).toLocaleDateString()} · ${c.caller || '?'} · ${c.variant}</span>
+            ${c.nextStep ? `<span class="recon-history-next">→ ${escapeHTML(c.nextStep)}</span>` : ''}
+         </div>`).join('')}
+       </div>`
+    : '';
 
   body.innerHTML = `
     <div class="recon-title">${escapeHTML(company)} · ${escapeHTML(p.market || 'Unknown market')}</div>
@@ -195,6 +341,7 @@ function renderReconCard() {
     ${statHTML.length ? `<div class="recon-grid">${statHTML.join('')}</div>` : ''}
     ${leaksHTML}
     ${notesHTML}
+    ${historyHTML}
   `;
 }
 function statBox(label, val) {
@@ -237,7 +384,7 @@ function renderBeats() {
   }).join('');
 }
 
-// ============== RENDER · OBJECTIONS (new card layout) ==============
+// ============== RENDER · OBJECTIONS ==============
 function renderObjections() {
   const container = document.getElementById('objectionsContainer');
   if (!container) return;
@@ -260,6 +407,14 @@ function renderObjections() {
       card.classList.toggle('open');
     });
   });
+
+  // Also populate the "Objection raised" dropdown
+  const sel = document.getElementById('objectionRaised');
+  if (sel) {
+    const cats = [...new Set(OBJECTIONS.map(o => o.cat))];
+    sel.innerHTML = '<option value="">— None / unclear —</option>' +
+      cats.map(c => `<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join('');
+  }
 }
 
 // ============== TIMER ==============
@@ -317,7 +472,8 @@ function scoreCall(call, durationSec) {
   const notes = (call.notes || '').toLowerCase();
   POSITIVE_PHRASES.forEach(p => { if (notes.includes(p)) score += 10; });
   NEGATIVE_PHRASES.forEach(p => { if (notes.includes(p)) score -= 10; });
-  // Objection category mention bonus (caller surfaced/handled the objection)
+  if (call.whatWorked) score += 5;
+  if (call.nextStep) score += 5;
   OBJECTIONS.forEach(o => {
     if (o.cat && notes.includes(o.cat.toLowerCase())) score += 10;
   });
@@ -331,7 +487,9 @@ function updateLiveScore() {
   if (!outcome) { el.classList.add('hidden'); return; }
   const fake = {
     outcome,
-    notes: document.getElementById('notes').value
+    notes: document.getElementById('notes').value,
+    whatWorked: document.getElementById('whatWorked').value,
+    nextStep: document.getElementById('nextStep').value
   };
   const s = scoreCall(fake, currentElapsedSec());
   num.textContent = s;
@@ -347,48 +505,30 @@ function getVariantCallCounts() {
   };
 }
 
-/**
- * Decide what variant SHOULD be active right now.
- * Rules:
- *  - If a winner is locked → return locked variant.
- *  - If user manually picked → respect it (manualVariant=true).
- *  - Otherwise rotate A→B→C every 10 calls until each has 10.
- *  - After all 3 hit 10, check winner condition. If gap ≥15pp, lock.
- *  - If no winner yet, stay on whichever has fewest calls (round-robin).
- */
 function computeAutoVariant() {
   if (state.lockedVariant) return state.lockedVariant;
   const c = getVariantCallCounts();
-  const total = c.A + c.B + c.C;
-
-  // Phase 1: still under threshold per variant → cycle every 10 calls based on total
   if (c.A < VARIANT_ROTATION_THRESHOLD || c.B < VARIANT_ROTATION_THRESHOLD || c.C < VARIANT_ROTATION_THRESHOLD) {
-    // Pick the one with fewest calls (ties → alphabetical)
     const sorted = [['A', c.A], ['B', c.B], ['C', c.C]].sort((x, y) => x[1] - y[1] || x[0].localeCompare(y[0]));
     return sorted[0][0];
   }
-
-  // Phase 2: all hit threshold → check winner
   const rates = ['A', 'B', 'C'].map(v => {
     const total = c[v];
     const booked = state.calls.filter(call => call.variant === v && ['BK', 'SH', 'CL'].includes(call.outcome)).length;
     return { v, rate: total ? booked / total : 0 };
   }).sort((a, b) => b.rate - a.rate);
-
   if (rates[0].rate - rates[1].rate >= WINNER_LOCK_GAP) {
     state.lockedVariant = rates[0].v;
     saveState();
     showToast(`🏆 Winner locked: Variant ${rates[0].v} (${Math.round(rates[0].rate * 100)}% book rate)`);
     return rates[0].v;
   }
-
-  // No winner yet — keep cycling (fewest calls wins)
   const sorted = [['A', c.A], ['B', c.B], ['C', c.C]].sort((x, y) => x[1] - y[1] || x[0].localeCompare(y[0]));
   return sorted[0][0];
 }
 
 function maybeRotateVariant() {
-  if (state.manualVariant) return; // user override active until manualVariant cleared
+  if (state.manualVariant) return;
   if (state.lockedVariant) {
     if (state.variant !== state.lockedVariant) {
       state.variant = state.lockedVariant;
@@ -427,7 +567,6 @@ function renderStats() {
   document.getElementById('stat-avgscore').textContent = avgScore;
   document.getElementById('stat-remaining').textContent = remaining;
 
-  // Rotation status
   const c = getVariantCallCounts();
   let rotationTxt;
   if (state.lockedVariant) {
@@ -437,7 +576,6 @@ function renderStats() {
   }
   document.getElementById('stat-rotation').textContent = rotationTxt;
 
-  // Per variant
   const vStats = document.getElementById('variantStats');
   if (vStats) {
     vStats.innerHTML = ['A', 'B', 'C'].map(v => {
@@ -447,7 +585,6 @@ function renderStats() {
       return `<div class="variant-stats-row ${isLocked ? 'locked' : ''}"><span class="label">${v}${isLocked ? ' 🔒' : ''}</span><span>${vCalls} calls · ${vBooked} booked</span></div>`;
     }).join('');
   }
-  // Per caller
   const cStats = document.getElementById('callerStats');
   if (cStats) {
     cStats.innerHTML = ['Zack', 'Tony'].map(name => {
@@ -457,7 +594,6 @@ function renderStats() {
     }).join('');
   }
 
-  // Sampling banner
   const aN = c.A, bN = c.B, cN = c.C;
   let bannerMsg;
   if (state.lockedVariant) {
@@ -469,7 +605,6 @@ function renderStats() {
   }
   document.getElementById('samplingMsg').textContent = bannerMsg;
 
-  // Progress bar
   renderProgressBar(today.length, PROSPECTS.length);
 }
 
@@ -497,6 +632,7 @@ function renderCallLog() {
     <div class="log-row">
       <span class="log-outcome ${c.outcome.toLowerCase()}">${c.outcome}</span>
       <span style="flex:1;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHTML(c.company || '—')}</span>
+      ${c.followup && c.followup.date ? `<span class="log-followup" title="Follow-up ${c.followup.date}">📅</span>` : ''}
       <span class="log-score" title="Auto-score">${c.score || 0}</span>
       <span style="color:#888;">${c.variant}·${(c.caller || 'Z').slice(0, 1)}</span>
       <span class="log-time">${new Date(c.ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
@@ -508,27 +644,59 @@ function logCall() {
   const outcome = document.getElementById('outcome').value;
   if (!outcome) { alert('Pick an outcome first.'); return; }
   const duration = currentElapsedSec();
+
+  // Build follow-up sub-object if enabled
+  const fpEnabled = document.getElementById('fpEnable').checked;
+  let followup = null;
+  if (fpEnabled) {
+    const fpDate = document.getElementById('fpDate').value;
+    const fpTime = document.getElementById('fpTime').value || '10:00';
+    const fpChannel = document.getElementById('fpChannel').value;
+    const fpMessage = document.getElementById('fpMessage').value.trim();
+    if (fpDate) {
+      followup = { date: fpDate, time: fpTime, channel: fpChannel, message: fpMessage };
+    }
+  }
+
   const call = {
     ts: Date.now(),
     brand: state.brand,
     caller: state.caller,
     variant: state.variant,
     company: document.getElementById('company').value.trim(),
+    domain: '',
     market: document.getElementById('market').value.trim(),
     phone: document.getElementById('phone').value.trim(),
+    email: document.getElementById('prospectEmail').value.trim(),
     outcome,
+    objectionRaised: document.getElementById('objectionRaised').value,
+    whatWorked: document.getElementById('whatWorked').value.trim(),
+    nextStep: document.getElementById('nextStep').value.trim(),
     notes: document.getElementById('notes').value.trim(),
     prospectN: state.selectedProspectN,
-    duration
+    duration,
+    followup
   };
+
+  // Resolve domain from selected prospect
+  if (state.selectedProspectN) {
+    const p = PROSPECTS.find(x => x.n === state.selectedProspectN);
+    if (p && p.domain) call.domain = p.domain;
+  }
+
   call.score = scoreCall(call, duration);
   state.calls.push(call);
-  // Clear manual override so auto-rotation resumes
   state.manualVariant = false;
   saveState();
   renderStats();
   renderCallLog();
-  // Auto-reset, then rotate variant
+  renderReconCard(); // refresh history
+
+  // Sync to backend
+  if (state.backendUrl) {
+    enqueueCallSync(call);
+  }
+
   setTimeout(() => {
     clearForm();
     resetTimer();
@@ -541,8 +709,16 @@ function clearForm() {
   document.getElementById('company').value = '';
   document.getElementById('market').value = '';
   document.getElementById('phone').value = '';
+  document.getElementById('prospectEmail').value = '';
   document.getElementById('outcome').value = '';
+  document.getElementById('objectionRaised').value = '';
+  document.getElementById('whatWorked').value = '';
+  document.getElementById('nextStep').value = '';
   document.getElementById('notes').value = '';
+  document.getElementById('fpEnable').checked = false;
+  document.getElementById('fpFields').classList.add('hidden');
+  document.getElementById('fpDate').value = '';
+  document.getElementById('fpMessage').value = '';
   document.getElementById('liveScore').classList.add('hidden');
   state.selectedProspectN = null;
   renderReconCard();
@@ -563,7 +739,8 @@ function renderProspectPicker() {
   Object.keys(byMarket).sort().forEach(m => {
     html += `<optgroup label="${escapeHTML(m)}">`;
     byMarket[m].forEach(p => {
-      html += `<option value="${p.n}">#${p.n} · ${escapeHTML(p.domain || p.company || 'unnamed')}</option>`;
+      const label = `#${p.n} · ${p.domain || p.company || 'unnamed'}`;
+      html += `<option value="${p.n}">${escapeHTML(label)}</option>`;
     });
     html += '</optgroup>';
   });
@@ -581,29 +758,26 @@ function selectProspect(n) {
   document.getElementById('company').value = p.company || p.domain || '';
   document.getElementById('market').value = p.market || '';
   document.getElementById('phone').value = p.phone || '';
+  document.getElementById('prospectEmail').value = p.email || '';
   renderReconCard();
   renderBeats();
 }
 
-// ============== CSV UPLOAD — expanded schema ==============
+// ============== CSV UPLOAD ==============
 function parseCSV(text) {
   const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
   const headers = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/\s+/g, '_'));
   return lines.slice(1).map((line, i) => {
-    // Handle quoted commas
     const cells = splitCSVLine(line);
     const row = { n: 1000 + i };
     headers.forEach((h, j) => { row[h] = (cells[j] || '').trim(); });
-    // Normalize known columns
     if (row.issues && typeof row.issues === 'string') {
       row.issues = row.issues.split('|').map(s => s.trim()).filter(Boolean);
     }
-    // Coerce numeric scores if present
     ['speed', 'trust', 'cta', 'speed_score', 'trust_score', 'cta_score'].forEach(k => {
       if (row[k] && !isNaN(Number(row[k]))) row[k] = Number(row[k]);
     });
-    // Map alt header names
     if (row.speed_score !== undefined) row.speed = row.speed_score;
     if (row.trust_score !== undefined) row.trust = row.trust_score;
     if (row.cta_score !== undefined) row.cta = row.cta_score;
@@ -648,6 +822,8 @@ async function switchBrand(slug) {
   renderStats();
   renderCallLog();
   clearForm();
+  // Pull cloud prospects for this brand
+  if (state.backendUrl) loadCloudProspects();
 }
 
 function switchCaller(name) {
@@ -656,7 +832,7 @@ function switchCaller(name) {
   renderBeats();
 }
 
-// ============== SIDE TOGGLE (stats <-> cal) ==============
+// ============== SIDE TOGGLE ==============
 function toggleSide(which) {
   state.sidePane = which;
   saveState();
@@ -676,16 +852,109 @@ function showToast(msg) {
   toastTimer = setTimeout(() => t.classList.add('hidden'), 4000);
 }
 
+// ============== MODAL HELPERS ==============
+function openModal(id) {
+  document.getElementById(id).classList.remove('hidden');
+  document.body.classList.add('modal-open');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.add('hidden');
+  document.body.classList.remove('modal-open');
+}
+function closeAllModals() {
+  document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden'));
+  document.body.classList.remove('modal-open');
+}
+
+// ============== ADD PROSPECT (inline) ==============
+async function saveNewProspect() {
+  const prospect = {
+    company: document.getElementById('np_company').value.trim(),
+    domain: document.getElementById('np_domain').value.trim(),
+    market: document.getElementById('np_market').value.trim(),
+    phone: document.getElementById('np_phone').value.trim(),
+    email: document.getElementById('np_email').value.trim(),
+    instagram: document.getElementById('np_instagram').value.trim(),
+    speed: document.getElementById('np_speed').value.trim(),
+    trust: document.getElementById('np_trust').value.trim(),
+    cta: document.getElementById('np_cta').value.trim(),
+    risk: document.getElementById('np_risk').value,
+    issues_1: document.getElementById('np_issues_1').value.trim(),
+    issues_2: document.getElementById('np_issues_2').value.trim(),
+    issues_3: document.getElementById('np_issues_3').value.trim(),
+    notes: document.getElementById('np_notes').value.trim()
+  };
+  if (!prospect.company && !prospect.domain) {
+    alert('Need at least a Company or Domain.');
+    return;
+  }
+
+  // Build local-format prospect to add to PROSPECTS immediately
+  const localProspect = {
+    n: 5000 + state.customProspects.length + state.cloudProspects.length,
+    company: prospect.company,
+    domain: prospect.domain,
+    market: prospect.market,
+    phone: prospect.phone,
+    email: prospect.email,
+    instagram: prospect.instagram,
+    speed: prospect.speed,
+    trust: prospect.trust,
+    cta: prospect.cta,
+    risk: prospect.risk,
+    issues: [prospect.issues_1, prospect.issues_2, prospect.issues_3].filter(Boolean),
+    notes: prospect.notes
+  };
+
+  // Sync to backend if connected
+  let cloudOk = false;
+  if (state.backendUrl) {
+    try {
+      const r = await backendCall({ action: 'addProspect', brand: state.brand, prospect });
+      if (r.sheetUrl) state.sheetUrlByBrand[state.brand] = r.sheetUrl;
+      cloudOk = true;
+      showToast(`Saved to master sheet (${r.action || 'created'})`);
+      // Refresh cloud prospects
+      loadCloudProspects();
+    } catch (e) {
+      showToast(`Cloud save failed (kept locally): ${e.message}`);
+    }
+  }
+
+  if (!cloudOk) {
+    state.customProspects.push(localProspect);
+    mergeProspects();
+    renderProspectPicker();
+    saveState();
+    showToast('Saved locally (no backend connected)');
+  }
+
+  // Clear & close
+  ['np_company','np_domain','np_market','np_phone','np_email','np_instagram',
+   'np_speed','np_trust','np_cta','np_issues_1','np_issues_2','np_issues_3','np_notes']
+    .forEach(id => { document.getElementById(id).value = ''; });
+  closeModal('prospectModal');
+}
+
 // ============== KEYBOARD ==============
 function bindKeyboard() {
   document.addEventListener('keydown', (e) => {
     const tag = (e.target.tagName || '').toLowerCase();
     const inField = ['input', 'textarea', 'select'].includes(tag);
-    if (e.key === 'Escape') { document.getElementById('legendBar').classList.add('hidden'); return; }
-    // Ctrl+S — start/pause timer (works even inside fields)
+    if (e.key === 'Escape') {
+      closeAllModals();
+      document.getElementById('legendBar').classList.add('hidden');
+      return;
+    }
     if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
       e.preventDefault();
       toggleTimer();
+      return;
+    }
+    // Ctrl++ → add prospect modal
+    if (e.ctrlKey && (e.key === '+' || e.key === '=')) {
+      e.preventDefault();
+      openModal('prospectModal');
       return;
     }
     if (inField) return;
@@ -725,7 +994,6 @@ function updateVariantTabs() {
   });
 }
 
-// Manual switch — sets manualVariant flag so auto-rotation pauses until next log
 function manualSwitchVariant(v) {
   if (!SCRIPTS[v]) return;
   state.variant = v;
@@ -735,12 +1003,24 @@ function manualSwitchVariant(v) {
   renderBeats();
 }
 
-// Used during init to restore without flagging manual override
 function switchVariantSilent(v) {
   if (!SCRIPTS[v]) return;
   state.variant = v;
   updateVariantTabs();
   renderBeats();
+}
+
+// ============== FOLLOW-UP HELPERS ==============
+function setFollowupDays(days) {
+  const d = new Date();
+  d.setDate(d.getDate() + days);
+  // Format YYYY-MM-DD in local time
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  document.getElementById('fpDate').value = `${yyyy}-${mm}-${dd}`;
+  document.getElementById('fpEnable').checked = true;
+  document.getElementById('fpFields').classList.remove('hidden');
 }
 
 // ============== INIT ==============
@@ -754,13 +1034,11 @@ async function init() {
   brandSel.value = state.brand;
 
   document.getElementById('callerSelect').value = state.caller;
-
   document.getElementById('topbarDate').textContent =
     new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
   await switchBrand(state.brand);
 
-  // On init, run rotation logic to settle on correct variant
   if (!state.manualVariant && !state.lockedVariant) {
     const want = computeAutoVariant();
     state.variant = want;
@@ -769,7 +1047,16 @@ async function init() {
   switchVariantSilent(state.variant);
   toggleSide(state.sidePane);
 
-  // Event bindings
+  // Restore backend URL into input
+  if (state.backendUrl) {
+    document.getElementById('backendUrl').value = state.backendUrl;
+    pingBackend(true);
+    if (state.syncQueue.length) drainSyncQueue();
+  } else {
+    setSyncBadge('offline');
+  }
+
+  // ============== EVENT BINDINGS ==============
   brandSel.addEventListener('change', e => switchBrand(e.target.value));
   document.getElementById('callerSelect').addEventListener('change', e => switchCaller(e.target.value));
   document.querySelectorAll('.variant-tab').forEach(t => {
@@ -784,6 +1071,8 @@ async function init() {
   document.getElementById('market').addEventListener('input', renderBeats);
   document.getElementById('outcome').addEventListener('change', updateLiveScore);
   document.getElementById('notes').addEventListener('input', updateLiveScore);
+  document.getElementById('whatWorked').addEventListener('input', updateLiveScore);
+  document.getElementById('nextStep').addEventListener('input', updateLiveScore);
   document.getElementById('toggleStats').addEventListener('click', () => toggleSide('stats'));
   document.getElementById('toggleCal').addEventListener('click', () => toggleSide('cal'));
   document.getElementById('legendToggle').addEventListener('click', () => {
@@ -791,22 +1080,133 @@ async function init() {
   });
   document.getElementById('progressBar').addEventListener('click', () => {
     document.getElementById('prospectSelect').focus();
-    document.getElementById('prospectSelect').click();
   });
+
+  // CSV upload
   document.getElementById('csvUpload').addEventListener('change', async (e) => {
     const file = e.target.files[0]; if (!file) return;
     const text = await file.text();
     const rows = parseCSV(text);
     if (!rows.length) { alert('No rows parsed.'); return; }
     state.customProspects = state.customProspects.concat(rows);
-    PROSPECTS = PROSPECTS.concat(rows);
+    mergeProspects();
     saveState();
     renderProspectPicker();
     renderStats();
     showToast(`Added ${rows.length} prospects from CSV`);
+
+    // If backend connected, push each to master sheet
+    if (state.backendUrl) {
+      let okCount = 0;
+      for (const r of rows) {
+        try {
+          await backendCall({
+            action: 'addProspect',
+            brand: state.brand,
+            prospect: {
+              company: r.company || '',
+              domain: r.domain || '',
+              market: r.market || '',
+              phone: r.phone || '',
+              email: r.email || '',
+              instagram: r.instagram || '',
+              speed: r.speed || '',
+              trust: r.trust || '',
+              cta: r.cta || '',
+              risk: r.risk || 'MED',
+              issues_1: (r.issues && r.issues[0]) || r.issues_1 || '',
+              issues_2: (r.issues && r.issues[1]) || r.issues_2 || '',
+              issues_3: (r.issues && r.issues[2]) || r.issues_3 || '',
+              notes: r.notes || ''
+            }
+          });
+          okCount++;
+        } catch (e) {
+          console.warn('CSV row sync failed:', e);
+        }
+      }
+      if (okCount) showToast(`Synced ${okCount}/${rows.length} CSV rows to master sheet`);
+      loadCloudProspects();
+    }
+  });
+
+  // ============== BACKEND MODAL ==============
+  document.getElementById('backendBtn').addEventListener('click', () => openModal('backendModal'));
+  document.getElementById('backendTest').addEventListener('click', async () => {
+    const url = document.getElementById('backendUrl').value.trim();
+    const statusEl = document.getElementById('backendStatus');
+    if (!url) { statusEl.textContent = 'Paste a URL first.'; statusEl.className = 'backend-status err'; return; }
+    state.backendUrl = url;
+    saveState();
+    statusEl.textContent = 'Testing connection…';
+    statusEl.className = 'backend-status';
+    const ok = await pingBackend(false);
+    if (ok) {
+      statusEl.textContent = '✓ Connected. Master sheet ready.';
+      statusEl.className = 'backend-status ok';
+      loadCloudProspects();
+      drainSyncQueue();
+    } else {
+      statusEl.textContent = '✗ Could not reach backend. Check the URL and that the script is deployed as a Web App with "Anyone" access.';
+      statusEl.className = 'backend-status err';
+    }
+  });
+  document.getElementById('backendOpenSheet').addEventListener('click', () => {
+    const url = state.sheetUrlByBrand[state.brand];
+    if (url) {
+      window.open(url, '_blank');
+    } else {
+      showToast('No master sheet URL yet — log a call or save a prospect first.');
+    }
+  });
+  document.getElementById('backendSyncNow').addEventListener('click', () => drainSyncQueue());
+  document.querySelectorAll('.modal-close, [data-close]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-close');
+      if (id) closeModal(id);
+    });
+  });
+  // Click outside modal box closes
+  document.querySelectorAll('.modal').forEach(m => {
+    m.addEventListener('click', (e) => {
+      if (e.target === m) closeModal(m.id);
+    });
+  });
+
+  // ============== ADD PROSPECT MODAL ==============
+  document.getElementById('addProspectBtn').addEventListener('click', () => openModal('prospectModal'));
+  document.getElementById('np_save').addEventListener('click', saveNewProspect);
+
+  // ============== FOLLOW-UP UI ==============
+  document.getElementById('fpEnable').addEventListener('change', (e) => {
+    document.getElementById('fpFields').classList.toggle('hidden', !e.target.checked);
+    if (e.target.checked && !document.getElementById('fpDate').value) {
+      // Default to +3 days
+      setFollowupDays(3);
+    }
+  });
+  document.querySelectorAll('.fp-quick button[data-days]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const days = parseInt(btn.getAttribute('data-days'), 10);
+      setFollowupDays(days);
+    });
   });
 
   bindKeyboard();
+
+  // Background drain every 30s
+  setInterval(() => {
+    if (state.backendUrl && state.syncQueue.length) drainSyncQueue();
+  }, SYNC_RETRY_MS);
+
+  // Online/offline status
+  window.addEventListener('online', () => {
+    if (state.backendUrl) {
+      setSyncBadge('syncing');
+      drainSyncQueue();
+    }
+  });
+  window.addEventListener('offline', () => setSyncBadge('offline'));
 }
 
 document.addEventListener('DOMContentLoaded', init);
