@@ -80,6 +80,8 @@ let state = {
   customProspects: [],
   prospectOverrides: {},      // v3.8.9 — per-prospect field overrides keyed by domain or 'n-<id>'
                               //          e.g. { 'acme.com': { phone: '(214) 555-1234', phone_added_by: 'Zack', phone_added_ts: 1234567890 } }
+  deletedProspectKeys: {},    // v3.9.2 — { 'acme.com': { ts, by, reason } } — hides prospects from list/stats/queue
+  autoAdvanceAfterLog: true,  // v3.9.2 — after logging a call, auto-move to next callable prospect
   cloudProspects: [],         // pulled from Apps Script backend
   cloudCalls: {},             // {brandSlug: [{ts, prospect_id, domain, caller, outcome}]} cross-caller dedup
   // v3.7.2 — TZ gating
@@ -113,6 +115,8 @@ function loadState() {
     if (s.sidePane) state.sidePane = s.sidePane;
     if (s.customProspects && Array.isArray(s.customProspects)) state.customProspects = s.customProspects;
     if (s.prospectOverrides && typeof s.prospectOverrides === 'object') state.prospectOverrides = s.prospectOverrides;
+    if (s.deletedProspectKeys && typeof s.deletedProspectKeys === 'object') state.deletedProspectKeys = s.deletedProspectKeys;
+    if (typeof s.autoAdvanceAfterLog === 'boolean') state.autoAdvanceAfterLog = s.autoAdvanceAfterLog;
     if (s.lockedVariant) state.lockedVariant = s.lockedVariant;
     if (s.manualVariant) state.manualVariant = s.manualVariant;
     if (s.backendUrl) state.backendUrl = s.backendUrl;
@@ -138,6 +142,8 @@ function saveState() {
       sidePane: state.sidePane,
       customProspects: state.customProspects,
       prospectOverrides: state.prospectOverrides,
+      deletedProspectKeys: state.deletedProspectKeys,
+      autoAdvanceAfterLog: state.autoAdvanceAfterLog,
       cloudProspects: state.cloudProspects,
       cloudCalls: state.cloudCalls,
       tzGateMode: state.tzGateMode,
@@ -321,17 +327,63 @@ function applyProspectOverrides(p) {
 function mergeProspects() {
   // Combines base JSON prospects + customProspects + cloudProspects, dedup by domain.
   // Then applies per-prospect overrides (e.g. phone numbers added in-app).
+  // v3.9.2 — hides prospects in state.deletedProspectKeys.
   const merged = [];
   const seen = new Set();
+  const deleted = state.deletedProspectKeys || {};
   const all = PROSPECTS_BASE.concat(state.customProspects || [], state.cloudProspects || []);
   all.forEach(p => {
     const key = (p.domain || p.company || ('id-' + p.n)).toLowerCase();
     if (seen.has(key)) return;
+    if (deleted[key]) return; // filtered out
     seen.add(key);
     merged.push(applyProspectOverrides(p));
   });
   PROSPECTS = merged;
 }
+
+// v3.9.2 — Soft-delete a prospect (hides from list, stats, queue). Reversible via undo.
+function deleteProspect(prospect, reason) {
+  if (!prospect) return;
+  const key = prospectOverrideKey(prospect);
+  if (!key) return;
+  state.deletedProspectKeys = state.deletedProspectKeys || {};
+  state.deletedProspectKeys[key] = {
+    ts: Date.now(),
+    by: state.caller || 'unknown',
+    reason: (reason || '').slice(0, 200),
+    company: prospect.company || prospect.domain || '',
+    domain: prospect.domain || ''
+  };
+  // If currently selected, clear it
+  if (state.selectedProspectN === prospect.n) {
+    state.selectedProspectN = null;
+  }
+  saveState();
+  mergeProspects();
+  if (typeof renderReconCard === 'function') renderReconCard();
+  if (typeof renderProspectList === 'function') renderProspectList();
+  if (typeof renderProspectPicker === 'function') renderProspectPicker();
+  if (typeof renderStats === 'function') renderStats();
+  if (typeof window.renderDashboard === 'function') {
+    try { window.renderDashboard(); } catch (e) { /* ignore */ }
+  }
+  showToast(`Deleted: ${prospect.company || prospect.domain}. Restore from Backend modal → Deleted Prospects.`);
+}
+window.deleteProspect = deleteProspect;
+
+function undoDeleteProspect(key) {
+  if (!state.deletedProspectKeys || !state.deletedProspectKeys[key]) return;
+  delete state.deletedProspectKeys[key];
+  saveState();
+  mergeProspects();
+  if (typeof renderReconCard === 'function') renderReconCard();
+  if (typeof renderProspectList === 'function') renderProspectList();
+  if (typeof renderProspectPicker === 'function') renderProspectPicker();
+  if (typeof renderStats === 'function') renderStats();
+  showToast('Restored');
+}
+window.undoDeleteProspect = undoDeleteProspect;
 
 // v3.8.9 — Save or update an in-app phone number for a prospect
 function saveProspectPhone(prospect, rawPhone) {
@@ -674,6 +726,8 @@ function renderReconCard() {
   }
   if (p.email) contactBits.push(`✉ ${escapeHTML(p.email)}`);
   if (p.instagram) contactBits.push(`📷 ${escapeHTML(p.instagram)}`);
+  // v3.9.2 — inline delete button so callers can remove bad-fit records mid-call
+  contactBits.push(`<button class="recon-delete-btn" type="button" data-prospect-n="${p.n}" data-action="delete-prospect" title="Delete this prospect (hides from list, reversible)">🗑</button>`);
 
   const notesHTML = p.notes ? `<div class="recon-notes">Note: ${expEscape(p.notes)}</div>` : '';
 
@@ -724,6 +778,21 @@ function renderReconCard() {
       const input = window.prompt(promptMsg, current);
       if (input === null) return; // user cancelled
       saveProspectPhone(target, input);
+    });
+  });
+
+  // v3.9.2 — wire delete button
+  body.querySelectorAll('[data-action="delete-prospect"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      const n = parseInt(btn.getAttribute('data-prospect-n'), 10);
+      const target = PROSPECTS.find(x => x.n === n);
+      if (!target) return;
+      const label = target.company || target.domain || 'this prospect';
+      const reason = window.prompt(`Delete ${label}?\n\nThis hides them from the list, stats, and queue (reversible from Backend modal). Optional reason:`, '');
+      if (reason === null) return; // cancelled
+      deleteProspect(target, reason);
     });
   });
 }
@@ -1033,6 +1102,7 @@ function resetTimer() {
 function scoreCall(call, durationSec) {
   let score = 0;
   if (['BK', 'SH', 'CL'].includes(call.outcome)) score += 30;
+  if (call.outcome === 'RE') score += 15;  // requested email — warm engagement
   if (call.outcome === 'PP') score += 10;
   if (call.outcome === 'OBJ') score += 5;
   if (durationSec >= 90) score += 15;
@@ -1281,10 +1351,17 @@ function logCall() {
   // Show undo toast (8s)
   showUndoToast();
 
+  // v3.9.2 — capture index BEFORE clearForm wipes selectedProspectN, so nextProspect advances correctly
+  const advanceFromN = state.selectedProspectN;
   setTimeout(() => {
     clearForm();
     resetTimer();
     maybeRotateVariant();
+    if (state.autoAdvanceAfterLog !== false && typeof nextProspect === 'function') {
+      // Temporarily restore selectedProspectN so nextProspect computes the right offset
+      state.selectedProspectN = advanceFromN;
+      nextProspect();
+    }
   }, 1000);
 }
 
@@ -2105,7 +2182,56 @@ async function init() {
   });
 
   // ============== BACKEND MODAL ==============
-  document.getElementById('backendBtn').addEventListener('click', () => openModal('backendModal'));
+  document.getElementById('backendBtn').addEventListener('click', () => {
+    openModal('backendModal');
+    // Refresh deleted-prospects list + auto-advance toggle each time the modal opens
+    if (typeof renderDeletedProspects === 'function') renderDeletedProspects();
+    const aa = document.getElementById('autoAdvanceToggle');
+    if (aa) aa.checked = state.autoAdvanceAfterLog !== false;
+  });
+
+  // v3.9.2 — auto-advance toggle
+  const aaToggle = document.getElementById('autoAdvanceToggle');
+  if (aaToggle) {
+    aaToggle.checked = state.autoAdvanceAfterLog !== false;
+    aaToggle.addEventListener('change', () => {
+      state.autoAdvanceAfterLog = !!aaToggle.checked;
+      saveState();
+      showToast(aaToggle.checked ? 'Auto-advance ON' : 'Auto-advance OFF');
+    });
+  }
+
+  // v3.9.2 — render deleted prospects list with Restore buttons
+  function renderDeletedProspects() {
+    const wrap = document.getElementById('deletedProspectsList');
+    if (!wrap) return;
+    const deleted = state.deletedProspectKeys || {};
+    const keys = Object.keys(deleted).sort((a, b) => (deleted[b].ts || 0) - (deleted[a].ts || 0));
+    if (!keys.length) {
+      wrap.innerHTML = '<div style="opacity:.6;font-style:italic;padding:4px">No deleted prospects.</div>';
+      return;
+    }
+    wrap.innerHTML = keys.map(k => {
+      const d = deleted[k];
+      const when = d.ts ? new Date(d.ts).toLocaleString() : '';
+      const why = d.reason ? ` — <em>${escapeHTML(d.reason)}</em>` : '';
+      return `<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 2px;border-bottom:1px solid rgba(0,0,0,.06);gap:8px">
+        <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+          <strong>${escapeHTML(d.company || d.domain || k)}</strong>
+          <span style="opacity:.6;font-size:11px"> · ${escapeHTML(d.by || '?')} · ${escapeHTML(when)}</span>${why}
+        </div>
+        <button class="btn btn-ghost" style="padding:2px 8px;font-size:11px" data-restore-key="${escapeHTML(k)}">Restore</button>
+      </div>`;
+    }).join('');
+    wrap.querySelectorAll('[data-restore-key]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-restore-key');
+        undoDeleteProspect(key);
+        renderDeletedProspects();
+      });
+    });
+  }
+  window.renderDeletedProspects = renderDeletedProspects;
   document.getElementById('backendTest').addEventListener('click', async () => {
     const url = document.getElementById('backendUrl').value.trim();
     const statusEl = document.getElementById('backendStatus');

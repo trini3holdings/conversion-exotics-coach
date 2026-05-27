@@ -115,6 +115,18 @@
       </div>
 
       <hr style="margin:18px 0;border:none;border-top:1px solid rgba(0,0,0,.12)" />
+      <h4 style="margin:0 0 8px;font-family:'DM Sans',sans-serif;">⚙ Call flow</h4>
+      <label class="form-row" style="flex-direction:row;align-items:center;gap:8px;">
+        <input type="checkbox" id="autoAdvanceToggle" />
+        <span style="margin:0;">Auto-advance to next prospect after logging a call</span>
+      </label>
+
+      <hr style="margin:18px 0;border:none;border-top:1px solid rgba(0,0,0,.12)" />
+      <h4 style="margin:0 0 8px;font-family:'DM Sans',sans-serif;">🗑 Deleted prospects</h4>
+      <p class="modal-help" style="margin-top:0">Soft-deleted records (hidden from list/stats/queue). Click Restore to bring them back.</p>
+      <div id="deletedProspectsList" style="max-height:180px;overflow-y:auto;font-size:12px;border:1px solid rgba(0,0,0,.08);border-radius:6px;padding:6px;background:rgba(0,0,0,.02);"></div>
+
+      <hr style="margin:18px 0;border:none;border-top:1px solid rgba(0,0,0,.12)" />
       <h4 style="margin:0 0 8px;font-family:'DM Sans',sans-serif;">📥 Bulk import phones</h4>
       <p class="modal-help" style="margin-top:0">
         Paste a CSV with columns <code>brand,domain,found_phone,status</code> (extra columns OK).
@@ -309,6 +321,7 @@
               <option value="NI">NI · Not Interested</option>
               <option value="PP">PP · Pitched, Passed</option>
               <option value="OBJ">OBJ · Objection (no book)</option>
+              <option value="RE">RE · Requested Email</option>
               <option value="BK">BK · Audit Booked</option>
               <option value="SH">SH · Audit Showed</option>
               <option value="CL">CL · Closed</option>
@@ -442,6 +455,7 @@
         <button class="qo-link" data-outcome="VM">Voicemail</button>
         <button class="qo-link" data-outcome="HU">Hung Up</button>
         <button class="qo-link" data-outcome="OBJ">Objection (no book)</button>
+        <button class="qo-link" data-outcome="RE">Requested Email</button>
         <button class="qo-link" data-outcome="SH">Audit Showed</button>
         <button class="qo-link" data-outcome="CL">Closed</button>
       </div>
