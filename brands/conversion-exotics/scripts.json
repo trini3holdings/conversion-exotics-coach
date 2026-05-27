@@ -140,7 +140,7 @@
           "t": 30,
           "phase": "PROBLEM",
           "title": "CPC Anchor",
-          "line": "Cool — {caller} with Conversion Exotics. I pulled the keyword data before I called. <em>{primary_kw}</em> in {market} is running about <em>${cpc_low}–${cpc_high} per click</em> right now. \"Exotic car rental near me\" tops <em>$14.49 a click</em>. Quick question — when's the last time you actually clicked your own ad on a phone and tried to book?",
+          "line": "Cool — {caller} with Conversion Exotics. I pulled the keyword data before I called. <em>{primary_kw}</em> is running about <em>${cpc_low}–${cpc_high} per click</em> right now. \"Exotic car rental near me\" tops <em>$14.49 a click</em>. Quick question — when's the last time you actually clicked your own ad on a phone and tried to book?",
           "responses": ["Honestly never", "We get bookings", "It works fine"],
           "followup": "Yeah — that's the part most owners miss. The ad's not the problem.",
           "note": "Real CPCs. Pulled from Google Ads Keyword Planner. Say them with confidence."
