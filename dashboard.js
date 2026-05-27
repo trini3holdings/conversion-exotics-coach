@@ -16,8 +16,10 @@ const DASH_CACHE = {};
 async function loadBrandIntel(slug) {
   if (DASH_CACHE[slug]) return DASH_CACHE[slug];
   const base = `brands/${slug}`;
+  // v3.8.8 — cache-bust JSON fetches so brand data refreshes hit instantly
+  const CB = `?v=${Date.now()}`;
   const safeFetch = (file, fallback) =>
-    fetch(`${base}/${file}`)
+    fetch(`${base}/${file}${CB}`, { cache: 'no-store' })
       .then(r => r.ok ? r.json() : fallback)
       .catch(() => fallback);
   try {

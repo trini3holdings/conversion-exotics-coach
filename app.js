@@ -327,7 +327,9 @@ async function loadBrandData(brandSlug) {
     return false;
   }
   const base = `brands/${brandSlug}`;
-  const safeFetch = (file, fallback) => fetch(`${base}/${file}`)
+  // v3.8.8 — cache-bust JSON fetches so script edits hit instantly without hard-refresh
+  const CB = `?v=${Date.now()}`;
+  const safeFetch = (file, fallback) => fetch(`${base}/${file}${CB}`, { cache: 'no-store' })
     .then(r => r.ok ? r.json() : fallback)
     .catch(() => fallback);
   try {
@@ -337,7 +339,7 @@ async function loadBrandData(brandSlug) {
       safeFetch('prospects.json', []),
       safeFetch('market_cpc.json', {}),
       safeFetch('call_intel.json', null),  // v3.7.2 — needed for TZ gate
-      fetch(`${base}/csv_schema.json`).catch(() => null)
+      fetch(`${base}/csv_schema.json${CB}`, { cache: 'no-store' }).catch(() => null)
     ]);
     window.CALL_INTEL = callIntelRaw;  // v3.7.2 — expose to picker
     try { CSV_SCHEMA = schemaRes && schemaRes.ok ? await schemaRes.json() : null; }
