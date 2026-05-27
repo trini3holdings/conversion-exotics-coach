@@ -388,6 +388,112 @@ function saveProspectPhone(prospect, rawPhone) {
 }
 window.saveProspectPhone = saveProspectPhone;
 
+// v3.9.0 — Bulk import phones from a CSV (e.g. phone-research output)
+// Expected columns (any order, header row required): brand,domain,found_phone,status
+// Extra columns (company, market, source, notes, etc.) are ignored.
+// Only rows where status='found' (case-insensitive) AND found_phone is non-empty are imported.
+// Returns { imported, skipped, unmatched, total, sample } — pass dryRun=true to preview without saving.
+function bulkImportPhones(csvText, opts) {
+  opts = opts || {};
+  const dryRun = !!opts.dryRun;
+  const text = (csvText || '').replace(/^\uFEFF/, '').trim();
+  if (!text) return { imported: 0, skipped: 0, unmatched: 0, total: 0, sample: [], error: 'Empty CSV' };
+
+  // Minimal CSV parser — handles quoted fields with commas and escaped quotes
+  function parseCsv(s) {
+    const rows = [];
+    let cur = [], field = '', inQ = false, i = 0;
+    while (i < s.length) {
+      const c = s[i];
+      if (inQ) {
+        if (c === '"' && s[i+1] === '"') { field += '"'; i += 2; continue; }
+        if (c === '"') { inQ = false; i++; continue; }
+        field += c; i++; continue;
+      }
+      if (c === '"') { inQ = true; i++; continue; }
+      if (c === ',') { cur.push(field); field = ''; i++; continue; }
+      if (c === '\n' || c === '\r') {
+        if (field !== '' || cur.length) { cur.push(field); rows.push(cur); cur = []; field = ''; }
+        // swallow \r\n
+        if (c === '\r' && s[i+1] === '\n') i++;
+        i++; continue;
+      }
+      field += c; i++;
+    }
+    if (field !== '' || cur.length) { cur.push(field); rows.push(cur); }
+    return rows;
+  }
+
+  const rows = parseCsv(text);
+  if (rows.length < 2) return { imported: 0, skipped: 0, unmatched: 0, total: 0, sample: [], error: 'No data rows' };
+
+  const header = rows[0].map(h => String(h || '').trim().toLowerCase());
+  const idx = (name) => header.indexOf(name);
+  const iDomain = idx('domain');
+  const iPhone = idx('found_phone') !== -1 ? idx('found_phone') : idx('phone');
+  const iStatus = idx('status');
+  const iBrand = idx('brand');
+
+  if (iDomain === -1 || iPhone === -1) {
+    return { imported: 0, skipped: 0, unmatched: 0, total: 0, sample: [], error: `Missing required column. Need at minimum: domain + found_phone. Got: ${header.join(', ')}` };
+  }
+
+  // Build a quick lookup by domain across ALL brand prospects (so we can match cross-brand)
+  // We need to know each brand's prospects, not just the currently-loaded one.
+  // Strategy: switch the import by current brand if brand column missing; otherwise use brand col
+  // to apply to the right brand's override map. We have one global state.prospectOverrides keyed
+  // by domain — domains are unique enough across brands that this works for the saveProspectPhone path.
+
+  // We still want to verify the domain exists in SOME loaded prospect list. For now we'll just
+  // honor any non-empty found_phone with a valid status — saveProspectPhone uses domain as the
+  // key regardless of whether the prospect is currently rendered, so future merges pick it up.
+
+  let imported = 0, skipped = 0, unmatched = 0;
+  const sample = [];
+  state.prospectOverrides = state.prospectOverrides || {};
+
+  for (let r = 1; r < rows.length; r++) {
+    const row = rows[r];
+    if (!row || row.length === 0 || (row.length === 1 && !row[0])) continue;
+    const domain = String(row[iDomain] || '').trim().toLowerCase();
+    const phoneRaw = String(row[iPhone] || '').trim();
+    const status = iStatus !== -1 ? String(row[iStatus] || '').trim().toLowerCase() : 'found';
+    const brand = iBrand !== -1 ? String(row[iBrand] || '').trim() : '';
+
+    if (!domain || !phoneRaw || status !== 'found') { skipped++; continue; }
+
+    // Try to match against currently merged prospects + base of every loaded brand
+    // (PROSPECTS only has current brand). We'll always write the override — the next
+    // brand switch + mergeProspects() will apply it.
+    const key = domain;
+    const existing = state.prospectOverrides[key] || {};
+    if (!dryRun) {
+      state.prospectOverrides[key] = Object.assign({}, existing, {
+        phone: phoneRaw,
+        phone_added_by: 'bulk_import',
+        phone_added_ts: Date.now(),
+        phone_source_brand: brand || existing.phone_source_brand || ''
+      });
+    }
+    imported++;
+    if (sample.length < 5) sample.push({ brand, domain, phone: phoneRaw });
+  }
+
+  if (!dryRun) {
+    saveState();
+    mergeProspects();
+    if (typeof renderReconCard === 'function') renderReconCard();
+    if (typeof renderProspectList === 'function') renderProspectList();
+    if (typeof renderStats === 'function') renderStats();
+    if (typeof window.renderDashboard === 'function') {
+      try { window.renderDashboard(); } catch (e) { /* ignore */ }
+    }
+  }
+
+  return { imported, skipped, unmatched, total: rows.length - 1, sample, dryRun };
+}
+window.bulkImportPhones = bulkImportPhones;
+
 // Holds the base (JSON file) prospects so merge can rebuild cleanly
 let PROSPECTS_BASE = [];
 
@@ -2064,6 +2170,65 @@ async function init() {
     });
   }
   document.getElementById('backendSyncNow').addEventListener('click', () => drainSyncQueue());
+
+  // ============== BULK IMPORT PHONES (v3.9.0) ==============
+  const bulkCsvEl = document.getElementById('bulkPhonesCsv');
+  const bulkStatusEl = document.getElementById('bulkPhonesStatus');
+  const bulkFileEl = document.getElementById('bulkPhonesFile');
+  const bulkFileBtn = document.getElementById('bulkPhonesFileBtn');
+  const bulkImportBtn = document.getElementById('bulkPhonesImport');
+  const bulkDryRunBtn = document.getElementById('bulkPhonesDryRun');
+
+  function setBulkStatus(html, cls) {
+    if (!bulkStatusEl) return;
+    bulkStatusEl.innerHTML = html;
+    bulkStatusEl.className = 'backend-status' + (cls ? ' ' + cls : '');
+  }
+
+  function renderBulkResult(r) {
+    if (r.error) return setBulkStatus('✗ ' + r.error, 'err');
+    const verb = r.dryRun ? 'Would import' : 'Imported';
+    const sampleHtml = (r.sample || []).map(s => `<div style="font-family:monospace;font-size:11px;opacity:.85">• ${s.domain} → ${s.phone}${s.brand ? ' <em>(' + s.brand + ')</em>' : ''}</div>`).join('');
+    setBulkStatus(
+      `✓ ${verb} <strong>${r.imported}</strong> phones (skipped ${r.skipped} of ${r.total} total rows).` +
+      (sampleHtml ? '<div style="margin-top:6px">Sample:</div>' + sampleHtml : ''),
+      'ok'
+    );
+  }
+
+  if (bulkFileBtn && bulkFileEl) {
+    bulkFileBtn.addEventListener('click', () => bulkFileEl.click());
+    bulkFileEl.addEventListener('change', () => {
+      const file = bulkFileEl.files && bulkFileEl.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        bulkCsvEl.value = String(e.target.result || '');
+        setBulkStatus(`Loaded ${file.name} (${bulkCsvEl.value.split(/\r?\n/).length - 1} rows). Click Import phones to apply.`);
+      };
+      reader.readAsText(file);
+    });
+  }
+
+  if (bulkDryRunBtn) {
+    bulkDryRunBtn.addEventListener('click', () => {
+      const r = bulkImportPhones(bulkCsvEl.value, { dryRun: true });
+      renderBulkResult(r);
+    });
+  }
+
+  if (bulkImportBtn) {
+    bulkImportBtn.addEventListener('click', () => {
+      const csv = bulkCsvEl.value;
+      if (!csv || !csv.trim()) { setBulkStatus('Paste a CSV or load a file first.', 'err'); return; }
+      const r = bulkImportPhones(csv, { dryRun: false });
+      renderBulkResult(r);
+      if (!r.error && r.imported > 0) {
+        showToast(`Imported ${r.imported} phones from CSV`);
+      }
+    });
+  }
+
   document.querySelectorAll('.modal-close, [data-close]').forEach(btn => {
     btn.addEventListener('click', () => {
       const id = btn.getAttribute('data-close');

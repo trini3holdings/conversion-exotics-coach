@@ -112,6 +112,25 @@
         <strong>Sync queue:</strong> <span id="queueCount">0</span> calls waiting.
         Calls are logged locally first and sync to Sheets automatically.
       </div>
+
+      <hr style="margin:18px 0;border:none;border-top:1px solid rgba(0,0,0,.12)" />
+      <h4 style="margin:0 0 8px;font-family:'DM Sans',sans-serif;">📥 Bulk import phones</h4>
+      <p class="modal-help" style="margin-top:0">
+        Paste a CSV with columns <code>brand,domain,found_phone,status</code> (extra columns OK).
+        Only rows where <code>status=found</code> and <code>found_phone</code> is non-empty are imported.
+        Each phone is saved as an in-app override on the matching prospect (matched by domain).
+      </p>
+      <label class="form-row">
+        <span>CSV text</span>
+        <textarea id="bulkPhonesCsv" rows="6" placeholder="brand,domain,company,market,found_phone,source,status,notes&#10;rme-roofing,example.com,Example,Dallas TX,(214) 555-1234,https://example.com,found,..." style="font-family:'SFMono-Regular',Consolas,monospace;font-size:12px;"></textarea>
+      </label>
+      <div class="form-actions">
+        <input type="file" id="bulkPhonesFile" accept=".csv,text/csv,text/plain" style="display:none" />
+        <button id="bulkPhonesFileBtn" class="btn btn-ghost" type="button">Load CSV file…</button>
+        <button id="bulkPhonesImport" class="btn btn-gold" type="button">Import phones</button>
+        <button id="bulkPhonesDryRun" class="btn btn-ghost" type="button">Dry run (preview)</button>
+      </div>
+      <div id="bulkPhonesStatus" class="backend-status" style="margin-top:8px"></div>
     </div>
   </div>
 </div>
