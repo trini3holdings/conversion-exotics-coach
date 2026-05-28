@@ -51,8 +51,8 @@
       "MODERATE": "96/299 (32%) — moderate CTA = leads leaking at the form step",
       "WEAK": "25/299 (8%) — full contact failure"
     },
-    "8_audit_value": 5000,
-    "8_audit_value_rationale": "B2B vertical with $10K-$18K per-job ticket size. $5,000 audit value is proportional to anchor and serious enough to command respect from a roofing owner-operator. Mirrors Conversion Exotics at $3,000 (B2C) scaled for B2B stakes.",
+    "8_audit_value": 3000,
+    "8_audit_value_rationale": "B2B vertical with $10K-$18K per-job ticket size. $3,000 audit value is proportional to anchor and serious enough to command respect from a roofing owner-operator. Mirrors Conversion Exotics at $3,000 (B2C) scaled for B2B stakes.",
     "9_banned_terms": [
       "{first_name} or {prospect_name} — no name tokens",
       "Miner-style apology hedges: 'appreciate you picking up', 'out of the blue', 'I know I'm calling cold'",
@@ -138,7 +138,7 @@
     "2_PROBLEM": "17-24s — industry context with CPC anchor, ends with question they can't answer well",
     "3_AGITATION": "32-40s — concrete walk-through + dollar anchor + tease third issue",
     "4_SOLUTION": "15-20s — credibility (100+ sites diagnosed, 10-point checklist, same three leaks)",
-    "5_AUDIT_OFFER": "33s — $5K audit, free, 30 min shared screen, dollar per leak, one-week plan, yours to keep",
+    "5_AUDIT_OFFER": "33s — $3K audit, free, 30 min shared screen, dollar per leak, one-week plan, yours to keep",
     "6_CLOSE": "30s — Thursday 10 or Friday 2, OR sample audit by email"
   },
   "dollar_anchor_math": {

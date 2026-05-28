@@ -13,14 +13,14 @@
           "title": "Booking Process Leak",
           "line": "Hi, my name is {caller} with Conversion Exotics — I review exotic and luxury car rental sites for a living. I pulled up your site, and your <em>booking process</em> is costing you roughly <em>$5,000 to $15,000 a week in booked rentals</em>. Do you know who I can talk to about this?",
           "responses": ["That'd be me", "What do you mean costing me?", "Who is this again?"],
-          "followup": "Got it — quick context on what I'm seeing, then I'll show you exactly where the money's going.",
+          "followup": "Got it — here's what's going on, then I'll show you exactly where the money's going.",
           "note": "Calling the business, not a person. No name tokens. No apology hedges."
         },
         {
           "t": 22,
           "phase": "PROBLEM",
           "title": "3-Second Decision",
-          "line": "Quick context — when a luxury renter taps your ad from their phone, they decide in about <em>3 seconds</em> whether you're worth waiting on. <em>Every one-second delay cuts conversions roughly 32 percent</em>. Most exotic rental sites load in 5 to 8 seconds on mobile. When was the last time someone on your team pulled your site up on a phone and booked a rental end-to-end?",
+          "line": "Here's the deal — when a luxury renter taps your ad from their phone, they decide in about <em>3 seconds</em> whether you're worth waiting on. <em>Every one-second delay cuts conversions roughly 32 percent</em>. Most exotic rental sites load in 5 to 8 seconds on mobile. When was the last time someone on your team pulled your site up on a phone and booked a rental end-to-end?",
           "responses": ["Honestly, not recently", "It's fine, we get bookings", "We just redid the site"],
           "followup": "Yeah — that's what most owners say. The site loading is just the first leak. The bigger ones come after.",
           "note": "Plain English. Mobile speed as door-opener, not the main point."
@@ -73,7 +73,7 @@
           "title": "Next Listing Steal",
           "line": "Hi, my name is {caller} with Conversion Exotics — I review exotic and luxury car rental sites for a living. Quick question — <em>do you know how many renters tap your ad, count to three, and book the next listing instead?</em> Because on your site right now, that's costing you <em>$5,000 to $15,000 a week</em>. Who's the right person to talk to about this?",
           "responses": ["That'd be me", "What do you mean costing me?", "Who is this again?"],
-          "followup": "Got it — quick context on what I'm seeing, then I'll show you exactly where the money's going.",
+          "followup": "Got it — here's what's going on, then I'll show you exactly where the money's going.",
           "note": "Calling the business, not a person. Question-first hook lands the steal frame immediately."
         },
         {
