@@ -75,13 +75,17 @@
     const c = loadConfig();
     if (!c.token) throw new Error('No GitHub token configured');
     const url = path.startsWith('http') ? path : (API + path);
-    const res = await fetch(url, Object.assign({
-      headers: {
-        'Authorization': 'token ' + c.token,
-        'Accept': 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2022-11-28'
-      }
-    }, opts || {}));
+    // Deep-merge headers so callers can add Content-Type without wiping Authorization.
+    const baseHeaders = {
+      'Authorization': 'token ' + c.token,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    };
+    const callerHeaders = (opts && opts.headers) || {};
+    const finalOpts = Object.assign({}, opts || {}, {
+      headers: Object.assign({}, baseHeaders, callerHeaders)
+    });
+    const res = await fetch(url, finalOpts);
     if (!res.ok) {
       let body = '';
       try { body = await res.text(); } catch (e) {}
