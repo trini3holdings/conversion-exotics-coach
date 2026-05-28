@@ -1,1 +1,77 @@
-{"call_logs":[],"prospect_overrides":{},"deleted_prospects":{},"meta":{"version":"3.10.0","last_updated":null}}
+{
+  "brand": "conversionjet",
+  "meta": {
+    "version": "3.10.0",
+    "last_updated": "2026-05-28T00:53:19.146Z",
+    "caller": "Tony"
+  },
+  "call_logs": [
+    {
+      "ts": 1779900337351,
+      "brand": "conversionjet",
+      "caller": "Tony",
+      "variant": "C",
+      "company": "",
+      "domain": "",
+      "market": "",
+      "phone": "",
+      "email": "",
+      "outcome": "OBJ",
+      "objectionRaised": "",
+      "whatWorked": "",
+      "nextStep": "",
+      "notes": "",
+      "prospectN": null,
+      "duration": 0,
+      "followup": null,
+      "score": 5
+    },
+    {
+      "ts": 1779922149224,
+      "brand": "conversionjet",
+      "caller": "Tony",
+      "variant": "A",
+      "company": "Executivejetmanagement",
+      "domain": "executivejetmanagement.com",
+      "market": "San Francisco",
+      "phone": "800) 451-2822",
+      "email": "ejmmarketing@ejmjets.com",
+      "outcome": "NA",
+      "objectionRaised": "",
+      "whatWorked": "",
+      "nextStep": "",
+      "notes": "",
+      "prospectN": 18,
+      "duration": 0,
+      "followup": null,
+      "score": 0
+    },
+    {
+      "ts": 1779922969976,
+      "brand": "conversionjet",
+      "caller": "Tony",
+      "variant": "A",
+      "company": "Sunairjets",
+      "domain": "sunairjets.com",
+      "market": "Van Nuys",
+      "phone": "805 389 9301",
+      "email": "info@goflyhouse.com",
+      "outcome": "NA",
+      "objectionRaised": "",
+      "whatWorked": "",
+      "nextStep": "Send report follow up tomorrow",
+      "notes": "They are merging with another company and they dont have a direct poc at the moment but she wants me to email her at info@goflyhouse.com",
+      "prospectN": 42,
+      "duration": 0,
+      "followup": {
+        "date": "2026-05-28",
+        "time": "10:00",
+        "channel": "email",
+        "message": ""
+      },
+      "score": 5
+    }
+  ],
+  "prospect_overrides": {},
+  "deleted_prospects": {}
+}
