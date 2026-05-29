@@ -1225,7 +1225,7 @@ function renderStats() {
   }
   const cStats = document.getElementById('callerStats');
   if (cStats) {
-    cStats.innerHTML = ['Zack', 'Tony'].map(name => {
+    cStats.innerHTML = ['Zack', 'Tony', 'Jessica'].map(name => {
       const calls = state.calls.filter(c => c.caller === name).length;
       const booked = state.calls.filter(c => c.caller === name && ['BK', 'SH', 'CL'].includes(c.outcome)).length;
       return `<div class="caller-stats-row"><span class="label">${name}</span><span>${calls} calls · ${booked} booked</span></div>`;
