@@ -87,6 +87,26 @@ function formatMinutesAway(min) {
   return m === 0 ? `${h}h` : `${h}h ${m}m`;
 }
 
+// v3.10.8 — gather per-brand call performance from local state + cloud sync
+function getBrandPerf(slug) {
+  try {
+    const state = window.state || {};
+    const localCalls = (state.calls || []).filter(c => c && c.brand === slug);
+    const cloudCalls = (state.cloudCalls && state.cloudCalls[slug]) || [];
+    // Merge by ts to dedupe
+    const seen = new Set();
+    const all = [];
+    [...cloudCalls, ...localCalls].forEach(c => {
+      const k = (c.ts || '') + '|' + (c.prospect_id || c.prospectN || '');
+      if (!seen.has(k)) { seen.add(k); all.push(c); }
+    });
+    return all;
+  } catch (e) {
+    console.warn('getBrandPerf failed for', slug, e);
+    return [];
+  }
+}
+
 function renderBrandCard(slug, brand, intel, mode) {
   const { prospects = [], scripts = {}, callIntel, hotList, marketCpc, validation } = intel || {};
   const theme = brand.theme || { ink: '#1a1a1a', gold: '#888', cream: '#f4f0e8', highlight: '#fff8e8' };
@@ -172,6 +192,120 @@ function renderBrandCard(slug, brand, intel, mode) {
     </div>
   `).join('') || `<div class="dash-empty">No prospects in window. Try the toggle, or wait for the next prime block.</div>`;
 
+  // ---- Performance snapshot from local + cloud call log ----
+  const brandCalls = getBrandPerf(slug);
+  const now = new Date();
+  const todayKey = now.toDateString();
+  const last7Cutoff = now.getTime() - 7 * 86400000;
+  const todayCalls = brandCalls.filter(c => c.ts && new Date(c.ts).toDateString() === todayKey);
+  const last7 = brandCalls.filter(c => c.ts && new Date(c.ts).getTime() >= last7Cutoff);
+  const BOOKED_SET = new Set(['BK', 'SH', 'CL']);
+  const bookedAll = brandCalls.filter(c => BOOKED_SET.has(c.outcome));
+  const bookedToday = todayCalls.filter(c => BOOKED_SET.has(c.outcome)).length;
+  const bookedLast7 = last7.filter(c => BOOKED_SET.has(c.outcome)).length;
+  const totalCalls = brandCalls.length;
+  const bookRate = totalCalls > 0 ? Math.round((bookedAll.length / totalCalls) * 100) : 0;
+  const bookRateClass = bookRate >= 15 ? 'good' : bookRate >= 7 ? 'warn' : (totalCalls > 0 ? 'bad' : '');
+  // Pipeline value = total booked closes × audit value
+  const pipelineVal = bookedAll.length * auditValue;
+  // Top variant by book rate
+  const variantStats = {};
+  brandCalls.forEach(c => {
+    if (!c.variant) return;
+    if (!variantStats[c.variant]) variantStats[c.variant] = { calls: 0, booked: 0 };
+    variantStats[c.variant].calls++;
+    if (BOOKED_SET.has(c.outcome)) variantStats[c.variant].booked++;
+  });
+  let topVar = null;
+  Object.entries(variantStats).forEach(([v, s]) => {
+    if (s.calls < 2) return;
+    const rate = s.booked / s.calls;
+    if (!topVar || rate > topVar.rate) topVar = { v, rate, calls: s.calls };
+  });
+  const topVarLabel = topVar ? `${topVar.v} · ${Math.round(topVar.rate * 100)}%` : '—';
+
+  const perfBlock = `
+    <div class="dash-kpi-row">
+      <div class="dash-kpi">
+        <div class="dk-num">${totalCalls}</div>
+        <div class="dk-label">Calls logged</div>
+        <div class="dk-sub">${todayCalls.length} today</div>
+      </div>
+      <div class="dash-kpi">
+        <div class="dk-num ${bookedAll.length > 0 ? 'good' : ''}">${bookedAll.length}</div>
+        <div class="dk-label">Booked</div>
+        <div class="dk-sub">${bookedLast7} in 7d</div>
+      </div>
+      <div class="dash-kpi">
+        <div class="dk-num ${bookRateClass}">${totalCalls > 0 ? bookRate + '%' : '—'}</div>
+        <div class="dk-label">Book rate</div>
+        <div class="dk-sub">Top: ${topVarLabel}</div>
+      </div>
+      <div class="dash-kpi">
+        <div class="dk-num">$${(pipelineVal / 1000).toFixed(pipelineVal >= 10000 ? 0 : 1)}k</div>
+        <div class="dk-label">Pipeline</div>
+        <div class="dk-sub">at $${auditValue.toLocaleString()}/audit</div>
+      </div>
+    </div>`;
+
+  // ---- Last call row ----
+  const lastCall = brandCalls.length > 0 ? brandCalls.reduce((a, b) => (a.ts > b.ts ? a : b)) : null;
+  let lastCallBlock = '';
+  if (lastCall) {
+    const lastTs = new Date(lastCall.ts);
+    const ageMin = Math.floor((Date.now() - lastTs.getTime()) / 60000);
+    const ageStr = ageMin < 60 ? `${ageMin}m ago` : ageMin < 1440 ? `${Math.floor(ageMin / 60)}h ago` : `${Math.floor(ageMin / 1440)}d ago`;
+    const outc = lastCall.outcome || '?';
+    const isBooked = BOOKED_SET.has(outc);
+    const isDeclined = ['DC', 'NI', 'NL'].includes(outc);
+    const pillClass = isBooked ? 'booked' : isDeclined ? 'declined' : '';
+    const company = (lastCall.company || lastCall.prospect_id || lastCall.prospectN || '').toString().slice(0, 28);
+    lastCallBlock = `
+      <div class="dash-last-call">
+        <div>
+          <div class="dlc-label">Last call</div>
+          <div class="dlc-val">${escapeHtml(company || '—')} · ${escapeHtml(lastCall.caller || '?')} · ${ageStr}</div>
+        </div>
+        <span class="dlc-pill ${pillClass}">${escapeHtml(outc)}${lastCall.variant ? ' · ' + escapeHtml(lastCall.variant) : ''}</span>
+      </div>`;
+  } else {
+    lastCallBlock = `
+      <div class="dash-last-call">
+        <div>
+          <div class="dlc-label">Last call</div>
+          <div class="dlc-val" style="color:#999;font-weight:400">No calls logged yet — click Enter to start</div>
+        </div>
+      </div>`;
+  }
+
+  // ---- 14-day activity strip (bar = call count per day, green = had a booking) ----
+  const days = [];
+  for (let i = 13; i >= 0; i--) {
+    const d = new Date(now);
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() - i);
+    days.push(d);
+  }
+  const maxCount = Math.max(1, ...days.map(d => brandCalls.filter(c => new Date(c.ts).toDateString() === d.toDateString()).length));
+  const activityBars = days.map(d => {
+    const dayCalls = brandCalls.filter(c => new Date(c.ts).toDateString() === d.toDateString());
+    const count = dayCalls.length;
+    const hadBooking = dayCalls.some(c => BOOKED_SET.has(c.outcome));
+    const heightPct = count > 0 ? Math.max(20, Math.round((count / maxCount) * 100)) : 0;
+    const cls = hadBooking ? 'booked' : count > 0 ? 'has' : '';
+    const tip = `${d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}: ${count} call${count === 1 ? '' : 's'}${hadBooking ? ' · booked' : ''}`;
+    return `<div class="dash-act-bar ${cls}" style="height:${heightPct}%" title="${escapeHtml(tip)}"></div>`;
+  }).join('');
+  const activityBlock = `
+    <div class="dash-section">
+      <h4 class="dash-section-title">14-day activity</h4>
+      <div class="dash-activity-strip">${activityBars}</div>
+      <div class="dash-act-legend">
+        <span>${days[0].toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</span>
+        <span>Today</span>
+      </div>
+    </div>`;
+
   // Compute next prime window for sample of resolved prospects (use first prospect with TZ as anchor)
   const anchor = prospects.find(p => !p.is_client && p.phone && window.resolveMarketTZ(p.market));
   let nextWindow = null;
@@ -234,6 +368,15 @@ function renderBrandCard(slug, brand, intel, mode) {
           <div class="dash-stat"><div class="ds-num">$${auditValue.toLocaleString()}</div><div class="ds-label">Audit value</div></div>
           <div class="dash-stat"><div class="ds-num">${Object.keys(scripts).filter(k => !k.startsWith('_')).length}</div><div class="ds-label">Script variants</div></div>
         </div>
+
+        <!-- Performance KPI row -->
+        ${perfBlock}
+
+        <!-- Last call -->
+        ${lastCallBlock}
+
+        <!-- 14-day activity strip -->
+        ${activityBlock}
 
         <!-- Hot list tiers -->
         <div class="dash-section">

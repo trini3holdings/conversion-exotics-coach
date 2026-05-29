@@ -103,6 +103,8 @@ let state = {
   // v3.6 validation
   brandValidation: { ok: true, errors: [], warnings: [] }
 };
+// v3.10.8 — expose state for dashboard.js to read per-brand performance
+window.state = state;
 
 // ============== STORAGE ==============
 function loadState() {
